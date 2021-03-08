@@ -8,7 +8,7 @@ import {
 
 
 import axios from 'axios'
-
+import Header from "./header"
 import Home from "./home"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from "./global"
@@ -140,7 +140,7 @@ function App(controllerProps){
                 
                 
                     
-                
+                <Header/>
                 
                 
                 
