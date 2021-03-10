@@ -6,8 +6,8 @@ const HomeWrapper = styled.div`
 
     //background: pink;
     height: calc(100vh - 85px);
-
-
+    margin: 0 20px;
+    min-width: 500px;
 `;
 
 const News = styled.div`
@@ -16,10 +16,11 @@ const News = styled.div`
 
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr 420px 300px 1fr;
+    grid-template-columns: 1fr minmax(0px, 600px) minmax(0px, 350px) 1fr;
     grid-template-rows: 150px 100px 50px 1fr;
     grid-template-areas:
         ".   featured one   ."
+        
         ".   featured two   ."
         ".   featured two   ."
         ".     .       .    .";
@@ -35,6 +36,17 @@ const Div1 = styled.div`
     background: blue;
     grid-area: featured;
     border-radius: 10px;
+    
+    
+
+    &:before{
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        padding-bottom: calc(9/16 * 100%);
+
+    }
 
 `;
 

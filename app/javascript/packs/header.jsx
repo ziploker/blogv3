@@ -22,19 +22,23 @@ const HeaderWrapper = styled.div`
 
 
     
-    width: 100%;
+    
     min-height: 85px;
-
+    margin: 0 20px;
+    min-width: 500px;
     
    
     display: grid;
-    grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
+    //grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
+
+    grid-template-columns: 1fr minmax(0px, 150px) minmax(0px, 800px) 1fr;
+    
     grid-template-rows: 85px;
     grid-template-areas:
 
-        "headerLogo headerLeaf"
-        "headerLogo headerLeaf";
-
+        ".  headerLogo  headerLeaf headerLeaf";
+        
+    grid-gap: 8px;
 `;
 
 
@@ -51,7 +55,7 @@ const Logo = styled.img`
     
 
     grid-area: headerLogo;
-    justify-self: end;
+    justify-self: start;
     align-self: center;
     
     width: 80%;
@@ -64,7 +68,7 @@ const Logo = styled.img`
 const HeaderLeafImage = styled.img`
 
     max-width: 95%;
-    min-width: 400px;
+    min-width: 350px;
     max-height: 85px;
     
     
