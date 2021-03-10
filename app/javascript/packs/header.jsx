@@ -21,20 +21,23 @@ const HeaderWrapper = styled.div`
     min-width: 80vw; */
 
 
-    min-height: 85px;
+    
     width: 100%;
-    background: pink;
+    min-height: 85px;
 
+    
+   
     display: grid;
-    grid-template-columns: minmax(75px, 20vw) minmax(300px, 80vw);
+    grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
     grid-template-rows: 85px;
-
     grid-template-areas:
 
         "headerLogo headerLeaf"
         "headerLogo headerLeaf";
 
 `;
+
+
 
 const Logo = styled.img`
 
@@ -44,24 +47,26 @@ const Logo = styled.img`
     font-size: 96px;
     line-height: 144px;
     letter-spacing: -5px;
-    /* identical to box height */
+    color: #010101;
+    
 
     grid-area: headerLogo;
-    width: 80%;
-
     justify-self: end;
     align-self: center;
+    
+    width: 80%;
     min-width: 70px;
-
-    color: #010101;
-
-
+    
 `;
+
+
 
 const HeaderLeafImage = styled.img`
 
-    max-width: 100%;
-    //min-height: 100%;
+    max-width: 95%;
+    min-width: 400px;
+    max-height: 85px;
+    
     
     grid-area: headerLeaf;
     justify-self: end;
