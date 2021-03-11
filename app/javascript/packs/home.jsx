@@ -5,10 +5,14 @@ import styled, { ThemeProvider } from 'styled-components'
 const HomeWrapper = styled.div`
 
     //background: pink;
+    //height: calc(100vh - 85px);
     height: calc(100vh - 85px);
     margin: 0 20px;
     min-width: 500px;
+    
 `;
+
+const NewsWrapper = styled.div``;
 
 const News = styled.div`
 
@@ -17,7 +21,7 @@ const News = styled.div`
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr minmax(0px, 600px) minmax(0px, 350px) 1fr;
-    grid-template-rows: 150px 100px 50px 1fr;
+    //grid-template-rows: 150px 100px 50px 1fr;
     grid-template-areas:
         ".   featured one   ."
         
@@ -27,6 +31,13 @@ const News = styled.div`
     grid-gap: 8px;
 
     margin-top: 35px;
+
+    /* display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas:
+        "featured one two  ." */
+
 
 
 
@@ -44,7 +55,7 @@ const Div1 = styled.div`
         display: block;
         width: 0;
         height: 0;
-        padding-bottom: calc(9/16 * 100%);
+        padding-top: calc(100% / (16/9));
 
     }
 
@@ -86,17 +97,17 @@ function Home(props){
     return (
         <>
             <HomeWrapper>
+                <NewsWrapper>
+                    <News>
 
-                <News>
+                        <Div1/>
+                        <Div2/>
+                        <Div3/>
+                        <BackgroundGray></BackgroundGray>
 
-                    <Div1/>
-                    <Div2/>
-                    <Div3/>
-                    <BackgroundGray></BackgroundGray>
-
-                    
-                </News>
-
+                        
+                    </News>
+                </NewsWrapper>
                 
             </HomeWrapper>
             
