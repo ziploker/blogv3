@@ -24,7 +24,7 @@ const HeaderWrapper = styled.div`
     
     
     min-height: 85px;
-    margin: 0 20px;
+    //margin: 0 20px;
     min-width: 500px;
     
    

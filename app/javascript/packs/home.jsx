@@ -8,8 +8,8 @@ const HomeWrapper = styled.div`
     
    height: calc(100vh - 85px);
    max-height: 500px;
-    margin: 0 20px;
-    min-width: 500px;
+    
+    //min-width: 500px;
     
 `;
 
@@ -22,7 +22,7 @@ const News = styled.div`
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr minmax(0px, 600px) minmax(0px, 350px) 1fr;
-    grid-template-rows: 150px 100px 50px 1fr;
+    grid-template-rows: 170px 120px 50px 1fr;
     grid-template-areas:
         
         ".   featured one   ."
@@ -49,6 +49,7 @@ const Div1 = styled.div`
     background: blue;
     grid-area: featured;
     border-radius: 10px;
+    margin-left: 25px;
     
     
 
@@ -67,6 +68,7 @@ const Div2 = styled.div`
     background: orange;
     grid-area: one;
     border-radius: 10px;
+    margin-right: 25px;
 
     
 
@@ -77,7 +79,7 @@ const Div3 = styled.div`
 background: green;
     grid-area: two;
     border-radius: 10px;
-
+    margin-right: 25px;
     
 `;
 
