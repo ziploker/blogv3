@@ -5,8 +5,9 @@ import styled, { ThemeProvider } from 'styled-components'
 const HomeWrapper = styled.div`
 
     //background: pink;
-    //height: calc(100vh - 85px);
-    height: calc(100vh - 85px);
+    
+   height: calc(100vh - 85px);
+   max-height: 500px;
     margin: 0 20px;
     min-width: 500px;
     
@@ -21,8 +22,9 @@ const News = styled.div`
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr minmax(0px, 600px) minmax(0px, 350px) 1fr;
-    //grid-template-rows: 150px 100px 50px 1fr;
+    grid-template-rows: 150px 100px 50px 1fr;
     grid-template-areas:
+        
         ".   featured one   ."
         
         ".   featured two   ."
@@ -30,7 +32,7 @@ const News = styled.div`
         ".     .       .    .";
     grid-gap: 8px;
 
-    margin-top: 35px;
+    margin-top: 50px;
 
     /* display: grid;
     justify-content: center;
@@ -66,6 +68,8 @@ const Div2 = styled.div`
     grid-area: one;
     border-radius: 10px;
 
+    
+
 `;
 
 const Div3 = styled.div`
@@ -73,6 +77,8 @@ const Div3 = styled.div`
 background: green;
     grid-area: two;
     border-radius: 10px;
+
+    
 `;
 
 const BackgroundGray = styled.div`
@@ -80,6 +86,8 @@ const BackgroundGray = styled.div`
     background: #C4C4C4;
     grid-area: 3/1/-1/-1;
     z-index: -1;
+    
+    
 
 
 
@@ -97,7 +105,7 @@ function Home(props){
     return (
         <>
             <HomeWrapper>
-                <NewsWrapper>
+                
                     <News>
 
                         <Div1/>
@@ -107,7 +115,7 @@ function Home(props){
 
                         
                     </News>
-                </NewsWrapper>
+                
                 
             </HomeWrapper>
             
