@@ -60,6 +60,8 @@ const Div1 = styled.div`
         height: 0;
         padding-top: calc(100% / (16/9));
 
+        
+
     }
 
 `;
