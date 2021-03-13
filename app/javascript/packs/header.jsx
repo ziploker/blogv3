@@ -33,6 +33,9 @@ const HeaderWrapper = styled.div`
 
     grid-template-columns: 1fr minmax(0px, 150px) minmax(0px, 800px) 1fr;
     
+    //grid-template-columns: 1fr minmax(0px, 15vw) minmax(0px, 82.100vw) 1fr;
+
+
     grid-template-rows: 85px;
     grid-template-areas:
 

@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState, useRef} from 'react'
 import {Link, useLocation} from 'react-router-dom'
 import actBackground from '../../assets/images/actBackground.png'
-import mega from '../../assets/images/mega.png'
+import mega from '../../assets/images/megav2.png'
 
 
 //import useDocumentScrollThrottled from './useDocumentScrollThrottled.jsx'
@@ -35,10 +35,18 @@ const ActWrapper = styled.div`
 
 const Mega = styled.img`
 
-    position: absolute;
-    top: -15%;
-    left:0;
-    width: 40vw;
+    //position: absolute;
+    //top: -5vh;
+    //left: 12vw;
+    width: 100%;
+
+    grid-area: 1/2/4/3;
+    align-self: center;
+    justify-self: end;
+    margin-top: -50px;
+    margin-right: 1em;
+    margin-bottom: 13px;
+    ;
 
 `;
 
@@ -46,7 +54,9 @@ const ActGrid = styled.div`
 
 
     display: grid;
-    grid-template-columns: 43% 57%;
+    position: relative;
+    //grid-template-columns: 43% 57%;
+    grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  1fr;
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(100px, max-content);
     
 `;
@@ -60,14 +70,15 @@ const ActHeader = styled.h1`
     //line-height: 165px;
     /* identical to box height */
 
-    letter-spacing: -0.01em;
+    letter-spacing: -0.08em;
 
     color: #FFFFFF;
-    grid-area: 1/2/2/-1;
+    grid-area: 1/3/2/-1;
     align-self: end;
     
     line-height: 100%;
-    
+    margin-top:32px;
+    z-index: 1;
     
 
 
@@ -80,11 +91,11 @@ font-style: normal;
 font-weight: normal;
 font-size: 4vw;
 line-height: 100%;
-letter-spacing: -0.02em;
-grid-area: 2/2/3/-1;
+
+grid-area: 2/3/3/-1;
 
 color: #E3B55A;
-    
+margin-top: 8px;
     
 
 
@@ -94,24 +105,28 @@ color: #E3B55A;
 const Form = styled.form`
 
   display: grid;
-  grid-template-columns: 90%;
+  position: relative;
+  grid-template-columns: 100%;
   grid-template-areas:
     "input"
     "button"
     "status";
   justify-content: center;
-  
+  justify-self: start;
+  align-self: end;
+  margin-bottom: 13px;
   width: 100%;
-  max-width: 600px;
+  //max-width: 600px;
   //margin: 30px 0px 20px 0px;
-  grid-area: 3/1/4/-1;
+  grid-area: 3/3/4/4;
+  
   
 
   //background: #F9F9F9;
   //padding: 25px;
   
   //box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-
+  //margin-top: 72px;
 `;
 
 
@@ -134,7 +149,7 @@ const Button = styled.button`
   cursor: pointer;
   color: black;
   position: absolute;
-  right: 0;
+  left: 0;
   z-index: 1002;
   
   transition: background-image 1s;
@@ -541,9 +556,7 @@ function Act(props) {
         
         <ActWrapper>
 
-            {/* <Mega src={mega}>
-
-            </Mega> */}
+            
 
             <ActGrid>
                 <ActHeader>ACT NOW</ActHeader>
@@ -595,7 +608,7 @@ function Act(props) {
                                 boxShadow: "0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)",
                                 border: "honeydew",
                                 display: "block",
-                                paddingLeft: "10px",
+                                paddingLeft: "62px",
                                 fontSize: "16px",
                                 borderRadius: "2px",
                                 outline: "none"
@@ -664,8 +677,13 @@ function Act(props) {
 
                     </StatusHolder>   
                     
+                    
                         
                     </Form>
+                    <Mega src={mega}>
+
+                    </Mega>
+                    
 
             </ActGrid>
 
