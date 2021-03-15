@@ -17,17 +17,19 @@ import greenCheck from '../../assets/images/greenCheck.png'
 import searchIcon from '../../assets/images/search.png'
 import searchIconOrange from '../../assets/images/searchGreen.png'
 import searchIconOrange2 from '../../assets/images/searchPink2.png'
+import ResultCardOne from './resultCardOne.jsx'
+import ResultCardTwo from './resultCardTwo.jsx'
 var Spinner = require('react-spinkit');
 const formData = new FormData();
 
 
 const ActWrapper = styled.div`
-    min-height: 100vh;
+    //min-height: 100vh;
     background-color: black;
     background-image: url(${actBackground});
-    background-position: left;
+    background-position: 0 50%;
     background-repeat: no-repeat;
-    background-size: cover;
+    //background-size: cover;
     position: relative;
     
 
@@ -56,7 +58,7 @@ const ActGrid = styled.div`
     display: grid;
     position: relative;
     //grid-template-columns: 43% 57%;
-    grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  1fr;
+    grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(100px, max-content);
     
 `;
@@ -95,7 +97,7 @@ line-height: 100%;
 grid-area: 2/3/3/-1;
 
 color: #E3B55A;
-margin-top: 8px;
+margin: 16px 0px 32px 0px;
     
 
 
@@ -107,18 +109,20 @@ const Form = styled.form`
   display: grid;
   position: relative;
   grid-template-columns: 100%;
+  grid-template-rows: minmax(min-content, max-content) minmax(50px, min-content);
   grid-template-areas:
     "input"
-    "button"
+   
     "status";
   justify-content: center;
   justify-self: start;
-  align-self: end;
+  align-self: center
+  ;
   margin-bottom: 13px;
   width: 100%;
   //max-width: 600px;
   //margin: 30px 0px 20px 0px;
-  grid-area: 3/3/4/4;
+  grid-area: 3/3/4/3;
   
   
 
@@ -183,7 +187,16 @@ const Button = styled.button`
   
 `;
 
+const CardOneInfo = styled.div`
 
+
+`;
+
+
+const CardTwoInfo = styled.div`
+
+
+`;
 
 const StatusHolder = styled.div`
 
@@ -191,6 +204,8 @@ const StatusHolder = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
+
+  justify-self: start;
 
 `;
 
@@ -252,6 +267,7 @@ const Span = styled.span`
   font-size: .75em;
   transition: opacity 2s ease-in;
   opacity: ${props => props.status.toString() == "Enter an address." ? "0" : "1"};
+  color: white;
             
 
 `;
@@ -259,26 +275,41 @@ const Span = styled.span`
 function Act(props) {
 
    
-    console.log("ACT________________PROPS", location.pathname)
-    //console.log("HEADER_PROPS solo", location.pathname)
+  console.log("ACT________________PROPS", location.pathname)
+  //console.log("HEADER_PROPS solo", location.pathname)
 
 
-    const [formInfo, setFormInfo] = React.useState({
+  const [formInfo, setFormInfo] = React.useState({
+  
+      address: ''
     
-        address: ''
-      
-    })
+  })
 
-    const ref = useRef();
+  const ref = useRef();
 
-    //const {LookupScrollToRef, LookupInputRef} = ref;
-    const [searchButtonActive, setSearchButtonActive] = React.useState (false)
-    const [status, setStatus] = React.useState ("");
-    const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
-    const [lastTermSearched, setLastTermSearched] = React.useState ('')
-    const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-    // to activate the input field while typing
-   function activateField(e) {
+  //const {LookupScrollToRef, LookupInputRef} = ref;
+  const [searchButtonActive, setSearchButtonActive] = React.useState (false)
+  const [status, setStatus] = React.useState ("");
+  const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
+  const [lastTermSearched, setLastTermSearched] = React.useState ('')
+  const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
+  const [showCards, setShowCards] = React.useState (false);
+  const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
+  const [sendButtonClass, setSendButtonClass] = React.useState("button error")
+
+  
+
+
+  //const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  const [results, setResults] = React.useState( {"one": {}, "two": {} });
+
+  
+  
+  
+  // to activate the input field while typing
+   
+   
+    function activateField(e) {
     
     
     setSearchButtonActive( true)
@@ -348,11 +379,11 @@ function Act(props) {
 
       if (props.bullet2 == "COMPLETED"){
 
-        props.setSendButtonClass("button error")
+        setSendButtonClass("button error")
         //props.setShowStatusCheck2(false)
-        props.setBullet2msg("Send Message")
+        //props.setBullet2msg("Send Message")
 
-        props.setBullet2("NOT_COMPLETED");
+        //props.setBullet2("NOT_COMPLETED");
 
       }
 
@@ -408,16 +439,16 @@ function Act(props) {
 
               //message on bullet 1
               
-              props.setBullet1msg("Search Complete!")
+              //props.setBullet1msg("Search Complete!")
               setShowStatusSpinner(false)
               //props.setShowStatusCheck(true)
-              props.setShowCards(true)
+              setShowCards(true)
               
-              props.setBullet1("COMPLETED")
+              //props.setBullet1("COMPLETED")
               
-              props.setResults(data)
+              setResults(data)
               
-              props.setResultFromFlorida(data.one.resultFromFlorida.toString())
+              setResultFromFlorida(data.one.resultFromFlorida.toString())
 
               let flag = data.one.resultFromFlorida.toString()
 
@@ -425,12 +456,12 @@ function Act(props) {
 
               if (flag == "false") {
                 
-                props.setBullet2msg("Non-Florida result");
-                props.setBullet2("COMPLETED")
+                //props.setBullet2msg("Non-Florida result");
+                //props.setBullet2("COMPLETED")
                 //props.setShowStatusCheck2(true)
               }else{
-                props.setBullet2msg("Send Message");
-                props.setShowSteps(true)
+                //props.setBullet2msg("Send Message");
+                //props.setShowSteps(true)
 
               }
               
@@ -469,16 +500,16 @@ function Act(props) {
         .then(data => {
           //props.setStatus("Search Complete!!")
           setStatus("")
-          props.setBullet1msg("Search Complete!")
+          //props.setBullet1msg("Search Complete!")
           setShowStatusSpinner(false)
           //props.setShowStatusCheck(true)
-          props.setShowCards(true)
+          setShowCards(true)
           
-          props.setBullet1("COMPLETED")
+          //props.setBullet1("COMPLETED")
           
-          props.setResults(data)
+          setResults(data)
           
-          props.setResultFromFlorida(data.one.resultFromFlorida.toString())
+          setResultFromFlorida(data.one.resultFromFlorida.toString())
 
           let flag = data.one.resultFromFlorida.toString()
 
@@ -486,13 +517,13 @@ function Act(props) {
 
           if (flag == "false") {
                 
-            props.setBullet2msg("non-Florida result");
-            props.setBullet2("COMPLETED")
+            //props.setBullet2msg("non-Florida result");
+            //props.setBullet2("COMPLETED")
             //props.setShowStatusCheck2(true)
             
           }else{
-            props.setBullet2msg("Send Message");
-            props.setShowSteps(true);
+            //props.setBullet2msg("Send Message");
+            //props.setShowSteps(true);
 
           }
           
@@ -683,6 +714,15 @@ function Act(props) {
                     <Mega src={mega}>
 
                     </Mega>
+
+
+
+                    <ResultCardOne showCards={showCards} results={results} />
+                    <CardOneInfo><sub style={{fontSize: ".7em"}}>{results.one.fullDistrictTrunk}</sub></CardOneInfo>
+                    
+                    <ResultCardTwo showCards={showCards} results={results} />
+                    <CardTwoInfo><sub style={{fontSize: ".7em"}}>{results.two.fullDistrictTrunk}</sub></CardTwoInfo>
+
                     
 
             </ActGrid>

@@ -21,14 +21,18 @@ const News = styled.div`
 
     display: grid;
     justify-content: center;
-    grid-template-columns: 1fr minmax(0px, 600px) minmax(0px, 350px) 1fr;
+    //grid-template-columns: 1fr minmax(0px, 350px) minmax(0px, 600px) 1fr;
+    
+    grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
+
+    
     grid-template-rows: 170px 120px 50px 1fr;
     grid-template-areas:
         
-        ".   featured one   ."
+        ".   one featured   ."
         
-        ".   featured two   ."
-        ".   featured two   ."
+        ".   two featured   ."
+        ".   two featured   ."
         ".     .       .    .";
     grid-gap: 8px;
 
@@ -49,7 +53,7 @@ const Div1 = styled.div`
     background: blue;
     grid-area: featured;
     border-radius: 10px;
-    margin-left: 25px;
+    //margin-left: 25px;
     
     
 
@@ -70,7 +74,7 @@ const Div2 = styled.div`
     background: orange;
     grid-area: one;
     border-radius: 10px;
-    margin-right: 25px;
+    //margin-right: 25px;
 
     
 
@@ -81,7 +85,7 @@ const Div3 = styled.div`
 background: green;
     grid-area: two;
     border-radius: 10px;
-    margin-right: 25px;
+    //margin-right: 25px;
     
 `;
 
