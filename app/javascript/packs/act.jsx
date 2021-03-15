@@ -2,6 +2,8 @@ import React, {Component, useEffect, useState, useRef} from 'react'
 import {Link, useLocation} from 'react-router-dom'
 import actBackground from '../../assets/images/actBackground.png'
 import mega from '../../assets/images/megav2.png'
+import cardTemplate from '../../assets/images/cardTemplate.png'
+import sampleShot from '../../assets/images/sampleShot.png'
 
 
 //import useDocumentScrollThrottled from './useDocumentScrollThrottled.jsx'
@@ -18,7 +20,7 @@ import searchIcon from '../../assets/images/search.png'
 import searchIconOrange from '../../assets/images/searchGreen.png'
 import searchIconOrange2 from '../../assets/images/searchPink2.png'
 import ResultCardOne from './resultCardOne.jsx'
-import ResultCardTwo from './resultCardTwo.jsx'
+//import ResultCardTwo from './resultCardTwo.jsx'
 var Spinner = require('react-spinkit');
 const formData = new FormData();
 
@@ -59,7 +61,7 @@ const ActGrid = styled.div`
     position: relative;
     //grid-template-columns: 43% 57%;
     grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
-    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(100px, max-content);
+    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
     
 `;
 
@@ -269,6 +271,103 @@ const Span = styled.span`
   opacity: ${props => props.status.toString() == "Enter an address." ? "0" : "1"};
   color: white;
             
+
+`;
+
+
+
+
+
+
+const ResultSection = styled.div`
+
+  display: grid;
+  grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
+  //grid-template-rows: max-content minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
+    
+  
+  
+
+
+
+
+`;
+
+const ResultSectionHeader = styled.h1`
+
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 100px;
+  
+  
+
+  /* identical to box height, or 90px */
+  
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+
+  grid-area: 1/2/2/3;
+  justify-self: end;
+  align-self: center;
+
+  white-space: nowrap; 
+
+
+
+
+`;
+
+const ResultSectionSubHeader = styled.h2`
+
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 600;
+font-size: clamp(12px, 1.5vw, 60px);
+text-align: end;
+
+/* or 22px */
+/* display: flex;
+align-items: center; */
+letter-spacing: -0.03em;
+
+color: #FFFFFF;
+
+grid-area: 2/2/3/3;
+
+justify-self: end;
+white-space: nowrap; 
+
+`;
+
+
+const CardOne = styled.div`
+
+display: grid;
+grid-template-columns: minmax(min-content, max-content);
+
+grid-area: 4/2/5/3;
+
+justify-self: end;
+
+
+`;
+
+
+const CardTemplate = styled.img`
+
+grid-area: 1/1/-1/-1;
+
+
+
+`;
+
+const Picture = styled.img`
+  grid-area: 1/1/-1/-1;
+  
+
 
 `;
 
@@ -716,18 +815,37 @@ function Act(props) {
                     </Mega>
 
 
-
+                    {/* 
                     <ResultCardOne showCards={showCards} results={results} />
                     <CardOneInfo><sub style={{fontSize: ".7em"}}>{results.one.fullDistrictTrunk}</sub></CardOneInfo>
-                    
-                    <ResultCardTwo showCards={showCards} results={results} />
-                    <CardTwoInfo><sub style={{fontSize: ".7em"}}>{results.two.fullDistrictTrunk}</sub></CardTwoInfo>
+                     */}
 
-                    
+
+
+                     
 
             </ActGrid>
 
 
+
+            <ResultSection>
+
+              <ResultSectionHeader>Results</ResultSectionHeader>
+
+              <ResultSectionSubHeader>You're halfway there.<br/>Review letter below and hit send  </ResultSectionSubHeader>
+
+
+              <CardOne>
+
+
+                <Picture src={sampleShot}></Picture>
+                
+                <CardTemplate src={cardTemplate}></CardTemplate>
+
+
+              </CardOne>
+
+            </ResultSection>
         </ActWrapper>
     )
 }

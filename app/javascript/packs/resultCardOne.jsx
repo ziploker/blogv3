@@ -128,7 +128,7 @@ const Dimmer = styled.div`
 
 function ResultCardOne(props){
 
-  const { fontSize, ref } = useFitText({maxFontSize: 90, minFontSize: 50});
+  //const { fontSize, ref } = useFitText({maxFontSize: 90, minFontSize: 50});
 
   return (
     
@@ -141,14 +141,14 @@ function ResultCardOne(props){
         <TopBar/>
             
 
-        
+{/*         
           <Logo src={props.results.one.party ? props.results.one.party === "Democrat" ? donkey : elephant : star}></Logo>
-        
-          <Title ref={ref} style={{fontSize}}>{props.results.one.chamber ? props.results.one.chamber === "Senate" ? "Senator": "Representative" : ""}</Title>
+         */}
+          <Title >{props.results.one.chamber ? props.results.one.chamber === "Senate" ? "Senator": "Representative" : ""}</Title>
 
-        
+{/*         
         <img src={props.results.one.image ? props.results.one.image : man} style={{width: "100%", height: "100%", gridArea: "1/1/7/7"}}/>
-        
+         */}
         <BottomBar>
 
         
@@ -156,7 +156,7 @@ function ResultCardOne(props){
         
 
         
-        <h6 ref={ref} style={{fontSize, width: "100%", gridArea: "name", margin: "0", color: "white", padding: "5px", lineHeight: "90%"}}>{props.results.one.name ? props.results.one.name : ""} </h6>
+        <h6 style={{width: "100%", gridArea: "name", margin: "0", color: "white", padding: "5px", lineHeight: "90%"}}>{props.results.one.name ? props.results.one.name : ""} </h6>
         
 
 
