@@ -283,10 +283,10 @@ const ResultSection = styled.div`
 
   display: grid;
   grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
-  //grid-template-rows: max-content minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
+  //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
     
   
-  
+  grid-row-gap: .7em;
 
 
 
@@ -299,7 +299,8 @@ const ResultSectionHeader = styled.h1`
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
-  font-size: 100px;
+  font-size: clamp(36px, 3.5vw, 120px);
+  //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
   
   
 
@@ -343,15 +344,21 @@ white-space: nowrap;
 `;
 
 
+
 const CardOne = styled.div`
 
-display: grid;
-grid-template-columns: minmax(min-content, max-content);
+  display: grid;
+  grid-template-columns: minmax(150px, 242px);
 
-grid-area: 4/2/5/3;
+  grid-area: 4/2/5/3;
 
-justify-self: end;
+  justify-self: end;
 
+  width: 100%;
+
+
+
+  
 
 `;
 
@@ -834,7 +841,7 @@ function Act(props) {
 
               <ResultSectionSubHeader>You're halfway there.<br/>Review letter below and hit send  </ResultSectionSubHeader>
 
-
+              
               <CardOne>
 
 
@@ -844,6 +851,7 @@ function Act(props) {
 
 
               </CardOne>
+              
 
             </ResultSection>
         </ActWrapper>
