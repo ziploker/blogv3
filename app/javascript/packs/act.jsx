@@ -4,6 +4,7 @@ import actBackground from '../../assets/images/actBackground.png'
 import mega from '../../assets/images/megav2.png'
 import cardTemplate from '../../assets/images/cardTemplate.png'
 import sampleShot from '../../assets/images/sampleShot.png'
+import sampleShot2 from '../../assets/images/sampleShot2.png'
 
 
 //import useDocumentScrollThrottled from './useDocumentScrollThrottled.jsx'
@@ -287,6 +288,7 @@ const ResultSection = styled.div`
     
   
   grid-row-gap: .7em;
+  grid-column-gap: .5em;
 
 
 
@@ -323,23 +325,23 @@ const ResultSectionHeader = styled.h1`
 const ResultSectionSubHeader = styled.h2`
 
 
-font-family: Poppins;
-font-style: normal;
-font-weight: 600;
-font-size: clamp(12px, 1.5vw, 60px);
-text-align: end;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(12px, 1.5vw, 60px);
+  text-align: end;
 
-/* or 22px */
-/* display: flex;
-align-items: center; */
-letter-spacing: -0.03em;
+  /* or 22px */
+  /* display: flex;
+  align-items: center; */
+  letter-spacing: -0.03em;
 
-color: #FFFFFF;
+  color: #FFFFFF;
 
-grid-area: 2/2/3/3;
+  grid-area: 2/2/3/3;
 
-justify-self: end;
-white-space: nowrap; 
+  justify-self: end;
+  white-space: nowrap; 
 
 `;
 
@@ -348,13 +350,34 @@ white-space: nowrap;
 const CardOne = styled.div`
 
   display: grid;
-  grid-template-columns: minmax(150px, 242px);
+  position: relative;
+  grid-template-columns: 85% 15%;
+  grid-template-rows: 78% 14% 8%;
 
   grid-area: 4/2/5/3;
 
   justify-self: end;
 
-  width: 100%;
+  
+
+
+
+  
+
+`;
+
+const CardTwo = styled.div`
+
+  display: grid;
+  position: relative;
+  grid-template-columns: 85% 15%;
+  grid-template-rows: 78% 14% 8%;
+
+  grid-area: 5/2/6/3;
+
+  justify-self: end;
+
+  
 
 
 
@@ -365,15 +388,49 @@ const CardOne = styled.div`
 
 const CardTemplate = styled.img`
 
-grid-area: 1/1/-1/-1;
+  grid-area: 1/1/-1/-1;
+  width: 100%;
+
+
+`;
+
+const CardPicture = styled.img`
+  grid-area: 1/1/-1/-1;
+
+  width: 100%;
+  
+
+
+`;
+
+const CardNameOfRep = styled.h1`
+
+  color: black;
+  font-size: clamp(10px, 1.2vw, 25px);
+  line-height: 1.1em;
+  /* position: absolute;
+  bottom: 10%;
+  left: 3%; */
+
+  align-self: center;
+  padding-left: 8px;
+
+  grid-area: 2/1/3/2;
+  max-width: 59%;
 
 
 
 `;
 
-const Picture = styled.img`
-  grid-area: 1/1/-1/-1;
-  
+
+
+const Letter = styled.div`
+
+grid-area: 2/3/6/-2;
+border-radius: 10px;
+background: white;
+margin: 0 20px;
+
 
 
 `;
@@ -845,12 +902,35 @@ function Act(props) {
               <CardOne>
 
 
-                <Picture src={sampleShot}></Picture>
+                <CardPicture src={sampleShot}></CardPicture>
                 
                 <CardTemplate src={cardTemplate}></CardTemplate>
 
+                <CardNameOfRep>Yvonne Hayes Hinson</CardNameOfRep>
+
 
               </CardOne>
+
+
+
+
+              <CardTwo>
+
+
+                <CardPicture src={sampleShot2}></CardPicture>
+                
+                <CardTemplate src={cardTemplate}></CardTemplate>
+
+                <CardNameOfRep>Alejandro Raffo</CardNameOfRep>
+
+
+              </CardTwo>
+
+
+              <Letter>
+
+
+              </Letter>
               
 
             </ResultSection>

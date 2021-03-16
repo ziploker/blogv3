@@ -48,8 +48,8 @@ a, a:active, a:focus{
     
     /*overflow-y: scroll;*/
     //padding: 0px 10px 0px;
-    font-size: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
-    line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
+    //font-size: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));
+    //line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px)/(1600 - 300)));
     background-color: #f4f4f4;
 
     padding: 0px;
