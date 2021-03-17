@@ -63,7 +63,7 @@ const ActGrid = styled.div`
     //grid-template-columns: 43% 57%;
     grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
-    
+    grid-column-gap: .5em;  
 `;
 
 const ActHeader = styled.h1`
@@ -82,7 +82,7 @@ const ActHeader = styled.h1`
     align-self: end;
     
     line-height: 100%;
-    margin-top:32px;
+    margin: 40px 20px 0px 20px;
     z-index: 1;
     
 
@@ -100,7 +100,7 @@ line-height: 100%;
 grid-area: 2/3/3/-1;
 
 color: #E3B55A;
-margin: 16px 0px 32px 0px;
+margin: 16px 20px 32px 20px;
     
 
 
@@ -121,11 +121,12 @@ const Form = styled.form`
   justify-self: start;
   align-self: center
   ;
-  margin-bottom: 13px;
+  
+ 
   width: 100%;
-  //max-width: 600px;
-  //margin: 30px 0px 20px 0px;
-  grid-area: 3/3/4/3;
+  
+  padding: 0px 20px;
+  grid-area: 3/3/4/4;
   
   
 
@@ -283,7 +284,7 @@ const Span = styled.span`
 const ResultSection = styled.div`
 
   display: grid;
-  grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
+  grid-template-columns: minmax(20px, 1fr) minmax(142px, 175px)  minmax(142px, 175px) minmax(300px, 600px)  minmax(20px, 1fr);
   //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
     
   
@@ -311,7 +312,7 @@ const ResultSectionHeader = styled.h1`
   letter-spacing: -0.03em;
   color: #FFFFFF;
 
-  grid-area: 1/2/2/3;
+  grid-area: 1/2/2/4;
   justify-self: end;
   align-self: center;
 
@@ -338,7 +339,7 @@ const ResultSectionSubHeader = styled.h2`
 
   color: #FFFFFF;
 
-  grid-area: 2/2/3/3;
+  grid-area: 2/2/3/4;
 
   justify-self: end;
   white-space: nowrap; 
@@ -373,7 +374,7 @@ const CardTwo = styled.div`
   grid-template-columns: 85% 15%;
   grid-template-rows: 78% 14% 8%;
 
-  grid-area: 5/2/6/3;
+  grid-area: 4/3/5/4;
 
   justify-self: end;
 
@@ -406,17 +407,17 @@ const CardPicture = styled.img`
 const CardNameOfRep = styled.h1`
 
   color: black;
-  font-size: clamp(10px, 1.2vw, 25px);
+  font-size: clamp(10px, 1vw, 25px);
   line-height: 1.1em;
   /* position: absolute;
   bottom: 10%;
   left: 3%; */
 
   align-self: center;
-  padding-left: 8px;
+  padding-left: 3px;
 
   grid-area: 2/1/3/2;
-  max-width: 59%;
+  
 
 
 
@@ -426,10 +427,10 @@ const CardNameOfRep = styled.h1`
 
 const Letter = styled.div`
 
-grid-area: 2/3/6/-2;
+grid-area: 2/4/6/-2;
 border-radius: 10px;
 background: white;
-margin: 0 20px;
+margin: 0 15px;
 
 
 
