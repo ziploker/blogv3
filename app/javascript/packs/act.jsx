@@ -61,7 +61,7 @@ const ActGrid = styled.div`
     display: grid;
     position: relative;
     //grid-template-columns: 43% 57%;
-    grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
+    grid-template-columns: minmax(20px, 1fr) 350px  minmax(0px, 600px)  minmax(20px, 1fr);
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
     grid-column-gap: .5em;  
 `;
@@ -284,11 +284,11 @@ const Span = styled.span`
 const ResultSection = styled.div`
 
   display: grid;
-  grid-template-columns: minmax(20px, 1fr) minmax(142px, 175px)  minmax(142px, 175px) minmax(300px, 600px)  minmax(20px, 1fr);
+  grid-template-columns: minmax(20px, 1fr) 171px 171px  minmax(300px, 600px)  minmax(20px, 1fr);
   //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
     
   
-  grid-row-gap: .7em;
+  //grid-row-gap: .7em;
   grid-column-gap: .5em;
 
 
@@ -407,7 +407,7 @@ const CardPicture = styled.img`
 const CardNameOfRep = styled.h1`
 
   color: black;
-  font-size: clamp(10px, 1vw, 25px);
+  font-size: clamp(9.5px, .7vw, 25px);
   line-height: 1.1em;
   /* position: absolute;
   bottom: 10%;
@@ -417,6 +417,7 @@ const CardNameOfRep = styled.h1`
   padding-left: 3px;
 
   grid-area: 2/1/3/2;
+  word-spacing: -2px;
   
 
 
@@ -903,14 +904,15 @@ function Act(props) {
               <CardOne>
 
 
-                <CardPicture src={sampleShot}></CardPicture>
+                <CardPicture src={results.one.image ? results.one.image : sampleShot2}></CardPicture>
                 
                 <CardTemplate src={cardTemplate}></CardTemplate>
 
-                <CardNameOfRep>Yvonne Hayes Hinson</CardNameOfRep>
+                <CardNameOfRep>{results.one.name ? results.one.name : ""}</CardNameOfRep>
 
 
               </CardOne>
+              <sub style={{fontSize: ".7em", color: "white", gridArea: "5/2/6/3", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
 
 
 
@@ -918,15 +920,15 @@ function Act(props) {
               <CardTwo>
 
 
-                <CardPicture src={sampleShot2}></CardPicture>
+                <CardPicture src={results.two.image ? results.two.image : sampleShot2}></CardPicture>
                 
                 <CardTemplate src={cardTemplate}></CardTemplate>
 
-                <CardNameOfRep>Alejandro Raffo</CardNameOfRep>
+                <CardNameOfRep>{results.two.name ? results.two.name : ""}</CardNameOfRep>
 
 
               </CardTwo>
-
+              <sub style={{fontSize: ".7em", color: "white", gridArea: "5/3/6/4", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
 
               <Letter>
 

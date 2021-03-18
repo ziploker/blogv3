@@ -53,7 +53,7 @@ const Div1 = styled.div`
     background: blue;
     grid-area: featured;
     border-radius: 10px;
-    //margin-left: 25px;
+    
     
     
 

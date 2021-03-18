@@ -11,6 +11,7 @@ import axios from 'axios'
 import Header from "./header"
 import Home from "./home"
 import Act from "./act"
+import Signup from "./signup"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from "./global"
 
@@ -159,6 +160,7 @@ function App(controllerProps){
                 </Switch>
 
                 <Act/>
+                <Signup/>
 
                 {/* <LookupSection appState={appState} ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}}/>
                 <Section2 ref={{section2ScrollToRef: section2ScrollToRef}} stories={appState.stories} appState={appState} setAppState={setAppState} handleSuccessfulAuth={handleSuccessfulAuth} />
