@@ -34,6 +34,7 @@ const ActWrapper = styled.div`
     background-repeat: no-repeat;
     //background-size: cover;
     position: relative;
+    ////padding-bottom: 50px;
     
 
 `;
@@ -94,13 +95,13 @@ const ActSubheader = styled.h1`
 font-family: Poppins;
 font-style: normal;
 font-weight: normal;
-font-size: 4vw;
+font-size: 2vw;
 line-height: 100%;
 
 grid-area: 2/3/3/-1;
 
 color: #E3B55A;
-margin: 16px 20px 32px 20px;
+margin: 8px 20px 32px 20px;
     
 
 
@@ -290,6 +291,9 @@ const ResultSection = styled.div`
   
   //grid-row-gap: .7em;
   grid-column-gap: .5em;
+  //padding-top: 50px;
+
+  padding: 75px 0px 50px 0px;
 
 
 
@@ -300,8 +304,8 @@ const ResultSectionHeader = styled.h1`
 
 
   font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
+  //font-style: normal;
+  //font-weight: 500;
   font-size: clamp(36px, 3.5vw, 120px);
   //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
   
@@ -314,7 +318,7 @@ const ResultSectionHeader = styled.h1`
 
   grid-area: 1/2/2/4;
   justify-self: end;
-  align-self: center;
+  align-self: start;
 
   white-space: nowrap; 
 
@@ -343,6 +347,8 @@ const ResultSectionSubHeader = styled.h2`
 
   justify-self: end;
   white-space: nowrap; 
+  line-height: 1em;
+  margin-bottom: 15px;
 
 `;
 
@@ -428,10 +434,10 @@ const CardNameOfRep = styled.h1`
 
 const Letter = styled.div`
 
-grid-area: 2/4/6/-2;
+grid-area: 1/4/6/-2;
 border-radius: 10px;
 background: white;
-margin: 0 15px;
+margin: 15px 15px 0px 15px;
 
 
 
