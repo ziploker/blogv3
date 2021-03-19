@@ -284,10 +284,13 @@ const Span = styled.span`
 
 const ResultSection = styled.div`
 
-  display: ${props => props.showCards ? "grid" : "block"};
+  display: ${props => props.showCards ? "grid" : "none"};
+  transition: opacity 2s linear;  
+  transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
+  opacity: ${props => props.showCards ? "1" : "0"};
   grid-template-columns: minmax(20px, 1fr) 171px 171px  minmax(300px, 600px)  minmax(20px, 1fr);
   //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
-    
+  //visibility: hidden;
   
   //grid-row-gap: .7em;
   grid-column-gap: .5em;
@@ -405,6 +408,7 @@ const CardPicture = styled.img`
   grid-area: 1/1/-1/-1;
 
   width: 100%;
+  height: 100%;
   
 
 
