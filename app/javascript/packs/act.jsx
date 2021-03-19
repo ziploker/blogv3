@@ -283,7 +283,7 @@ const Span = styled.span`
 
 const ResultSection = styled.div`
 
-  display: grid;
+  display: ${props => props.showCards ? "grid" : "block"};
   grid-template-columns: minmax(20px, 1fr) 171px 171px  minmax(300px, 600px)  minmax(20px, 1fr);
   //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
     
@@ -465,7 +465,7 @@ function Act(props) {
   
 
 
-  //const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  //nconst [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
   const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   
@@ -894,7 +894,7 @@ function Act(props) {
 
 
 
-            <ResultSection>
+            <ResultSection showCards={showCards}>
 
               <ResultSectionHeader>Results</ResultSectionHeader>
 
