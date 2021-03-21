@@ -284,19 +284,19 @@ const Span = styled.span`
 
 const ResultSection = styled.div`
 
-  display: ${props => props.showCards ? "grid" : "none"};
+  display: grid;
   transition: opacity 2s linear;  
   transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
   opacity: ${props => props.showCards ? "1" : "0"};
   grid-template-columns: minmax(20px, 1fr) 171px 171px  minmax(300px, 600px)  minmax(20px, 1fr);
   //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
   //visibility: hidden;
-  
+  grid-template-rows: ${props => props.showCards ? "none" : "0px 0px 0px 0px 0px"};
   //grid-row-gap: .7em;
   grid-column-gap: .5em;
   //padding-top: 50px;
 
-  padding: 75px 0px 50px 0px;
+  padding: ${props => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px" };
 
 
 
@@ -400,7 +400,7 @@ const CardTemplate = styled.img`
 
   grid-area: 1/1/-1/-1;
   width: 100%;
-
+  height: 100%;
 
 `;
 
@@ -427,7 +427,7 @@ const CardNameOfRep = styled.h1`
   padding-left: 3px;
 
   grid-area: 2/1/3/2;
-  word-spacing: -2px;
+  //word-spacing: -2px;
   
 
 
@@ -442,6 +442,47 @@ grid-area: 1/4/6/-2;
 border-radius: 10px;
 background: white;
 margin: 15px 15px 0px 15px;
+grid-auto-rows: minmax(min-content, max-content);
+
+display: grid;
+padding: 20px;
+
+  h1{
+    justify-self: center;
+    font-size: .8rem;
+    
+  }
+
+  h2{
+
+    justify-self: center;
+    font-size: .8em;
+    font-weight: 300;
+  }
+
+  h3{
+
+    justify-self: start;
+    font-size: .8em;
+    font-weight: 500;
+    margin-top: 15px;
+  }
+
+  p{
+
+    text-indent: 2rem;
+    font-size: .8em;
+    font-weight: 300;
+    margin-top: 15px;
+
+  }
+
+  div{
+    font-size: .8em;
+    font-weight: 300;
+    margin-top: 15px;
+
+  }
 
 
 
@@ -468,15 +509,15 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-  const [showCards, setShowCards] = React.useState (false);
+  const [showCards, setShowCards] = React.useState (true);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
 
   
 
 
-  //nconst [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
-  const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   
   
@@ -941,6 +982,35 @@ function Act(props) {
               <sub style={{fontSize: ".7em", color: "white", gridArea: "5/3/6/4", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
 
               <Letter>
+
+                <h1>recipients:</h1>
+                <h2>{results.one.email}</h2>
+                <h2>{results.two.email}</h2>
+
+                <h3>Dear Representatives/Senator,</h3>
+
+
+                <p>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
+                  I am writing on behalf of legalizing marijuana to all above the age of eighteen. 
+                  Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee. 
+                  Marijuana has never had a report of fatal use and the common use for medical purposes 
+                  has been proved and even infused into society today. Many states today have legalized 
+                  it's medical purposes because it has proven to help certain illnesses including glaucoma, 
+                  sclerosis, and cancers such as breast and brain cancer. Prohibition has only cost 
+                  billions of dollars and studies prove that it has not affected the use of marijuana, 
+                  in fact it has made it cheaper and more accessible. All the money used for prosecution 
+                  of small offenders can be used for tax revenues and ultimately save billions.
+                </p>
+
+                <div>
+
+                  Sincerely, <br/>
+                  <sub>Your Name Here</sub> <br/>
+                  <span>{lastTermSearched}</span><br/>
+                  <sub>Your Email Here</sub> <br/>
+
+                </div>
+
 
 
               </Letter>
