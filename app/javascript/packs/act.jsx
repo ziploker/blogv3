@@ -371,7 +371,7 @@ const CardOne = styled.div`
   grid-template-columns: 85% 15%;
   grid-template-rows: 73% 17% 10%;
 
-  grid-area: 2/1/3/2;
+  grid-area: 3/1/4/2;
 
   justify-self: end;
   max-height: 250px;
@@ -391,7 +391,7 @@ const CardTwo = styled.div`
   grid-template-columns: 85% 15%;
   grid-template-rows: 73% 17% 10%;
 
-  grid-area: 2/2/3/3;
+  grid-area: 3/2/4/3;
 
   justify-self: end;
   max-height: 250px;
@@ -967,7 +967,7 @@ function Act(props) {
 
 
               </CardOne>
-              <sub style={{fontSize: ".7em", color: "white", gridArea: "3/1/4/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
+              <sub style={{fontSize: ".7em", color: "white", gridArea: "2/1/3/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
 
 
 
@@ -983,7 +983,7 @@ function Act(props) {
 
 
               </CardTwo>
-              <sub style={{fontSize: ".7em", color: "white", gridArea: "3/2/4/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
+              <sub style={{fontSize: ".7em", color: "white", gridArea: "2/2/3/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
 
               {/* <Letter>
 
