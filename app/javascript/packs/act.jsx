@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState, useRef} from 'react'
 import {Link, useLocation} from 'react-router-dom'
 import actBackground from '../../assets/images/actBackground.png'
-import mega from '../../assets/images/megav2.png'
+import mega from '../../assets/images/megav3.png'
 import cardTemplate from '../../assets/images/cardTemplate.png'
 import sampleShot from '../../assets/images/sampleShot.png'
 import sampleShot2 from '../../assets/images/sampleShot2.png'
@@ -62,7 +62,7 @@ const ActGrid = styled.div`
     display: grid;
     position: relative;
     //grid-template-columns: 43% 57%;
-    grid-template-columns: minmax(20px, 1fr) 350px  minmax(0px, 600px)  minmax(20px, 1fr);
+    grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
     grid-column-gap: .5em;  
 `;
@@ -85,6 +85,9 @@ const ActHeader = styled.h1`
     line-height: 100%;
     margin: 40px 20px 0px 20px;
     z-index: 1;
+
+    opacity: ${props => props.showCards ? "0" : "1"};
+    transition: opacity .4s;
     
 
 
@@ -102,6 +105,9 @@ grid-area: 2/3/3/-1;
 
 color: #E3B55A;
 margin: 8px 20px 32px 20px;
+
+opacity: ${props => props.showCards ? "0" : "1"};
+transition: opacity .4s;
     
 
 
@@ -125,17 +131,16 @@ const Form = styled.form`
   
  
   width: 100%;
-  
-  padding: 0px 20px;
-  grid-area: 3/3/4/4;
-  
-  
-
-  //background: #F9F9F9;
-  //padding: 25px;
+  transition: opacity .4s;
+  transition: opacity .4s;
   
   //box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   //margin-top: 72px;
+
+  opacity: ${props => props.showCards ? "0" : "1"};
+
+  grid-area: 3/3/5/4;
+  padding: 0px 20px;
 `;
 
 
@@ -288,17 +293,19 @@ const ResultSection = styled.div`
   transition: opacity 2s linear;  
   transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
   opacity: ${props => props.showCards ? "1" : "0"};
-  grid-template-columns: minmax(20px, 1fr) 171px 171px  minmax(300px, 600px)  minmax(20px, 1fr);
+  grid-template-columns: minmax(150px, 171px) minmax(150px, 171px);
   //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
   //visibility: hidden;
-  grid-template-rows: ${props => props.showCards ? "none" : "0px 0px 0px 0px 0px"};
+  //grid-template-rows: ${props => props.showCards ? "minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr" : "0px 0px 0px 0px 0px"};
+  
   //grid-row-gap: .7em;
   grid-column-gap: .5em;
   //padding-top: 50px;
 
-  padding: ${props => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px" };
+  //padding: ${props => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px" };
 
-
+  grid-area: 1/3/5/4;
+  margin: 20px 0px 20px 50px;
 
 
 `;
@@ -309,7 +316,7 @@ const ResultSectionHeader = styled.h1`
   font-family: Poppins;
   //font-style: normal;
   //font-weight: 500;
-  font-size: clamp(36px, 3.5vw, 120px);
+  font-size: clamp(36px, 4vw, 120px);
   //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
   
   
@@ -319,8 +326,8 @@ const ResultSectionHeader = styled.h1`
   letter-spacing: -0.03em;
   color: #FFFFFF;
 
-  grid-area: 1/2/2/4;
-  justify-self: end;
+  grid-area: 1/1/2/3;
+  justify-self: start;
   align-self: start;
 
   white-space: nowrap; 
@@ -337,7 +344,7 @@ const ResultSectionSubHeader = styled.h2`
   font-style: normal;
   font-weight: 600;
   font-size: clamp(12px, 1.5vw, 60px);
-  text-align: end;
+  //text-align: end;
 
   /* or 22px */
   /* display: flex;
@@ -346,9 +353,9 @@ const ResultSectionSubHeader = styled.h2`
 
   color: #FFFFFF;
 
-  grid-area: 2/2/3/4;
+  grid-area: 2/1/3/3;
 
-  justify-self: end;
+  justify-self: start;
   white-space: nowrap; 
   line-height: 1em;
   margin-bottom: 15px;
@@ -362,11 +369,12 @@ const CardOne = styled.div`
   display: grid;
   position: relative;
   grid-template-columns: 85% 15%;
-  grid-template-rows: 78% 14% 8%;
+  grid-template-rows: 73% 17% 10%;
 
-  grid-area: 4/2/5/3;
+  grid-area: 2/1/3/2;
 
   justify-self: end;
+  max-height: 250px;
 
   
 
@@ -381,11 +389,12 @@ const CardTwo = styled.div`
   display: grid;
   position: relative;
   grid-template-columns: 85% 15%;
-  grid-template-rows: 78% 14% 8%;
+  grid-template-rows: 73% 17% 10%;
 
-  grid-area: 4/3/5/4;
+  grid-area: 2/2/3/3;
 
   justify-self: end;
+  max-height: 250px;
 
   
 
@@ -409,6 +418,7 @@ const CardPicture = styled.img`
 
   width: 100%;
   height: 100%;
+  border-radius: 13px;
   
 
 
@@ -424,7 +434,7 @@ const CardNameOfRep = styled.h1`
   left: 3%; */
 
   align-self: center;
-  padding-left: 3px;
+  padding-left: 6px;
 
   grid-area: 2/1/3/2;
   //word-spacing: -2px;
@@ -442,6 +452,7 @@ grid-area: 1/4/6/-2;
 border-radius: 10px;
 background: white;
 margin: 15px 15px 0px 15px;
+grid-template-columns: 1fr 1fr;
 grid-auto-rows: minmax(min-content, max-content);
 
 display: grid;
@@ -450,6 +461,7 @@ padding: 20px;
   h1{
     justify-self: center;
     font-size: .8rem;
+    grid-area: 1/1/2/3;
     
   }
 
@@ -458,6 +470,7 @@ padding: 20px;
     justify-self: center;
     font-size: .8em;
     font-weight: 300;
+    
   }
 
   h3{
@@ -478,7 +491,7 @@ padding: 20px;
   }
 
   div{
-    font-size: .8em;
+    font-size: .6em;
     font-weight: 300;
     margin-top: 15px;
 
@@ -509,15 +522,15 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-  const [showCards, setShowCards] = React.useState (true);
+  const [showCards, setShowCards] = React.useState (false);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
 
   
 
 
-  const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
-  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  //const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   
   
@@ -805,11 +818,11 @@ function Act(props) {
 
             
 
-            <ActGrid>
-                <ActHeader>ACT NOW</ActHeader>
-                <ActSubheader>Contact Your State Representatives </ActSubheader>
+          <ActGrid>
+                <ActHeader showCards={showCards}>ACT NOW</ActHeader>
+                <ActSubheader showCards={showCards}>Contact Your State Representatives </ActSubheader>
 
-                <Form className="form-inline" onSubmit={handleAdd}  >
+                <Form className="form-inline" onSubmit={handleAdd} showCards={showCards} >
         
                     <PlacesAutocomplete
                         value={formInfo.address}
@@ -938,20 +951,11 @@ function Act(props) {
                      */}
 
 
+              <ResultSection showCards={showCards}>
 
-                     
-
-            </ActGrid>
-
+              <ResultSectionHeader>Results:</ResultSectionHeader>
 
 
-            <ResultSection showCards={showCards}>
-
-              <ResultSectionHeader>Results</ResultSectionHeader>
-
-              <ResultSectionSubHeader>You're halfway there.<br/>Review letter below and hit send  </ResultSectionSubHeader>
-
-              
               <CardOne>
 
 
@@ -963,7 +967,7 @@ function Act(props) {
 
 
               </CardOne>
-              <sub style={{fontSize: ".7em", color: "white", gridArea: "5/2/6/3", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
+              <sub style={{fontSize: ".7em", color: "white", gridArea: "3/1/4/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
 
 
 
@@ -979,18 +983,18 @@ function Act(props) {
 
 
               </CardTwo>
-              <sub style={{fontSize: ".7em", color: "white", gridArea: "5/3/6/4", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
+              <sub style={{fontSize: ".7em", color: "white", gridArea: "3/2/4/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
 
-              <Letter>
+              {/* <Letter>
 
                 <h1>recipients:</h1>
-                <h2>{results.one.email}</h2>
-                <h2>{results.two.email}</h2>
+                <h2 style={{gridArea: "2/1/3/3"}}>{results.one.email}</h2>
+                <h2 style={{gridArea: "3/1/4/3"}}>{results.two.email}</h2>
 
-                <h3>Dear Representatives/Senator,</h3>
+                <h3 style={{gridArea: "4/1/5/3"}}>Dear Representatives/Senator,</h3>
 
 
-                <p>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
+                <p style={{gridArea: "5/1/6/3"}}>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
                   I am writing on behalf of legalizing marijuana to all above the age of eighteen. 
                   Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee. 
                   Marijuana has never had a report of fatal use and the common use for medical purposes 
@@ -1002,7 +1006,7 @@ function Act(props) {
                   of small offenders can be used for tax revenues and ultimately save billions.
                 </p>
 
-                <div>
+                <div style={{gridArea: "6/1/7/3"}}>
 
                   Sincerely, <br/>
                   <sub>Your Name Here</sub> <br/>
@@ -1012,11 +1016,29 @@ function Act(props) {
                 </div>
 
 
+                <button style={{
+                  gridArea: "6/2/7/3",
+                  background: "#E3B55A",
+                  borderRadius: "10px",
+                  border: "none",
+                  width: "12em",
+                  height: "4em",
+                  justifySelf: "center",
+                  alignSelf: "center"}}>SEND</button>
 
-              </Letter>
-              
 
-            </ResultSection>
+
+              </Letter> */}
+
+
+              </ResultSection>
+                     
+
+            </ActGrid>
+
+
+
+            
         </ActWrapper>
     )
 }

@@ -23,7 +23,7 @@ const News = styled.div`
     justify-content: center;
     //grid-template-columns: 1fr minmax(0px, 350px) minmax(0px, 600px) 1fr;
     
-    grid-template-columns: minmax(20px, 1fr) minmax(0px, 350px)  minmax(0px, 600px)  minmax(20px, 1fr);
+    grid-template-columns: minmax(20px, 1fr) minmax(170px, 350px)  minmax(340px, 600px)  minmax(20px, 1fr);
 
     
     grid-template-rows: 170px 120px 50px 1fr;
