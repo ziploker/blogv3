@@ -437,7 +437,7 @@ const handleAdd = e => {
           <img style={{width: "50px"}} src={userIcon}/>
           <h1 style={{color: "#EDEAEA", marginBottom: "30px"}}>Sign Up!</h1>
           <sub style={{color: "#EDEAEA"}}>- Create a free account.</sub><br/>
-          <sub style={{color: "#EDEAEA"}}>- Stay Informed with CWA updates.</sub><br/>
+          <sub style={{color: "#EDEAEA"}}>- Stay Informed with FloridaBlaze updates.</sub><br/>
           <sub style={{color: "#EDEAEA"}}>- Unlimited access to our "take action" tool.</sub>
 
 
@@ -509,7 +509,7 @@ const handleAdd = e => {
                 
                 />
                 
-                <h3 style={{marginLeft: "5px", fontSize: ".6em", color: "white"}} htmlFor="opt_in" >Opt In to receive e-mails from CWAPortal </h3>
+                <h3 style={{marginLeft: "5px", fontSize: ".6em", color: "white"}} htmlFor="opt_in" >Opt In to receive e-mails from FloridaBlaze </h3>
             </div>
           
           </Form>
