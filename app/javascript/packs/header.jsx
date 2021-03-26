@@ -7,8 +7,8 @@ import styled from 'styled-components'
 import headerLeaf from "../../assets/images/headerLeaf.svg"
 import headerLogo from '../../assets/images/logo.png'
 
-//import Burger from './burger'
-//import SideMenu from './sidemenu'
+import Burger from './burger'
+import SideMenu from './sidemenu'
 
 
 const HeaderWrapper = styled.div`
@@ -22,7 +22,7 @@ const HeaderWrapper = styled.div`
 
 
     
-    
+    overflow: hidden;
     min-height: 85px;
     //margin: 0 20px;
     min-width: 500px;
@@ -105,6 +105,11 @@ const Nav = styled.nav`
 
             color: #FFFFFF;
 
+            a{
+                color: #FFFFFF;
+
+            }
+
         }
 
 
@@ -123,6 +128,102 @@ function Header(props) {
     console.log("HEADER_________________PROPS", location.pathname)
     //console.log("HEADER_PROPS solo", location.pathname)
 
+    useEffect(() => {
+
+        console.log("Header UseEffect Start, openSideMenu state is currently " + props.openSideMenu);
+        
+        //mousedown listener
+
+        if (
+    
+            locationFromHook.pathname === "/login" || 
+            locationFromHook.pathname === "/signup" ||
+            locationFromHook.pathname === "/forgot" ||
+            locationFromHook.pathname === "/edit" ||
+            locationFromHook.pathname === "/change") {
+        
+                return;
+            }else{
+                listener = event => {
+
+                    //if you click in the menu,  dont close it
+                    if (ref.current.contains(event.target)) {
+            
+                        return;
+                    }
+                  
+                    //if you click anywhere outside the side menu, close it.    
+                    mouseDownHandler();
+                };
+
+
+            }
+       
+  
+        
+        //resize and/or orientationchange listener
+        const handleResize = () => {
+          
+            console.log(window.innerWidth);
+            
+            //closed sideMenu on orientation change, if it gets bigger than 850px
+            if (window.innerWidth > 850){
+                props.setOpenSideMenu(false);
+            }
+        }
+  
+        //set up event listeners
+        window.addEventListener("resize", handleResize);
+        window.addEventListener("orientationchange", handleResize);
+        document.addEventListener('mousedown', listener);
+        
+        
+        return () => {
+          
+          document.removeEventListener('mousedown', listener);
+          console.log("cleanup");
+          console.log("cleanup done, openSideMenu = " + props.openSideMenu);
+        };
+      },
+      [ref, mouseDownHandler],
+    );
+
+    console.log("HEADER_________________PROPS", location.pathname)
+    //console.log("HEADER_PROPS solo", location.pathname)
+
+    const locationFromHook = useLocation();
+    
+    const ref = React.useRef();
+    //const navbar = React.createRef();
+    
+    function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+    
+    function mouseDownHandler(){
+        
+        props.setOpenSideMenu(false);
+        console.log("mouseDownEventTriggered & openSideMenu = " + props.openSideMenu);
+    }
+
+    function doSomething(){
+
+        scrollToTop();
+        props.setLoginClicked(true)
+        props.setOpenSideMenu(false)
+    }
+
+
+
+    let listener;
+    
+    
+
+    console.log("locationFromHook.pathname", locationFromHook.pathname);
+
     
       
     return (
@@ -132,14 +233,29 @@ function Header(props) {
                 <HeaderLeafImage src={headerLeaf}></HeaderLeafImage>
                 <Nav>
                     <ul>
-                        <li>news</li>
-                        <li>act</li>
-                        <li>shop</li>
+                        <li key={0}>news</li>
+                        <li key={1} >act</li>
+                        <li key={2}>shop</li>
+
+                        <li key={3}>{props.appState.loggedInStatus == "LOGGED_IN" ? [<a key={"a"} onClick= {props.handleLogOutClick}> Logout | </a>, <Link key={"b"} to="/edit">edit </Link>] :   [<a key={"c"} onClick={doSomething}> Login |</a>, <a key={"d"} onClick={props.executeScrollForSection2}> Signup</a>]  } </li>
+                    
 
                     </ul>
 
 
                 </Nav>
+                
+                <div style={{position: "relative"}} ref={ref}>
+                    <Burger openSideMenu={props.openSideMenu} setOpenSideMenu={props.setOpenSideMenu}/>
+                    <SideMenu 
+                        doSomething={doSomething} 
+                        openSideMenu={props.openSideMenu} 
+                        setOpenSideMenu={props.setOpenSideMenu}
+                        executeScroll={props.executeScroll} 
+                        appState={props.appState} 
+                        executeScrollForLookupSection={props.executeScrollForLookupSection} 
+                        executeScrollForSection2={props.executeScrollForSection2}/>
+                </div>
             
         
         

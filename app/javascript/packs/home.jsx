@@ -6,9 +6,9 @@ const HomeWrapper = styled.div`
 
     //background: pink;
     
-   height: calc(100vh - 85px);
-   max-height: 500px;
-    
+    height: calc(100vh - 85px);
+    max-height: 500px;
+    overflow: hidden;
     //min-width: 500px;
     
 `;
@@ -18,7 +18,7 @@ const NewsWrapper = styled.div``;
 const News = styled.div`
 
     min-height: 100%;
-
+    
     display: grid;
     justify-content: center;
     //grid-template-columns: 1fr minmax(0px, 350px) minmax(0px, 600px) 1fr;

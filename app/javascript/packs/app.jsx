@@ -23,17 +23,17 @@ function App(controllerProps){
     console.log("APP_controllerProps", controllerProps)
     
     //global APP state 
-    // const [appState, setAppState] = useState({
+    const [appState, setAppState] = useState({
+            
+        loggedInStatus: "NOT_LOGGED_IN",
+        emailStatus: "EMAIL_NOT_VERIFIED",
+        test: "a",
+        user: {},
+        stories: controllerProps.stories
         
-    //     loggedInStatus: "NOT_LOGGED_IN",
-    //     emailStatus: "EMAIL_NOT_VERIFIED",
-    //     test: "a",
-    //     user: {},
-    //     stories: controllerProps.stories
-        
-    // })
-    // const [openSideMenu, setOpenSideMenu] = useState(false);
-    // const [loginClicked, setLoginClicked] = useState(false)
+    })
+    const [openSideMenu, setOpenSideMenu] = useState(false);
+    const [loginClicked, setLoginClicked] = useState(false)
 
     
    
@@ -51,83 +51,83 @@ function App(controllerProps){
     
 
     
-    // const handleSuccessfulAuth = data => {
+    const handleSuccessfulAuth = data => {
         
-    //     setAppState({
-    //         ...appState,
-    //         loggedInStatus: "LOGGED_IN",
-    //         user: data.user
-    //     })
-    // }
+        setAppState({
+            ...appState,
+            loggedInStatus: "LOGGED_IN",
+            user: data.user
+        })
+    }
 
     
-    // const handleLogOutClick = () => {
+    const handleLogOutClick = () => {
         
-    //     //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
+        //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
-    //     axios.delete("/logout", {withCredentials : true})
-    //         .then(response => {
-    //             setAppState({
-    //                 ...appState,
-    //                 loggedInStatus: "NOT_LOGGED_IN",
-    //                 user: {}
-    //             })
+        axios.delete("/logout", {withCredentials : true})
+            .then(response => {
+                setAppState({
+                    ...appState,
+                    loggedInStatus: "NOT_LOGGED_IN",
+                    user: {}
+                })
 
-    //         }).catch(error => {
-    //             console.log("logout errors", error)
-    //         })
-    // }
+            }).catch(error => {
+                console.log("logout errors", error)
+            })
+    }
     
     
     
     // reference for lookupSection to scroll to, when click on nav link
-    // const LookupScrollToRef = useRef();
-    // const LookupInputRef = useRef();
+    const LookupScrollToRef = useRef();
+    const LookupInputRef = useRef();
 
-    // const section2ScrollToRef = useRef();
+    const section2ScrollToRef = useRef();
     
     // when click on nav link, scrolls to LookupScrollToRef
-    // const scrollToRef = (ref) => {
+    const scrollToRef = (ref) => {
         
-    //     window.scrollTo(0, ref.current.offsetTop)
+        window.scrollTo(0, ref.current.offsetTop)
 
         
-    //     setOpenSideMenu(false)
-    //     LookupInputRef.current.focus();
+        setOpenSideMenu(false)
+        LookupInputRef.current.focus();
 
-    // }
+    }
 
-    // const scrollToRef2 = (ref) => {
+    const scrollToRef2 = (ref) => {
 
-    //     console.log(ref)
+        console.log(ref)
         
-    //     window.scrollTo(0, ref.current.offsetTop)
+        window.scrollTo(0, ref.current.offsetTop)
 
         
        
-    // }
+    }
         
     
     
-    // const executeScrollForLookupSection = () => {
+    const executeScrollForLookupSection = () => {
         
-    //     scrollToRef(LookupScrollToRef)
-    //     setOpenSideMenu(false)
-    // }
+        scrollToRef(LookupScrollToRef)
+        setOpenSideMenu(false)
+    }
     
-    // const executeScrollForSection2 = () => {
+    const executeScrollForSection2 = () => {
         
-    //     scrollToRef2(section2ScrollToRef)
-    //     setOpenSideMenu(false)
-    // }
+        scrollToRef2(section2ScrollToRef)
+        setOpenSideMenu(false)
+    }
     
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     //const mode = process.env.NODE_ENV == "development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
+        //const mode = process.env.NODE_ENV == "development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
         
         
-    // },[]);
+    },[]);
 
     
     
@@ -142,7 +142,15 @@ function App(controllerProps){
                 
                 
                     
-                <Header/>
+                <Header 
+                    appState={appState} 
+                    handleLogOutClick={handleLogOutClick}
+                    setLoginClicked={setLoginClicked}
+                    openSideMenu={openSideMenu}
+                    setOpenSideMenu={setOpenSideMenu}
+                    executeScrollForSection2={executeScrollForSection2}
+                    executeScrollForLookupSection={executeScrollForLookupSection} 
+                    />
                 
                 
                 
