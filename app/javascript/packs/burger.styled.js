@@ -17,6 +17,8 @@ const StyledBurger = styled.button`
   cursor: pointer;
   padding: 0;
   z-index: 10;
+
+  
   
   &:focus {
     outline: none;
@@ -31,8 +33,8 @@ const StyledBurger = styled.button`
   div {
     width: 2rem;
     height: 0.25rem;
-    background: ${({ theme }) => theme.offWhite};
-    //background: #465772;
+    //background: ${({ theme }) => theme.offWhite};
+    background: pink;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;

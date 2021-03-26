@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 //import { Parallax, Background } from 'react-parallax';
+import Login from './pages/login'
+
 
 const HomeWrapper = styled.div`
 
@@ -126,6 +128,8 @@ function Home(props){
                 
                 
             </HomeWrapper>
+
+            <Login handleSuccessfulAuth={props.handleSuccessfulAuth} setLoginClicked={props.setLoginClicked} loginClicked={props.loginClicked} />
             
         </>
     );  

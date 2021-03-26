@@ -22,7 +22,7 @@ const HeaderWrapper = styled.div`
 
 
     
-    overflow: hidden;
+    //overflow: hidden;
     min-height: 85px;
     //margin: 0 20px;
     min-width: 500px;
@@ -83,13 +83,24 @@ const HeaderLeafImage = styled.img`
 
 const Nav = styled.nav`
 
+    @media only screen and (max-width: 850px){
+        
+        display: none     
+
+    }   
+    
     grid-area: headerLeaf;
     color: white;
     align-self: center;
     justify-self: end;
     
+    //transform: translate(-30px,-30px);
+    //opacity: 0;
+    height: 100%;
 
-    ul{
+    display: flex;
+
+    /* ul{
         display: flex;
         align-items: flex-end;
         li{
@@ -100,7 +111,7 @@ const Nav = styled.nav`
             font-weight: normal;
             
             line-height: 72px;
-            /* identical to box height */
+            
 
 
             color: #FFFFFF;
@@ -114,6 +125,50 @@ const Nav = styled.nav`
 
 
 
+    } */
+
+
+    ul{
+        
+        list-style: none;
+        margin-right: 40px;
+        display: flex;
+        align-items: flex-end;
+
+        li, a{
+            
+        
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 45px;
+            color: ${props => props.theme.white};
+            
+            text-decoration: none;
+            cursor: pointer;
+        
+        
+        }
+    
+        li{
+            display: inline-block;
+            padding: 0px 20px;
+
+        
+            a{
+                transition: all 0.3s ease 0s;
+
+                &:hover{
+
+                    color: ${props => props.theme.lightBlue};;
+
+                }
+            
+            }
+        
+        }
+    
+    
+    
     }
     
 
@@ -245,7 +300,12 @@ function Header(props) {
 
                 </Nav>
                 
-                <div style={{position: "relative"}} ref={ref}>
+                <div style={{
+                    position: "relative", 
+                    gridArea: "1/3/2/4",
+                    justifySelf: "end",
+                    alignSelf: "center",
+                    marginRight: "2em"}} ref={ref}>
                     <Burger openSideMenu={props.openSideMenu} setOpenSideMenu={props.setOpenSideMenu}/>
                     <SideMenu 
                         doSomething={doSomething} 

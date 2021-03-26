@@ -8,7 +8,7 @@ import styled, { ThemeProvider } from 'styled-components'
 
 import { Link } from 'react-router-dom';
 
-import redX from '../../assets/images/redX'
+import redX from '../../assets/images/redXmark'
 import userIcon from '../../assets/images/signup2'
 import greenCheck from '../../assets/images/greenCheck'
 import dummy_avatar from '../../assets/images/dummy_avatar'
@@ -145,11 +145,11 @@ const formData = new FormData();
 
 
 
-function Signup(props) {
+function Signup(props, ref) {
   
     
 
-  //const {section2ScrollToRef} = ref
+  const {section2ScrollToRef} = ref
 
   const [state, setState] = React.useState({
     full_name: "",
@@ -428,7 +428,7 @@ const handleAdd = e => {
   return (
             
          
-    <HomeWrapper className="homeWrapper" >
+    <HomeWrapper className="homeWrapper" ref={section2ScrollToRef}>
           
       <LoginWrapper>
 
@@ -545,6 +545,6 @@ const handleAdd = e => {
 
 
 
-//const Wtf = React.forwardRef(Section2);
-export default Signup;
+const Wtf = React.forwardRef(Signup);
+export default Wtf;
 

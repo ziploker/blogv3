@@ -11,9 +11,17 @@ import axios from 'axios'
 import Header from "./header"
 import Home from "./home"
 import Act from "./act"
-import Signup from "./signup"
+import SignupSection from "./signup"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from "./global"
+
+
+import Login from "./pages/login"
+import Forgot from "./pages/forgot"
+import Signup from './pages/signup'
+import Edit from './pages/edit'
+import Change from './pages/change_pw'
+import Resend from './pages/resend'
 
 
 ///////////////////////////////// MAIN APP STARTING POINT ///////////////
@@ -99,6 +107,7 @@ function App(controllerProps){
 
     const scrollToRef2 = (ref) => {
 
+        console.log("IN SCROLLTOREF2")
         console.log(ref)
         
         window.scrollTo(0, ref.current.offsetTop)
@@ -155,20 +164,17 @@ function App(controllerProps){
                 
                 
                 <Switch>
-                    <Route exact path="/" render={ () => <Home  />}/>
-
-                    {/* <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} stories={appState.stories} appState={appState} setAppState={setAppState} />}/>
+                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} stories={appState.stories} appState={appState} setAppState={setAppState} />}/>
                     <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     <Route path="/forgot" render={ props => <Forgot {...props}  />} /> 
                     <Route path="/resend" render={ props => <Resend {...props}  />} />                   
                     <Route exact path="/change_pw/:token" render={ props => <Change {...props}  />} />
                     <Route path="/edit" render={ props => <Edit {...props} user={appState.user}/>} />
-                     */}
                 </Switch>
 
                 <Act/>
-                <Signup/>
+                <SignupSection ref={{section2ScrollToRef: section2ScrollToRef}}/>
 
                 {/* <LookupSection appState={appState} ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}}/>
                 <Section2 ref={{section2ScrollToRef: section2ScrollToRef}} stories={appState.stories} appState={appState} setAppState={setAppState} handleSuccessfulAuth={handleSuccessfulAuth} />
