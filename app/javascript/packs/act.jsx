@@ -163,7 +163,7 @@ const Button = styled.button`
   cursor: pointer;
   color: black;
   position: absolute;
-  left: 0;
+  
   z-index: 1002;
   
   transition: background-image 1s;

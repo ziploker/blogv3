@@ -8,16 +8,33 @@ const HomeWrapper = styled.div`
 
     //background: pink;
     
-    height: calc(100vh - 85px);
-    max-height: 500px;
+    //height: calc(100vh - 85px);
+    //max-height: 500px;
     overflow: hidden;
     //min-width: 500px;
     
 `;
 
-const NewsWrapper = styled.div``;
+
 
 const News = styled.div`
+
+    @media only screen and (max-width: 575px){
+        
+        margin-top: 0px;
+        margin-bottom: 75px;
+        grid-template-columns: 1fr;
+        padding: 0px 20px;
+    
+        grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr;
+        grid-template-areas:
+            
+            "featured"
+            "one"
+            "two"
+            ".";     
+
+        }
 
     min-height: 100%;
     
@@ -77,25 +94,48 @@ const Div2 = styled.div`
     grid-area: one;
     border-radius: 10px;
     //margin-right: 25px;
+    &:before{
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        padding-top: calc(100% / (16/9));
 
+        
+
+    }
     
 
 `;
 
 const Div3 = styled.div`
 
-background: green;
+    background: green;
     grid-area: two;
     border-radius: 10px;
     //margin-right: 25px;
+    &:before{
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        padding-top: calc(100% / (16/9));
+
+        
+
+    }
     
 `;
 
 const BackgroundGray = styled.div`
 
+    @media only screen and (max-width: 575px){
+        display: none;
+    }
     background: #C4C4C4;
     grid-area: 3/1/-1/-1;
     z-index: -1;
+    padding: 75px 0px;
     
     
 

@@ -20,7 +20,11 @@ const HeaderWrapper = styled.div`
     min-height: 85px;
     min-width: 80vw; */
 
+    @media only screen and (max-width: 575px){
+        
+        min-width: 0px;     
 
+    }
     
     //overflow: hidden;
     min-height: 85px;
@@ -70,6 +74,12 @@ const Logo = styled.img`
 
 const HeaderLeafImage = styled.img`
 
+
+    @media only screen and (max-width: 575px){
+        
+        display: none;     
+
+    }
     max-width: 95%;
     min-width: 350px;
     max-height: 85px;
@@ -83,7 +93,7 @@ const HeaderLeafImage = styled.img`
 
 const Nav = styled.nav`
 
-    @media only screen and (max-width: 850px){
+    @media only screen and (max-width: 575px){
         
         display: none     
 
@@ -93,12 +103,13 @@ const Nav = styled.nav`
     color: white;
     align-self: center;
     justify-self: end;
-    
+    margin: 0 -25px;
     //transform: translate(-30px,-30px);
     //opacity: 0;
-    height: 100%;
+    //height: 100%;
 
     display: flex;
+    
 
     /* ul{
         display: flex;
@@ -133,29 +144,36 @@ const Nav = styled.nav`
         list-style: none;
         margin-right: 40px;
         display: flex;
-        align-items: flex-end;
-
-        li, a{
-            
+        align-items: baseline;
         
+
+        
+    
+        li{
+            @media only screen and (max-width: 666px){
+        
+                padding: 0px 12px;     
+
+            }
+            
+            display: inline-block;
+            padding: 0px 20px;
+
             font-weight: 500;
-            font-size: 12px;
+            font-size: 16px;
             line-height: 45px;
             color: ${props => props.theme.white};
             
             text-decoration: none;
             cursor: pointer;
-        
-        
-        }
-    
-        li{
-            display: inline-block;
-            padding: 0px 20px;
 
         
             a{
                 transition: all 0.3s ease 0s;
+                font-weight: 500;
+                font-size: 12px;
+                line-height: 45px;
+                color: ${props => props.theme.white};
 
                 &:hover{
 
@@ -305,9 +323,12 @@ function Header(props) {
                     gridArea: "1/3/2/4",
                     justifySelf: "end",
                     alignSelf: "center",
-                    marginRight: "2em"}} ref={ref}>
+                    paddingRight: "2em"}} ref={ref}>
                     <Burger openSideMenu={props.openSideMenu} setOpenSideMenu={props.setOpenSideMenu}/>
-                    <SideMenu 
+                    
+                </div>
+            
+                <SideMenu 
                         doSomething={doSomething} 
                         openSideMenu={props.openSideMenu} 
                         setOpenSideMenu={props.setOpenSideMenu}
@@ -315,9 +336,6 @@ function Header(props) {
                         appState={props.appState} 
                         executeScrollForLookupSection={props.executeScrollForLookupSection} 
                         executeScrollForSection2={props.executeScrollForSection2}/>
-                </div>
-            
-        
         
         </HeaderWrapper>
     )

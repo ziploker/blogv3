@@ -13,12 +13,13 @@ const StyledMenu = styled.nav`
   text-align: left;
   padding: 2rem;
   position: absolute;
-  top: 45px;
+  top: 85px;
   right: 0;
+  left: 0;
   transition: transform 0.3s ease-in-out;
   z-index: 3;
   
-  transform: ${({ openSideMenu }) => openSideMenu ? 'translateX(0px)' : 'translateX(500px)'};
+  transform: ${({ openSideMenu }) => openSideMenu ? 'translateX(0px)' : 'translateX(100%)'};
   //transform: ${({ openSideMenu }) => openSideMenu ? 'scale(0,1)' : 'scale(1,1)'};
 
   ul{
