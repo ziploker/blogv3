@@ -40,6 +40,12 @@ const ActWrapper = styled.div`
 `;
 
 const Mega = styled.img`
+  @media only screen and (max-width: 720px){
+
+    grid-area: 1/1/2/-1;
+    display: none;
+
+  }
 
     //position: absolute;
     //top: -5vh;
@@ -58,16 +64,28 @@ const Mega = styled.img`
 
 const ActGrid = styled.div`
 
+  @media only screen and (max-width: 720px){
+        
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);     
 
-    display: grid;
-    position: relative;
-    //grid-template-columns: 43% 57%;
-    grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
-    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
-    grid-column-gap: .5em;  
+  }
+
+  display: grid;
+  position: relative;
+  //grid-template-columns: 43% 57%;
+  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
+  grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
+  grid-column-gap: .5em;  
 `;
 
 const ActHeader = styled.h1`
+
+  @media only screen and (max-width: 720px){
+
+    grid-area: 1/1/2/-1;
+
+  }
 
     font-family: Poppins;
     font-style: normal;
@@ -95,6 +113,13 @@ const ActHeader = styled.h1`
 
 const ActSubheader = styled.h1`
 
+@media only screen and (max-width: 720px){
+
+grid-area: 2/1/3/-1;
+
+
+}
+
 font-family: Poppins;
 font-style: normal;
 font-weight: normal;
@@ -115,6 +140,12 @@ transition: opacity .4s;
 
 
 const Form = styled.form`
+
+  @media only screen and (max-width: 720px){
+
+  grid-area: 3/1/5/-1;
+
+  }
 
   display: grid;
   position: relative;
@@ -289,6 +320,15 @@ const Span = styled.span`
 
 const ResultSection = styled.div`
 
+  @media only screen and (max-width: 720px){
+
+    grid-area: 1/1/-1/-1;
+    margin: 0px auto;
+    padding: 0px 15px 32px 15px;
+    grid-template-columns: minmax(100px, 171px) minmax(100px, 171px);
+
+  }
+
   display: grid;
   transition: opacity 2s linear;  
   transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
@@ -311,6 +351,15 @@ const ResultSection = styled.div`
 `;
 
 const ResultSectionHeader = styled.h1`
+
+  @media only screen and (max-width: 720px){
+
+  grid-area: 1/1/-1/-1;
+  
+    margin-bottom: 8px;
+  justify-self: center;
+
+  }
 
 
   font-family: Poppins;
@@ -427,7 +476,7 @@ const CardPicture = styled.img`
 const CardNameOfRep = styled.h1`
 
   color: black;
-  font-size: clamp(9.5px, .7vw, 25px);
+  font-size: clamp(9px, .7vw, 25px);
   line-height: 1.1em;
   /* position: absolute;
   bottom: 10%;
@@ -522,15 +571,15 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-  const [showCards, setShowCards] = React.useState (false);
+  const [showCards, setShowCards] = React.useState (true);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
 
   
 
 
-  //const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
-  const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   
   
@@ -967,7 +1016,7 @@ function Act(props) {
 
 
               </CardOne>
-              <sub style={{fontSize: ".7em", color: "white", gridArea: "2/1/3/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
+              <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/1/3/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
 
 
 
@@ -983,7 +1032,7 @@ function Act(props) {
 
 
               </CardTwo>
-              <sub style={{fontSize: ".7em", color: "white", gridArea: "2/2/3/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
+              <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/2/3/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
 
               {/* <Letter>
 
