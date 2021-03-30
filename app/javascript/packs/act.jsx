@@ -357,7 +357,7 @@ const ResultSectionHeader = styled.h1`
   grid-area: 1/1/-1/-1;
   
     margin-bottom: 8px;
-  justify-self: center;
+  
 
   }
 
@@ -376,7 +376,7 @@ const ResultSectionHeader = styled.h1`
   color: #FFFFFF;
 
   grid-area: 1/1/2/3;
-  justify-self: start;
+  justify-self: center;
   align-self: start;
 
   white-space: nowrap; 
@@ -423,7 +423,7 @@ const CardOne = styled.div`
   grid-area: 3/1/4/2;
 
   justify-self: end;
-  max-height: 250px;
+  min-height: 250px;
 
   
 
@@ -443,7 +443,7 @@ const CardTwo = styled.div`
   grid-area: 3/2/4/3;
 
   justify-self: end;
-  max-height: 250px;
+  min-height: 250px;
 
   
 
@@ -476,7 +476,7 @@ const CardPicture = styled.img`
 const CardNameOfRep = styled.h1`
 
   color: black;
-  font-size: clamp(9px, .7vw, 25px);
+  font-size: 9px;
   line-height: 1.1em;
   /* position: absolute;
   bottom: 10%;

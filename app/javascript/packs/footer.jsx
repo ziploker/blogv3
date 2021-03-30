@@ -38,7 +38,7 @@ const FooterImage = styled.img`
 function Footer(props) {
 
    
-    console.log("SHOP_________________PROPS", location.pathname)
+    console.log("Footer_________________PROPS", location.pathname)
     //console.log("HEADER_PROPS solo", location.pathname)
 
     
