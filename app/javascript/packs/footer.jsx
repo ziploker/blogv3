@@ -15,7 +15,9 @@ const FooterWrapper = styled.div`
     min-height: 200px; */
 
     display: grid;
-    grid-template-columns: 1fr;
+    //grid-template-columns: 1fr;
+
+    grid-template-columns: minmax(20px,1fr) 400px minmax(350px,600px) minmax(20px,1fr);
     /*grid-template-rows: 25% 75%;
      grid-template-areas:
         "spacer"
@@ -29,9 +31,41 @@ const FooterWrapper = styled.div`
 const FooterImage = styled.img`
 
     //grid-area: footerLeaf;
+    grid-area: 1/1/-1/-1;
     max-height: 100%;
     width: 100%;
     
+
+`;
+
+const SubscribeSection = styled.div`
+
+    grid-area: 1/2/-1/3;
+    justify-self: center;
+    align-self: center;
+
+    h2{
+        span{
+            color: white;
+            font-size: 14px;
+            letter-spacing: normal;
+            line-height: 22px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: poppins;
+        }
+
+    }
+
+    input{
+
+        background: 0 0;
+        border-color: #7F7F7F;
+        border-style: solid;
+        border-width: 0 0 1px;
+        margin-bottom: 30px;
+        padding: 0 0 9px;
+    }
 
 `;
 
@@ -52,7 +86,7 @@ function Footer(props) {
             <FooterImage src={footerImage}/>
 
 
-            <section>
+            <SubscribeSection>
                 <h2>
                     <span>
                         <svg width="19px" height="13px" viewBox="0 0 19 13">
@@ -71,7 +105,7 @@ function Footer(props) {
                     </span>
 
                     <span>
-                        Stay up to date on the latest from Furrion
+                        Stay up to date on the latest from FloridaBlaze.
                     </span>
                 </h2>
 
@@ -86,7 +120,7 @@ function Footer(props) {
                     </div>
                 </form>
    
-            </section>
+            </SubscribeSection>
 
 
         </FooterWrapper>
