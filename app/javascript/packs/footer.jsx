@@ -42,17 +42,27 @@ const SubscribeSection = styled.div`
 
     grid-area: 1/2/-1/3;
     justify-self: center;
-    align-self: center;
+    align-self: end;
+    margin-bottom: 20px;
 
     h2{
+
+        margin: 0px 0px 10px 0px;
+
         span{
             color: white;
-            font-size: 14px;
+            font-size: 12px;
+            
             letter-spacing: normal;
+            line-height: 19px;
             line-height: 22px;
             font-style: normal;
             font-weight: 400;
             font-family: poppins;
+
+            svg{
+                margin: 0px 8px 0px 0px;
+            }
         }
 
     }
@@ -65,19 +75,80 @@ const SubscribeSection = styled.div`
         border-width: 0 0 1px;
         margin-bottom: 30px;
         padding: 0 0 9px;
+        font-size: 14px;
+        color: #7F7F7F;
+
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: #7F7F7F;
+            opacity: 1; /* Firefox */
+        }
+
+        :-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: #7F7F7F;
+        }
+
+        ::-ms-input-placeholder { /* Microsoft Edge */
+            color:#7F7F7F;
+        }
     }
 
+    button{
+
+        font-style: normal;
+        font-weight: 400;
+        min-width: 200px;
+        background-color: #c33;
+        color: #fff;
+        letter-spacing: 0;
+        line-height: 26px;
+        text-decoration: none;
+        -webkit-transition: all .2s;
+        transition: all .2s;
+        overflow: visible;
+        text-align: center;
+        text-transform: capitalize;
+        white-space: nowrap;
+        padding: 12px 45px;
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        display: inline-flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        border-radius: 0;
+        border: 0;
+
+    }
 `;
 
 function Footer(props) {
 
    
+   
     console.log("Footer_________________PROPS", location.pathname)
     //console.log("HEADER_PROPS solo", location.pathname)
 
-    
+    useEffect(() => {
 
-    
+        
+        
+        window.addEventListener('keydown', handleFirstTab);
+        
+        
+        
+    },[]);
+
+    function handleFirstTab(e) {
+
+        console.log("IN TAB thing..................")
+        if (e.keyCode === 9) { // the "I am a keyboard user" key
+            document.body.classList.add('user-is-tabbing');
+            window.removeEventListener('keydown', handleFirstTab);
+        }
+    }
       
     return (
         

@@ -75,7 +75,7 @@ const ActGrid = styled.div`
   position: relative;
   //grid-template-columns: 43% 57%;
   grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
-  grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
+  grid-template-rows: minmax(130px, 140px) minmax(20px, 45px) minmax(40px, 50px) minmax(min-content, max-content);
   grid-column-gap: .5em;  
 `;
 
@@ -98,10 +98,10 @@ const ActHeader = styled.h1`
 
     color: #FFFFFF;
     grid-area: 1/3/2/-1;
-    align-self: end;
+    align-self: center;
     
     line-height: 100%;
-    margin: 40px 20px 0px 20px;
+    margin: 0px 20px;
     z-index: 1;
 
     opacity: ${props => props.showCards ? "0" : "1"};
@@ -150,7 +150,7 @@ const Form = styled.form`
   display: grid;
   position: relative;
   grid-template-columns: 100%;
-  grid-template-rows: minmax(min-content, max-content) minmax(50px, min-content);
+  //grid-template-rows: minmax(min-content, max-content) minmax(50px, min-content);
   grid-template-areas:
     "input"
    
@@ -170,7 +170,7 @@ const Form = styled.form`
 
   opacity: ${props => props.showCards ? "0" : "1"};
 
-  grid-area: 3/3/5/4;
+  grid-area: 3/3/4/4;
   padding: 0px 20px;
 `;
 
@@ -226,6 +226,45 @@ const Button = styled.button`
   //}
 
   
+`;
+
+const FindMyRep = styled.button`
+
+
+  grid-area: 4/3/5/4;
+  font-style: normal;
+  font-weight: 400;
+  width: 200px;
+  height: 50px;
+  background-color: #c33;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-decoration: none;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  overflow: visible;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
+  padding: 12px 45px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 0;
+  border: 0;
+
+  margin-left: 20px;
+
+
+
+
 `;
 
 const CardOneInfo = styled.div`
@@ -345,7 +384,7 @@ const ResultSection = styled.div`
   //padding: ${props => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px" };
 
   grid-area: 1/3/5/4;
-  margin: 20px 0px 20px 50px;
+  //margin: 20px 0px 20px 50px;
 
 
 `;
@@ -571,15 +610,15 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-  const [showCards, setShowCards] = React.useState (true);
+  const [showCards, setShowCards] = React.useState (false);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
 
   
 
 
-  const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
-  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  //const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   
   
@@ -988,10 +1027,13 @@ function Act(props) {
                     
                     
                         
-                    </Form>
-                    <Mega src={mega}>
+                </Form>
+                <FindMyRep type="submit" name="submint">
+                  Find My Rep
+                </FindMyRep>
+                <Mega src={mega}>
 
-                    </Mega>
+                </Mega>
 
 
                     {/* 

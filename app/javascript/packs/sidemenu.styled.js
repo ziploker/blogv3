@@ -3,7 +3,8 @@ import React from 'react'
 import styled from 'styled-components';
 
 const StyledMenu = styled.nav`
-  display: flex;
+  //display: ${({ openSideMenu }) => openSideMenu ? 'flex' : 'none'};
+  display: ${props => props.openSideMenu ? 'flex' : 'none'};
   flex-direction: column;
   justify-content: flex-start;
   //background: ${({ theme }) => theme.primaryLight};

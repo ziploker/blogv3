@@ -11,29 +11,29 @@ import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyles = createGlobalStyle`
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
 
-a, a:active, a:focus{
+  a, a:active, a:focus{
 
-  outline: none; /* Works in Firefox, Chrome, IE8 and above */ 
+    outline: none; /* Works in Firefox, Chrome, IE8 and above */ 
 
-}
+  }
   
   html{
     margin: 0;
     padding: 0;
-    overflow-y: scroll;
+    //overflow-y: scroll;
     width: 100%;
     height: 100%
 
@@ -54,8 +54,17 @@ a, a:active, a:focus{
 
     padding: 0px;
     margin: 0px;
+
     
-}
+    
+
+  }
+
+  body:not(.user-is-tabbing) button:focus,
+  body:not(.user-is-tabbing) input:focus,
+  body:not(.user-is-tabbing) select:focus,
+  body:not(.user-is-tabbing) textarea:focus {
+    outline: none;
   }
   
   *, *::after, *::before {
@@ -69,9 +78,9 @@ a, a:active, a:focus{
     color: black;
     text-align: center;
     
-    
+  } 
   
   
-`
+`;
 
 export default props => <GlobalStyles {...props} />;

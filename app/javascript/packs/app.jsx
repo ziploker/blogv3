@@ -177,7 +177,7 @@ function App(controllerProps){
 
                 <Act/>
                 <SignupSection ref={{section2ScrollToRef: section2ScrollToRef}}/>
-                <Shop/>
+                {/* <Shop/> */}
                 <Footer/>
 
                 {/* <LookupSection appState={appState} ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}}/>
