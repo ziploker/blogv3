@@ -52,7 +52,7 @@ const Mega = styled.img`
     //left: 12vw;
     width: 100%;
 
-    grid-area: 1/2/4/3;
+    grid-area: 1/2/5/3;
     align-self: center;
     justify-self: end;
     margin-top: -50px;
@@ -75,7 +75,8 @@ const ActGrid = styled.div`
   position: relative;
   //grid-template-columns: 43% 57%;
   grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
-  grid-template-rows: minmax(130px, 140px) minmax(20px, 45px) minmax(40px, 50px) minmax(min-content, max-content);
+  grid-template-rows: 120px 40px 50px 100px 50px;
+  
   grid-column-gap: .5em;  
 `;
 
@@ -90,18 +91,19 @@ const ActHeader = styled.h1`
     font-family: Poppins;
     font-style: normal;
     font-weight: 800;
-    font-size: 10vw;
-    //line-height: 165px;
+    font-size: 7vw;
+    line-height: 100px;
     /* identical to box height */
 
     letter-spacing: -0.08em;
 
     color: #FFFFFF;
     grid-area: 1/3/2/-1;
-    align-self: center;
+    align-self: end;
     
-    line-height: 100%;
-    margin: 0px 20px;
+    //line-height: 100%;
+    margin: -10px 20px;
+    padding-top: 20px;
     z-index: 1;
 
     opacity: ${props => props.showCards ? "0" : "1"};
@@ -124,15 +126,47 @@ font-family: Poppins;
 font-style: normal;
 font-weight: normal;
 font-size: 2vw;
-line-height: 100%;
+//line-height: 100%;
 
 grid-area: 2/3/3/-1;
 
 color: #E3B55A;
-margin: 8px 20px 32px 20px;
+margin: 0px 0px 0px 20px;
 
 opacity: ${props => props.showCards ? "0" : "1"};
 transition: opacity .4s;
+    
+
+
+`;
+
+
+const ActSubheader2 = styled.h2`
+
+@media only screen and (max-width: 720px){
+
+grid-area: 3/1/4/-1;
+
+
+}
+
+font-family: Poppins;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+//line-height: 100%;
+
+grid-area: 3/3/4/-1;
+
+color: white;
+margin: 0px 0px 0px 20px;
+display: inline;
+//line-height: 6vw;
+vertical-align: bottom;
+
+opacity: ${props => props.showCards ? "0" : "1"};
+transition: opacity .4s;
+align-self: end;
     
 
 
@@ -170,7 +204,7 @@ const Form = styled.form`
 
   opacity: ${props => props.showCards ? "0" : "1"};
 
-  grid-area: 3/3/4/4;
+  grid-area: 4/3/5/4;
   padding: 0px 20px;
 `;
 
@@ -231,10 +265,10 @@ const Button = styled.button`
 const FindMyRep = styled.button`
 
 
-  grid-area: 4/3/5/4;
+  grid-area: 5/3/6/4;
   font-style: normal;
   font-weight: 400;
-  width: 200px;
+  width: 250px;
   height: 50px;
   background-color: #c33;
   color: #fff;
@@ -262,6 +296,8 @@ const FindMyRep = styled.button`
 
   margin-left: 20px;
 
+  opacity: ${props => props.showCards ? "0" : "1"};
+
 
 
 
@@ -286,6 +322,7 @@ const StatusHolder = styled.div`
   align-content: center;
 
   justify-self: start;
+  min-height: 50px;
 
 `;
 
@@ -373,13 +410,13 @@ const ResultSection = styled.div`
   transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
   opacity: ${props => props.showCards ? "1" : "0"};
   grid-template-columns: minmax(150px, 171px) minmax(150px, 171px);
-  //grid-template-rows: 1fr minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
+  grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
   //visibility: hidden;
   //grid-template-rows: ${props => props.showCards ? "minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr" : "0px 0px 0px 0px 0px"};
   
   //grid-row-gap: .7em;
   grid-column-gap: .5em;
-  //padding-top: 50px;
+  padding-left: 20px;
 
   //padding: ${props => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px" };
 
@@ -415,10 +452,12 @@ const ResultSectionHeader = styled.h1`
   color: #FFFFFF;
 
   grid-area: 1/1/2/3;
-  justify-self: center;
+  justify-self: start;
   align-self: start;
 
   white-space: nowrap; 
+
+  margin-bottom: 20px;
 
 
 
@@ -462,7 +501,7 @@ const CardOne = styled.div`
   grid-area: 3/1/4/2;
 
   justify-self: end;
-  min-height: 250px;
+  height: 250px;
 
   
 
@@ -482,7 +521,7 @@ const CardTwo = styled.div`
   grid-area: 3/2/4/3;
 
   justify-self: end;
-  min-height: 250px;
+  height: 250px;
 
   
 
@@ -909,6 +948,7 @@ function Act(props) {
           <ActGrid>
                 <ActHeader showCards={showCards}>ACT NOW</ActHeader>
                 <ActSubheader showCards={showCards}>Contact Your State Representatives </ActSubheader>
+                <ActSubheader2 showCards={showCards}>Enter an address below to get started. </ActSubheader2>
 
                 <Form className="form-inline" onSubmit={handleAdd} showCards={showCards} >
         
@@ -1028,8 +1068,8 @@ function Act(props) {
                     
                         
                 </Form>
-                <FindMyRep type="submit" name="submint">
-                  Find My Rep
+                <FindMyRep showCards={showCards} type="submit" name="submint">
+                  Lookup my Representatives
                 </FindMyRep>
                 <Mega src={mega}>
 
