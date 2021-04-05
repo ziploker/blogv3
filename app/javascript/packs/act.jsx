@@ -35,6 +35,7 @@ const ActWrapper = styled.div`
     //background-size: cover;
     position: relative;
     ////padding-bottom: 50px;
+    padding-bottom: 50px;
     
 
 `;
@@ -55,9 +56,9 @@ const Mega = styled.img`
     grid-area: 1/2/5/3;
     align-self: center;
     justify-self: end;
-    margin-top: -50px;
+    //margin-top: -50px;
     margin-right: 1em;
-    margin-bottom: 13px;
+    //margin-bottom: 13px;
     ;
 
 `;
@@ -106,7 +107,7 @@ const ActHeader = styled.h1`
     padding-top: 20px;
     z-index: 1;
 
-    opacity: ${props => props.showCards ? "0" : "1"};
+    opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
     transition: opacity .4s;
     
 
@@ -133,7 +134,7 @@ grid-area: 2/3/3/-1;
 color: #E3B55A;
 margin: 0px 0px 0px 20px;
 
-opacity: ${props => props.showCards ? "0" : "1"};
+opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
 transition: opacity .4s;
     
 
@@ -143,30 +144,30 @@ transition: opacity .4s;
 
 const ActSubheader2 = styled.h2`
 
-@media only screen and (max-width: 720px){
+  @media only screen and (max-width: 720px){
 
-grid-area: 3/1/4/-1;
+    grid-area: 3/1/4/-1;
 
 
-}
+  }
 
-font-family: Poppins;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-//line-height: 100%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  //line-height: 100%;
 
-grid-area: 3/3/4/-1;
+  grid-area: 3/3/4/-1;
 
-color: white;
-margin: 0px 0px 0px 20px;
-display: inline;
-//line-height: 6vw;
-vertical-align: bottom;
+  color: #E3B55A;
+  margin: 0px 0px 0px 20px;
+  display: inline;
+  //line-height: 6vw;
+  vertical-align: bottom;
 
-opacity: ${props => props.showCards ? "0" : "1"};
-transition: opacity .4s;
-align-self: end;
+  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
+  transition: opacity .4s;
+  align-self: start;
     
 
 
@@ -175,9 +176,9 @@ align-self: end;
 
 const Form = styled.form`
 
-  @media only screen and (max-width: 720px){
+    @media only screen and (max-width: 720px){
 
-  grid-area: 3/1/5/-1;
+    grid-area: 3/1/5/-1;
 
   }
 
@@ -201,9 +202,7 @@ const Form = styled.form`
   
   //box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   //margin-top: 72px;
-
-  opacity: ${props => props.showCards ? "0" : "1"};
-
+  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
   grid-area: 4/3/5/4;
   padding: 0px 20px;
 `;
@@ -228,7 +227,7 @@ const Button = styled.button`
   cursor: pointer;
   color: black;
   position: absolute;
-  
+  right: 0;
   z-index: 1002;
   
   transition: background-image 1s;
@@ -296,9 +295,51 @@ const FindMyRep = styled.button`
 
   margin-left: 20px;
 
-  opacity: ${props => props.showCards ? "0" : "1"};
+  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
 
 
+
+
+`;
+
+const ShowLetterButton = styled.button`
+
+
+  grid-area: 5/1/6/3;
+  font-style: normal;
+  font-weight: 400;
+  width: 250px;
+  height: 50px;
+  background-color: #c33;
+  color: #fff;
+  letter-spacing: 0;
+  line-height: 26px;
+  text-decoration: none;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  overflow: visible;
+  text-align: center;
+  text-transform: capitalize;
+  white-space: nowrap;
+  padding: 12px 45px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-self: start;
+  border-radius: 3;
+  border: 0;
+
+  //margin-left: 20px;
+  margin-top: 20px;
+
+  opacity: ${props => props.showCards ? "1" : "0"};
+  background: linear-gradient(to bottom, #5FCC61, #318e33);
+  cursor: pointer;
 
 
 `;
@@ -322,7 +363,7 @@ const StatusHolder = styled.div`
   align-content: center;
 
   justify-self: start;
-  min-height: 50px;
+  min-height: 30px;
 
 `;
 
@@ -409,7 +450,7 @@ const ResultSection = styled.div`
   transition: opacity 2s linear;  
   transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
   opacity: ${props => props.showCards ? "1" : "0"};
-  grid-template-columns: minmax(150px, 171px) minmax(150px, 171px);
+  grid-template-columns: minmax(150px, 150px) minmax(150px, 150px);
   grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
   //visibility: hidden;
   //grid-template-rows: ${props => props.showCards ? "minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr" : "0px 0px 0px 0px 0px"};
@@ -420,7 +461,7 @@ const ResultSection = styled.div`
 
   //padding: ${props => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px" };
 
-  grid-area: 1/3/5/4;
+  grid-area: 1/3/6/4;
   //margin: 20px 0px 20px 50px;
 
 
@@ -501,7 +542,7 @@ const CardOne = styled.div`
   grid-area: 3/1/4/2;
 
   justify-self: end;
-  height: 250px;
+  height: 200px;
 
   
 
@@ -521,7 +562,7 @@ const CardTwo = styled.div`
   grid-area: 3/2/4/3;
 
   justify-self: end;
-  height: 250px;
+  height: 200px;
 
   
 
@@ -650,6 +691,7 @@ function Act(props) {
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
   const [showCards, setShowCards] = React.useState (false);
+  const [showLetter, setShowLetter] = React.useState (false);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
 
@@ -937,6 +979,12 @@ function Act(props) {
     //}
       
   }
+
+  function showLetterFunction(){
+
+    setShowCards(false);
+    setShowLetter(true);
+  }
     
       
     return (
@@ -946,11 +994,11 @@ function Act(props) {
             
 
           <ActGrid>
-                <ActHeader showCards={showCards}>ACT NOW</ActHeader>
-                <ActSubheader showCards={showCards}>Contact Your State Representatives </ActSubheader>
-                <ActSubheader2 showCards={showCards}>Enter an address below to get started. </ActSubheader2>
+                <ActHeader showCards={showCards} showLetter={showLetter}>ACT NOW</ActHeader>
+                <ActSubheader showCards={showCards} showLetter={showLetter}>Contact Your State Representatives </ActSubheader>
+                <ActSubheader2 showCards={showCards} showLetter={showLetter}>Enter an address below to get started. </ActSubheader2>
 
-                <Form className="form-inline" onSubmit={handleAdd} showCards={showCards} >
+                <Form className="form-inline" onSubmit={handleAdd} showCards={showCards} showLetter={showLetter} >
         
                     <PlacesAutocomplete
                         value={formInfo.address}
@@ -996,8 +1044,8 @@ function Act(props) {
                                 boxShadow: "0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)",
                                 border: "honeydew",
                                 display: "block",
-                                paddingLeft: "62px",
-                                fontSize: "16px",
+                                paddingLeft: "10px",
+                                fontSize: "12px",
                                 borderRadius: "2px",
                                 outline: "none"
                             }}
@@ -1068,7 +1116,7 @@ function Act(props) {
                     
                         
                 </Form>
-                <FindMyRep showCards={showCards} type="submit" name="submint">
+                <FindMyRep showCards={showCards} showLetter={showLetter} type="submit" name="submint">
                   Lookup my Representatives
                 </FindMyRep>
                 <Mega src={mega}>
@@ -1084,82 +1132,86 @@ function Act(props) {
 
               <ResultSection showCards={showCards}>
 
-              <ResultSectionHeader>Results:</ResultSectionHeader>
+                <ResultSectionHeader>Results:</ResultSectionHeader>
 
 
-              <CardOne>
+                <CardOne>
 
 
-                <CardPicture src={results.one.image ? results.one.image : sampleShot2}></CardPicture>
-                
-                <CardTemplate src={cardTemplate}></CardTemplate>
+                  <CardPicture src={results.one.image ? results.one.image : sampleShot2}></CardPicture>
+                  
+                  <CardTemplate src={cardTemplate}></CardTemplate>
 
-                <CardNameOfRep>{results.one.name ? results.one.name : ""}</CardNameOfRep>
-
-
-              </CardOne>
-              <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/1/3/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
+                  <CardNameOfRep>{results.one.name ? results.one.name : ""}</CardNameOfRep>
 
 
-
-
-              <CardTwo>
-
-
-                <CardPicture src={results.two.image ? results.two.image : sampleShot2}></CardPicture>
-                
-                <CardTemplate src={cardTemplate}></CardTemplate>
-
-                <CardNameOfRep>{results.two.name ? results.two.name : ""}</CardNameOfRep>
-
-
-              </CardTwo>
-              <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/2/3/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
-
-              {/* <Letter>
-
-                <h1>recipients:</h1>
-                <h2 style={{gridArea: "2/1/3/3"}}>{results.one.email}</h2>
-                <h2 style={{gridArea: "3/1/4/3"}}>{results.two.email}</h2>
-
-                <h3 style={{gridArea: "4/1/5/3"}}>Dear Representatives/Senator,</h3>
-
-
-                <p style={{gridArea: "5/1/6/3"}}>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
-                  I am writing on behalf of legalizing marijuana to all above the age of eighteen. 
-                  Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee. 
-                  Marijuana has never had a report of fatal use and the common use for medical purposes 
-                  has been proved and even infused into society today. Many states today have legalized 
-                  it's medical purposes because it has proven to help certain illnesses including glaucoma, 
-                  sclerosis, and cancers such as breast and brain cancer. Prohibition has only cost 
-                  billions of dollars and studies prove that it has not affected the use of marijuana, 
-                  in fact it has made it cheaper and more accessible. All the money used for prosecution 
-                  of small offenders can be used for tax revenues and ultimately save billions.
-                </p>
-
-                <div style={{gridArea: "6/1/7/3"}}>
-
-                  Sincerely, <br/>
-                  <sub>Your Name Here</sub> <br/>
-                  <span>{lastTermSearched}</span><br/>
-                  <sub>Your Email Here</sub> <br/>
-
-                </div>
-
-
-                <button style={{
-                  gridArea: "6/2/7/3",
-                  background: "#E3B55A",
-                  borderRadius: "10px",
-                  border: "none",
-                  width: "12em",
-                  height: "4em",
-                  justifySelf: "center",
-                  alignSelf: "center"}}>SEND</button>
+                </CardOne>
+                <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/1/3/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
 
 
 
-              </Letter> */}
+
+                <CardTwo>
+
+
+                  <CardPicture src={results.two.image ? results.two.image : sampleShot2}></CardPicture>
+                  
+                  <CardTemplate src={cardTemplate}></CardTemplate>
+
+                  <CardNameOfRep>{results.two.name ? results.two.name : ""}</CardNameOfRep>
+
+
+                </CardTwo>
+                <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/2/3/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
+
+
+                <ShowLetterButton showCards={showCards} onClick={showLetterFunction}>
+                  Next Step  &gt;
+                </ShowLetterButton>
+                {/* <Letter>
+
+                  <h1>recipients:</h1>
+                  <h2 style={{gridArea: "2/1/3/3"}}>{results.one.email}</h2>
+                  <h2 style={{gridArea: "3/1/4/3"}}>{results.two.email}</h2>
+
+                  <h3 style={{gridArea: "4/1/5/3"}}>Dear Representatives/Senator,</h3>
+
+
+                  <p style={{gridArea: "5/1/6/3"}}>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
+                    I am writing on behalf of legalizing marijuana to all above the age of eighteen. 
+                    Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee. 
+                    Marijuana has never had a report of fatal use and the common use for medical purposes 
+                    has been proved and even infused into society today. Many states today have legalized 
+                    it's medical purposes because it has proven to help certain illnesses including glaucoma, 
+                    sclerosis, and cancers such as breast and brain cancer. Prohibition has only cost 
+                    billions of dollars and studies prove that it has not affected the use of marijuana, 
+                    in fact it has made it cheaper and more accessible. All the money used for prosecution 
+                    of small offenders can be used for tax revenues and ultimately save billions.
+                  </p>
+
+                  <div style={{gridArea: "6/1/7/3"}}>
+
+                    Sincerely, <br/>
+                    <sub>Your Name Here</sub> <br/>
+                    <span>{lastTermSearched}</span><br/>
+                    <sub>Your Email Here</sub> <br/>
+
+                  </div>
+
+
+                  <button style={{
+                    gridArea: "6/2/7/3",
+                    background: "#E3B55A",
+                    borderRadius: "10px",
+                    border: "none",
+                    width: "12em",
+                    height: "4em",
+                    justifySelf: "center",
+                    alignSelf: "center"}}>SEND</button>
+
+
+
+                </Letter> */}
 
 
               </ResultSection>
