@@ -639,30 +639,53 @@ const CardNameOfRep = styled.h1`
 
 const Letter = styled.div`
 
-grid-area: 1/4/6/-2;
+grid-area: 1/3/6/4;
 border-radius: 10px;
 background: white;
-margin: 15px 15px 0px 15px;
-grid-template-columns: 1fr 1fr;
+//margin: 15px 15px 0px 15px;
+grid-template-columns: 15% 15% 50%;
 grid-auto-rows: minmax(min-content, max-content);
-
+grid-gap: 8px;
 display: grid;
 padding: 20px;
 
+
+  .miniPic1{
+    grid-area: 1/1/4/2;
+    width: 80%;
+  }
+
+  .miniPic2{
+    grid-area: 1/2/4/3;
+    width: 80%;
+
+  }
+
   h1{
-    justify-self: center;
+    justify-self: start;
     font-size: .8rem;
-    grid-area: 1/1/2/3;
+    grid-area: 1/3/2/4;
     
   }
 
-  h2{
-
+  .email1{
     justify-self: center;
     font-size: .8em;
     font-weight: 300;
-    
+    grid-area: 2/3/3/4;
+
+
   }
+
+
+  .email2{
+    justify-self: center;
+    font-size: .8em;
+    font-weight: 300;
+    grid-area: 3/3/4/4;
+
+  }
+
 
   h3{
 
@@ -670,6 +693,7 @@ padding: 20px;
     font-size: .8em;
     font-weight: 500;
     margin-top: 15px;
+    grid-area: 4/1/5/4;
   }
 
   p{
@@ -678,6 +702,7 @@ padding: 20px;
     font-size: .8em;
     font-weight: 300;
     margin-top: 15px;
+    grid-area: 5/1/6/4;
 
   }
 
@@ -713,8 +738,8 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-  const [showCards, setShowCards] = React.useState (true);
-  const [showLetter, setShowLetter] = React.useState (false);
+  const [showCards, setShowCards] = React.useState (false);
+  const [showLetter, setShowLetter] = React.useState (true);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
 
@@ -1190,18 +1215,23 @@ function Act(props) {
                 <ShowLetterButton showCards={showCards} onClick={showLetterFunction}>
                   Next Step  &gt;
                 </ShowLetterButton>
-                <Letter>
+                
+
+
+              </ResultSection>
+
+              <Letter>
 
                   <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic1"/>
                   <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic2"/>
                   <h1>recipients:</h1>
-                  <h2 style={{gridArea: "2/1/3/3"}}>{results.one.email}</h2>
-                  <h2 style={{gridArea: "3/1/4/3"}}>{results.two.email}</h2>
+                  <h2 class="email1" >{results.one.email}</h2>
+                  <h2 class="email2" >{results.two.email}</h2>
 
-                  <h3 style={{gridArea: "4/1/5/3"}}>Dear Representatives/Senator,</h3>
+                  <h3>Dear Representatives/Senator,</h3>
 
 
-                  <p style={{gridArea: "5/1/6/3"}}>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
+                  <p>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
                     I am writing on behalf of legalizing marijuana to all above the age of eighteen. 
                     Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee. 
                     Marijuana has never had a report of fatal use and the common use for medical purposes 
@@ -1236,9 +1266,6 @@ function Act(props) {
 
 
                 </Letter>
-
-
-              </ResultSection>
                      
 
             </ActGrid>
