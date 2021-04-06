@@ -35,7 +35,7 @@ const ActWrapper = styled.div`
     //background-size: cover;
     position: relative;
     ////padding-bottom: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
     
 
 `;
@@ -53,7 +53,7 @@ const Mega = styled.img`
     //left: 12vw;
     width: 100%;
 
-    grid-area: 1/2/5/3;
+    grid-area: 1/2/6/3;
     align-self: center;
     justify-self: end;
     //margin-top: -50px;
@@ -154,7 +154,7 @@ const ActSubheader2 = styled.h2`
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 1vw;
   //line-height: 100%;
 
   grid-area: 3/3/4/-1;
@@ -205,6 +205,7 @@ const Form = styled.form`
   opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
   grid-area: 4/3/5/4;
   padding: 0px 20px;
+  border-radius: 5px;
 `;
 
 
@@ -222,6 +223,8 @@ const Button = styled.button`
   background-repeat: no-repeat;
   background-position: center; 
   border: 5px solid #e8e5e5;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
   //border: none;
   z-index: 999;
   cursor: pointer;
@@ -290,7 +293,7 @@ const FindMyRep = styled.button`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-radius: 0;
+  border-radius: 5px;
   border: 0;
 
   margin-left: 20px;
@@ -331,14 +334,14 @@ const ShowLetterButton = styled.button`
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-self: start;
-  border-radius: 3;
+  border-radius: 5px;
   border: 0;
 
   //margin-left: 20px;
-  margin-top: 20px;
+  margin-top: 25px;
 
   opacity: ${props => props.showCards ? "1" : "0"};
-  background: linear-gradient(to bottom, #5FCC61, #318e33);
+  //background: linear-gradient(to bottom, #5FCC61, #318e33);
   cursor: pointer;
 
 
@@ -482,7 +485,7 @@ const ResultSectionHeader = styled.h1`
   font-family: Poppins;
   //font-style: normal;
   //font-weight: 500;
-  font-size: clamp(36px, 4vw, 120px);
+  font-size: 3vw;
   //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
   
   
@@ -498,7 +501,7 @@ const ResultSectionHeader = styled.h1`
 
   white-space: nowrap; 
 
-  margin-bottom: 20px;
+  margin: 20px 0px;
 
 
 
@@ -551,6 +554,26 @@ const CardOne = styled.div`
   
 
 `;
+
+
+const CardOneSub = styled.sub`
+  
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  right: 3px;
+  //width: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: white;
+  font-size: .5em;
+  text-align: center;
+  padding: 3px 0px;
+  
+
+`;
+
+const CardTwoSub = styled(CardOneSub)``;
 
 const CardTwo = styled.div`
 
@@ -690,7 +713,7 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState (false);
   const [lastTermSearched, setLastTermSearched] = React.useState ('')
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
-  const [showCards, setShowCards] = React.useState (false);
+  const [showCards, setShowCards] = React.useState (true);
   const [showLetter, setShowLetter] = React.useState (false);
   const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
@@ -698,8 +721,8 @@ function Act(props) {
   
 
 
-  //const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
-  const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
+  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   
   
@@ -1046,7 +1069,7 @@ function Act(props) {
                                 display: "block",
                                 paddingLeft: "10px",
                                 fontSize: "12px",
-                                borderRadius: "2px",
+                                borderRadius: "5px",
                                 outline: "none"
                             }}
                             />
@@ -1132,7 +1155,7 @@ function Act(props) {
 
               <ResultSection showCards={showCards}>
 
-                <ResultSectionHeader>Results:</ResultSectionHeader>
+                <ResultSectionHeader>Your elected officials</ResultSectionHeader>
 
 
                 <CardOne>
@@ -1144,9 +1167,9 @@ function Act(props) {
 
                   <CardNameOfRep>{results.one.name ? results.one.name : ""}</CardNameOfRep>
 
-
+                  <CardOneSub>{results.one.fullDistrictTrunk}</CardOneSub>
                 </CardOne>
-                <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/1/3/2", justifySelf: "center"}}>{results.one.fullDistrictTrunk}</sub>
+                
 
 
 
@@ -1160,16 +1183,17 @@ function Act(props) {
 
                   <CardNameOfRep>{results.two.name ? results.two.name : ""}</CardNameOfRep>
 
-
+                  <CardTwoSub>{results.two.fullDistrictTrunk}</CardTwoSub>
                 </CardTwo>
-                <sub style={{fontSize: ".5em", alignSelf: "center", marginBottom: "4px", color: "white", gridArea: "2/2/3/3", justifySelf: "center"}}>{results.two.fullDistrictTrunk}</sub>
-
+                
 
                 <ShowLetterButton showCards={showCards} onClick={showLetterFunction}>
                   Next Step  &gt;
                 </ShowLetterButton>
-                {/* <Letter>
+                <Letter>
 
+                  <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic1"/>
+                  <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic2"/>
                   <h1>recipients:</h1>
                   <h2 style={{gridArea: "2/1/3/3"}}>{results.one.email}</h2>
                   <h2 style={{gridArea: "3/1/4/3"}}>{results.two.email}</h2>
@@ -1211,7 +1235,7 @@ function Act(props) {
 
 
 
-                </Letter> */}
+                </Letter>
 
 
               </ResultSection>
