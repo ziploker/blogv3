@@ -59,6 +59,7 @@ const Mega = styled.img`
     //margin-top: -50px;
     margin-right: 1em;
     //margin-bottom: 13px;
+    opacity: ${props => props.showLetter ?  "0" : "1"};
     ;
 
 `;
@@ -76,7 +77,7 @@ const ActGrid = styled.div`
   position: relative;
   //grid-template-columns: 43% 57%;
   grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
-  grid-template-rows: 120px 40px 50px 100px 50px;
+  grid-template-rows: 120px 40px 50px 100px 50px 1fr;
   
   grid-column-gap: .5em;  
 `;
@@ -639,15 +640,18 @@ const CardNameOfRep = styled.h1`
 
 const Letter = styled.div`
 
-grid-area: 1/3/6/4;
+grid-area: 1/2/7/4;
+width: 80%;
 border-radius: 10px;
 background: white;
-//margin: 15px 15px 0px 15px;
-grid-template-columns: 15% 15% 50%;
+margin: 60px auto 0 auto;
+grid-template-columns: 15% 15% 70%;
 grid-auto-rows: minmax(min-content, max-content);
 grid-gap: 8px;
 display: grid;
 padding: 20px;
+opacity: ${props => props.showLetter ? "1" : "0"};
+height: ${props => props.showLetter ? "auto" : "0px"};
 
 
   .miniPic1{
@@ -669,7 +673,7 @@ padding: 20px;
   }
 
   .email1{
-    justify-self: center;
+    justify-self: start;
     font-size: .8em;
     font-weight: 300;
     grid-area: 2/3/3/4;
@@ -679,7 +683,7 @@ padding: 20px;
 
 
   .email2{
-    justify-self: center;
+    justify-self: start;
     font-size: .8em;
     font-weight: 300;
     grid-area: 3/3/4/4;
@@ -703,6 +707,7 @@ padding: 20px;
     font-weight: 300;
     margin-top: 15px;
     grid-area: 5/1/6/4;
+    padding: 0px 30px;
 
   }
 
@@ -1167,7 +1172,7 @@ function Act(props) {
                 <FindMyRep showCards={showCards} showLetter={showLetter} type="submit" name="submint">
                   Lookup my Representatives
                 </FindMyRep>
-                <Mega src={mega}>
+                <Mega showLetter={showLetter} src={mega}>
 
                 </Mega>
 
@@ -1220,7 +1225,7 @@ function Act(props) {
 
               </ResultSection>
 
-              <Letter>
+              <Letter showLetter={showLetter}>
 
                   <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic1"/>
                   <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic2"/>
@@ -1247,20 +1252,22 @@ function Act(props) {
 
                     Sincerely, <br/>
                     <sub>Your Name Here</sub> <br/>
-                    <span>{lastTermSearched}</span><br/>
+                    
                     <sub>Your Email Here</sub> <br/>
 
                   </div>
 
 
                   <button style={{
-                    gridArea: "6/2/7/3",
-                    background: "#E3B55A",
+                    gridArea: "6/3/7/4",
+                    background: "#c33",
+                    color: "white",
                     borderRadius: "10px",
                     border: "none",
                     width: "12em",
                     height: "4em",
-                    justifySelf: "center",
+                    justifySelf: "end",
+                    marginRight: "30px",
                     alignSelf: "center"}}>SEND</button>
 
 
