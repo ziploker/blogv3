@@ -14,7 +14,7 @@ import greenCheck from '../../assets/images/greenCheck'
 import dummy_avatar from '../../assets/images/dummy_avatar'
 
 import { Card, Logo, Form, Input, Button, ErrorMsg, RedX, LoginWrapper, 
-  InputIcon, LogoWrapper, H2, FormItem, Label, ErrorWrapper} from './AuthForm';
+  InputIcon, LogoWrapper, H2, FormItem, Label, ErrorWrapper} from './pages/AuthForm';
 
 import axios from 'axios'
 import $ from 'jquery';

@@ -5,7 +5,7 @@ import mega from '../../assets/images/megav3.png'
 import cardTemplate from '../../assets/images/cardTemplate.png'
 import sampleShot from '../../assets/images/sampleShot.png'
 import sampleShot2 from '../../assets/images/sampleShot2.png'
-
+import '../../assets/stylesheets/sendButton'
 
 //import useDocumentScrollThrottled from './useDocumentScrollThrottled.jsx'
 import styled from 'styled-components'
@@ -36,7 +36,7 @@ const ActWrapper = styled.div`
     position: relative;
     ////padding-bottom: 50px;
     padding-bottom: 60px;
-    
+
 
 `;
 
@@ -66,29 +66,49 @@ const Mega = styled.img`
 
 const ActGrid = styled.div`
 
-  @media only screen and (max-width: 720px){
-        
-    grid-template-columns: 1fr;
-    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);     
+  /* @media only screen and (max-width: 720px){
 
-  }
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
+
+  } */
 
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
   grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
   grid-template-rows: 120px 40px 50px 100px 50px 1fr;
+
+  grid-column-gap: .5em;
+`;
+
+const ActSection = styled.section`
+
+  display: grid;
+  position: relative;
+  //grid-template-columns: 43% 57%;
+  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px)  minmax(350px, 600px)  minmax(20px, 1fr);
+  grid-template-rows: 120px 40px 50px 100px 50px 1fr;
+
+  grid-column-gap: .5em;
+  grid-area: 1/1/-1/-1;
+  transition: opacity .4s;
+
+  z-index: ${props => props.showCards || props.showLetter ? "0" : "10"};;
   
-  grid-column-gap: .5em;  
+
+
+
+
 `;
 
 const ActHeader = styled.h1`
 
-  @media only screen and (max-width: 720px){
+  /* @media only screen and (max-width: 720px){
 
     grid-area: 1/1/2/-1;
 
-  }
+  } */
 
     font-family: Poppins;
     font-style: normal;
@@ -102,27 +122,29 @@ const ActHeader = styled.h1`
     color: #FFFFFF;
     grid-area: 1/3/2/-1;
     align-self: end;
-    
+
     //line-height: 100%;
     margin: -10px 20px;
     padding-top: 20px;
-    z-index: 1;
+    //z-index: 1;
 
     opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
-    transition: opacity .4s;
     
+
+    
+
 
 
 `;
 
 const ActSubheader = styled.h1`
 
-@media only screen and (max-width: 720px){
+/* @media only screen and (max-width: 720px){
 
 grid-area: 2/1/3/-1;
 
 
-}
+} */
 
 font-family: Poppins;
 font-style: normal;
@@ -136,8 +158,11 @@ color: #E3B55A;
 margin: 0px 0px 0px 20px;
 
 opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
-transition: opacity .4s;
-    
+
+
+
+
+
 
 
 `;
@@ -145,12 +170,12 @@ transition: opacity .4s;
 
 const ActSubheader2 = styled.h2`
 
-  @media only screen and (max-width: 720px){
+  /* @media only screen and (max-width: 720px){
 
     grid-area: 3/1/4/-1;
 
 
-  }
+  } */
 
   font-family: Poppins;
   font-style: normal;
@@ -166,10 +191,12 @@ const ActSubheader2 = styled.h2`
   //line-height: 6vw;
   vertical-align: bottom;
 
-  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
-  transition: opacity .4s;
+  
+  
   align-self: start;
-    
+
+  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
+
 
 
 `;
@@ -177,11 +204,11 @@ const ActSubheader2 = styled.h2`
 
 const Form = styled.form`
 
-    @media only screen and (max-width: 720px){
+    /* @media only screen and (max-width: 720px){
 
     grid-area: 3/1/5/-1;
 
-  }
+  } */
 
   display: grid;
   position: relative;
@@ -189,31 +216,33 @@ const Form = styled.form`
   //grid-template-rows: minmax(min-content, max-content) minmax(50px, min-content);
   grid-template-areas:
     "input"
-   
+
     "status";
   justify-content: center;
   justify-self: start;
   align-self: center
   ;
-  
- 
+
+
   width: 100%;
   transition: opacity .4s;
   transition: opacity .4s;
-  
+
   //box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
   //margin-top: 72px;
-  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
+  
   grid-area: 4/3/5/4;
   padding: 0px 20px;
   border-radius: 5px;
+
+  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
 `;
 
 
 
 const Button = styled.button`
 
-  
+
   height: 40px;
   width: 50px;
   //grid-area: button;
@@ -222,25 +251,25 @@ const Button = styled.button`
   background-image: url( ${searchIconOrange});
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center; 
+  background-position: center;
   border: 5px solid #e8e5e5;
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
   //border: none;
-  z-index: 999;
+  //z-index: 999;
   cursor: pointer;
   color: black;
   position: absolute;
   right: 0;
-  z-index: 1002;
-  
+  //z-index: 1002;
+
   transition: background-image 1s;
   transition-timing-function: ease-in;
   filter: ${props => props.searchButtonActive ? 'grayscale(0%)' : 'grayscale(80%)'};
   //filter: ${props => props.searchButtonActive ? 'sepia(0%)' : 'sepia(60%)'};
 
   &:hover{
-    
+
     //background-image: url( ${searchIconOrange});transition: background-image 1s;
     transition-timing-function: ease-in;
     filter: grayscale(0%);
@@ -258,11 +287,11 @@ const Button = styled.button`
   //    background-color: #FFA500;
   //      opacity: .6;
   //      background-color: #eae6de;
-        
+
   //  }
   //}
 
-  
+
 `;
 
 const FindMyRep = styled.button`
@@ -299,14 +328,17 @@ const FindMyRep = styled.button`
 
   margin-left: 20px;
 
-  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
+  
+  cursor: pointer;
+  //z-index: 1;
 
+  opacity: ${props => props.showCards || props.showLetter ? "0" : "1"};
 
 
 
 `;
 
-const ShowLetterButton = styled.button`
+const ShowLetterButton = styled.div`
 
 
   grid-area: 5/1/6/3;
@@ -337,16 +369,49 @@ const ShowLetterButton = styled.button`
   align-self: start;
   border-radius: 5px;
   border: 0;
-
+  //cursor: pointer;
   //margin-left: 20px;
   margin-top: 25px;
 
-  opacity: ${props => props.showCards ? "1" : "0"};
+  opacity: ${props => props.showCards && props.resultFromFlorida == "true" ? "1" : "0"};
+  z-index: ${props => props.showCards && props.resultFromFlorida == "true" ? "10" : "-5"};
   //background: linear-gradient(to bottom, #5FCC61, #318e33);
+  //z-index: 1;
   cursor: pointer;
 
 
 `;
+
+const ShowLetterDeadEnd = styled.div`
+
+  opacity: ${props => props.showCards && props.resultFromFlorida == "true" ? "0" : "1"};
+  z-index: ${props => props.showCards && props.resultFromFlorida == "true" ? "-5" : "10"};
+  grid-area: 5/1/6/3;
+  color: white;
+  padding: 16px 0px 0px 0px;
+  margin: 0 auto;
+  justify-self: center;
+  align-self: center;
+  text-align: left;
+
+  a{
+    color: #e7c991;
+    font-size: .8em;
+
+    &:hover{
+    color: #ca9a41;
+
+  }
+
+  }
+
+  
+
+
+`;
+
+
+
 
 const CardOneInfo = styled.div`
 
@@ -379,14 +444,14 @@ const StatusBar = styled.div`
   opacity: 1;
   transition: opacity .4s;
   transition-timing-function: ease-in;
-  
+
 
 `;
 
 
 
 const StatusSpinner = styled.div`
-  
+
   max-height: ${ props => props.showStatusSpinner.toString() == "true" ? "100%" : "0px"};
   opacity: ${ props => props.showStatusSpinner.toString() == "true" ? "1" : "0"};
   transition: opacity .4s;
@@ -398,7 +463,7 @@ const StatusSpinner = styled.div`
 
 
 const CheckMark = styled.img`
-  
+
   max-height: ${ props => props.showStatusCheck.toString() == "true" ? "100%" : "0px"};
   opacity: ${ props => props.showStatusCheck.toString() == "true" ? "1" : "0"};
   transition: opacity .4s;
@@ -411,7 +476,7 @@ const CheckMark = styled.img`
 
 
 const ResultSpan = styled.div`
-  
+
   &:hover{
 
     background-color: #56c5cc;
@@ -430,7 +495,7 @@ const Span = styled.span`
   transition: opacity 2s ease-in;
   opacity: ${props => props.status.toString() == "Enter an address." ? "0" : "1"};
   color: white;
-            
+
 
 `;
 
@@ -441,24 +506,26 @@ const Span = styled.span`
 
 const ResultSection = styled.div`
 
-  @media only screen and (max-width: 720px){
+  /* @media only screen and (max-width: 720px){
 
     grid-area: 1/1/-1/-1;
     margin: 0px auto;
     padding: 0px 15px 32px 15px;
     grid-template-columns: minmax(100px, 171px) minmax(100px, 171px);
 
-  }
+  } */
 
   display: grid;
-  transition: opacity 2s linear;  
+  transition: opacity .4s;
+  //transition: opacity 2s linear;
   transform: ${props => props.showCards ? "translate(0)" : "transform:translate(9999px)"};
   opacity: ${props => props.showCards ? "1" : "0"};
+  z-index: ${props => props.showCards ? "10" : "-5"};
   grid-template-columns: minmax(150px, 150px) minmax(150px, 150px);
   grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content);
   //visibility: hidden;
   //grid-template-rows: ${props => props.showCards ? "minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr" : "0px 0px 0px 0px 0px"};
-  
+
   //grid-row-gap: .7em;
   grid-column-gap: .5em;
   padding-left: 20px;
@@ -473,14 +540,14 @@ const ResultSection = styled.div`
 
 const ResultSectionHeader = styled.h1`
 
-  @media only screen and (max-width: 720px){
+  /* @media only screen and (max-width: 720px){
 
   grid-area: 1/1/-1/-1;
-  
-    margin-bottom: 8px;
-  
 
-  }
+    margin-bottom: 8px;
+
+
+  } */
 
 
   font-family: Poppins;
@@ -488,11 +555,11 @@ const ResultSectionHeader = styled.h1`
   //font-weight: 500;
   font-size: 3vw;
   //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
-  
-  
+
+
 
   /* identical to box height, or 90px */
-  
+
   letter-spacing: -0.03em;
   color: #FFFFFF;
 
@@ -500,9 +567,16 @@ const ResultSectionHeader = styled.h1`
   justify-self: start;
   align-self: start;
 
-  white-space: nowrap; 
+  white-space: nowrap;
 
   margin: 20px 0px;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 
 
 
@@ -528,9 +602,16 @@ const ResultSectionSubHeader = styled.h2`
   grid-area: 2/1/3/3;
 
   justify-self: start;
-  white-space: nowrap; 
+  white-space: nowrap;
   line-height: 1em;
   margin-bottom: 15px;
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 
 `;
 
@@ -548,17 +629,19 @@ const CardOne = styled.div`
   justify-self: end;
   height: 200px;
 
-  
 
 
 
-  
+
+
+
+
 
 `;
 
 
 const CardOneSub = styled.sub`
-  
+
   position: absolute;
   left: 3px;
   top: 3px;
@@ -570,7 +653,14 @@ const CardOneSub = styled.sub`
   font-size: .5em;
   text-align: center;
   padding: 3px 0px;
-  
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
 
 `;
 
@@ -588,11 +678,11 @@ const CardTwo = styled.div`
   justify-self: end;
   height: 200px;
 
-  
 
 
 
-  
+
+
 
 `;
 
@@ -611,7 +701,7 @@ const CardPicture = styled.img`
   width: 100%;
   height: 100%;
   border-radius: 13px;
-  
+
 
 
 `;
@@ -630,7 +720,14 @@ const CardNameOfRep = styled.h1`
 
   grid-area: 2/1/3/2;
   //word-spacing: -2px;
-  
+
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
 
 
 
@@ -642,41 +739,114 @@ const Letter = styled.div`
 
 grid-area: 1/2/7/4;
 width: 80%;
+min-width: 622px;
 border-radius: 10px;
 background: white;
 margin: 60px auto 0 auto;
-grid-template-columns: 15% 15% 70%;
+grid-template-columns: min-content 130px 130px 1fr;
 grid-auto-rows: minmax(min-content, max-content);
-grid-gap: 8px;
+//grid-gap: 8px;
 display: grid;
 padding: 20px;
 opacity: ${props => props.showLetter ? "1" : "0"};
 height: ${props => props.showLetter ? "auto" : "0px"};
+z-index: ${props => props.showLetter ? "10" : "-5"};
+transition: opacity .4s;
 
+  .LetterTopOverlay{
+    //background: #1d0a0a;
+    opacity: .6;
+    grid-area: 1/1/4/5;
+    margin: 0;
+    height: 2px;
+    align-self: end;
+    //border-bottom: 1px solid gray;
+
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,0.11918764087666311) 0%, rgba(85,85,85,1) 49%, rgba(2,0,36,0.14439772491027658) 100%);
+
+  }
+
+  .LetterSideOverlay{
+    background: #494545;
+    opacity: .4;
+    grid-area: 4/1/7/2;
+    margin: 0;
+    //width: 25px;
+    //border-radius: 90px;
+    justify-self: center;
+    //z-index: 1;
+
+
+  }
+
+  .LetterSideOverlay2{
+    background: #bea2a2;
+    opacity: .3;
+    grid-area: 1/1/7/2;
+    margin: 0;
+    //width: 25px;
+    //border-radius: 90px;
+    justify-self: center;
+
+  }
 
   .miniPic1{
-    grid-area: 1/1/4/2;
-    width: 80%;
+    grid-area: 1/2/4/3;
+    width: 100%;
+    height: 169px;
+    //z-index: 1;
+    min-width: 52px;
+    padding: 5px;
+    border-radius: 10px;
+    //border: 1px solid black;
+
   }
 
   .miniPic2{
-    grid-area: 1/2/4/3;
-    width: 80%;
+    grid-area: 1/3/4/4;
+    width: 100%;
+    height: 169px;
+    //z-index: 1;
+    min-width: 52px;
+    padding: 5px;
+    border-radius: 10px;
+    //border: 1px solid black;
+
+  }
+
+  .LetterRecipientsWrapper{
+    grid-area: 1/4/4/5;
+    margin: 0;
+
 
   }
 
   h1{
     justify-self: start;
-    font-size: .8rem;
-    grid-area: 1/3/2/4;
-    
+    //font-size: .8rem;
+    //grid-area: 1/4/4/5;
+    //z-index: 1;
+    //line-height: 30px;
+    //display: inline-block;
+    margin: 10px auto 16px auto;
+    justify-self: center;
+    text-align: center;
+
   }
 
   .email1{
     justify-self: start;
-    font-size: .8em;
+    //font-size: .8em;
     font-weight: 300;
-    grid-area: 2/3/3/4;
+    //grid-area: 1/4/4/5;
+    //z-index: 1;
+    //line-height: 30px;
+    //display: inline-block;
+    margin-bottom: 8px;
+    justify-self: center;
+    text-align: center;
+
 
 
   }
@@ -684,9 +854,14 @@ height: ${props => props.showLetter ? "auto" : "0px"};
 
   .email2{
     justify-self: start;
-    font-size: .8em;
+    //font-size: .8em;
     font-weight: 300;
-    grid-area: 3/3/4/4;
+    //grid-area: 1/4/4/5;
+    //z-index: 1;
+    //line-height: 30px;
+    //display: inline-block;
+    justify-self: center;
+    text-align: center;
 
   }
 
@@ -697,7 +872,7 @@ height: ${props => props.showLetter ? "auto" : "0px"};
     font-size: .8em;
     font-weight: 500;
     margin-top: 15px;
-    grid-area: 4/1/5/4;
+    grid-area: 4/2/5/5;
   }
 
   p{
@@ -706,15 +881,17 @@ height: ${props => props.showLetter ? "auto" : "0px"};
     font-size: .8em;
     font-weight: 300;
     margin-top: 15px;
-    grid-area: 5/1/6/4;
+    grid-area: 5/2/6/5;
     padding: 0px 30px;
+    line-height: 1.8em;
 
   }
 
   div{
-    font-size: .6em;
+    font-size: .9em;
     font-weight: 300;
-    margin-top: 15px;
+    //min-height: 100px;
+    
 
   }
 
@@ -722,17 +899,65 @@ height: ${props => props.showLetter ? "auto" : "0px"};
 
 `;
 
-function Act(props) {
+
+const FlashError = styled.h4`
+
+  
+  font-size: .6em;
+  //position: absolute;
+  //bottom: 10px;
+  //right: 50%;
+  //transform: translateX(-50%);
+  grid-area: 7/4/8/5;
+  justify-self: center;
+  display: ${props => props.appState.loggedInStatus == "NOT_LOGGED_IN" ? "initial" : "none"};
+
+  a{
+
+    color: blue;
+
+    &:hover{
+
+      color: orange;
+    }
+  }
+`;
+
+const FlashSuccess = styled.h4`
+
+  font-size: .6em;
+  //position: absolute;
+  //right: 60px;
+  //top: 50%;
+  //transform: translateY(-50%);
+  grid-area: 7/4/8/5;
+  justify-self: center;
+  display: ${props => props.successFlag ? "initial" : "none"}; 
+
+
+`;
+
+
+const SendButton = styled.a`
 
    
+
+`;
+
+
+
+
+function Act(props) {
+
+
   console.log("ACT________________PROPS", location.pathname)
   //console.log("HEADER_PROPS solo", location.pathname)
 
 
   const [formInfo, setFormInfo] = React.useState({
-  
+
       address: ''
-    
+
   })
 
   const ref = useRef();
@@ -745,26 +970,54 @@ function Act(props) {
   const [coordinates, setCoordinates] = React.useState ({lat: '', lng: ''})
   const [showCards, setShowCards] = React.useState (false);
   const [showLetter, setShowLetter] = React.useState (true);
-  const [resultFromFlorida, setResultFromFlorida] = React.useState(true)
+  const [resultFromFlorida, setResultFromFlorida] = React.useState(false)
   const [sendButtonClass, setSendButtonClass] = React.useState("button error")
+  const sendButtonRef = useRef(null);
 
+  const [flashMsg, setFlashMsg] = React.useState("")
+  const [successFlag, setSuccessFlag] = React.useState(false)
   
+
+
 
 
   const [results, setResults] = React.useState( {"one":{"resultFromFlorida":"true","name":"Juan Alfonso Fernandez-Barquin","firstName":"","lastName":"","image":"https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg","id":"ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446","email":"JuanF.Barquin@myfloridahouse.gov","chamber":"House","party":"Republican","parent":"Florida Legislature","district":"119","fullDistrict":"Florida State House district 119","fullDistrictTrunk":"Florida State House"},"two":{"name":"Annette Taddeo","firstName":"Annette","lastName":"Taddeo","image":"http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg","id":"ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7","email":"taddeo.annette.web@flsenate.gov","chamber":"Senate","party":"Democrat","parent":"Florida Legislature","district":"40","fullDistrict":"Florida State Senate  ","fullDistrictTrunk":"Florida State Senate"}});
   //const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
+  function loginFromDeadEnd(e){
+
+    e.preventDefault();
+  
+   
+    
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   
   
+    props.setLoginClicked(true)
+    props.setOpenSideMenu(false)
+  }
+
+  function signupFromDeadEnd(e){
+
+    e.preventDefault();
   
+   
+    
+    
+  }
+
+
   // to activate the input field while typing
-   
-   
+
+
     function activateField(e) {
-    
-    
+
+
     setSearchButtonActive( true)
-  
+
   }
 
   // to deactivate input only if it's empty
@@ -772,30 +1025,30 @@ function Act(props) {
     if (e.target.value == ""){
     setSearchButtonActive( false)
   }
-    
+
   }
 
-  
+
 
   //search options for 'react places autocomplete
   const searchOptions = {
     componentRestrictions: { country: ['us'] }
   }
-  
+
   //address selected from dropdown box///////////////////  HANDLE_SELECT  /////////
   const handleSelect = address => {
-   
+
     //populate the input with the address selected from 'react places autocomplete'
-    setFormInfo( {address: address} ) 
-    
-    
+    setFormInfo( {address: address} )
+
+
     //get the lat/lng of the address selected and save to state
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-        
+
         setCoordinates({
-        
+
           lat: latLng.lat,
           lng: latLng.lng
 
@@ -807,19 +1060,19 @@ function Act(props) {
       })
   };
 
-  
+
   ///SEARCH BUTTON CLICKED///////////////////////////////// HANDLE_ADD  //////////
   const handleAdd = e => {
 
-    
+
 
     //user enters address but doesnt choose one from "react places autocomplete"
     //and thus bypasses handkeSelect method, which gets the lat lng, so get lat lan otherway
     let secondTryLat = ''
     let secondTryLng = ''
-    
+
     e.preventDefault();
-    
+
     if ( validForm() ) {
 
 
@@ -839,33 +1092,33 @@ function Act(props) {
       }
 
 
-      
+
       //set current Search term state from input
       setLastTermSearched(formInfo.address)
-      
+
       //let user know somethings happening
       setStatus('....may take up to 60 seconds')
-      
+
       setShowStatusSpinner(true)
-     
-      
+
+
       //get formdata ready to send to server
       formData.append('event[address]', formInfo.address);
-      
-      
-      //lat lng will be empty if user manually enters address instead if 
+
+
+      //lat lng will be empty if user manually enters address instead if
       //selecting address from react places autocompete
       if (coordinates.lat == '' || coordinates.lng == ''){
-        
+
         geocodeByAddress(formInfo.address)
           .then(results => getLatLng(results[0]))
           .then(latLng => {
-        
+
             secondTryLat = latLng.lat
             secondTryLng = latLng.lng
-            
+
             const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-            
+
             fetch('/lookup', {
               method: 'post',
               dataType: "text",
@@ -884,29 +1137,29 @@ function Act(props) {
             .then(response => response.json() )
             .then(data => {
               //props.setStatus("Search Complete!!")
-              
+
               //info message under the address search input box
               setStatus("")
 
               //message on bullet 1
-              
+
               //props.setBullet1msg("Search Complete!")
               setShowStatusSpinner(false)
               //props.setShowStatusCheck(true)
               setShowCards(true)
-              
+
               //props.setBullet1("COMPLETED")
-              
+
               setResults(data)
-              
+
               setResultFromFlorida(data.one.resultFromFlorida.toString())
 
               let flag = data.one.resultFromFlorida.toString()
 
               console.log("FLAG IS "+ flag )
 
-              if (flag == "false") {
-                
+              if (flag == "false") {1
+
                 //props.setBullet2msg("Non-Florida result");
                 //props.setBullet2("COMPLETED")
                 //props.setShowStatusCheck2(true)
@@ -915,23 +1168,23 @@ function Act(props) {
                 //props.setShowSteps(true)
 
               }
-              
+
             })
-        
+
           }).catch(error => {
-            
+
             setStatus("No results found. Check address")
             setShowStatusSpinner(false)
             console.log("Error", error)
-        
+
           })
 
 
       }else{
-      
-       
+
+
         console.log("lat was NOT empty")
-        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content"); 
+        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
         fetch('/lookup', {
           method: 'post',
           dataType: "text",
@@ -955,11 +1208,11 @@ function Act(props) {
           setShowStatusSpinner(false)
           //props.setShowStatusCheck(true)
           setShowCards(true)
-          
+
           //props.setBullet1("COMPLETED")
-          
+
           setResults(data)
-          
+
           setResultFromFlorida(data.one.resultFromFlorida.toString())
 
           let flag = data.one.resultFromFlorida.toString()
@@ -967,24 +1220,24 @@ function Act(props) {
           console.log("FLAG IS "+ flag )
 
           if (flag == "false") {
-                
+
             //props.setBullet2msg("non-Florida result");
             //props.setBullet2("COMPLETED")
             //props.setShowStatusCheck2(true)
-            
+
           }else{
             //props.setBullet2msg("Send Message");
             //props.setShowSteps(true);
 
           }
-          
+
         })
       }
-      
+
     }
   }
 
-  
+
   ////////////////////////////////////////////////   VALID_FORM  //////
   const validForm = () => {
     if (formInfo.address == "" ){
@@ -992,9 +1245,9 @@ function Act(props) {
       //props.setShowStatusCheck(false)
 
       setTimeout( () => {setStatus("")}, 2000 )
-      
+
       return false;
-    
+
     }else if(formInfo.address == lastTermSearched){
       setStatus("Enter a different address.")
       //props.setShowStatusCheck(false)
@@ -1007,61 +1260,110 @@ function Act(props) {
 
   const handleChange2 = event => {
     console.log("handle change 222")
-    
+
     //resets search if user erases first search term
     if (event != lastTermSearched){
 
       setStatus("")
       //setShowStatusCheck(false)
-    
-    } 
-    
-    
-    setFormInfo({ 
+
+    }
+
+
+    setFormInfo({
       address: event
     });
-    
+
 
     //if (!formInfo.address ){
-      
+
     //  setSearchButtonActive( true)
     //} else{
 
     //  setSearchButtonActive( false)
 
     //}
-      
+
   }
 
   function showLetterFunction(){
 
     setShowCards(false);
     setShowLetter(true);
+    console.log("triggerrrrrrr")
   }
+
+  function sendLetterFunction(){
+
+
+    console.log("send?LetterFunct$#%Ton")
+  }
+
+  function resetSearch(e){
+
+    e.preventDefault();
+    setShowCards(false);
+    setShowLetter(false);
+  }
+
+
+
+  const animateButton = function(e) {
+
+    e.preventDefault;
+    //reset animation
+    //e.target.classList.remove('animate');
     
+    //e.target.classList.add('animate');
+    if (props.appState.loggedInStatus == "NOT_LOGGED_IN"){
+      setSendButtonClass("button error animate")
+
+      setTimeout(function(){
+        //setFlashMsg('<a href="#" onClick={loginFromDeadEnd}>Login</a> to continue')
+        //e.target.classList.remove('animate')
+      },4000);
       
+    
+    }else{
+
+      console.log("rrrrrrrrrrrrrrrrrrrrrr")
+      setSendButtonClass("button success animate")
+
+      setTimeout(function(){
+        setSuccessFlag(true);
+      },3500);
+    }
+    
+  };
+
+
+ 
+
+
     return (
-        
+
         <ActWrapper>
 
-            
+
 
           <ActGrid>
-                <ActHeader showCards={showCards} showLetter={showLetter}>ACT NOW</ActHeader>
+
+              <ActSection showCards={showCards} showLetter={showLetter}>
+                <ActHeader showCards={showCards} showLetter={showLetter} >ACT NOW</ActHeader>
                 <ActSubheader showCards={showCards} showLetter={showLetter}>Contact Your State Representatives </ActSubheader>
                 <ActSubheader2 showCards={showCards} showLetter={showLetter}>Enter an address below to get started. </ActSubheader2>
 
                 <Form className="form-inline" onSubmit={handleAdd} showCards={showCards} showLetter={showLetter} >
-        
+
                     <PlacesAutocomplete
                         value={formInfo.address}
                         onChange={handleChange2}
                         onSelect={handleSelect}
                         searchOptions={searchOptions}
                     >
-                        
+
                         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-                            
+
                         <div style={{
                             width: "100%",
                             border: "medium none !important",
@@ -1075,10 +1377,10 @@ function Act(props) {
                         }}>
 
                             <Button searchButtonActive={searchButtonActive} disabled={false} type="submit" className="btn btn-primary"> </Button>
-                            
 
-                            
-                            <input 
+
+
+                            <input
                             {...getInputProps({
                                 placeholder: '123 Main St, Miami FL, 33155',
                                 className: 'location-search-input',
@@ -1089,10 +1391,10 @@ function Act(props) {
                                 onFocus: activateField,
                                 onBlur: disableField,
                                 ref: ref
-                                
+
                             })}
                             style={{
-                                width: "100%", 
+                                width: "100%",
                                 height: "40px",
                                 boxShadow: "0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)",
                                 border: "honeydew",
@@ -1103,9 +1405,9 @@ function Act(props) {
                                 outline: "none"
                             }}
                             />
-                            
-                            
-                            <div 
+
+
+                            <div
                             style={{
                                 position: "absolute",
                                 zIndex: "1000",
@@ -1119,69 +1421,62 @@ function Act(props) {
                                 borderRadius: "0 0 2px 2px"
                             }}
                             >
-                                
+
                             {loading && <div>Loading...</div>}
-                            
-                            
+
+
                             {suggestions.map(suggestion => {
                                 console.log(suggestions.values().next().value.description)
                                 //props.setFirstMatch(suggestions.values().next().value.description)
-                            
+
                                 const style = suggestion.active
                                 ? { backgroundColor: '#5FCC61', cursor: 'pointer' }
                                 : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                                
-                                
+
+
                                 return (
-                                
+
                                 <div {...getSuggestionItemProps(suggestion, {style})}>
-                                    
+
                                     <ResultSpan>{suggestion.description}</ResultSpan>
-                                
+
                                 </div>
-                                
+
                                 )
-                            
+
                             })}
-                            
+
                             </div>
                         </div>
                         )}
                     </PlacesAutocomplete>
-                    
 
-                    
-                    
+
+
+
                     <StatusHolder>
-                        
+
                         <StatusBar>
-                        
+
                         <Span status={status}> {status}</Span>
-                        
+
                         </StatusBar>
-                    
+
                         <StatusSpinner showStatusSpinner={showStatusSpinner}>
                         <Spinner name='wave' color='#87d388' />
                         </StatusSpinner>
 
-                    </StatusHolder>   
-                    
-                    
-                        
+                    </StatusHolder>
+
+
+
                 </Form>
                 <FindMyRep showCards={showCards} showLetter={showLetter} type="submit" name="submint">
                   Lookup my Representatives
                 </FindMyRep>
-                <Mega showLetter={showLetter} src={mega}>
+                <Mega showLetter={showLetter} src={mega}></Mega>
 
-                </Mega>
-
-
-                    {/* 
-                    <ResultCardOne showCards={showCards} results={results} />
-                    <CardOneInfo><sub style={{fontSize: ".7em"}}>{results.one.fullDistrictTrunk}</sub></CardOneInfo>
-                     */}
-
+              </ActSection>
 
               <ResultSection showCards={showCards}>
 
@@ -1192,14 +1487,14 @@ function Act(props) {
 
 
                   <CardPicture src={results.one.image ? results.one.image : sampleShot2}></CardPicture>
-                  
+
                   <CardTemplate src={cardTemplate}></CardTemplate>
 
                   <CardNameOfRep>{results.one.name ? results.one.name : ""}</CardNameOfRep>
 
                   <CardOneSub>{results.one.fullDistrictTrunk}</CardOneSub>
                 </CardOne>
-                
+
 
 
 
@@ -1208,58 +1503,93 @@ function Act(props) {
 
 
                   <CardPicture src={results.two.image ? results.two.image : sampleShot2}></CardPicture>
-                  
+
                   <CardTemplate src={cardTemplate}></CardTemplate>
 
                   <CardNameOfRep>{results.two.name ? results.two.name : ""}</CardNameOfRep>
 
                   <CardTwoSub>{results.two.fullDistrictTrunk}</CardTwoSub>
                 </CardTwo>
-                
 
-                <ShowLetterButton showCards={showCards} onClick={showLetterFunction}>
+
+                <ShowLetterButton resultFromFlorida={resultFromFlorida} showCards={showCards} onClick={showLetterFunction}>
                   Next Step  &gt;
                 </ShowLetterButton>
-                
+
+                <ShowLetterDeadEnd resultFromFlorida={resultFromFlorida} showCards={showCards}>
+
+                  Unfortunately, emailing officials through FloridaBlaze 
+                  is only available in Florida. 
+                 
+                 <a href="#" onClick={resetSearch}>Try another search.</a>
+
+                </ShowLetterDeadEnd>
+
 
 
               </ResultSection>
 
               <Letter showLetter={showLetter}>
 
-                  <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic1"/>
-                  <img src={results.one.image ? results.one.image : sampleShot2} class="miniPic2"/>
-                  <h1>recipients:</h1>
-                  <h2 class="email1" >{results.one.email}</h2>
-                  <h2 class="email2" >{results.two.email}</h2>
+                  <div className="LetterTopOverlay"></div>
+                  <div className="LetterSideOverlay"></div>
+                  <div className="LetterSideOverlay2"></div>
+
+                  <img src={results.one.image ? results.one.image : sampleShot2} className="miniPic1"/>
+                  <img src={results.two.image ? results.two.image : sampleShot2} className="miniPic2"/>
+
+                  <div className="LetterRecipientsWrapper">
+                    <h1>recipients</h1>
+                    <h2 className="email1" >{results.one.email}</h2>
+                    <h2 className="email2" >{results.two.email}</h2>
+                  </div>
 
                   <h3>Dear Representatives/Senator,</h3>
 
 
-                  <p>I am a constituant of (Florida State House district 20/Florida State Senate distr ict 8).
-                    I am writing on behalf of legalizing marijuana to all above the age of eighteen. 
-                    Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee. 
-                    Marijuana has never had a report of fatal use and the common use for medical purposes 
-                    has been proved and even infused into society today. Many states today have legalized 
-                    it's medical purposes because it has proven to help certain illnesses including glaucoma, 
-                    sclerosis, and cancers such as breast and brain cancer. Prohibition has only cost 
-                    billions of dollars and studies prove that it has not affected the use of marijuana, 
-                    in fact it has made it cheaper and more accessible. All the money used for prosecution 
+                  <p>I am a constituant of (<i><b style={{fontSize: ".8em"}}>{results.one.fullDistrict}, {results.one.fullDistrict}</b></i>).
+                    I am writing on behalf of legalizing marijuana to all above the age of eighteen.
+                    Marijuana is as much a recreational drug as alcohol, tobacco, and even coffee.
+                    Marijuana has never had a report of fatal use and the common use for medical purposes
+                    has been proved and even infused into society today. Many states today have legalized
+                    it's medical purposes because it has proven to help certain illnesses including glaucoma,
+                    sclerosis, and cancers such as breast and brain cancer. Prohibition has only cost
+                    billions of dollars and studies prove that it has not affected the use of marijuana,
+                    in fact it has made it cheaper and more accessible. All the money used for prosecution
                     of small offenders can be used for tax revenues and ultimately save billions.
                   </p>
 
-                  <div style={{gridArea: "6/1/7/3"}}>
+                  <div style={{padding: "30px", justifySelf: "start", gridArea: "6/2/7/5"}}>
 
                     Sincerely, <br/>
                     <sub>Your Name Here</sub> <br/>
-                    
+
                     <sub>Your Email Here</sub> <br/>
 
                   </div>
 
+                  
+                  <div style={{
+                    gridArea: "6/4/7/5",
+                    alignSelf: "center",
+                    justifySelf: "end",
+                    marginRight: "15px",
+                    position: "relative"}}>
+                    
+                    <SendButton>
+                      
+                      
+                      <div className="wrapper">
+                        <div ref={sendButtonRef} className="block" onClick={animateButton}><button className={sendButtonClass}>Send</button></div>
+                        
+                      </div>
+                    </SendButton>
+                  </div>
 
-                  <button style={{
-                    gridArea: "6/3/7/4",
+
+
+                  {/* <button style={{
+                    ,
                     background: "#c33",
                     color: "white",
                     borderRadius: "10px",
@@ -1268,18 +1598,22 @@ function Act(props) {
                     height: "4em",
                     justifySelf: "end",
                     marginRight: "30px",
-                    alignSelf: "center"}}>SEND</button>
+                    alignSelf: "center",
+                    cursor: "pointer"}} onClick={sendLetterFunction}>SEND</button>
+ */}
 
+                    <FlashError appState={props.appState}><a href="#" onClick={loginFromDeadEnd}>Login</a> or <a href="#" onClick={props.executeScrollForSection2}>Signup</a> to continue.</FlashError>
+                    <FlashSuccess appState={props.appState} successFlag={successFlag}>Email sent!!</FlashSuccess>
 
 
                 </Letter>
-                     
+
 
             </ActGrid>
 
 
 
-            
+
         </ActWrapper>
     )
 }
