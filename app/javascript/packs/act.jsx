@@ -903,13 +903,14 @@ transition: opacity .4s;
 const FlashError = styled.h4`
 
   
-  font-size: .6em;
+  font-size: .5em;
   //position: absolute;
   //bottom: 10px;
   //right: 50%;
   //transform: translateX(-50%);
   grid-area: 7/4/8/5;
-  justify-self: center;
+  justify-self: end;
+  margin-right: 15px;
   display: ${props => props.appState.loggedInStatus == "NOT_LOGGED_IN" ? "initial" : "none"};
 
   a{
@@ -925,13 +926,14 @@ const FlashError = styled.h4`
 
 const FlashSuccess = styled.h4`
 
-  font-size: .6em;
+  font-size: .5em;
   //position: absolute;
   //right: 60px;
   //top: 50%;
   //transform: translateY(-50%);
   grid-area: 7/4/8/5;
-  justify-self: center;
+  margin-right: 15px;
+  justify-self: end;
   display: ${props => props.successFlag ? "initial" : "none"}; 
 
 
@@ -1602,7 +1604,7 @@ function Act(props) {
                     cursor: "pointer"}} onClick={sendLetterFunction}>SEND</button>
  */}
 
-                    <FlashError appState={props.appState}><a href="#" onClick={loginFromDeadEnd}>Login</a> or <a href="#" onClick={props.executeScrollForSection2}>Signup</a> to continue.</FlashError>
+                    <FlashError appState={props.appState}>** Please <a href="#" onClick={loginFromDeadEnd}>Login</a> or <a href="#" onClick={props.executeScrollForSection2}>Signup</a> to continue.</FlashError>
                     <FlashSuccess appState={props.appState} successFlag={successFlag}>Email sent!!</FlashSuccess>
 
 
