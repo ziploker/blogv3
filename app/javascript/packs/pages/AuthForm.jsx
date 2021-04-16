@@ -65,6 +65,10 @@ const Label = styled.label`
   
   
   transform: ${props => props.className == "field-active" ? "translateY(-22px)" : 0};
+  //transform: translateY(-22px);
+  padding: 5px 20px;
+  background-color: white;
+
   font-size: .6em;
   
   text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
