@@ -3,16 +3,21 @@ import styled from 'styled-components';
 const Card = styled.div`
   box-sizing: border-box;
   max-width: 430px;
+  width: 80vw;
   margin-bottom: 20px;
   //padding: 0 2rem;
   
   //margin-top: 100px;
+  padding: 40px 0px 0px 0px;
 
   background-color: #fff;
   border: 1px solid transparent;
   
   box-shadow: 0 1px 1px rgba(0,0,0,0.05);
   border-radius: 8px;
+
+  justify-self: center;
+  align-self: center;
 `;
 
 const H2 = styled.h2`
@@ -44,8 +49,8 @@ const FormItem = styled.div`
 
 const Label = styled.label`
 
-  height: 100%;
-  line-height: 44px;
+  //height: 100%;
+  //line-height: 44px;
   
   color: #62748e;
   
@@ -64,10 +69,11 @@ const Label = styled.label`
   
   
   
-  transform: ${props => props.className == "field-active" ? "translateY(-22px)" : 0};
-  //transform: translateY(-22px);
-  padding: 5px 20px;
+  //transform: ${props => props.className == "field-active" ? "translateY(-22px)" : 0};
+  transform: translateY(-11px);
+  padding: 2px 10px;
   background-color: white;
+  border-radius: 10px;
 
   font-size: .6em;
   
@@ -170,7 +176,7 @@ const LoginWrapper = styled.div`
   
   align-items: center;
   justify-content: center;
-  grid-template-columns: minmax(200px, 430px);
+  grid-template-columns: minmax(170px,350px) minmax(340px,600px);
   
   padding-top: 60px;
   padding-bottom: 20px;
