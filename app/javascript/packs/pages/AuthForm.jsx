@@ -60,7 +60,7 @@ const Label = styled.label`
 
   display: inline-block;
   position:absolute;
-  left: 52px;
+  left: 42px;
   
   transition: all 150ms ease-in;
   color: #9FA5C4;

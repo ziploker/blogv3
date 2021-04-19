@@ -510,7 +510,7 @@ const handleAdd = e => {
                 
                 />
                 
-                <h3 style={{marginLeft: "5px", fontSize: ".6em", color: "white"}} htmlFor="opt_in" >Opt In to receive e-mails from FloridaBlaze </h3>
+                <h3 style={{marginLeft: "5px", fontSize: ".6em", color: "gray"}} htmlFor="opt_in" >Opt In to receive e-mails from FloridaBlaze </h3>
             </div>
           
           </Form>
