@@ -65,11 +65,13 @@ const ActGrid = styled.div`
 
   } */
 
+  
+
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
   grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
-  grid-template-rows: 120px 40px 50px 100px 50px 1fr;
+  //grid-template-rows: 120px 40px 50px 100px 50px 1fr;
 
   grid-column-gap: 0.5em;
 `;
@@ -422,6 +424,16 @@ const ResultSection = styled.div`
 
   } */
 
+
+  @media only screen and (max-width: 1000px){
+
+    grid-area: 1/1/-1/-1;
+    margin: 0px auto;
+    //padding: 0px 15px 32px 15px;
+    grid-template-columns: minmax(150px, 150px) minmax(150px, 150px)
+
+  }
+
   display: grid;
   transition: opacity 0.4s;
   //transition: opacity 2s linear;
@@ -445,14 +457,9 @@ const ResultSection = styled.div`
 `;
 
 const ResultSectionHeader = styled.h1`
-  /* @media only screen and (max-width: 720px){
+  
+  
 
-  grid-area: 1/1/-1/-1;
-
-    margin-bottom: 8px;
-
-
-  } */
 
   font-family: Poppins;
   //font-style: normal;
@@ -594,6 +601,17 @@ const CardNameOfRep = styled.h1`
 `;
 
 const Letter = styled.div`
+
+
+  @media only screen and (max-width: 1000px){
+
+    grid-area: 4/1/7/-1;
+    margin: 0px auto;
+    //padding: 0px 15px 32px 15px;
+    //grid-template-columns: minmax(150px, 150px) minmax(150px, 150px)
+
+  }
+
   //grid-area: 1/2/7/4;
   grid-area: 3/3/7/4;
   width: 80%;
@@ -601,7 +619,7 @@ const Letter = styled.div`
   border-radius: 10px;
   background: white;
   //margin: 60px auto 0 auto;
-  grid-template-columns: min-content 130px 130px 1fr;
+  grid-template-columns: 0px 130px 130px 1fr;
   grid-auto-rows: minmax(min-content, max-content);
   //grid-gap: 8px;
   display: grid;
