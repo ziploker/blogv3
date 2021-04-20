@@ -38,16 +38,21 @@ const ActWrapper = styled.div`
 `;
 
 const Mega = styled.img`
-  @media only screen and (max-width: 720px) {
+  /* @media only screen and (max-width: 720px) {
     grid-area: 1/1/2/-1;
     display: none;
-  }
+  } */
+
+  /* @media only screen and (max-width: 1000px) {
+    //grid-area: 1/1/2/-1;
+    display: none;
+  } */
 
   //position: absolute;
   //top: -5vh;
   //left: 12vw;
   width: 100%;
-
+  display: ${props => props.showCards ? "none" : "inherit"};
   grid-area: 1/2/6/3;
   align-self: center;
   justify-self: end;
@@ -58,12 +63,12 @@ const Mega = styled.img`
 `;
 
 const ActGrid = styled.div`
-  /* @media only screen and (max-width: 720px){
+  @media only screen and (max-width: 1000px){
 
     grid-template-columns: 1fr;
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
 
-  } */
+  }
 
   
 
@@ -430,9 +435,9 @@ const ResultSection = styled.div`
     grid-area: 1/1/-1/-1;
     margin: 0px auto;
     //padding: 0px 15px 32px 15px;
-    grid-template-columns: 1fr 200px 200px 1fr;
+    grid-template-columns: minmax(100px, 200px) minmax(100px, 200px) 1fr;
     width: 100vw;
-    max-width: 70vw;
+    //max-width: 70vw;
 
   }
 
@@ -450,7 +455,7 @@ const ResultSection = styled.div`
 
   //grid-row-gap: .7em;
   grid-column-gap: 0.5em;
-  padding-left: 20px;
+  padding: 0px 20px;
 
   //padding: ${(props) => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px"};
 
@@ -462,7 +467,7 @@ const ResultSectionHeader = styled.h1`
 
   @media only screen and (max-width: 1000px){
 
-    grid-area: 1/2/2/3;
+    grid-area: 1/1/2/3;
 
 
   }
@@ -528,20 +533,38 @@ const ResultSectionSubHeader = styled.h2`
 `;
 
 const CardOne = styled.div`
-  display: grid;
+  //display: grid;
   position: relative;
-  grid-template-columns: 85% 15%;
-  grid-template-rows: 73% 17% 10%;
+  //grid-template-columns: 85% 15%;
+  //grid-template-rows: 73% 17% 10%;
 
   grid-area: 3/1/4/2;
 
   justify-self: end;
-  height: 200px;
+  height: 250px;
   
   @media only screen and (max-width: 1000px){
-    grid-area: 3/2/4/3;
+    grid-area: 3/1/4/2;
     justify-self: start;
+    padding-top: calc(310/200*100%);
+    height: 0px;
+    width: 100%;
   }
+`;
+
+const CardOneWrapper = styled.div`
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 85% 15%;
+  grid-template-rows: 73% 17% 10%;
+
+
 `;
 
 const CardOneSub = styled.sub`
@@ -568,20 +591,37 @@ const CardOneSub = styled.sub`
 const CardTwoSub = styled(CardOneSub)``;
 
 const CardTwo = styled.div`
-  display: grid;
+  
   position: relative;
-  grid-template-columns: 85% 15%;
-  grid-template-rows: 73% 17% 10%;
+  
 
   grid-area: 3/2/4/3;
 
   justify-self: end;
-  height: 200px;
+  height: 250px;
 
   @media only screen and (max-width: 1000px){
-    grid-area: 3/3/4/4;
+    grid-area: 3/2/4/3;
     justify-self: start;
+    padding-top: calc(310/200*100%);
+    height: 0px;
+    width: 100%;
   }
+`;
+
+const CardTwoWrapper = styled.div`
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 85% 15%;
+  grid-template-rows: 73% 17% 10%;
+
+
 `;
 
 const CardTemplate = styled.img`
@@ -628,9 +668,10 @@ const Letter = styled.div`
     grid-area: 4/1/7/-1;
     margin: 0px auto;
     //padding: 0px 15px 32px 15px;
-    //grid-template-columns: minmax(150px, 150px) minmax(150px, 150px)
+    grid-template-columns: auto;
     width: 100%;
     min-width: inherit;
+    margin-top: 25px;
 
   }
 
@@ -765,6 +806,13 @@ const Letter = styled.div`
   }
 
   p {
+
+    @media only screen and (max-width: 1000px){
+
+      padding: 0px;
+
+
+    }
     text-indent: 2rem;
     font-size: 0.8em;
     font-weight: 300;
@@ -779,9 +827,33 @@ const Letter = styled.div`
     font-weight: 300;
     //min-height: 100px;
   }
+
+  .closing{
+
+    @media only screen and (max-width: 1000px){
+
+      padding: 0px;
+      margin-top: 16px;
+
+
+    }
+    padding: "30px",
+    justifySelf: "start",
+    gridArea: "6/2/7/5",
+  }
 `;
 
 const FlashError = styled.h4`
+
+@media only screen and (max-width: 575px){
+
+  grid-area: 8/2/9/5;
+  justify-self: center;
+  margin-top: 8px;
+
+}
+
+
   font-size: 0.5em;
   //position: absolute;
   //bottom: 10px;
@@ -803,6 +875,14 @@ const FlashError = styled.h4`
 `;
 
 const FlashSuccess = styled.h4`
+
+@media only screen and (max-width: 575px){
+
+  grid-area: 8/2/9/5;
+  justify-self: center;
+  margin-top: 8px;
+
+}
   font-size: 0.5em;
   //position: absolute;
   //right: 60px;
@@ -812,6 +892,27 @@ const FlashSuccess = styled.h4`
   margin-right: 15px;
   justify-self: end;
   display: ${(props) => (props.successFlag ? "initial" : "none")};
+`;
+
+const SendButtonWrapper = styled.div`
+
+  @media only screen and (max-width: 575px){
+    grid-area: 7/2/8/5;
+    align-self: center;
+    justify-self: center;
+    margin: 16px 0px;
+    width: 100%;
+
+  }
+  
+  grid-area: 6/4/7/5;
+  align-self: center;
+  justify-self: end;
+  margin-right: 15px;
+  position: relative;
+            
+
+
 `;
 
 const SendButton = styled.a``;
@@ -1303,38 +1404,42 @@ function Act(props) {
           >
             Lookup my Representatives
           </FindMyRep>
-          <Mega showLetter={showLetter} src={mega}></Mega>
+          <Mega showCards={showCards} showLetter={showLetter} src={mega}></Mega>
         </ActSection>
 
         <ResultSection showCards={showCards}>
           <ResultSectionHeader>Your elected officials</ResultSectionHeader>
 
           <CardOne>
-            <CardPicture
-              src={results.one.image ? results.one.image : sampleShot2}
-            ></CardPicture>
+            <CardOneWrapper>
+              <CardPicture
+                src={results.one.image ? results.one.image : sampleShot2}
+              ></CardPicture>
 
-            <CardTemplate src={cardTemplate}></CardTemplate>
+              <CardTemplate src={cardTemplate}></CardTemplate>
 
-            <CardNameOfRep>
-              {results.one.name ? results.one.name : ""}
-            </CardNameOfRep>
+              <CardNameOfRep>
+                {results.one.name ? results.one.name : ""}
+              </CardNameOfRep>
 
-            <CardOneSub>{results.one.fullDistrictTrunk}</CardOneSub>
+              <CardOneSub>{results.one.fullDistrictTrunk}</CardOneSub>
+            </CardOneWrapper>
           </CardOne>
 
           <CardTwo>
-            <CardPicture
-              src={results.two.image ? results.two.image : sampleShot2}
-            ></CardPicture>
+            <CardTwoWrapper>
+              <CardPicture
+                src={results.two.image ? results.two.image : sampleShot2}
+              ></CardPicture>
 
-            <CardTemplate src={cardTemplate}></CardTemplate>
+              <CardTemplate src={cardTemplate}></CardTemplate>
 
-            <CardNameOfRep>
-              {results.two.name ? results.two.name : ""}
-            </CardNameOfRep>
+              <CardNameOfRep>
+                {results.two.name ? results.two.name : ""}
+              </CardNameOfRep>
 
-            <CardTwoSub>{results.two.fullDistrictTrunk}</CardTwoSub>
+              <CardTwoSub>{results.two.fullDistrictTrunk}</CardTwoSub>
+            </CardTwoWrapper>
           </CardTwo>
 
           <Letter showLetter={showLetter}>
@@ -1380,27 +1485,13 @@ function Act(props) {
               tax revenues and ultimately save billions.
             </p>
 
-            <div
-              style={{
-                padding: "30px",
-                justifySelf: "start",
-                gridArea: "6/2/7/5",
-              }}
-            >
+            <div className="closing">
               Sincerely, <br />
               <sub>Your Name Here</sub> <br />
               <sub>Your Email Here</sub> <br />
             </div>
 
-            <div
-              style={{
-                gridArea: "6/4/7/5",
-                alignSelf: "center",
-                justifySelf: "end",
-                marginRight: "15px",
-                position: "relative",
-              }}
-            >
+            <SendButtonWrapper>
               <SendButton>
                 <div className="wrapper">
                   <div
@@ -1412,7 +1503,7 @@ function Act(props) {
                   </div>
                 </div>
               </SendButton>
-            </div>
+            </SendButtonWrapper>
 
             
 

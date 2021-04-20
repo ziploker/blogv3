@@ -19,8 +19,17 @@ $text-light: #fefefe;
 //  }
 //}
 .button{
+
+  @media only screen and (max-width: 575px){
+
+    width: 100%;
+    min-width: inherit;
+
+
+  }
   display: inline-block;
   min-width: $button-width;
+  
   margin: 0 auto;
   background: $btn-bg;
   color: $text-light;
