@@ -430,7 +430,9 @@ const ResultSection = styled.div`
     grid-area: 1/1/-1/-1;
     margin: 0px auto;
     //padding: 0px 15px 32px 15px;
-    grid-template-columns: minmax(150px, 150px) minmax(150px, 150px)
+    grid-template-columns: 1fr 200px 200px 1fr;
+    width: 100vw;
+    max-width: 70vw;
 
   }
 
@@ -457,6 +459,14 @@ const ResultSection = styled.div`
 `;
 
 const ResultSectionHeader = styled.h1`
+
+  @media only screen and (max-width: 1000px){
+
+    grid-area: 1/2/2/3;
+
+
+  }
+
   
   
 
@@ -527,6 +537,11 @@ const CardOne = styled.div`
 
   justify-self: end;
   height: 200px;
+  
+  @media only screen and (max-width: 1000px){
+    grid-area: 3/2/4/3;
+    justify-self: start;
+  }
 `;
 
 const CardOneSub = styled.sub`
@@ -562,6 +577,11 @@ const CardTwo = styled.div`
 
   justify-self: end;
   height: 200px;
+
+  @media only screen and (max-width: 1000px){
+    grid-area: 3/3/4/4;
+    justify-self: start;
+  }
 `;
 
 const CardTemplate = styled.img`
@@ -609,6 +629,8 @@ const Letter = styled.div`
     margin: 0px auto;
     //padding: 0px 15px 32px 15px;
     //grid-template-columns: minmax(150px, 150px) minmax(150px, 150px)
+    width: 100%;
+    min-width: inherit;
 
   }
 
