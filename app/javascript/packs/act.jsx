@@ -88,7 +88,7 @@ const ActSection = styled.section`
   @media only screen and (max-width: 720px){
 
     grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
-    max-width: 80vw;
+    min-width: 100%;
     //justify-self: center;
 
     
@@ -100,7 +100,7 @@ const ActSection = styled.section`
       350px,
       600px
     ) minmax(20px, 1fr);
-  grid-template-rows: min-content min-content min-content 100px 50px 1fr;
+  grid-template-rows: min-content min-content min-content 1fr min-content;
 
   grid-column-gap: 0.5em;
   grid-area: 1/1/-1/-1;
@@ -114,15 +114,15 @@ const ActHeader = styled.h1`
 
     grid-area: 1/1/2/-1;
     //justify-self: center;
-    font-size: 10vw;
+    font-size: 15vw;
 
   } 
 
   font-family: Poppins;
   font-style: normal;
   font-weight: 800;
-  font-size: 7vw;
-  line-height: 100px;
+  font-size: 10vw;
+  //line-height: 100px;
   /* identical to box height */
 
   letter-spacing: -0.08em;
@@ -495,7 +495,7 @@ const ResultSectionHeader = styled.h1`
   @media only screen and (max-width: 1000px){
 
     grid-area: 1/1/2/3;
-    font-size: 10vw;
+    font-size: 8vw;
 
 
   }
@@ -507,7 +507,7 @@ const ResultSectionHeader = styled.h1`
   font-family: Poppins;
   //font-style: normal;
   //font-weight: 500;
-  font-size: 3vw;
+  font-size: 8vw;
   //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
 
   /* identical to box height, or 90px */
@@ -701,7 +701,7 @@ const Letter = styled.div`
   @media only screen and (max-width: 1000px){
 
     grid-area: 4/1/7/-1;
-    margin: 0px auto;
+    //margin: 0px auto;
     //padding: 0px 15px 32px 15px;
     grid-template-columns: auto;
     width: 100%;
