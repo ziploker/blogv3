@@ -38,10 +38,10 @@ const ActWrapper = styled.div`
 `;
 
 const Mega = styled.img`
-  /* @media only screen and (max-width: 720px) {
-    grid-area: 1/1/2/-1;
+  @media only screen and (max-width: 720px) {
+    grid-area: 1/1/-1/-1;
     display: none;
-  } */
+  }
 
   /* @media only screen and (max-width: 1000px) {
     //grid-area: 1/1/2/-1;
@@ -79,9 +79,20 @@ const ActGrid = styled.div`
   //grid-template-rows: 120px 40px 50px 100px 50px 1fr;
 
   grid-column-gap: 0.5em;
+  justify-items: center;
 `;
 
 const ActSection = styled.section`
+
+
+  @media only screen and (max-width: 720px){
+
+    grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
+    max-width: 80vw;
+    //justify-self: center;
+
+    
+  }
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
@@ -89,7 +100,7 @@ const ActSection = styled.section`
       350px,
       600px
     ) minmax(20px, 1fr);
-  grid-template-rows: 120px 40px 50px 100px 50px 1fr;
+  grid-template-rows: min-content min-content min-content 100px 50px 1fr;
 
   grid-column-gap: 0.5em;
   grid-area: 1/1/-1/-1;
@@ -99,11 +110,13 @@ const ActSection = styled.section`
 `;
 
 const ActHeader = styled.h1`
-  /* @media only screen and (max-width: 720px){
+  @media only screen and (max-width: 720px){
 
     grid-area: 1/1/2/-1;
+    //justify-self: center;
+    font-size: 10vw;
 
-  } */
+  } 
 
   font-family: Poppins;
   font-style: normal;
@@ -127,12 +140,14 @@ const ActHeader = styled.h1`
 `;
 
 const ActSubheader = styled.h1`
-  /* @media only screen and (max-width: 720px){
+  @media only screen and (max-width: 720px){
 
-grid-area: 2/1/3/-1;
+    grid-area: 2/1/3/-1;
+    //justify-self: center;
+    font-size: 4vw;
 
 
-} */
+  }
 
   font-family: Poppins;
   font-style: normal;
@@ -149,12 +164,13 @@ grid-area: 2/1/3/-1;
 `;
 
 const ActSubheader2 = styled.h2`
-  /* @media only screen and (max-width: 720px){
+  @media only screen and (max-width: 720px){
 
     grid-area: 3/1/4/-1;
+    //justify-self: center;
+    font-size: 2vw;
 
-
-  } */
+  }
 
   font-family: Poppins;
   font-style: normal;
@@ -176,11 +192,11 @@ const ActSubheader2 = styled.h2`
 `;
 
 const Form = styled.form`
-  /* @media only screen and (max-width: 720px){
+  @media only screen and (max-width: 720px){
 
     grid-area: 3/1/5/-1;
 
-  } */
+  }
 
   display: grid;
   position: relative;
@@ -256,6 +272,15 @@ const Button = styled.button`
 `;
 
 const FindMyRep = styled.button`
+
+  @media only screen and (max-width: 720px){
+
+    grid-area: 5/1/6/-1;
+    justify-self: start;
+    //font-size: 2vw;
+
+  }
+
   grid-area: 5/3/6/4;
   font-style: normal;
   font-weight: 400;
@@ -435,8 +460,9 @@ const ResultSection = styled.div`
     grid-area: 1/1/-1/-1;
     margin: 0px auto;
     //padding: 0px 15px 32px 15px;
-    grid-template-columns: minmax(100px, 200px) minmax(100px, 200px) 1fr;
+    grid-template-columns: minmax(100px, 125px) minmax(100px, 125px) 1fr;
     width: 100vw;
+    
     //max-width: 70vw;
 
   }
@@ -461,6 +487,7 @@ const ResultSection = styled.div`
 
   grid-area: 1/2/6/4;
   //margin: 20px 0px 20px 50px;
+  height: ${props => props.showCards ? "inherit" : "0px"};
 `;
 
 const ResultSectionHeader = styled.h1`
@@ -468,6 +495,7 @@ const ResultSectionHeader = styled.h1`
   @media only screen and (max-width: 1000px){
 
     grid-area: 1/1/2/3;
+    font-size: 10vw;
 
 
   }
@@ -504,6 +532,13 @@ const ResultSectionHeader = styled.h1`
 `;
 
 const ResultSectionSubHeader = styled.h2`
+
+  @media only screen and (max-width: 1000px){
+
+    font-size: 4vw;
+
+
+  }
   font-family: Poppins;
   font-style: normal;
   font-weight: 600;
@@ -679,6 +714,8 @@ const Letter = styled.div`
   grid-area: 3/3/7/4;
   width: 80%;
   min-width: 622px;
+  max-width: 460px;
+  justify-self: start;
   border-radius: 10px;
   background: white;
   //margin: 60px auto 0 auto;
@@ -837,9 +874,9 @@ const Letter = styled.div`
 
 
     }
-    padding: "30px",
-    justifySelf: "start",
-    gridArea: "6/2/7/5",
+    padding: 30px;
+    justify-self: start;
+    grid-area: 6/2/7/5;
   }
 `;
 
@@ -933,7 +970,7 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState(false);
   const [lastTermSearched, setLastTermSearched] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({ lat: "", lng: "" });
-  const [showCards, setShowCards] = React.useState(true);
+  const [showCards, setShowCards] = React.useState(false);
   const [showLetter, setShowLetter] = React.useState(false);
   const [resultFromFlorida, setResultFromFlorida] = React.useState("true");
   const [sendButtonClass, setSendButtonClass] = React.useState("button error");
@@ -942,40 +979,40 @@ function Act(props) {
   const [flashMsg, setFlashMsg] = React.useState("");
   const [successFlag, setSuccessFlag] = React.useState(false);
 
-  const [results, setResults] = React.useState({
-    one: {
-      resultFromFlorida: "true",
-      name: "Juan Alfonso Fernandez-Barquin",
-      firstName: "",
-      lastName: "",
-      image:
-        "https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg",
-      id: "ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446",
-      email: "JuanF.Barquin@myfloridahouse.gov",
-      chamber: "House",
-      party: "Republican",
-      parent: "Florida Legislature",
-      district: "119",
-      fullDistrict: "Florida State House district 119",
-      fullDistrictTrunk: "Florida State House",
-    },
-    two: {
-      name: "Annette Taddeo",
-      firstName: "Annette",
-      lastName: "Taddeo",
-      image:
-        "http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg",
-      id: "ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7",
-      email: "taddeo.annette.web@flsenate.gov",
-      chamber: "Senate",
-      party: "Democrat",
-      parent: "Florida Legislature",
-      district: "40",
-      fullDistrict: "Florida State Senate  ",
-      fullDistrictTrunk: "Florida State Senate",
-    },
-  });
-  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  // const [results, setResults] = React.useState({
+  //   one: {
+  //     resultFromFlorida: "true",
+  //     name: "Juan Alfonso Fernandez-Barquin",
+  //     firstName: "",
+  //     lastName: "",
+  //     image:
+  //       "https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg",
+  //     id: "ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446",
+  //     email: "JuanF.Barquin@myfloridahouse.gov",
+  //     chamber: "House",
+  //     party: "Republican",
+  //     parent: "Florida Legislature",
+  //     district: "119",
+  //     fullDistrict: "Florida State House district 119",
+  //     fullDistrictTrunk: "Florida State House",
+  //   },
+  //   two: {
+  //     name: "Annette Taddeo",
+  //     firstName: "Annette",
+  //     lastName: "Taddeo",
+  //     image:
+  //       "http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg",
+  //     id: "ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7",
+  //     email: "taddeo.annette.web@flsenate.gov",
+  //     chamber: "Senate",
+  //     party: "Democrat",
+  //     parent: "Florida Legislature",
+  //     district: "40",
+  //     fullDistrict: "Florida State Senate  ",
+  //     fullDistrictTrunk: "Florida State Senate",
+  //   },
+  // });
+  const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   function loginFromDeadEnd(e) {
     e.preventDefault();
