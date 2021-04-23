@@ -100,7 +100,7 @@ const ActSection = styled.section`
       350px,
       600px
     ) minmax(20px, 1fr);
-  grid-template-rows: min-content min-content min-content 1fr min-content;
+  grid-template-rows: min-content min-content min-content min-content 1fr;
 
   grid-column-gap: 0.5em;
   grid-area: 1/1/-1/-1;
@@ -132,7 +132,7 @@ const ActHeader = styled.h1`
   align-self: end;
 
   //line-height: 100%;
-  margin: -10px 20px;
+  margin: -10px 0px 0px 20px;
   padding-top: 20px;
   //z-index: 1;
 
@@ -152,13 +152,13 @@ const ActSubheader = styled.h1`
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 2vw;
+  font-size: 2.5vw;
   //line-height: 100%;
 
   grid-area: 2/3/3/-1;
 
   color: #e3b55a;
-  margin: 0px 0px 0px 20px;
+  margin: 0px 0px 8px 20px;
 
   opacity: ${(props) => (props.showCards || props.showLetter ? "0" : "1")};
 `;
@@ -175,13 +175,13 @@ const ActSubheader2 = styled.h2`
   font-family: Poppins;
   font-style: normal;
   font-weight: normal;
-  font-size: 1vw;
+  font-size: 1.5vw;
   //line-height: 100%;
 
   grid-area: 3/3/4/-1;
 
   color: #e3b55a;
-  margin: 0px 0px 0px 20px;
+  margin: 0px 0px 16px 20px;
   display: inline;
   //line-height: 6vw;
   vertical-align: bottom;
@@ -194,7 +194,7 @@ const ActSubheader2 = styled.h2`
 const Form = styled.form`
   @media only screen and (max-width: 720px){
 
-    grid-area: 3/1/5/-1;
+    grid-area: 4/1/5/-1;
 
   }
 
@@ -395,6 +395,7 @@ const StatusHolder = styled.div`
 
   justify-self: start;
   min-height: 30px;
+  margin-bottom: 16px;
 `;
 
 const StatusBar = styled.div`
