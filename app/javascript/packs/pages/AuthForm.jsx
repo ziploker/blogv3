@@ -14,7 +14,7 @@ const Card = styled.div`
 
   grid-area: 1/3/2/4;
   box-sizing: border-box;
-  max-width: 420px;
+  max-width: 385px;
   width: 95vw;
   margin-left: 20px;
   //padding: 0 2rem;
@@ -217,7 +217,7 @@ const LoginWrapper = styled.div`
   align-items: center;
   justify-content: center;
   //grid-template-columns: minmax(170px,350px) minmax(340px,600px);
-  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
+  grid-template-columns: minmax(20px, 1fr) minmax(300px, 350px) minmax(420px,600px) minmax(20px, 1fr);
 
   grid-column-gap: 0.5em;
   padding-top: 60px;

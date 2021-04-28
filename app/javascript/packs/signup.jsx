@@ -142,6 +142,12 @@ const StatusSpinner = styled.div`
 
 const LeftSection = styled.div`
 
+  @media only screen and (max-width: 850px){
+
+    margin-right: 0px;
+
+  }
+
   @media only screen and (max-width: 720px){
 
     grid-area: 1/2/2/3;
