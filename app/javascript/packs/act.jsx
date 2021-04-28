@@ -58,6 +58,7 @@ const Mega = styled.img`
   justify-self: end;
   //margin-top: -50px;
   margin-right: 1em;
+  margin-top: -50px;
   //margin-bottom: 13px;
   opacity: ${(props) => (props.showLetter ? "0" : "1")}; ;
 `;
@@ -96,11 +97,8 @@ const ActSection = styled.section`
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
-  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(
-      350px,
-      600px
-    ) minmax(20px, 1fr);
-  grid-template-rows: min-content min-content min-content min-content 1fr;
+  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
+  grid-template-rows: min-content min-content min-content 1fr;
 
   grid-column-gap: 0.5em;
   grid-area: 1/1/-1/-1;
@@ -316,6 +314,8 @@ const FindMyRep = styled.button`
   //z-index: 1;
 
   opacity: ${(props) => (props.showCards || props.showLetter ? "0" : "1")};
+
+  
 `;
 
 const ShowLetterButton = styled.div`
@@ -576,8 +576,11 @@ const CardOne = styled.div`
 
   grid-area: 3/1/4/2;
 
+  width: 100%;
+
   justify-self: end;
-  height: 250px;
+  height: 0px;
+  padding-top: calc(310/200*100%);
   
   @media only screen and (max-width: 1000px){
     grid-area: 3/1/4/2;
@@ -634,7 +637,9 @@ const CardTwo = styled.div`
   grid-area: 3/2/4/3;
 
   justify-self: end;
-  height: 250px;
+  height: 0px;
+  padding-top: calc(310/200*100%);
+  width: 100%;
 
   @media only screen and (max-width: 1000px){
     grid-area: 3/2/4/3;
@@ -1434,14 +1439,14 @@ function Act(props) {
               </StatusSpinner>
             </StatusHolder>
           </Form>
-          <FindMyRep
+          {/* <FindMyRep
             showCards={showCards}
             showLetter={showLetter}
             type="submit"
             name="submint"
           >
             Lookup my Representatives
-          </FindMyRep>
+          </FindMyRep> */}
           <Mega showCards={showCards} showLetter={showLetter} src={mega}></Mega>
         </ActSection>
 

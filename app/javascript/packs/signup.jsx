@@ -14,7 +14,7 @@ import greenCheck from '../../assets/images/greenCheck'
 import dummy_avatar from '../../assets/images/dummy_avatar'
 
 import { Card, Logo, Form, Input, Button, ErrorMsg, RedX, LoginWrapper, 
-  InputIcon, LogoWrapper, H2, FormItem, Label, ErrorWrapper} from './pages/AuthForm';
+  InputIcon, LogoWrapper, H2, FormItem, Label, EmailLabel, ErrorWrapper} from './pages/AuthForm';
 
 import axios from 'axios'
 import $ from 'jquery';
@@ -29,7 +29,7 @@ var Spinner = require('react-spinkit');
 
 const HomeWrapper = styled.div`
 
-  padding: 45px 0px;
+  //padding: 45px 0px;
   //background-image: url(${crew});
   //background-size: cover;
     
@@ -137,6 +137,22 @@ const StatusSpinner = styled.div`
   opacity: ${ props => props.showStatusSpinner.toString() == "true" ? "1" : "0"};
   transition: opacity .4s;
   transition-timing-function: ease-out;
+
+`;
+
+const LeftSection = styled.div`
+
+  @media only screen and (max-width: 720px){
+
+    grid-area: 1/2/2/3;
+    margin: 0px 0px 45px 0px;
+
+  }
+  
+  align-self: start;
+  grid-area: 1/2/2/3;
+  margin-right: 4.20em;
+
 
 `;
 
@@ -433,7 +449,7 @@ const handleAdd = e => {
           
       <LoginWrapper>
 
-        <div style={{alignSelf: "start"}}>
+        <LeftSection>
 
           {/* <img style={{width: "50px"}} src={userIcon}/> */}
           <h1 style={{color: "#EDEAEA", marginBottom: "30px", fontSize: "25px"}}>Sign Up!</h1>
@@ -442,7 +458,7 @@ const handleAdd = e => {
           <sub style={{color: "#EDEAEA"}}>- Unlimited access to our "take action" tool.</sub>
 
 
-        </div>
+        </LeftSection>
             
         <Card className="formWrapper" >
 
@@ -464,7 +480,7 @@ const handleAdd = e => {
 
                     
             <FormItem className="formItem">
-                <Label className={state.emailFieldActive ? "field-active" : ""}>email</Label>
+                <EmailLabel className={state.emailFieldActive ? "field-active" : ""}>email</EmailLabel>
                 <Input 
                 name="email" 
                 type="email" 

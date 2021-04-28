@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 
 const Card = styled.div`
+
+  @media only screen and (max-width: 720px){
+
+    grid-area: 2/2/3/3;
+    margin: 0px;
+    
+    //width: 100%;
+
+
+  }
+
+  grid-area: 1/3/2/4;
   box-sizing: border-box;
-  max-width: 430px;
-  width: 80vw;
-  margin-bottom: 20px;
+  max-width: 420px;
+  width: 95vw;
+  margin-left: 20px;
   //padding: 0 2rem;
   
   //margin-top: 100px;
@@ -16,7 +28,7 @@ const Card = styled.div`
   box-shadow: 0 1px 1px rgba(0,0,0,0.05);
   border-radius: 8px;
 
-  justify-self: center;
+  justify-self: start;
   align-self: center;
 `;
 
@@ -40,8 +52,19 @@ const Form = styled.form`
 const FormItem = styled.div`
 
   position: relative;
-  margin: 0 0 20px 0;
+  margin: 0 0 38px 0;
   padding: 0;
+
+
+
+`;
+
+
+const FormItemEmail = styled.div`
+
+  position: relative;
+  margin: 0 0 38px 0;
+  padding: 20px;
 
 
 
@@ -60,8 +83,11 @@ const Label = styled.label`
 
   display: inline-block;
   position:absolute;
+  top: -4px;
   left: 42px;
-  
+  border-top: 1px solid #cbcbd2;
+  border-left: 1px solid #cbcbd2;
+  border-right: 1px solid #cbcbd2;
   transition: all 150ms ease-in;
   color: #9FA5C4;
   pointer-events: none;
@@ -71,15 +97,20 @@ const Label = styled.label`
   
   //transform: ${props => props.className == "field-active" ? "translateY(-22px)" : 0};
   transform: translateY(-11px);
-  padding: 2px 10px;
+  padding: 2px 2px;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
 
   font-size: .6em;
   
   text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
           
               
+
+`;
+const EmailLabel = styled(Label)`
+
+  left: 48px;
 
 `;
 
@@ -169,6 +200,15 @@ const RedX = styled.img`
 
 `;
 const LoginWrapper = styled.div`
+
+  @media only screen and (max-width: 720px){
+
+    grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
+    min-width: 100%;
+    //justify-self: center;
+
+
+  }
   position: relative;
   height: 100%;
   background-color: orange;
@@ -176,15 +216,16 @@ const LoginWrapper = styled.div`
   
   align-items: center;
   justify-content: center;
-  grid-template-columns: minmax(170px,350px) minmax(340px,600px);
-  
+  //grid-template-columns: minmax(170px,350px) minmax(340px,600px);
+  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
+
+  grid-column-gap: 0.5em;
   padding-top: 60px;
   padding-bottom: 20px;
   text-align: center;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  
 
 `;
 
@@ -222,4 +263,4 @@ height: 18px;
 `;
 
 export { Form, Input, Button, Logo, Card, RedX, LoginWrapper, 
-  InputIcon, LogoWrapper, H2, FormItem, Label, ErrorMsg, ErrorWrapper };
+  InputIcon, LogoWrapper, H2, FormItem, Label, EmailLabel, ErrorMsg, ErrorWrapper };
