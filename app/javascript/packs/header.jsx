@@ -4,7 +4,7 @@ import {Link, useLocation} from 'react-router-dom'
 
 //import useDocumentScrollThrottled from './useDocumentScrollThrottled.jsx'
 import styled from 'styled-components'
-import headerLeaf from "../../assets/images/headerLeaf.svg"
+import headerLeaf from "../../assets/images/headerLeafv2.png"
 import headerLogo from '../../assets/images/logo.png'
 
 import Burger from './burger'
