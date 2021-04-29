@@ -458,7 +458,7 @@ const handleAdd = e => {
         <LeftSection>
 
           {/* <img style={{width: "50px"}} src={userIcon}/> */}
-          <h1 style={{color: "#EDEAEA", marginBottom: "30px", fontSize: "25px"}}>Sign Up!</h1>
+          <h1 style={{color: "#EDEAEA", marginBottom: "30px", fontSize: "3em"}}>Sign Up!</h1>
           <sub style={{color: "#EDEAEA"}}>- Create a free account.</sub><br/>
           <sub style={{color: "#EDEAEA"}}>- Stay Informed with FloridaBlaze updates.</sub><br/>
           <sub style={{color: "#EDEAEA"}}>- Unlimited access to our "take action" tool.</sub>

@@ -10,8 +10,9 @@ import StyledBurger from './burger.styled'
 const Burger = (props) => {
   return (
     <StyledBurger openSideMenu={props.openSideMenu} onClick={() => {props.setOpenSideMenu(!props.openSideMenu)}}>
+      
       <div />
-      <div />
+      <div>MENU</div>
       <div />
     </StyledBurger>
     

@@ -77,7 +77,8 @@ const HeaderLeafImage = styled.img`
 
     @media only screen and (max-width: 575px){
         
-        display: none;     
+        //display: none; 
+        margin-right: -150px;    
 
     }
     max-width: 95%;
@@ -95,7 +96,7 @@ const Nav = styled.nav`
 
     @media only screen and (max-width: 575px){
         
-        display: none     
+        display: none;     
 
     }   
     

@@ -34,7 +34,7 @@ const StyledBurger = styled.button`
     width: 2rem;
     height: 0.25rem;
     //background: ${({ theme }) => theme.offWhite};
-    background: pink;
+    background: white;
     border-radius: 10px;
     transition: all 0.3s linear;
     position: relative;
@@ -42,11 +42,16 @@ const StyledBurger = styled.button`
 
     :first-child {
       transform: ${({ openSideMenu }) => openSideMenu ? 'rotate(45deg)' : 'rotate(0)'};
+      
     }
 
     :nth-child(2) {
       opacity: ${({ openSideMenu }) => openSideMenu ? '0' : '1'};
       transform: ${({ openSideMenu }) => openSideMenu ? 'translateX(5px)' : 'translateX(0)'};
+      background: inherit;
+      color: white;
+      font-size: .7em;
+      height: auto;
     }
 
     :nth-child(3) {
