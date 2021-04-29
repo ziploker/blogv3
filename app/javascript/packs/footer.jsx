@@ -15,6 +15,8 @@ const FooterWrapper = styled.div`
     min-height: 200px; */
     background-color: #FFA500;
 
+    overflow: hidden;
+
     display: grid;
     //grid-template-columns: 1fr;
 
