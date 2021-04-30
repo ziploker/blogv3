@@ -30,7 +30,7 @@ const HeaderWrapper = styled.div`
     min-height: 85px;
     //margin: 0 20px;
     min-width: 500px;
-    
+    overflow: hidden;
    
     display: grid;
     //grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
@@ -324,7 +324,7 @@ function Header(props) {
                     gridArea: "1/3/2/4",
                     justifySelf: "end",
                     alignSelf: "center",
-                    paddingRight: "2em"}} ref={ref}>
+                    paddingRight: "1em"}} ref={ref}>
                     <Burger openSideMenu={props.openSideMenu} setOpenSideMenu={props.setOpenSideMenu}/>
                     
                 </div>

@@ -34,7 +34,7 @@ const ActWrapper = styled.div`
   
   position: relative;
   
-  padding-bottom: 60px;
+  //padding-bottom: 60px;
 `;
 
 const Mega = styled.img`

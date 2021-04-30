@@ -1,6 +1,6 @@
 // Burger.styled.js
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledBurger = styled.button`
   //position: absolute;
@@ -18,21 +18,17 @@ const StyledBurger = styled.button`
   padding: 0;
   z-index: 10;
 
-  
-  
   &:focus {
     outline: none;
   }
 
-  @media only screen and (min-width: 575px){
-    
-    display: none     
-
+  @media only screen and (min-width: 575px) {
+    display: none;
   }
-  
+
   div {
-    width: 2rem;
-    height: 0.25rem;
+    width: 1.5rem;
+    height: 0.13rem;
     //background: ${({ theme }) => theme.offWhite};
     background: white;
     border-radius: 10px;
@@ -41,24 +37,25 @@ const StyledBurger = styled.button`
     transform-origin: 1px;
 
     :first-child {
-      transform: ${({ openSideMenu }) => openSideMenu ? 'rotate(45deg)' : 'rotate(0)'};
-      
+      transform: ${({ openSideMenu }) =>
+        openSideMenu ? "rotate(45deg)" : "rotate(0)"};
     }
 
     :nth-child(2) {
-      opacity: ${({ openSideMenu }) => openSideMenu ? '0' : '1'};
-      transform: ${({ openSideMenu }) => openSideMenu ? 'translateX(5px)' : 'translateX(0)'};
+      opacity: ${({ openSideMenu }) => (openSideMenu ? "0" : "1")};
+      transform: ${({ openSideMenu }) =>
+        openSideMenu ? "translateX(5px)" : "translateX(0)"};
       background: inherit;
       color: white;
-      font-size: .7em;
+      font-size: 0.5em;
       height: auto;
     }
 
     :nth-child(3) {
-      transform: ${({ openSideMenu }) => openSideMenu ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ openSideMenu }) =>
+        openSideMenu ? "rotate(-45deg)" : "rotate(0)"};
     }
   }
 `;
-
 
 export default StyledBurger;
