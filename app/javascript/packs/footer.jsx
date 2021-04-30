@@ -20,12 +20,12 @@ const FooterWrapper = styled.div`
     display: grid;
     //grid-template-columns: 1fr;
 
-    grid-template-columns: minmax(20px,1fr) 400px minmax(350px,600px) minmax(20px,1fr);
-    /*grid-template-rows: 25% 75%;
-     grid-template-areas:
+    grid-template-columns: minmax(20px,1fr) 400px 250px 250px 300px minmax(20px,1fr);
+    grid-template-rows: 40% 60%;
+    /* grid-template-areas:
         "spacer"
         "footerLeaf"; */
-    height: 250px;
+    height: 350px;
 
     
 
@@ -43,9 +43,9 @@ const FooterImage = styled.img`
 
 const SubscribeSection = styled.div`
 
-    grid-area: 1/2/-1/3;
+    grid-area: 2/2/-1/3;
     justify-self: center;
-    align-self: end;
+    align-self: start;
     margin-bottom: 20px;
 
     h2{
@@ -76,10 +76,11 @@ const SubscribeSection = styled.div`
         border-color: #7F7F7F;
         border-style: solid;
         border-width: 0 0 1px;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
         padding: 0 0 9px;
         font-size: 14px;
         color: #7F7F7F;
+        width: 100%;
 
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: #7F7F7F;
@@ -125,6 +126,89 @@ const SubscribeSection = styled.div`
         border: 0;
 
     }
+`;
+
+const Follow = styled.div`
+    grid-area: 2/3/-1/4;
+    color: white;
+    justify-self: center;
+    align-self: start;
+    margin-bottom: 20px;
+    
+
+    h1{
+        font-family: poppins;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+
+    }
+
+    ul{
+
+        list-style-type: none;
+        
+        a{
+            font-size: 12px;
+            
+            letter-spacing: normal;
+            line-height: 19px;
+            line-height: 22px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: poppins;
+            color: white;
+
+
+        }
+    }
+`;
+
+
+const Explore = styled.div`
+    grid-area: 2/4/-1/5;
+    color: white;
+    justify-self: center;
+    align-self: start;
+    margin-bottom: 20px;
+    
+
+    h1{
+        font-family: poppins;
+        font-size: 1.5em;
+        margin-bottom: 5px;
+
+    }
+
+    ul{
+
+        list-style-type: none;
+        
+        a{
+            font-size: 12px;
+            
+            letter-spacing: normal;
+            line-height: 19px;
+            line-height: 22px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: poppins;
+            color: white;
+
+
+        }
+    }
+`;
+
+const Legal = styled.div`
+
+    grid-area: 2/5/-1/6;
+    align-self: end;
+    justify-self: center;
+    color: white;
+    font-size: .4em;
+    font-family: poppins;
+    margin-bottom: 40px;
+
 `;
 
 function Footer(props) {
@@ -188,13 +272,46 @@ function Footer(props) {
 
                         <input type="email" required="" spellCheck="false" autoComplete="off" autoCapitalize="none" placeholder="Enter your e-mail address"/>
 
-                        <button type="submit" name="submint">
+                        
+                    </div>
+                    <button type="submit" name="submint">
                         Sign Up
                         </button>
-                    </div>
                 </form>
    
             </SubscribeSection>
+
+            <Follow>
+
+                <ul>
+                    <h1>Follow</h1>
+                    <li><a href="#">facebook</a></li>
+                    <li><a href="#">twitter</a></li>
+                    <li><a href="#">instagram</a></li>
+
+                </ul>
+
+            </Follow>
+
+
+            <Explore>
+
+                <ul>
+                    <h1>Explore</h1>
+                    <li><a href="#">home</a></li>
+                    <li><a href="#">act</a></li>
+                    <li><a href="#">shop</a></li>
+                    <li><a href="#">about</a></li>
+                    <li><a href="#">contact</a></li>
+
+                </ul>
+
+            </Explore>
+
+            <Legal>
+
+                <h1>&#169; 2021 FloridaBlaze, All Rights Reserved</h1>
+            </Legal>
 
 
         </FooterWrapper>
