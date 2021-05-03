@@ -28,13 +28,24 @@ const formData = new FormData();
 const ActWrapper = styled.div`
   
   background-color: black;
-  background-image: url(${actBackground});
-  background-position: 0 50%;
-  background-repeat: no-repeat;
+  //background-image: url(${actBackground});
+  //background-position: 0 50%;
+  //background-repeat: no-repeat;
   
   position: relative;
   
   //padding-bottom: 60px;
+`;
+
+const BGimage = styled.img`
+
+  //height: 100%;
+  //max-height: 400px;
+  //width: 100%;
+  
+  object-fit: cover;
+  grid-area: 1/1/-1/-1;
+
 `;
 
 const Mega = styled.img`
@@ -1314,7 +1325,9 @@ function Act(props) {
 
   return (
     <ActWrapper>
+      
       <ActGrid>
+         <BGimage src={actBackground}></BGimage>
         <ActSection showCards={showCards} showLetter={showLetter}>
           <ActHeader showCards={showCards} showLetter={showLetter}>
             ACT NOW

@@ -20,8 +20,8 @@ const FooterWrapper = styled.div`
     display: grid;
     //grid-template-columns: 1fr;
 
-    grid-template-columns: minmax(20px,1fr) 400px 250px 250px 300px minmax(20px,1fr);
-    grid-template-rows: 40% 60%;
+    grid-template-columns: minmax(20px,1fr) minmax(min-content, 400px) minmax(min-content, 250px) minmax(min-content, 250px) minmax(min-content, 300px) minmax(20px,1fr);
+    grid-template-rows: minmax(100px, 40%) 1fr;
     /* grid-template-areas:
         "spacer"
         "footerLeaf"; */
@@ -35,7 +35,7 @@ const FooterImage = styled.img`
 
     //grid-area: footerLeaf;
     grid-area: 1/1/-1/-1;
-    max-height: 100%;
+    height: 100%;
     width: 100%;
     
 
@@ -44,7 +44,7 @@ const FooterImage = styled.img`
 const SubscribeSection = styled.div`
 
     grid-area: 2/2/-1/3;
-    justify-self: center;
+    justify-self: end;
     align-self: start;
     margin-bottom: 20px;
 
@@ -81,7 +81,7 @@ const SubscribeSection = styled.div`
         font-size: 14px;
         color: #7F7F7F;
         width: 100%;
-
+        center
         ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
             color: #7F7F7F;
             opacity: 1; /* Firefox */
