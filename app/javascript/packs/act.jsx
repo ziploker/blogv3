@@ -39,12 +39,16 @@ const ActWrapper = styled.div`
 
 const BGimage = styled.img`
 
-  //height: 100%;
-  //max-height: 400px;
-  //width: 100%;
   
-  object-fit: cover;
-  grid-area: 1/1/-1/-1;
+  //width: 100vw;
+  //height: 100vh;
+  //object-fit: cover;
+  //grid-area: 1/1/-1/-1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
 `;
 
@@ -64,7 +68,7 @@ const Mega = styled.img`
   //left: 12vw;
   width: 100%;
   display: ${props => props.showCards ? "none" : "inherit"};
-  grid-area: 1/2/6/3;
+  grid-area: 1/2/5/3;
   align-self: center;
   justify-self: end;
   //margin-top: -50px;
@@ -114,6 +118,7 @@ const ActSection = styled.section`
   grid-column-gap: 0.5em;
   grid-area: 1/1/-1/-1;
   transition: opacity 0.4s;
+  padding-bottom: 40px;
 
   z-index: ${(props) => (props.showCards || props.showLetter ? "0" : "10")}; ;
 `;
@@ -1325,9 +1330,9 @@ function Act(props) {
 
   return (
     <ActWrapper>
-      
+      <BGimage src={actBackground}></BGimage>
       <ActGrid>
-         <BGimage src={actBackground}></BGimage>
+         
         <ActSection showCards={showCards} showLetter={showLetter}>
           <ActHeader showCards={showCards} showLetter={showLetter}>
             ACT NOW
