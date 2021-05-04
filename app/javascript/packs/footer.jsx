@@ -6,6 +6,14 @@ import footerImage from '../../assets/images/footerImage'
 
 
 const FooterWrapper = styled.div`
+
+    @media only screen and (max-width: 575px) {
+
+        grid-template-columns: 20px 1fr 1fr 20px;
+        grid-template-rows: minmax(160px, 40%) 1fr;
+        height: auto
+        
+    }
     /* background: pink;
     background-image: url(${footerImage});
     
@@ -33,17 +41,37 @@ const FooterWrapper = styled.div`
 
 const FooterImage = styled.img`
 
+    @media only screen and (max-width: 575px) {
+
+        grid-area: 1/1/2/-1;
+        
+    }
+
+
     //grid-area: footerLeaf;
-    grid-area: 1/1/-1/-1;
+    grid-area: 1/1/6/-1;
     height: 100%;
     width: 100%;
+    min-width: 500px;
     
 
 `;
 
 const SubscribeSection = styled.div`
 
-    grid-area: 2/2/-1/3;
+    @media only screen and (max-width: 575px) {
+
+        grid-area: 3/1/4/5;
+        justify-self: center;
+        align-self: start;
+
+    }
+
+
+    margin: 25px 0px 40px 0px;
+    z-index: 1;
+    background: black;
+    grid-area: 2/4/-1/5;
     justify-self: end;
     align-self: start;
     margin-bottom: 20px;
@@ -129,6 +157,18 @@ const SubscribeSection = styled.div`
 `;
 
 const Follow = styled.div`
+
+
+    @media only screen and (max-width: 575px) {
+
+        grid-area: 1/3/2/4;
+        justify-self: start;
+        align-self: start;
+        padding-top: 80px;
+
+    }
+
+    
     grid-area: 2/3/-1/4;
     color: white;
     justify-self: center;
@@ -165,7 +205,16 @@ const Follow = styled.div`
 
 
 const Explore = styled.div`
-    grid-area: 2/4/-1/5;
+
+    @media only screen and (max-width: 575px) {
+
+        grid-area: 1/2/2/3;
+        justify-self: center;
+        align-self: start;
+        padding-top: 80px;
+
+    }
+    grid-area: 2/2/-1/3;
     color: white;
     justify-self: center;
     align-self: start;
@@ -201,13 +250,37 @@ const Explore = styled.div`
 
 const Legal = styled.div`
 
-    grid-area: 2/5/-1/6;
+    @media only screen and (max-width: 575px) {
+
+        grid-area: 4/2/5/4;
+        justify-self: start;
+        align-self: end;
+        padding: 8px 0px 16px 0px;
+
+    }
+
+    margin: 20px 0px;
+    background-color: black;
+    z-index: 1;
+    font-size: .3em;
+    grid-area: 4/1/5/5;
     align-self: end;
     justify-self: center;
     color: white;
     font-size: .4em;
     font-family: poppins;
     margin-bottom: 40px;
+
+`;
+
+const BlackBG = styled.div`
+
+    @media only screen and (max-width: 575px) {
+
+        grid-area: 3/1/5/-1;
+        background-color: black;
+
+    }
 
 `;
 
@@ -312,6 +385,8 @@ function Footer(props) {
 
                 <h1>&#169; 2021 FloridaBlaze, All Rights Reserved</h1>
             </Legal>
+
+            <BlackBG></BlackBG>
 
 
         </FooterWrapper>
