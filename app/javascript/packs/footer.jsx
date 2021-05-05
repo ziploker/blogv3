@@ -9,7 +9,7 @@ const FooterWrapper = styled.div`
 
     @media only screen and (max-width: 575px) {
 
-        grid-template-columns: 20px 1fr 1fr 20px;
+        grid-template-columns: minmax(20px, 100px) minmax(133px, 1fr) minmax(133px, 1fr) minmax(20px, 100px);
         grid-template-rows: minmax(160px, 40%) 1fr;
         height: auto
         
@@ -28,8 +28,8 @@ const FooterWrapper = styled.div`
     display: grid;
     //grid-template-columns: 1fr;
 
-    grid-template-columns: minmax(20px,1fr) minmax(min-content, 400px) minmax(min-content, 250px) minmax(min-content, 250px) minmax(min-content, 300px) minmax(20px,1fr);
-    grid-template-rows: minmax(100px, 40%) 1fr;
+    grid-template-columns: minmax(20px,1fr) minmax(min-content, 200px) minmax(min-content, 200px) minmax(min-content, 250px) minmax(20px,1fr);
+    grid-template-rows: minmax(150px, 40%) 1fr;
     /* grid-template-areas:
         "spacer"
         "footerLeaf"; */
@@ -61,14 +61,14 @@ const SubscribeSection = styled.div`
 
     @media only screen and (max-width: 575px) {
 
-        grid-area: 3/1/4/5;
-        justify-self: center;
+        grid-area: 3/2/4/4;
+        justify-self: start;
         align-self: start;
 
     }
 
 
-    margin: 25px 0px 40px 0px;
+    //margin: 25px 0px 40px 0px;
     z-index: 1;
     background: black;
     grid-area: 2/4/-1/5;
@@ -162,8 +162,7 @@ const Follow = styled.div`
     @media only screen and (max-width: 575px) {
 
         grid-area: 1/3/2/4;
-        justify-self: start;
-        align-self: start;
+        
         padding-top: 80px;
 
     }
@@ -171,7 +170,7 @@ const Follow = styled.div`
     
     grid-area: 2/3/-1/4;
     color: white;
-    justify-self: center;
+    justify-self: start;
     align-self: start;
     margin-bottom: 20px;
     
@@ -209,14 +208,13 @@ const Explore = styled.div`
     @media only screen and (max-width: 575px) {
 
         grid-area: 1/2/2/3;
-        justify-self: center;
-        align-self: start;
+        
         padding-top: 80px;
 
     }
     grid-area: 2/2/-1/3;
     color: white;
-    justify-self: center;
+    justify-self: start;
     align-self: start;
     margin-bottom: 20px;
     
@@ -259,17 +257,17 @@ const Legal = styled.div`
 
     }
 
-    margin: 20px 0px;
+    padding: 20px 0px;
     background-color: black;
     z-index: 1;
-    font-size: .3em;
+    font-size: .2em;
     grid-area: 4/1/5/5;
     align-self: end;
     justify-self: center;
     color: white;
-    font-size: .4em;
+    
     font-family: poppins;
-    margin-bottom: 40px;
+    padding-bottom: 20px;
 
 `;
 

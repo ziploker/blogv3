@@ -26,6 +26,10 @@ var Spinner = require("react-spinkit");
 const formData = new FormData();
 
 const ActWrapper = styled.div`
+
+  @media only screen and (max-width: 720px) {
+    overflow: hidden;
+  }
   
   background-color: black;
   //background-image: url(${actBackground});
@@ -33,6 +37,7 @@ const ActWrapper = styled.div`
   //background-repeat: no-repeat;
   
   position: relative;
+  //overflow: hidden;
   
   //padding-bottom: 60px;
 `;
@@ -45,10 +50,12 @@ const BGimage = styled.img`
   //object-fit: cover;
   //grid-area: 1/1/-1/-1;
   position: absolute;
-  //top: 0;
+  top: 0;
   left: 0;
   right: 0;
-  //bottom: 0;
+  width: 100%;
+  bottom: 0;
+  height: 100%;
 
 `;
 
@@ -87,7 +94,7 @@ const ActGrid = styled.div`
   }
 
   
-  overflow: hidden;
+  //overflow: hidden;
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
@@ -112,7 +119,7 @@ const ActSection = styled.section`
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
-  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
+  grid-template-columns: minmax(20px, 40px) minmax(250px, 550px) minmax(350px,600px) minmax(40px, 1fr);
   grid-template-rows: min-content min-content min-content 1fr;
 
   grid-column-gap: 0.5em;
