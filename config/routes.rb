@@ -25,7 +25,8 @@ Rails.application.routes.draw do
   
   
   
-
+  get '/ziploker/edit/:id', to: 'stories#edit'
+  get '/ziploker', to: 'stories#new'
   
 
 
