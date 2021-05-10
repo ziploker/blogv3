@@ -49,7 +49,7 @@ class StoriesController < ApplicationController
         end
         story = Story.new(event_params)
         
-        story.author_nick = @current_user.nick
+        ###story.author_nick = @current_user.nick
         story.author_avatar = @current_user.avatar_url
   
         begin
@@ -98,7 +98,7 @@ class StoriesController < ApplicationController
     private
       
       def event_params
-        params.require(:event).permit(:title, :slug, :keywords, :body, :image, :url, :topic, :author_nick, :author_avatar)
+        params.require(:event).permit(:title, :slug, :keywords, :body, :image, :url, :topic, :author_avatar)
       end
   end
   

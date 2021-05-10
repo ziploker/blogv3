@@ -171,9 +171,11 @@ class Story < ApplicationRecord
 
         puts "------------after_validation callback begin -------------------"
         
-        
+            
         if self.image.attached?
-            url = self.image.service_url&.split("?")&.first
+
+            puts "URL IS = " + self.image.url
+            url = self.image.url&.split("?")&.first
         
             puts "self = " + self.title
         

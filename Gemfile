@@ -5,6 +5,7 @@ ruby '3.0.0'
 gem "react_on_rails", "12.0" # Update to the current version
 gem 'httparty'
 gem 'hash_dot'
+gem "aws-sdk-s3", require: false
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 # Use postgresql as the database for Active Record
