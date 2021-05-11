@@ -39,7 +39,9 @@ function App(controllerProps){
         emailStatus: "EMAIL_NOT_VERIFIED",
         test: "a",
         user: {},
-        stories: controllerProps.stories
+        lastStory: controllerProps.lastStory,
+        secondToLastStory: controllerProps.secondToLastStory,
+        thirdToLastStory: controllerProps.thirdToLastStory
         
     })
     const [openSideMenu, setOpenSideMenu] = useState(false);
@@ -166,7 +168,7 @@ function App(controllerProps){
                 
                 
                 <Switch>
-                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} stories={appState.stories} appState={appState} setAppState={setAppState} />}/>
+                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} appState={appState} setAppState={setAppState} />}/>
                     <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     <Route path="/forgot" render={ props => <Forgot {...props}  />} /> 

@@ -1,6 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import styled, { ThemeProvider } from 'styled-components';
-import useFitText from "use-fit-text";
+//import useFitText from "use-fit-text";
 import slugify from 'react-slugify'
 
 import {

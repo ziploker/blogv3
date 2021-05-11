@@ -11,8 +11,12 @@ class SparksController < ApplicationController
 
         @page = params.fetch(:page, 0).to_i
         
-        @stories = Story.order("created_at DESC").offset(@page * STORIES_PER_PAGE).limit(STORIES_PER_PAGE)
+        #@stories = Story.order("created_at DESC").offset(@page * STORIES_PER_PAGE).limit(STORIES_PER_PAGE)
         #@story = Story.all
+
+        @lastStory = Story.last
+        @secondToLastStory = Story.second_to_last
+        @thirdToLastStory = Story.third
         @googleGeoApi = Rails.application.credentials.dig(:google, :geoapi)
 
         puts @stories.inspect
