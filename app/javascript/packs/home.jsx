@@ -75,12 +75,12 @@ const StoryImageWrapper = styled.div`
     height: 0px;
     //min-height: 90px;
     //max-height: 300px;
-    grid-area: 1 /1 /3 /-1;
+    grid-area: 1 /1 /2 /2;
     padding-top: 60%;
     position: relative;
     
     
-    @media screen and (min-width: 750px) and (max-width: 1111px){
+    /* @media screen and (min-width: 750px) and (max-width: 1111px){
         width: 100%;
         height: 100%;
 
@@ -92,7 +92,7 @@ const StoryImageWrapper = styled.div`
         justify-self: center;
         //border: 5px solid white;
 
-    }
+    } */
 `;
 
 const StoryImage = styled.img`
@@ -108,25 +108,25 @@ const StoryImage = styled.img`
 
 const StoryImageOverlayWrapper = styled.div`
 
-    grid-area: 1 /1 /3 /-1;
+    grid-area: 1 /1 /2/2;
     width: 100%;
     height: 0px;
     padding-top: 60%;
     
     position: relative;
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+67,1+100 */
-    background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 67%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+    /*background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 67%, rgba(255,255,255,1) 100%);  /*FF3.6-15 */
+     /*background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+     /*background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+     /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
     
     
     
-    @media screen and (min-width: 750px) and (max-width: 1111px){
+    /* @media screen and (min-width: 750px) and (max-width: 1111px){
 
 
         display: none;
-    }
+    } */
     
 `;
 
@@ -143,25 +143,26 @@ const StoryImageOverlay = styled.div`
 
 
 const Div1 = styled.div`
-    background: blue;
+    //background: blue;
     grid-area: featured;
     border-radius: 10px;
-
+    overflow: hidden;
     display: grid;
+
+    background-image: url( ${props => props.imageURL});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    border: 5px solid #e8e5e5;
     //grid-template-columns: minmax(250px, 1fr);
     //grid-template-rows: auto;  
 
-    grid-template-areas:
-        "picture"
-        "grayArea"
-        "body"
-        "time"
-    ;
+    
     
     
     
 
-    &:before{
+    /* &:before{
         content: '';
         display: block;
         width: 0;
@@ -170,7 +171,7 @@ const Div1 = styled.div`
 
         
 
-    }
+    } */
 
 `;
 
@@ -178,8 +179,14 @@ const Div2 = styled.div`
     background: orange;
     grid-area: one;
     border-radius: 10px;
+    overflow: hidden;
+    background-image: url( ${props => props.imageURL});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    border: 5px solid #e8e5e5;
     //margin-right: 25px;
-    &:before{
+    /* &:before{
         content: '';
         display: block;
         width: 0;
@@ -188,7 +195,7 @@ const Div2 = styled.div`
 
         
 
-    }
+    } */
     
 
 `;
@@ -198,8 +205,14 @@ const Div3 = styled.div`
     background: green;
     grid-area: two;
     border-radius: 10px;
+    overflow: hidden;
+    background-image: url( ${props => props.imageURL});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    border: 5px solid #e8e5e5;
     //margin-right: 25px;
-    &:before{
+    /* &:before{
         content: '';
         display: block;
         width: 0;
@@ -208,7 +221,7 @@ const Div3 = styled.div`
 
         
 
-    }
+    } */
     
 `;
 
@@ -243,26 +256,57 @@ function Home(props){
                 
                     <News>
 
-                        <Div1>
+                        <Div1 imageURL={props.lastStory.url} >
 
-                        <StoryImageWrapper>
-                            <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                        </StoryImageWrapper>
-                
-                
-                        <StoryImageOverlayWrapper>
-                            <StoryImageOverlay/>
-                        </StoryImageOverlayWrapper>
+                            {/* <StoryImageWrapper>
+                                <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
+                            </StoryImageWrapper>
+                    
+                    
+                            <StoryImageOverlayWrapper>
+                                <StoryImageOverlay/>
+                            </StoryImageOverlayWrapper> */}
                             
-                            {props.lastStory.title}
                             
                             
                             
                         
                         
                         </Div1>
-                        <Div2/>
-                        <Div3/>
+                        <Div2 imageURL={props.lastStory.url}>
+
+                            {/* <StoryImageWrapper>
+                                <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
+                            </StoryImageWrapper>
+                    
+                    
+                            <StoryImageOverlayWrapper>
+                                <StoryImageOverlay/>
+                            </StoryImageOverlayWrapper> */}
+                            
+                            
+                            
+                            
+                        
+                        
+                        </Div2>
+                        <Div3 imageURL={props.lastStory.url}>
+
+                            {/* <StoryImageWrapper>
+                                <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
+                            </StoryImageWrapper>
+                    
+                    
+                            <StoryImageOverlayWrapper>
+                                <StoryImageOverlay/>
+                            </StoryImageOverlayWrapper>
+                             */}
+                            
+                            
+                            
+                        
+                        
+                        </Div3>
                         <BackgroundGray></BackgroundGray>
 
                         
