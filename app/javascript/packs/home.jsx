@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 //import { Parallax, Background } from 'react-parallax';
 import Login from './pages/login'
+import defaultImage from '../../assets/images/defaultImage'
 
 
 const HomeWrapper = styled.div`
@@ -256,7 +257,7 @@ function Home(props){
                 
                     <News>
 
-                        <Div1 imageURL={props.lastStory.url} >
+                        <Div1 imageURL={props.lastStory ? props.lastStory.url : defaultImage} >
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
@@ -273,7 +274,7 @@ function Home(props){
                         
                         
                         </Div1>
-                        <Div2 imageURL={props.lastStory.url}>
+                        <Div2 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
@@ -290,7 +291,7 @@ function Home(props){
                         
                         
                         </Div2>
-                        <Div3 imageURL={props.lastStory.url}>
+                        <Div3 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
