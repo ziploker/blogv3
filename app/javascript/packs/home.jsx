@@ -110,9 +110,9 @@ const StoryImage = styled.img`
 const StoryImageOverlayWrapper = styled.div`
 
     grid-area: 1 /1 /2/2;
-    width: 100%;
-    height: 0px;
-    padding-top: 60%;
+    //width: 100%;
+    //height: 0px;
+    //padding-top: 60%;
     
     position: relative;
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+67,1+100 */
@@ -121,8 +121,12 @@ const StoryImageOverlayWrapper = styled.div`
      /*background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
      /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
     
-    
-    
+
+    background: rgb(0,0,0);
+    background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
+    background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ff9191",GradientType=1);
     /* @media screen and (min-width: 750px) and (max-width: 1111px){
 
 
@@ -141,6 +145,20 @@ const StoryImageOverlay = styled.div`
 
 `;
 
+const StoryOneTitle = styled.h1`
+
+    grid-area: 1 /1 /2/2;
+    font-size: 20px;
+    align-self: end;
+    justify-self: start;
+    text-align: left;
+    color: white;
+    line-height: 1em;
+    //letter-spacing: 2px;
+    z-index: 1;
+    padding: 0px 15px 8px 15px;
+
+`;
 
 
 const Div1 = styled.div`
@@ -181,6 +199,8 @@ const Div2 = styled.div`
     grid-area: one;
     border-radius: 10px;
     overflow: hidden;
+    display: grid;
+
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
@@ -207,6 +227,8 @@ const Div3 = styled.div`
     grid-area: two;
     border-radius: 10px;
     overflow: hidden;
+    display: grid;
+
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
@@ -261,13 +283,14 @@ function Home(props){
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                            </StoryImageWrapper>
-                    
-                    
+                            </StoryImageWrapper> */}
+                            <StoryOneTitle>
+                            AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
+                            </StoryOneTitle>
                             <StoryImageOverlayWrapper>
                                 <StoryImageOverlay/>
-                            </StoryImageOverlayWrapper> */}
-                            
+                            </StoryImageOverlayWrapper>
+
                             
                             
                             
@@ -278,12 +301,11 @@ function Home(props){
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                            </StoryImageWrapper>
-                    
-                    
+                            </StoryImageWrapper> */}
+                            
                             <StoryImageOverlayWrapper>
                                 <StoryImageOverlay/>
-                            </StoryImageOverlayWrapper> */}
+                            </StoryImageOverlayWrapper>
                             
                             
                             
@@ -295,13 +317,11 @@ function Home(props){
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                            </StoryImageWrapper>
-                    
-                    
+                            </StoryImageWrapper> */}
+                            
                             <StoryImageOverlayWrapper>
                                 <StoryImageOverlay/>
                             </StoryImageOverlayWrapper>
-                             */}
                             
                             
                             
