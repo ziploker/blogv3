@@ -8,52 +8,72 @@ import defaultImage from '../../assets/images/defaultImage'
 const HomeWrapper = styled.div`
 
     //background: pink;
-    
+
     //height: calc(100vh - 85px);
     //max-height: 500px;
     overflow: hidden;
     //min-width: 500px;
-    
+
 `;
 
 
 
 const News = styled.div`
 
-    @media only screen and (max-width: 575px){
-        
+    @media only screen and (max-width: 750px){
+
         margin-top: 0px;
         margin-bottom: 75px;
         grid-template-columns: 1fr;
         padding: 0px 20px;
-    
-        grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr;
+
+        grid-template-rows:max-content max-content max-content max-content 1fr;
         grid-template-areas:
-            
+
             "featured"
             "one"
             "two"
-            ".";     
+            "three"
+            ".";
 
-        }
+    }
+
+
+    @media only screen and (min-width: 751px) and (max-width: 1000px){
+
+        grid-template-columns: minmax(20px, 1fr) minmax(200px, 600px) minmax(200px, 600px) minmax(20px, 1fr);
+
+        grid-template-rows: 340px 170px 120px 50px minmax(100px, 1fr);
+        grid-template-areas:
+
+            ".   featured   one   ."
+            ".     two     three  ."
+            ".     two     three  ."
+            ".     two     three  ."
+            ".      .        .    .";
+
+    }
+
+
 
     min-height: 100%;
-    
+
     display: grid;
     justify-content: center;
     //grid-template-columns: 1fr minmax(0px, 350px) minmax(0px, 600px) 1fr;
-    
-    grid-template-columns: minmax(20px, 1fr) minmax(170px, 350px)  minmax(340px, 600px)  minmax(20px, 1fr);
 
-    
+    //grid-template-columns: minmax(20px, 1fr) minmax(170px, 350px)  minmax(340px, 600px)  minmax(20px, 1fr);
+
+    //grid-template-columns: 5px 1fr 1fr 1fr 5px;
+    grid-template-columns: minmax(20px, 1fr) minmax(200px, 600px) minmax(200px, 600px) minmax(200px, 600px) minmax(20px, 1fr);
+
     grid-template-rows: 170px 120px 50px 1fr;
     grid-template-areas:
-        
-        ".   one featured   ."
-        
-        ".   two featured   ."
-        ".   two featured   ."
-        ".     .       .    .";
+
+        ".   featured one two   ."
+        ".   featured one two   ."
+        ".   featured one two   ."
+        ".     .       .    .  .";
     grid-gap: 8px;
 
     margin-top: 50px;
@@ -65,6 +85,18 @@ const News = styled.div`
         "featured one two  ." */
 
 
+        /* @media only screen and (min-width: 2000px){
+        grid-template-columns: 10vw 1fr 1fr 1fr 10vw;
+
+    } */
+
+    @media only screen and (min-width: 1850px){
+
+        grid-template-columns: minmax(20px, 1fr) minmax(600px, 700px) minmax(600px, 700px) minmax(600px, 700px) minmax(20px, 1fr);
+
+
+
+    }
 
 
 `;
@@ -79,16 +111,16 @@ const StoryImageWrapper = styled.div`
     grid-area: 1 /1 /2 /2;
     padding-top: 60%;
     position: relative;
-    
-    
+
+
     /* @media screen and (min-width: 750px) and (max-width: 1111px){
         width: 100%;
         height: 100%;
 
         grid-area: picture;
-        
+
         padding:0;
-        
+
         align-self: center;
         justify-self: center;
         //border: 5px solid white;
@@ -113,14 +145,14 @@ const StoryImageOverlayWrapper = styled.div`
     //width: 100%;
     //height: 0px;
     //padding-top: 60%;
-    
+
     position: relative;
     /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+67,1+100 */
     /*background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 67%, rgba(255,255,255,1) 100%);  /*FF3.6-15 */
      /*background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
      /*background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
      /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-    
+
 
     background: rgb(0,0,0);
     background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
@@ -132,7 +164,7 @@ const StoryImageOverlayWrapper = styled.div`
 
         display: none;
     } */
-    
+
 `;
 
 const StoryImageOverlay = styled.div`
@@ -168,18 +200,20 @@ const Div1 = styled.div`
     overflow: hidden;
     display: grid;
 
+    min-height: 300px;
+
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     border: 5px solid #e8e5e5;
     //grid-template-columns: minmax(250px, 1fr);
-    //grid-template-rows: auto;  
+    //grid-template-rows: auto;
 
-    
-    
-    
-    
+
+
+
+
 
     /* &:before{
         content: '';
@@ -188,7 +222,7 @@ const Div1 = styled.div`
         height: 0;
         padding-top: calc(100% / (16/9));
 
-        
+
 
     } */
 
@@ -200,11 +234,11 @@ const Div2 = styled.div`
     border-radius: 10px;
     overflow: hidden;
     display: grid;
-
+    min-height: 300px;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     border: 5px solid #e8e5e5;
     //margin-right: 25px;
     /* &:before{
@@ -214,10 +248,10 @@ const Div2 = styled.div`
         height: 0;
         padding-top: calc(100% / (16/9));
 
-        
+
 
     } */
-    
+
 
 `;
 
@@ -228,11 +262,11 @@ const Div3 = styled.div`
     border-radius: 10px;
     overflow: hidden;
     display: grid;
-
+    min-height: 300px;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     border: 5px solid #e8e5e5;
     //margin-right: 25px;
     /* &:before{
@@ -242,10 +276,10 @@ const Div3 = styled.div`
         height: 0;
         padding-top: calc(100% / (16/9));
 
-        
+
 
     } */
-    
+
 `;
 
 const BackgroundGray = styled.div`
@@ -257,8 +291,10 @@ const BackgroundGray = styled.div`
     grid-area: 3/1/-1/-1;
     z-index: -1;
     padding: 75px 0px;
-    
-    
+
+    @media only screen and (max-width: 1000px){
+        grid-area: 4/1/-1/-1;
+    }
 
 
 
@@ -269,14 +305,14 @@ const BackgroundGray = styled.div`
 function Home(props){
 
     // const [screenIsAtTop, setScreenIsAtTop] = React.useState(true);
-    
-    
 
-    
+
+
+
     return (
         <>
             <HomeWrapper>
-                
+
                     <News>
 
                         <Div1 imageURL={props.lastStory ? props.lastStory.url : defaultImage} >
@@ -291,11 +327,11 @@ function Home(props){
                                 <StoryImageOverlay/>
                             </StoryImageOverlayWrapper>
 
-                            
-                            
-                            
-                        
-                        
+
+
+
+
+
                         </Div1>
                         <Div2 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>
 
@@ -308,40 +344,40 @@ function Home(props){
                             <StoryImageOverlayWrapper>
                                 <StoryImageOverlay/>
                             </StoryImageOverlayWrapper>
-                            
-                            
-                            
-                            
-                        
-                        
+
+
+
+
+
+
                         </Div2>
                         <Div3 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>
 
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
                             </StoryImageWrapper> */}
-                            
+
                             <StoryImageOverlayWrapper>
                                 <StoryImageOverlay/>
                             </StoryImageOverlayWrapper>
-                            
-                            
-                            
-                        
-                        
+
+
+
+
+
                         </Div3>
                         <BackgroundGray></BackgroundGray>
 
-                        
+
                     </News>
-                
-                
+
+
             </HomeWrapper>
 
             <Login handleSuccessfulAuth={props.handleSuccessfulAuth} setLoginClicked={props.setLoginClicked} loginClicked={props.loginClicked} />
-            
+
         </>
-    );  
+    );
 }
 
 
