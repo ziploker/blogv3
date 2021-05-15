@@ -20,26 +20,26 @@ const HomeWrapper = styled.div`
 
 const News = styled.div`
 
-    @media only screen and (max-width: 750px){
+    @media only screen and (max-width: 866px){
 
-        margin-top: 0px;
-        margin-bottom: 75px;
+        //margin-top: 0px;
+        margin-bottom: 55px;
         grid-template-columns: 1fr;
-        padding: 0px 20px;
+        //padding: 0px 20px;
 
-        grid-template-rows:max-content max-content max-content max-content 1fr;
+        grid-template-rows:max-content max-content max-content 1fr;
         grid-template-areas:
 
             "featured"
             "one"
             "two"
-            "three"
+            
             ".";
 
     }
 
 
-    @media only screen and (min-width: 751px) and (max-width: 1000px){
+    @media only screen and (min-width: 867px) and (max-width: 1111px){
 
         grid-template-columns: minmax(20px, 1fr) minmax(200px, 600px) minmax(200px, 600px) minmax(20px, 1fr);
 
@@ -67,16 +67,16 @@ const News = styled.div`
     //grid-template-columns: 5px 1fr 1fr 1fr 5px;
     grid-template-columns: minmax(20px, 1fr) minmax(200px, 600px) minmax(200px, 600px) minmax(200px, 600px) minmax(20px, 1fr);
 
-    grid-template-rows: 170px 120px 50px 1fr;
+    //grid-template-rows: 80px 120px 50px 1fr;
     grid-template-areas:
 
         ".   featured one two   ."
         ".   featured one two   ."
         ".   featured one two   ."
         ".     .       .    .  .";
-    grid-gap: 8px;
+    grid-gap: 20px;
 
-    margin-top: 50px;
+    margin-top: 30px;
 
     /* display: grid;
     justify-content: center;
@@ -199,9 +199,9 @@ const Div1 = styled.div`
     border-radius: 10px;
     overflow: hidden;
     display: grid;
-
-    min-height: 300px;
-
+    justify-self: center;
+    min-height: 290px;
+    max-width: 600px;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
@@ -234,7 +234,9 @@ const Div2 = styled.div`
     border-radius: 10px;
     overflow: hidden;
     display: grid;
-    min-height: 300px;
+    min-height: 290px;
+    max-width: 600px;
+    justify-self: center;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
@@ -262,7 +264,9 @@ const Div3 = styled.div`
     border-radius: 10px;
     overflow: hidden;
     display: grid;
-    min-height: 300px;
+    min-height: 290px;
+    max-width: 600px;
+    justify-self: center;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
@@ -284,7 +288,7 @@ const Div3 = styled.div`
 
 const BackgroundGray = styled.div`
 
-    @media only screen and (max-width: 575px){
+    @media only screen and (max-width: 866px){
         display: none;
     }
     background: #C4C4C4;
@@ -356,6 +360,10 @@ function Home(props){
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
                             </StoryImageWrapper> */}
+
+                            <StoryOneTitle>
+                                AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
+                            </StoryOneTitle>
 
                             <StoryImageOverlayWrapper>
                                 <StoryImageOverlay/>
