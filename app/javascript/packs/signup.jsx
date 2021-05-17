@@ -156,7 +156,7 @@ const LeftSection = styled.div`
     grid-area: 1/1/2/4;
     margin: 0px 0px 0px 0px;
     //padding-left: 20px;
-    width: 100vw;
+    //width: 100vw;
 
   }
 
@@ -205,6 +205,10 @@ const Spacer = styled.h2`
   grid-area: 1/3/2/5;
   color: #e3b55a;
   margin: 0px 0px 8px 20px;
+
+  @media only screen and (max-width: 720px){
+    display: none;
+  }
 
 `;
 

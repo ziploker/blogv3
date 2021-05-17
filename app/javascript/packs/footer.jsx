@@ -43,7 +43,7 @@ const FooterImage = styled.img`
 
     @media only screen and (max-width: 575px) {
 
-        grid-area: 1/1/2/-1;
+        grid-area: 1/1/3/-1;
         
     }
 
