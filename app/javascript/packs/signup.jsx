@@ -155,12 +155,16 @@ const LeftSection = styled.div`
 
     grid-area: 1/1/2/4;
     margin: 0px 0px 0px 0px;
+    //padding-left: 20px;
+    width: 100vw;
 
   }
 
   @media only screen and (max-width: 940px){
   
-    padding-left: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
   }
   
   align-self: start;
