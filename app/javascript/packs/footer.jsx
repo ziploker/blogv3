@@ -21,7 +21,7 @@ const FooterWrapper = styled.div`
     background-repeat: no-repeat;
     
     min-height: 200px; */
-    background-color: #FFA500;
+    background-color: RGB(244, 244, 244);
 
     overflow: hidden;
 

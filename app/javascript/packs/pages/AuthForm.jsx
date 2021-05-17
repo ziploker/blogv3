@@ -4,14 +4,14 @@ const Card = styled.div`
 
   @media only screen and (max-width: 720px){
 
-    grid-area: 2/2/3/3;
-    margin: 0px;
+    grid-area: 2/1/3/4;
+    margin: 25px 0px 0px 0px;
     
     //width: 100%;
 
 
   }
-
+  position: relative;
   grid-area: 1/3/2/4;
   box-sizing: border-box;
   max-width: 385px;
@@ -205,20 +205,24 @@ const LoginWrapper = styled.div`
 
     grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
     min-width: 100%;
+    padding-left: 20px;
     //justify-self: center;
 
 
   }
   position: relative;
   height: 100%;
-  background-color: orange;
+  background-color: RGB(244, 244, 244);
   display: grid;
   
   align-items: center;
   justify-content: center;
   //grid-template-columns: minmax(170px,350px) minmax(340px,600px);
-  grid-template-columns: minmax(20px, 1fr) minmax(300px, 350px) minmax(420px,600px) minmax(20px, 1fr);
-
+  //grid-template-columns: minmax(20px, 1fr) minmax(300px, 350px) minmax(420px,600px) minmax(20px, 1fr);
+  
+  grid-template-columns: minmax(20px, 40px) minmax(250px,450px) minmax(350px,600px) minmax(40px, 1fr);
+  
+  grid-area: 1/1/-1/-1;
   grid-column-gap: 0.5em;
   padding-top: 60px;
   padding-bottom: 20px;
@@ -235,6 +239,7 @@ const LogoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 15px 10px 15px;
+  
 
 `;
 

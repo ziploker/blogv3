@@ -119,7 +119,7 @@ const ActSection = styled.section`
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
-  grid-template-columns: minmax(20px, 40px) minmax(250px, 550px) minmax(350px,600px) minmax(40px, 1fr);
+  grid-template-columns: minmax(20px, 40px) minmax(250px, 450px) minmax(350px,600px) minmax(40px, 1fr);
   grid-template-rows: min-content min-content min-content 1fr;
 
   grid-column-gap: 0.5em;

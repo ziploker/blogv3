@@ -32,7 +32,10 @@ const HomeWrapper = styled.div`
   //padding: 45px 0px;
   //background-image: url(${crew});
   //background-size: cover;
-    
+  display: grid;
+  grid-template-columns: minmax(20px,1fr) minmax(335px,350px) minmax(350px,600px) minmax(20px,1fr);
+  grid-column-gap: 0.5em;
+  justify-items: center;
 
 `;
 
@@ -150,16 +153,85 @@ const LeftSection = styled.div`
 
   @media only screen and (max-width: 720px){
 
-    grid-area: 1/2/2/3;
-    margin: 0px 0px 45px 0px;
+    grid-area: 1/1/2/4;
+    margin: 0px 0px 0px 0px;
 
+  }
+
+  @media only screen and (max-width: 940px){
+  
+    padding-left: 0px;
   }
   
   align-self: start;
+  
+  text-align: left;
   grid-area: 1/2/2/3;
-  margin-right: 4.20em;
+  //margin-right: 4.20em;
+  padding-left: 60px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 800;
+
+  h1{
+    color: rgb(6, 7, 1, .9);
+    margin-bottom: 30px;
+    font-size: 3em;
+
+  }
+
+  sub{
+
+    color: rgb(6, 7, 1, .9);
+  }
 
 
+`;
+
+const Spacer = styled.h2`
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2.5vw;
+  //line-height: 100%;
+
+  
+  z-index: -10;
+  grid-area: 1/3/2/5;
+  color: #e3b55a;
+  margin: 0px 0px 8px 20px;
+
+`;
+
+const ActHeader = styled.h1`
+  @media only screen and (max-width: 720px){
+
+    grid-area: 1/1/2/-1;
+    //justify-self: center;
+    font-size: 15vw;
+
+  } 
+
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 10vw;
+  //line-height: 100px;
+  /* identical to box height */
+
+  letter-spacing: -0.08em;
+
+  color: #ffffff;
+  grid-area: 1/3/2/-1;
+  align-self: end;
+
+  //line-height: 100%;
+  margin: -10px 0px 0px 20px;
+  padding-top: 20px;
+  //z-index: 1;
+
+  opacity: ${(props) => (props.showCards || props.showLetter ? "0" : "1")};
 `;
 
 const formData = new FormData();
@@ -458,16 +530,16 @@ const handleAdd = e => {
         <LeftSection>
 
           {/* <img style={{width: "50px"}} src={userIcon}/> */}
-          <h1 style={{color: "#EDEAEA", marginBottom: "30px", fontSize: "3em"}}>Sign Up!</h1>
-          <sub style={{color: "#EDEAEA"}}>- Create a free account.</sub><br/>
-          <sub style={{color: "#EDEAEA"}}>- Stay Informed with FloridaBlaze updates.</sub><br/>
-          <sub style={{color: "#EDEAEA"}}>- Unlimited access to our "take action" tool.</sub>
+          <h1>Sign Up!</h1>
+          <sub>- Create a free account.</sub><br/>
+          <sub>- Stay Informed with FloridaBlaze updates.</sub><br/>
+          <sub>- Unlimited access to our "take action" tool.</sub>
 
 
         </LeftSection>
             
         <Card className="formWrapper" >
-
+       
                 
           <Form onSubmit = {handleAdd}>
 
@@ -551,6 +623,11 @@ const handleAdd = e => {
           </ErrorWrapper>
         
         </Card>
+
+        <Spacer>
+        Contact Your State Representatives
+
+        </Spacer>
             
       </LoginWrapper>
 
