@@ -3,7 +3,29 @@ import styled, { ThemeProvider } from 'styled-components'
 //import { Parallax, Background } from 'react-parallax';
 import Login from './pages/login'
 import defaultImage from '../../assets/images/defaultImage'
+import slugify from 'react-slugify'
+import {
+    
+    Link
+} from "react-router-dom";
+  
+const LinkWrapper = styled(Link)`
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    //max-width:450px;
+    width: 100%;
+
+    /* @media screen and (min-width: 750px) and (max-width: 1111px){
+
+        width: 88%;
+        max-width:100%;
+    } */
+
+
+`;
 
 const HomeWrapper = styled.div`
 
@@ -321,6 +343,28 @@ function Home(props){
 
                         <Div1 imageURL={props.lastStory ? props.lastStory.url : defaultImage} >
 
+                            <LinkWrapper 
+        
+        
+                                to={{
+                                    pathname: "/blog/" + slugify(props.lastStory ? props.lastStory.title : "nada"),
+                                    
+                                    //state: { 
+                                    //    body: props.info.body,
+                                    //    created_at: props.info.created_at,
+                                    //    date: props.info.date,
+                                    //    keywords: props.info.keywords,
+                                    //    title: props.info.title,
+                                    //    topic: props.info.topic,
+                                    //    imageUrl: props.info.url,
+                                    //    appState: props.appState
+                                    //    //handleLogOutClick: props.handleLogOutClick
+
+                                    
+                                    //}
+                                }}
+                                
+                            >
                             {/* <StoryImageWrapper>
                                 <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
                             </StoryImageWrapper> */}
@@ -334,7 +378,7 @@ function Home(props){
 
 
 
-
+                        </LinkWrapper> 
 
                         </Div1>
                         <Div2 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>

@@ -16,7 +16,7 @@ class SparksController < ApplicationController
 
         @lastStory = Story.last
         @secondToLastStory = Story.second_to_last
-        @thirdToLastStory = Story.third
+        @thirdToLastStory = Story.third_to_last
         @googleGeoApi = Rails.application.credentials.dig(:google, :geoapi)
 
         puts @stories.inspect

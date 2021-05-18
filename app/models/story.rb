@@ -158,7 +158,7 @@ class Story < ApplicationRecord
         #    errors.add(:image, "is too big")
         #end
 
-        acceptable_types = ["image/jpeg", "image/png"]
+        acceptable_types = ["image/jpeg", "image/png", "image/jpg"]
         
         unless acceptable_types.include?(image.content_type)
             errors.add(:image, "must be a JPEG or PNG")
