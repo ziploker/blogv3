@@ -16,6 +16,7 @@ import Shop from "./shop"
 import Footer from "./footer"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from "./global"
+import Article from './article'
 
 
 import Login from "./pages/login"
@@ -175,6 +176,7 @@ function App(controllerProps){
                     <Route path="/resend" render={ props => <Resend {...props}  />} />                   
                     <Route exact path="/change_pw/:token" render={ props => <Change {...props}  />} />
                     <Route path="/edit" render={ props => <Edit {...props} user={appState.user}/>} />
+                    <Route exact path="/blog/:id" render = { props => <Article {...props} /> } />
                 </Switch>
 
                 <Act executeScrollForSection2={executeScrollForSection2} appState={appState} setLoginClicked={setLoginClicked} setOpenSideMenu={setOpenSideMenu}/>

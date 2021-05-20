@@ -344,80 +344,84 @@ function Home(props){
                         <Div1 imageURL={props.lastStory ? props.lastStory.url : defaultImage} >
 
                             <LinkWrapper 
-        
-        
                                 to={{
                                     pathname: "/blog/" + slugify(props.lastStory ? props.lastStory.title : "nada"),
-                                    
-                                    //state: { 
-                                    //    body: props.info.body,
-                                    //    created_at: props.info.created_at,
-                                    //    date: props.info.date,
-                                    //    keywords: props.info.keywords,
-                                    //    title: props.info.title,
-                                    //    topic: props.info.topic,
-                                    //    imageUrl: props.info.url,
-                                    //    appState: props.appState
-                                    //    //handleLogOutClick: props.handleLogOutClick
-
-                                    
-                                    //}
                                 }}
-                                
                             >
-                            {/* <StoryImageWrapper>
-                                <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                            </StoryImageWrapper> */}
-                            <StoryOneTitle>
-                            AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
-                            </StoryOneTitle>
-                            <StoryImageOverlayWrapper>
-                                <StoryImageOverlay/>
-                            </StoryImageOverlayWrapper>
-
-
-
-
-                        </LinkWrapper> 
+                                
+                                <StoryOneTitle>
+                                    AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
+                                </StoryOneTitle>
+                                
+                                <StoryImageOverlayWrapper>
+                                    <StoryImageOverlay/>
+                                </StoryImageOverlayWrapper>
+                            
+                            </LinkWrapper> 
 
                         </Div1>
-                        <Div2 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>
+                        
+                        
+                        <Div2 imageURL={props.secondToLastStory ? props.secondToLastStory.url : defaultImage} >
 
-                            {/* <StoryImageWrapper>
-                                <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                            </StoryImageWrapper> */}
-                            <StoryOneTitle>
-                            AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
-                            </StoryOneTitle>
-                            <StoryImageOverlayWrapper>
-                                <StoryImageOverlay/>
-                            </StoryImageOverlayWrapper>
-
-
-
-
-
+                            <LinkWrapper 
+                                to={{
+                                    pathname: "/blog/" + slugify(props.secondToLastStory ? props.secondToLastStory.title : "nada"),
+                                }}
+                            >
+                                
+                                <StoryOneTitle>
+                                    {props.secondToLastStory.title}
+                                </StoryOneTitle>
+                                
+                                <StoryImageOverlayWrapper>
+                                    <StoryImageOverlay/>
+                                </StoryImageOverlayWrapper>
+                            
+                            </LinkWrapper> 
 
                         </Div2>
-                        <Div3 imageURL={props.lastStory ? props.lastStory.url : defaultImage}>
+                        
+                        
+                        <Div3 imageURL={props.thirdToLastStory ? props.thirdToLastStory.url : defaultImage} >
 
-                            {/* <StoryImageWrapper>
-                                <StoryImage src={props.lastStory ? props.lastStory.url : null}  />
-                            </StoryImageWrapper> */}
-
-                            <StoryOneTitle>
-                                AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
-                            </StoryOneTitle>
-
-                            <StoryImageOverlayWrapper>
-                                <StoryImageOverlay/>
-                            </StoryImageOverlayWrapper>
-
-
-
-
+                            <LinkWrapper 
+                                to={{
+                                    pathname: "/blog/" + slugify(props.thirdToLastStory ? props.thirdToLastStory.title : "nada"),
+                                }}
+                            >
+                                
+                                <StoryOneTitle>
+                                    {props.thirdToLastStory.title}
+                                </StoryOneTitle>
+                                
+                                <StoryImageOverlayWrapper>
+                                    <StoryImageOverlay/>
+                                </StoryImageOverlayWrapper>
+                            
+                            </LinkWrapper> 
 
                         </Div3>
+
+                        {/* <Div4 imageURL={props.fourthToLastStory ? props.fourthToLastStory.url : defaultImage} >
+
+                            <LinkWrapper 
+                                to={{
+                                    pathname: "/blog/" + slugify(props.fourthToLastStory ? props.fourthToLastStory.title : "nada"),
+                                }}
+                            >
+                                
+                                <StoryOneTitle>
+                                    {props.fourthToLastStory.title}
+                                </StoryOneTitle>
+                                
+                                <StoryImageOverlayWrapper>
+                                    <StoryImageOverlay/>
+                                </StoryImageOverlayWrapper>
+                            
+                            </LinkWrapper> 
+
+                        </Div4> */}
                         <BackgroundGray></BackgroundGray>
 
 
