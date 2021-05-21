@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-
+    has_one_attached :avatar
     has_secure_password
     
     validates_presence_of :full_name, :on=> :create
@@ -15,13 +15,20 @@ class User < ApplicationRecord
                             :on => :create
     
         
-    
-    
+
+    validates :avatar, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+        dimension: { width: { max: 200 }, height: { max: 200 } }
+               
+    after_validation :getKeyFromBlobAndAddItToStoryRecord
     #before_save :downcase_fields
     
     #def downcase_fields
         #self.email.downcase!
     #end
+
+    before_create :ifNickIsBlankMakeItFirstName
+
+    before_create :addDefaultAvatarToActiveStorage
     
     def generate_password_token!
         self.reset_password_token = generate_token
@@ -52,5 +59,63 @@ class User < ApplicationRecord
     def generate_token
         SecureRandom.hex(10)
     end
+
+
+
+    ###########################
+
+
+    
+   
+ 
+    
+   
+    
+    def getKeyFromBlobAndAddItToStoryRecord
+ 
+       puts "------------after_validation callback begin for user -------------------"
+ 
+       if self.avatar.attached?
+          url = self.avatar.service_url&.split("?")&.first
+       
+          puts "url = " + url
+          
+          
+          
+       
+          self.avatar_url = url
+ 
+       end
+ 
+ 
+      
+ 
+       puts "------------after_validation callback end -------------------"
+   end
+     
+ 
+   def ifNickIsBlankMakeItFirstName
+ 
+    puts "-----------beforeCreatePartII------------"
+
+    puts 'daaallleee'
+
+    
+ 
+    if self.nick == nil
+ 
+       self.nick = self.full_name.split(" ")&.first
+    end
+
+    puts "NewselfNick is " + self.nick
+ 
+    puts "-----------beforeCreatePartII------------"
+ 
+ end
+
+ def addDefaultAvatarToActiveStorage
+    self.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'man3.png')), filename: 'man3.png', content_type: 'image/png')
+
+ end
     
 end

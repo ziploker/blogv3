@@ -87,18 +87,18 @@ function Edit(props) {
   console.log("Edit_props", props)
   const [state, setState] = React.useState({
     loggedInStatus: "NOT_LOGGED_IN",
-    first: '',
-    firstFieldActive: true,
-    last: '',
-    lastFieldActive: true,
+    fullName: '',
+    fullNameFieldActive: true,
+    
     email: '',
     emailFieldActive: true,
+    
     oldPassword: '',
     oldPasswordFieldActive: false,
+    
     password: "",
     passwordFieldActive: false,
-    password_confirmation: "",
-    password_confirmationFieldActive: false,
+    
     nick: "",
     nickFieldActive: true,
     status: "",
@@ -428,28 +428,17 @@ function Edit(props) {
         <Form onSubmit = {handleAdd}>
           
           <FormItem>
-            <Label className={state.firstFieldActive ? "field-active" : ""}>first name</Label>
+            <Label className={state.fullNameFieldActive ? "field-active" : ""}>full name</Label>
             <Input 
                 name="first" 
                 type="text" 
-                value={state.first || ''} 
+                value={state.fullName || ''} 
                 onChange={handleChange} 
                 onFocus={activateField}
                 onBlur={disableField}
                 required />
           </FormItem>
           
-          <FormItem>
-            <Label className={state.lastFieldActive ? "field-active" : ""}>last name</Label>
-            <Input 
-              name="last" 
-              type="text" 
-              value={state.last || ''} 
-              onChange={handleChange} 
-              onFocus={activateField}
-              onBlur={disableField}
-              required/>
-          </FormItem>
           
           <FormItem>
             <Label className={state.emailFieldActive ? "field-active" : ""}>email</Label>
@@ -488,17 +477,7 @@ function Edit(props) {
           </FormItem>
           
 
-          <FormItem>
-            <Label className={state.password_confirmationFieldActive ? "field-active" : ""}>new password confirmation</Label>
-            <Input 
-              name="password_confirmation" 
-              type="password" 
-              value={state.password_confirmation} 
-              onChange={handleChange} 
-              onFocus={activateField}
-              onBlur={disableField}/>
-          </FormItem>
-
+          
           <FormItem >
             <Label className={state.nickFieldActive ? "field-active" : ""}>Display name</Label>
             <Input 

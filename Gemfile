@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+# Rails 5.2 and Rails 6
+gem 'active_storage_validations'
+
+# Optional, to use :dimension validator or :aspect_ratio validator
+gem 'mini_magick', '>= 4.9.5'
+
 ruby '3.0.0'
 gem "react_on_rails", "12.0" # Update to the current version
 gem 'httparty'

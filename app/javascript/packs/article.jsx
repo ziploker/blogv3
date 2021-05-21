@@ -7,6 +7,7 @@ import TimeAgo from 'javascript-time-ago'
 TimeAgo.addDefaultLocale(en)
 import ReactTimeAgo from 'react-time-ago'
 import en from 'javascript-time-ago/locale/en'
+import CommentForm from './commentForm'
 
  
 
@@ -356,8 +357,8 @@ function Article(props){
                    
                    
                 <div style={{margin: "30px 30px"}}>
-{/* 
-                <CommentForm userData={userData} articleID={artData.id} commentID="x" setArtDataComments={setArtDataComments}/> */}
+
+                <CommentForm userData={userData} articleID={artData.id} commentID="x" setArtDataComments={setArtDataComments}/>
 
                 </div>
 
