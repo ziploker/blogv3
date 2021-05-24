@@ -42,7 +42,8 @@ function App(controllerProps){
         user: {},
         lastStory: controllerProps.lastStory,
         secondToLastStory: controllerProps.secondToLastStory,
-        thirdToLastStory: controllerProps.thirdToLastStory
+        thirdToLastStory: controllerProps.thirdToLastStory,
+        fourthToLastStory: controllerProps.fourthToLastStory
         
     })
     const [openSideMenu, setOpenSideMenu] = useState(false);
@@ -169,7 +170,7 @@ function App(controllerProps){
                 
                 
                 <Switch>
-                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} appState={appState} setAppState={setAppState} />}/>
+                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} appState={appState} setAppState={setAppState} />}/>
                     <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     <Route path="/forgot" render={ props => <Forgot {...props}  />} /> 

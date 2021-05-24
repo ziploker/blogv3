@@ -87,14 +87,14 @@ function Edit(props) {
   console.log("Edit_props", props)
   const [state, setState] = React.useState({
     loggedInStatus: "NOT_LOGGED_IN",
-    fullName: '',
-    fullNameFieldActive: true,
+    full_name: '',
+    full_nameFieldActive: true,
     
     email: '',
     emailFieldActive: true,
     
-    oldPassword: '',
-    oldPasswordFieldActive: false,
+    //oldPassword: '',
+    //oldPasswordFieldActive: false,
     
     password: "",
     passwordFieldActive: false,
@@ -144,10 +144,10 @@ function Edit(props) {
     axios.put("/registrations/"+props.user.id, {
       
       user: { 
-        first: state.first,
-        last: state.last,
+        full_name: state.full_mame,
+        
         email: state.email,
-        oldPassword: state.oldPassword,
+        //oldPassword: state.oldPassword,
         password: state.password,
         password_confirmation: state.password_confirmation
 
@@ -207,12 +207,12 @@ function Edit(props) {
 
      
      
-     formData.append('user[first]', state.first);
-     formData.append('user[last]', state.last);
+     formData.append('user[full_name]', state.full_name);
+    
      formData.append('user[email]', state.email);
-     formData.append('user[oldPassword', state.oldPassword);
+     //formData.append('user[oldPassword', state.oldPassword);
      formData.append('user[password]', state.password);
-     formData.append('user[password_confirmation]', state.password_confirmation);
+     
      formData.append('user[nick]', state.nick);
      
      
@@ -368,10 +368,10 @@ function Edit(props) {
           setState({
             ...state,
             loggedInStatus: "LOGGED_IN",
-            first: response.data.user.first,
-            last: response.data.user.last,
+            full_name: response.data.user.full_name,
+            
             email: response.data.user.email,
-            oldPassword: "",
+            //oldPassword: "",
             password: "",
             password_confirmation: "",
             errors: {},
@@ -428,11 +428,11 @@ function Edit(props) {
         <Form onSubmit = {handleAdd}>
           
           <FormItem>
-            <Label className={state.fullNameFieldActive ? "field-active" : ""}>full name</Label>
+            <Label className={state.full_nameFieldActive ? "field-active" : ""}>full name</Label>
             <Input 
-                name="first" 
+                name="full_name" 
                 type="text" 
-                value={state.fullName || ''} 
+                value={state.full_name || ''} 
                 onChange={handleChange} 
                 onFocus={activateField}
                 onBlur={disableField}
@@ -452,7 +452,7 @@ function Edit(props) {
               required/>
           </FormItem>
           
-          <FormItem>
+          {/* <FormItem>
             <Label className={state.oldPasswordFieldActive ? "field-active" : ""}>current password</Label>
             <Input 
               name="oldPassword" 
@@ -462,7 +462,7 @@ function Edit(props) {
               onFocus={activateField}
               onBlur={disableField}
               required/>
-          </FormItem>
+          </FormItem> */}
 
 
           <FormItem>

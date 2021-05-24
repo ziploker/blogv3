@@ -260,7 +260,7 @@ class RegistrationsController < ApplicationController
             
             @user = User
                 .find_by(email: params[:user][:email])
-                .try(:authenticate, params["user"][:oldPassword])
+                #.try(:authenticate, params["user"][:oldPassword])
     
             if @user.present?
     
@@ -354,7 +354,8 @@ class RegistrationsController < ApplicationController
                     
                     
     
-                    if @user.update(user_params.except(:oldPassword))
+                    #if @user.update(user_params.except(:oldPassword))
+                    if @user.update(user_params)
                     
                         render json:{
                             status: "green",
@@ -547,6 +548,6 @@ class RegistrationsController < ApplicationController
     
            
             
-            params.require(:user).permit(:full_name, :email, :password_digest, :password, :email_confirmed, :confirm_token, :opt_in)
+            params.require(:user).permit(:full_name, :avatar, :email, :password_digest, :password, :email_confirmed, :confirm_token, :nick, :opt_in)
         end
 end

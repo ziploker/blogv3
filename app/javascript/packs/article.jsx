@@ -9,6 +9,8 @@ import ReactTimeAgo from 'react-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import CommentForm from './commentForm'
 
+import defaultAvatar from '../../assets/images/man3'
+
  
 
 
@@ -253,6 +255,21 @@ const CommentBody = styled.p`
 
 `;
 
+const AuthorAvartar = styled.img`
+
+    width: 40px;
+    height: 40px;
+    align-self: end;
+    grid-area: image; 
+
+`;
+
+const AvatarTest = styled.img`
+
+    display: none;
+
+`;
+
 
 function Article(props){
 
@@ -261,6 +278,7 @@ function Article(props){
     const [artData, setArtData] = useState({})
     const [artDataComments, setArtDataComments] = useState([])
     const [state, setState] = useState("pending")
+    const [avatarLoaded, setAvatarLoaded] = useState(false)
 
     let editLink = null;
     
@@ -313,7 +331,8 @@ function Article(props){
     
         <>
 
-        
+        <AvatarTest src={artData.author_avatar}
+            onLoad={() => setAvatarLoaded(true)}></AvatarTest>
         <ArticleSection>
             
            <HorizontalAds/>
@@ -326,7 +345,12 @@ function Article(props){
 
                 <InfoBar>
 
-                    <img style={{width: "40px", height: "40px", alignSelf: "end", gridArea: "image"}} src={artData.author_avatar}></img>
+                    <AuthorAvartar src={avatarLoaded ? artData.author_avatar : defaultAvatar } />
+
+                   
+
+
+                    
                     <h4 style={{gridArea: "name", alignSelf: "end", fontSize: ".7rem", lineHeight: "normal"}}> {artData.author_nick} </h4>
                     <h4 style={{gridArea: "date", fontFamily: "serif", color: "#777777", alignSelf: "start", fontSize: ".7rem", lineHeight: "normal"}}>{artData.date}</h4>
 

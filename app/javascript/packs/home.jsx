@@ -308,6 +308,35 @@ const Div3 = styled.div`
 
 `;
 
+const Div4 = styled.div`
+
+    background: red;
+    grid-area: three;
+    border-radius: 10px;
+    overflow: hidden;
+    display: grid;
+    min-height: 290px;
+    max-width: 600px;
+    justify-self: center;
+    background-image: url( ${props => props.imageURL});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 5px solid #e8e5e5;
+    //margin-right: 25px;
+    /* &:before{
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        padding-top: calc(100% / (16/9));
+
+
+
+    } */
+
+`;
+
 const BackgroundGray = styled.div`
 
     @media only screen and (max-width: 866px){
@@ -371,7 +400,7 @@ function Home(props){
                             >
                                 
                                 <StoryOneTitle>
-                                    {props.secondToLastStory.title}
+                                    {props.secondToLastStory ? props.secondToLastStory.title : "Place holder for title, place holder for title"}
                                 </StoryOneTitle>
                                 
                                 <StoryImageOverlayWrapper>
@@ -392,7 +421,7 @@ function Home(props){
                             >
                                 
                                 <StoryOneTitle>
-                                    {props.thirdToLastStory.title}
+                                    {props.thirdToLastStory ? props.thirdToLastStory.title : "Place golder for title. place golder for title."}
                                 </StoryOneTitle>
                                 
                                 <StoryImageOverlayWrapper>
@@ -403,7 +432,7 @@ function Home(props){
 
                         </Div3>
 
-                        {/* <Div4 imageURL={props.fourthToLastStory ? props.fourthToLastStory.url : defaultImage} >
+                        <Div4 imageURL={props.fourthToLastStory ? props.fourthToLastStory.url : defaultImage} >
 
                             <LinkWrapper 
                                 to={{
@@ -412,7 +441,7 @@ function Home(props){
                             >
                                 
                                 <StoryOneTitle>
-                                    {props.fourthToLastStory.title}
+                                    {props.fourthToLastStory ? props.fourthToLastStory.title : ""}
                                 </StoryOneTitle>
                                 
                                 <StoryImageOverlayWrapper>
@@ -421,7 +450,7 @@ function Home(props){
                             
                             </LinkWrapper> 
 
-                        </Div4> */}
+                        </Div4>
                         <BackgroundGray></BackgroundGray>
 
 
