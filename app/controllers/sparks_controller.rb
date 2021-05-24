@@ -20,8 +20,7 @@ class SparksController < ApplicationController
         @fourthToLastStory = Story.order('created_at DESC').fourth()
         @googleGeoApi = Rails.application.credentials.dig(:google, :geoapi)
 
-        puts @stories.inspect
-
+        
         
         
 

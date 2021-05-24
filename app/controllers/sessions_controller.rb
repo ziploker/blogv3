@@ -19,10 +19,11 @@ class SessionsController < ApplicationController
         
         if user.present?
             
+            puts "-------------------------user was present"
             if user.email_confirmed
-                
+                puts "-------------------------and email is confirmed"
                 session[:user_id] = user.id
-                
+                puts "-------------------------user.id is " + user.id.to_s
                 render json:{
                     
                     status: "green",

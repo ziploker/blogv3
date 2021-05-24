@@ -140,7 +140,52 @@ function App(controllerProps){
 
         //const mode = process.env.NODE_ENV == "development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
-        
+        axios.get("/logged_in", {withCredentials: true})
+            .then(response => {
+
+                //Server says logged_in but appState says not logged in
+                
+                    
+                setAppState({
+                    ...appState,
+                    loggedInStatus: response.data.logged_in && appState.loggedInStatus == "NOT_LOGGED_IN" ? "LOGGED_IN": "NOT_LOGGED_IN",
+                    user: response.data.user,
+                    emailStatus: response.data.user && response.data.user.email_confirmed == true ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
+                })
+                    
+                
+                    
+                //Server says not logged in but appState says logged_in
+                //}else if (!response.data.logged_in && appState.loggedInStatus == "LOGGED_IN"){
+                    
+                //    setAppState({
+                //        ...appState,
+                //        loggedInStatus: "NOT_LOGGED_IN",
+                //        user: {}
+                //    })
+
+                //    console.log("WTTFFF", "BBBBBBB")
+
+                
+
+                //Check if email has been confirmed
+                //if (response.data.user && response.data.user.email_confirmed == true){
+                    
+                //    setAppState({
+                //        ...appState,
+                       
+              //          emailStatus: "EMAIL_VERIFIED"
+                //    })
+
+                //    console.log("WTTFFF", "cccccc")
+                    
+               // }
+
+                
+            
+            })
+            .catch(error => console.log("Logged in? error", error))
+
         
     },[]);
 

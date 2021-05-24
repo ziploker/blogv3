@@ -49,13 +49,13 @@ const News = styled.div`
         grid-template-columns: 1fr;
         //padding: 0px 20px;
 
-        grid-template-rows:max-content max-content max-content 1fr;
+        grid-template-rows:max-content max-content max-content max-content 1fr;
         grid-template-areas:
 
             "featured"
             "one"
             "two"
-            
+            "three"
             ".";
 
     }
@@ -310,30 +310,37 @@ const Div3 = styled.div`
 
 const Div4 = styled.div`
 
-    background: red;
-    grid-area: three;
-    border-radius: 10px;
-    overflow: hidden;
-    display: grid;
-    min-height: 290px;
-    max-width: 600px;
-    justify-self: center;
-    background-image: url( ${props => props.imageURL});
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: 5px solid #e8e5e5;
-    //margin-right: 25px;
-    /* &:before{
-        content: '';
-        display: block;
-        width: 0;
-        height: 0;
-        padding-top: calc(100% / (16/9));
+    @media only screen and (max-width: 1111px){
+
+        
+        display: initial;
+        background: red;
+        grid-area: three;
+        border-radius: 10px;
+        overflow: hidden;
+        display: grid;
+        min-height: 290px;
+        max-width: 600px;
+        justify-self: center;
+        background-image: url( ${props => props.imageURL});
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 5px solid #e8e5e5;
+        //margin-right: 25px;
+        /* &:before{
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            padding-top: calc(100% / (16/9));
 
 
 
-    } */
+        } */
+    }
+
+    display: none;
 
 `;
 
