@@ -548,6 +548,6 @@ class RegistrationsController < ApplicationController
     
            
             
-            params.require(:user).permit(:full_name, :avatar, :email, :password_digest, :password, :email_confirmed, :confirm_token, :nick, :opt_in)
+            params.require(:user).permit(:full_name, :avatar, :email, :password_digest, :password, :email_confirmed, :confirm_token, :nick, :opt_in, :auth_token)
         end
 end

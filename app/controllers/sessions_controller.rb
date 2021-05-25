@@ -7,10 +7,19 @@ class SessionsController < ApplicationController
     
     
     ####################  LOGIN  ###############################
+
+
+
+
+    
+    
+   
+    
+  
     
     def create   
         
-        
+        puts "in sessions#create=================="
         # search for user email and try to auth...
         user = User
             .find_by(email: params["user"]["email"].downcase)
@@ -19,11 +28,20 @@ class SessionsController < ApplicationController
         
         if user.present?
             
+            
+            
             puts "-------------------------user was present"
             if user.email_confirmed
-                puts "-------------------------and email is confirmed"
-                session[:user_id] = user.id
-                puts "-------------------------user.id is " + user.id.to_s
+                puts "-------------------------user email confirmed"
+                # if params[:remember_me]
+                    cookies.permanent[:auth_token] = user.auth_token
+                # else
+                #     cookies[:auth_token] = user.auth_token
+                # end
+                
+                # puts "-------------------------and email is confirmed"
+                # session[:user_id] = user.id
+                # puts "-------------------------user.id is " + user.id.to_s
                 render json:{
                     
                     status: "green",
@@ -49,7 +67,7 @@ class SessionsController < ApplicationController
     ################# check if user is logged in ###########
     def logged_in
 
-        puts @current_user.inspect
+        #puts @current_user.inspect
 
         
 
@@ -73,6 +91,7 @@ class SessionsController < ApplicationController
     ################# Log user da fk out ###########
     def logout
         reset_session
+        cookies.delete(:auth_token)
         render json: {
             
             status: 200, 

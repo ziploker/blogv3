@@ -7,15 +7,20 @@ module CurrentUserConcern
 
     def set_current_user
        
-       puts "in -----------set_current_user ----------- currentUserConcern----"
+       puts "in ----Controllers-------set_current_user ----------- currentUserConcern----"
         
-        if session["user_id"]
-           
-            puts "session[user_id] found !!!!!!!!!!!!"
-            @current_user = User.find(session[:user_id])
-            
-        end
+       
+       #if session["user_id"]
+       if cookies[:auth_token]
+          puts "cookies yes auto token is " + cookies[:auth_token].to_s
+           #@current_user = User.find(session[:user_id])
+            if User.find_by_auth_token(cookies[:auth_token])
+             @current_user = User.find_by_auth_token!(cookies[:auth_token])
 
-        puts "OUt -----------set_current_user ----------- currentUserConcern----"
+             puts "ppp " + @current_user.inspect
+            end
+       end
+       puts "cookies done"
+        puts "OUt ----Controller-------set_current_user ----------- currentUserConcern----"
     end
 end

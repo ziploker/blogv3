@@ -29,6 +29,25 @@ class User < ApplicationRecord
     before_create :ifNickIsBlankMakeItFirstName
 
     before_create :addDefaultAvatarToActiveStorage
+
+    
+
+    before_create :generate_token_for_cookie
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+    #########
     
     def generate_password_token!
         self.reset_password_token = generate_token
@@ -69,7 +88,15 @@ class User < ApplicationRecord
    
  
     
-   
+    def generate_token_for_cookie
+
+        puts "in gen token-------------"
+        
+        self[:auth_token] = SecureRandom.urlsafe_base64
+
+        puts "gen token is =========== " + self[:auth_token].to_s
+        
+    end
     
     def getKeyFromBlobAndAddItToStoryRecord
  

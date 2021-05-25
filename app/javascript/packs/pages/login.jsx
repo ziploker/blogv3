@@ -249,6 +249,10 @@ function Login(props) {
               onBlur={disableField} 
               required/>
           </FormItem>
+
+
+          {/* <%= check_box_tag :remember_me, 1, params[:remember_me] %>
+          <%= label_tag :remember_me %> */}
           
           <Button type="submit">Log In</Button>
         
