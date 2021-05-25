@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
         
     
         require 'mailgun-ruby'
-        include CurrentUserConcern
+        #include CurrentUserConcern
     
         #############################################################
     
@@ -239,7 +239,7 @@ class RegistrationsController < ApplicationController
             
             if @user.present? 
                 
-                @user.email_confirmed = true
+                @user.email_confirmed = "true"
                 @user.confirm_token = nil
                 @user.save!(:validate => false)
                 
@@ -266,7 +266,7 @@ class RegistrationsController < ApplicationController
     
                 puts "user present"
                 
-                if @user.email_confirmed
+                if @user.email_confirmed == "true"
     
                     puts "email has been confirmed"
                 
@@ -276,7 +276,7 @@ class RegistrationsController < ApplicationController
     
                         puts 'email is diffetent'
     
-                        @user.email_confirmed = false
+                        @user.email_confirmed == "false"
                         token = SecureRandom.urlsafe_base64.to_s
                         @user.confirm_token = token
                         @user.email = params["user"][:email].downcase

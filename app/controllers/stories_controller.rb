@@ -3,7 +3,7 @@ class StoriesController < ApplicationController
     #skip_before_action :verify_authenticity_token
      
     #sets @current_user if session[:id] exists
-     include CurrentUserConcern
+     #include CurrentUserConcern
   
     def index
         

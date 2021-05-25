@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 
     #sets @current_user if session[:id] exists
-    include CurrentUserConcern
+    #include CurrentUserConcern
     
     
     
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
     def create   
         
         puts "in sessions#create=================="
-        # search for user email and try to auth...
+        #search for user email and try to auth...
         user = User
             .find_by(email: params["user"]["email"].downcase)
             .try(:authenticate, params["user"][:password])
@@ -31,13 +31,28 @@ class SessionsController < ApplicationController
             
             
             puts "-------------------------user was present"
-            if user.email_confirmed
+            if user.email_confirmed == "true"
+                
+                
                 puts "-------------------------user email confirmed"
-                # if params[:remember_me]
+
+                puts "in gen token-------------"
+        
+                    user[:auth_token] = SecureRandom.urlsafe_base64
+                    user.save!
+                puts "just saved auth token to DB-------------"  
+
+                    puts "gen token is =========== " + user[:auth_token].to_s
+                
+                if params["user"]["rememberMe"]
+
+
+                    puts "------------------------rememberMe was checked"
                     cookies.permanent[:auth_token] = user.auth_token
-                # else
-                #     cookies[:auth_token] = user.auth_token
-                # end
+                else
+                    puts "------------------------rememberMe was NOT checked"
+                    cookies[:auth_token] = user.auth_token
+                end
                 
                 # puts "-------------------------and email is confirmed"
                 # session[:user_id] = user.id
@@ -69,9 +84,9 @@ class SessionsController < ApplicationController
 
         #puts @current_user.inspect
 
-        
+        setUser
 
-        if @current_user && @current_user.email_confirmed
+        if @current_user && @current_user.email_confirmed == "true"
 
             
             

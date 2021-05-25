@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
     
 
-    before_create :generate_token_for_cookie
+    #before_create :generate_token_for_cookie
 
 
 
@@ -90,7 +90,7 @@ class User < ApplicationRecord
     
     def generate_token_for_cookie
 
-        puts "in gen token-------------"
+        puts "in gen token--USER MODEL-----------"
         
         self[:auth_token] = SecureRandom.urlsafe_base64
 
@@ -103,7 +103,7 @@ class User < ApplicationRecord
        puts "------------after_validation callback begin for user -------------------"
  
        if self.avatar.attached?
-          url = self.avatar.service_url&.split("?")&.first
+          url = self.avatar.url&.split("?")&.first
        
           puts "url = " + url
           

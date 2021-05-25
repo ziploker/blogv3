@@ -12,7 +12,7 @@ import { Card, Logo, Form, Input, Button, ErrorMsg, RedX, LoginWrapper,
 
 const LoginWrapperNew = styled.div`
 
-  
+  z-index: 10;
 
   position: absolute;
   top: ${props => props.loginClicked ? "0px" : "-500px"};
@@ -64,6 +64,7 @@ function Login(props) {
     emailFieldActive: true,
     password: "",
     passwordFieldActive: true,
+    rememberMe: false,
     status: "",
     errors: {}
 
@@ -108,7 +109,8 @@ function Login(props) {
       
       user: { 
         email: state.email,
-        password: state.password
+        password: state.password,
+        rememberMe: state.rememberMe
       }
     },
     {withCredentials: true})
@@ -156,14 +158,34 @@ function Login(props) {
   function handleChange(event){
 
     const value = event.target.value;
-
+    console.log("#################")
     console.log("name", event.target.name)
+    
     console.log("value", value)
+    console.log("#################")
+
+    
+    if (event.target.name == "remember"){
+      
+      
+      
+     
+
+      setState(prevState =>({
+        ...prevState,
+        rememberMe: !prevState.rememberMe
+      }))
+      
+    }else{
+
+
+    
+
     setState({
       ...state,
       [event.target.name]: value
     });
-
+  }
     //activateField(event);
   }
 
@@ -250,6 +272,17 @@ function Login(props) {
               required/>
           </FormItem>
 
+          <FormItem >
+            <label>
+            remember me:
+            <input
+              name="remember"
+              value={state.rememberMe}
+              type="checkbox"
+              
+              onChange={handleChange} />
+            </label>
+          </FormItem>
 
           {/* <%= check_box_tag :remember_me, 1, params[:remember_me] %>
           <%= label_tag :remember_me %> */}

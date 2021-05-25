@@ -1,10 +1,24 @@
 class SparksController < ApplicationController
-    include CurrentUserConcern
+    #include CurrentUserConcern
 
     STORIES_PER_PAGE = 4
     
     
     def index
+
+        setUser
+
+        # puts "Set Current User from sparks controller"
+        # if cookies[:auth_token]
+        #     puts "cookies found AND AUTH     token is " + cookies[:auth_token].to_s
+        #     #@current_user = User.find(session[:user_id])
+              
+        #     if User.find_by_auth_token(cookies[:auth_token])
+        #         @current_user = User.find_by_auth_token!(cookies[:auth_token])
+  
+        #         puts "USER_INSPECT " + @current_user.inspect
+        #       end
+        #  end
 
         @path = params[:path]
         #@story = Story.order("created_at").last
@@ -23,6 +37,7 @@ class SparksController < ApplicationController
         
         
         
+
 
         
         #puts "google api is = " + @googleGeoApi

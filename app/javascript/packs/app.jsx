@@ -140,7 +140,26 @@ function App(controllerProps){
 
         //const mode = process.env.NODE_ENV == "development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
-        axios.get("/logged_in", {withCredentials: true})
+        console.log("SParks UseEffect Start-------------------------")
+        if (controllerProps.current_user != null){
+
+
+            console.log("controllerProps.currentUser exists, so bypass session logged_in call")
+            setAppState({
+                ...appState,
+                loggedInStatus: "LOGGED_IN",
+                user: controllerProps.current_user,
+                emailStatus: controllerProps.current_user.email_confirmed == "true" ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
+            })
+
+
+        }else{
+        
+        
+        
+            console.log("controllerProps.currentUser did not exist, so run logged_in call from server")
+
+            axios.get("/logged_in", {withCredentials: true})
             .then(response => {
 
                 //Server says logged_in but appState says not logged in
@@ -150,7 +169,7 @@ function App(controllerProps){
                     ...appState,
                     loggedInStatus: response.data.logged_in && appState.loggedInStatus == "NOT_LOGGED_IN" ? "LOGGED_IN": "NOT_LOGGED_IN",
                     user: response.data.user,
-                    emailStatus: response.data.user && response.data.user.email_confirmed == true ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
+                    emailStatus: response.data.user && response.data.user.email_confirmed == "true" ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
                 })
                     
                 
@@ -186,7 +205,7 @@ function App(controllerProps){
             })
             .catch(error => console.log("Logged in? error", error))
 
-        
+        }
     },[]);
 
     
