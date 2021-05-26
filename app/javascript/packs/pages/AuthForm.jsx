@@ -45,7 +45,7 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0 40px 0px 40px;
+  padding: 0 20px 0px 20px;
   box-sizing: border-box;
 `;
 
@@ -120,7 +120,7 @@ const Input = styled.input`
   margin: 0px;
   width: 100%;
   height: 44px;
-  padding-left: 50px;
+  padding-left: 20px;
   box-shadow: inset 0 1px 2px rgba(203,203,210,0.4);
 
   padding-right: 8px;
@@ -239,6 +239,7 @@ const LogoWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 15px 10px 15px;
+  margin-bottom: 30px;
   
 
 `;

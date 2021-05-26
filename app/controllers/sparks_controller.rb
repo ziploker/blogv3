@@ -6,6 +6,7 @@ class SparksController < ApplicationController
     
     def index
 
+        puts "---------calling setUser from sparks controller-----------"
         setUser
 
         # puts "Set Current User from sparks controller"

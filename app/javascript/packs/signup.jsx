@@ -6,7 +6,7 @@ import styled, { ThemeProvider } from 'styled-components'
 
 
 
-import { Link } from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom'
 
 import redX from '../../assets/images/redXmark'
 import userIcon from '../../assets/images/signup2'
@@ -249,7 +249,7 @@ const formData = new FormData();
 
 function Signup(props, ref) {
   
-    
+  const locationFromHook = useLocation();
 
   const {section2ScrollToRef} = ref
 
@@ -524,7 +524,11 @@ const handleAdd = e => {
     }
   }
   
-  
+  if (locationFromHook.pathname === "/edit"){
+
+    return null
+
+  } 
   
 
 

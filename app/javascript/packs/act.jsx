@@ -992,7 +992,7 @@ function Act(props) {
   });
 
   const ref = useRef();
-
+  const locationFromHook = useLocation();
   //const {LookupScrollToRef, LookupInputRef} = ref;
   const [searchButtonActive, setSearchButtonActive] = React.useState(false);
   const [status, setStatus] = React.useState("");
@@ -1334,6 +1334,16 @@ function Act(props) {
       }, 3500);
     }
   };
+
+
+
+
+  if (locationFromHook.pathname === "/edit"){
+
+    return null
+
+  } 
+    
 
   return (
     <ActWrapper>

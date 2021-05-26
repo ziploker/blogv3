@@ -25,8 +25,8 @@ class ApplicationController < ActionController::Base
             end
        end
        
-       
+       puts "=============applicaton controller setUser End==========="
     end
 
-    puts "=============applicaton controller setUser End==========="
+    
 end

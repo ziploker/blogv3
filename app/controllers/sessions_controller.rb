@@ -83,6 +83,7 @@ class SessionsController < ApplicationController
     def logged_in
 
         #puts @current_user.inspect
+        puts "---------calling setUser from sessions controller-----------"
 
         setUser
 

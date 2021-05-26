@@ -14,9 +14,86 @@ import axios from 'axios';
 import $ from 'jquery';
 var Spinner = require('react-spinkit');
 
+
+
+const EditAccountWrapper = styled.div`
+
+  /* @media only screen and (max-width: 720px){
+
+    grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
+    min-width: 100%;
+    //padding-left: 20px;
+    //justify-self: center;
+
+
+  } */
+  position: relative;
+  height: 100%;
+  background-color: RGB(244, 244, 244);
+  display: grid;
+  
+  align-items: center;
+  justify-content: center;
+  //justify-self: start;
+  //grid-template-columns: minmax(170px,350px) minmax(340px,600px);
+  //grid-template-columns: minmax(20px, 1fr) minmax(300px, 350px) minmax(420px,600px) minmax(20px, 1fr);
+  
+  grid-template-columns: minmax(20px, 40px) 1fr minmax(20px, 40px);
+  
+  grid-area: 1/1/-1/-1;
+  grid-column-gap: 0.5em;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  text-align: center;
+  //width: 100vw;
+  
+
+`;
+
+
+
+const EditAccount = styled.div`
+
+  /* @media only screen and (max-width: 720px){
+
+    grid-area: 2/1/3/4;
+    margin: 25px 0px 0px 0px;
+    
+    //width: 100%;
+
+
+  } */
+  position: relative;
+  grid-area: 1/2/2/3;
+  box-sizing: border-box;
+  max-width: 600px;
+  width: 99vw;
+  //margin-left: 20px;
+  //padding: 0 2rem;
+  
+  //margin-top: 100px;
+  padding: 40px 0px 0px 0px;
+
+  background-color: #fff;
+  border: 1px solid transparent;
+  
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  border-radius: 8px;
+
+  justify-self: center;
+  align-self: center;
+`;
+
+
+
+
+
+
+
+
 const ProfilePicWrapper = styled.div`
 
-position: relative;
+  position: relative;
 
 
 `;
@@ -410,8 +487,8 @@ function Edit(props) {
   
   /////////////////////////////////// JSX /////////////////////////////////////////
   return (
-    <LoginWrapper>
-      <Card>
+    <EditAccountWrapper>
+      <EditAccount>
       <LogoWrapper>
           
           <ProfilePicWrapper>
@@ -529,11 +606,11 @@ function Edit(props) {
         </ErrorWrapper>
 
         
+        {/* <StyledLink to="/login">Already have an account? Log in</StyledLink> */}
+      </EditAccount>
       
-      </Card>
       
-      <StyledLink to="/login">Already have an account? Log in</StyledLink>
-    </LoginWrapper>
+    </EditAccountWrapper>
   );
 }
 
