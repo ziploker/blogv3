@@ -21,7 +21,7 @@ import Article from './article'
 
 import Login from "./pages/login"
 import Forgot from "./pages/forgot"
-import Signup from './pages/signup'
+//import Signup from './pages/signup'
 import Edit from './pages/edit'
 import Change from './pages/change_pw'
 import Resend from './pages/resend'
@@ -236,7 +236,7 @@ function App(controllerProps){
                 <Switch>
                     <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} appState={appState} setAppState={setAppState} />}/>
                     <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
-                    <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
+                    {/* <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} /> */}
                     <Route path="/forgot" render={ props => <Forgot {...props}  />} /> 
                     <Route path="/resend" render={ props => <Resend {...props}  />} />                   
                     <Route exact path="/change_pw/:token" render={ props => <Change {...props}  />} />

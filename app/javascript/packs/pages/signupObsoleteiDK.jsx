@@ -13,11 +13,42 @@ import styled, { ThemeProvider } from 'styled-components'
 var Spinner = require('react-spinkit');
 
 
+const Login = styled.div`
+
+  @media only screen and (max-width: 720px){
+
+    grid-area: 2/1/3/4;
+    margin: 25px 0px 0px 0px;
+    
+    //width: 100%;
+
+
+  }
+  position: relative;
+  grid-area: 1/3/2/4;
+  box-sizing: border-box;
+  max-width: 600px;
+  width: 100%;
+  //margin-left: 20px;
+  //padding: 0 2rem;
+  
+  //margin-top: 100px;
+  padding: 40px 0px 0px 0px;
+
+  background-color: #fff;
+  border: 1px solid transparent;
+  
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  border-radius: 8px;
+
+  justify-self: start;
+  align-self: center;
+`;
 
 
 const ProfilePicWrapper = styled.div`
 
-position: relative;
+  position: relative;
 
 
 `;
@@ -364,7 +395,7 @@ function Signup(props) {
   return (
     
     <LoginWrapper>
-      <Card>
+      <Login>
         
         <LogoWrapper>
           
@@ -501,7 +532,7 @@ function Signup(props) {
 
         
       
-      </Card>
+      </Login>
       <Link to="/login">Already have an account?</Link>
     </LoginWrapper>
   );

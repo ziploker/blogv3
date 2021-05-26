@@ -27,7 +27,17 @@ gsap.core.globals('ScrollTrigger', ScrollTrigger);
 var Spinner = require('react-spinkit');
 //var randomColor = require('randomcolor');
 
-const HomeWrapper = styled.div`
+const SignupWrapper = styled.div`
+
+  @media only screen and (max-width: 720px){
+
+    grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
+    min-width: 100%;
+    //padding-left: 20px;
+    //justify-self: center;
+
+
+  }
 
   //padding: 45px 0px;
   //background-image: url(${crew});
@@ -39,7 +49,72 @@ const HomeWrapper = styled.div`
 
 `;
 
+const SignupWrapperInner = styled.div`
 
+  @media only screen and (max-width: 720px){
+
+    grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
+    min-width: 100%;
+    //padding-left: 20px;
+    //justify-self: center;
+
+
+  }
+  position: relative;
+  height: 100%;
+  background-color: RGB(244, 244, 244);
+  display: grid;
+  
+  align-items: center;
+  justify-content: center;
+  //justify-self: start;
+  //grid-template-columns: minmax(170px,350px) minmax(340px,600px);
+  //grid-template-columns: minmax(20px, 1fr) minmax(300px, 350px) minmax(420px,600px) minmax(20px, 1fr);
+  
+  grid-template-columns: minmax(20px, 40px) minmax(250px,450px) minmax(350px,600px) minmax(40px, 1fr);
+  
+  grid-area: 1/1/-1/-1;
+  grid-column-gap: 0.5em;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  text-align: center;
+  //width: 100vw;
+  
+
+`;
+
+
+const LoginCard = styled.div`
+
+  @media only screen and (max-width: 720px){
+
+    grid-area: 2/1/3/4;
+    margin: 25px 0px 0px 0px;
+    
+    //width: 100%;
+
+
+  }
+  position: relative;
+  grid-area: 1/3/2/4;
+  box-sizing: border-box;
+  max-width: 600px;
+  width: 100%;
+  //margin-left: 20px;
+  //padding: 0 2rem;
+  
+  //margin-top: 100px;
+  padding: 40px 0px 0px 0px;
+
+  background-color: #fff;
+  border: 1px solid transparent;
+  
+  box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+  border-radius: 8px;
+
+  justify-self: start;
+  align-self: center;
+`;
 
 
 
@@ -535,9 +610,9 @@ const handleAdd = e => {
   return (
             
          
-    <HomeWrapper className="homeWrapper" ref={section2ScrollToRef}>
+    <SignupWrapper className="homeWrapper" ref={section2ScrollToRef}>
           
-      <LoginWrapper>
+      <SignupWrapperInner>
 
         <LeftSection>
 
@@ -550,7 +625,7 @@ const handleAdd = e => {
 
         </LeftSection>
             
-        <Card className="formWrapper" >
+        <LoginCard className="formWrapper" >
        
                 
           <Form onSubmit = {handleAdd}>
@@ -634,16 +709,16 @@ const handleAdd = e => {
 
           </ErrorWrapper>
         
-        </Card>
+        </LoginCard>
 
         <Spacer>
         Contact Your State Representatives
 
         </Spacer>
             
-      </LoginWrapper>
+      </SignupWrapperInner>
 
-    </HomeWrapper>
+    </SignupWrapper>
       
   );  
 }
