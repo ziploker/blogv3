@@ -5,20 +5,28 @@ class ApplicationController < ActionController::Base
 
     def setUser
 
-        puts "in ----APPControllers-------set_current_user ----------- currentUserConcern----"
+        puts "=============applicaton controller setUser Start==========="
         
+        if cookies[:auth_token]
+            puts "auth_token found!! its " + cookies[:auth_token]
+        else
+
+            puts "auth_token not found"
+        end
        
        #if session["user_id"]
        if cookies[:auth_token]
-          puts "found cookie, auth token is " + cookies[:auth_token].to_s
+          
            #@current_user = User.find(session[:user_id])
             if User.find_by_auth_token(cookies[:auth_token])
              @current_user = User.find_by_auth_token!(cookies[:auth_token])
 
-             puts "ppp " + @current_user.inspect
+             puts "current user set to ... " + @current_user.inspect
             end
        end
-       puts "cookies done"
-        puts "OUt ----APPControllers-------set_current_user ----------- currentUserConcern----"
+       
+       
     end
+
+    puts "=============applicaton controller setUser End==========="
 end

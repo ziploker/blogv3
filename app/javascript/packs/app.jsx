@@ -157,53 +157,53 @@ function App(controllerProps){
         
         
         
-            console.log("controllerProps.currentUser did not exist, so run logged_in call from server")
+            // console.log("controllerProps.currentUser did not exist, so run logged_in call from server")
 
-            axios.get("/logged_in", {withCredentials: true})
-            .then(response => {
+            // axios.get("/logged_in", {withCredentials: true})
+            // .then(response => {
 
-                //Server says logged_in but appState says not logged in
+            //     //Server says logged_in but appState says not logged in
                 
                     
-                setAppState({
-                    ...appState,
-                    loggedInStatus: response.data.logged_in && appState.loggedInStatus == "NOT_LOGGED_IN" ? "LOGGED_IN": "NOT_LOGGED_IN",
-                    user: response.data.user,
-                    emailStatus: response.data.user && response.data.user.email_confirmed == "true" ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
-                })
+            //     setAppState({
+            //         ...appState,
+            //         loggedInStatus: response.data.logged_in && appState.loggedInStatus == "NOT_LOGGED_IN" ? "LOGGED_IN": "NOT_LOGGED_IN",
+            //         user: response.data.user,
+            //         emailStatus: response.data.user && response.data.user.email_confirmed == "true" ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
+            //     })
                     
                 
                     
-                //Server says not logged in but appState says logged_in
-                //}else if (!response.data.logged_in && appState.loggedInStatus == "LOGGED_IN"){
+            //     //Server says not logged in but appState says logged_in
+            //     //}else if (!response.data.logged_in && appState.loggedInStatus == "LOGGED_IN"){
                     
-                //    setAppState({
-                //        ...appState,
-                //        loggedInStatus: "NOT_LOGGED_IN",
-                //        user: {}
-                //    })
+            //     //    setAppState({
+            //     //        ...appState,
+            //     //        loggedInStatus: "NOT_LOGGED_IN",
+            //     //        user: {}
+            //     //    })
 
-                //    console.log("WTTFFF", "BBBBBBB")
+            //     //    console.log("WTTFFF", "BBBBBBB")
 
                 
 
-                //Check if email has been confirmed
-                //if (response.data.user && response.data.user.email_confirmed == true){
+            //     //Check if email has been confirmed
+            //     //if (response.data.user && response.data.user.email_confirmed == true){
                     
-                //    setAppState({
-                //        ...appState,
+            //     //    setAppState({
+            //     //        ...appState,
                        
-              //          emailStatus: "EMAIL_VERIFIED"
-                //    })
+            //   //          emailStatus: "EMAIL_VERIFIED"
+            //     //    })
 
-                //    console.log("WTTFFF", "cccccc")
+            //     //    console.log("WTTFFF", "cccccc")
                     
-               // }
+            //    // }
 
                 
             
-            })
-            .catch(error => console.log("Logged in? error", error))
+            // })
+            // .catch(error => console.log("Logged in? error", error))
 
         }
     },[]);
