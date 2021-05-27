@@ -35,7 +35,7 @@ const HeaderWrapper = styled.div`
     display: grid;
     //grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
 
-    grid-template-columns: 1fr minmax(0px, 150px) minmax(0px, 800px) 1fr;
+    grid-template-columns: minmax(0px, 150px) 1fr minmax(0px, 800px) 1fr;
     
     //grid-template-columns: 1fr minmax(0px, 15vw) minmax(0px, 82.100vw) 1fr;
 
@@ -43,7 +43,7 @@ const HeaderWrapper = styled.div`
     grid-template-rows: 85px;
     grid-template-areas:
 
-        ".  headerLogo  headerLeaf headerLeaf";
+        "headerLogo  . headerLeaf headerLeaf";
         
     grid-gap: 8px;
 `;
@@ -67,7 +67,7 @@ const Logo = styled.img`
     
     width: 80%;
     min-width: 70px;
-    margin-left: 25px;
+    margin-left: 40px;
 `;
 
 
@@ -78,7 +78,16 @@ const HeaderLeafImage = styled.img`
     @media only screen and (max-width: 575px){
         
         //display: none; 
+        margin-right: -100px;    
+        //min-width: 475px;
+
+    }
+
+    @media only screen and (max-width: 420px){
+        
+        //display: none; 
         margin-right: -150px;    
+        //min-width: 475px;
 
     }
     max-width: 95%;

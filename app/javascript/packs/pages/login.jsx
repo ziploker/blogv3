@@ -7,8 +7,8 @@ import tinyMan from '../../../assets/images/tinyManLogo.png'
 import lock from '../../../assets/images/lockIcon.png'
 import styled from 'styled-components'
 import userIcon from '../../../assets/images/signup2'
-import { Card, Logo, Form, Input, Button, ErrorMsg, RedX, LoginWrapper, 
-  InputIcon, LogoWrapper, H2, FormItem, Label, ErrorWrapper} from './AuthForm';
+import { Card, Logo, Form, Button, ErrorMsg, RedX, LoginWrapper, 
+  InputIcon, LogoWrapper, H2, Label, ErrorWrapper} from './AuthForm';
 
 const LoginWrapperNew = styled.div`
 
@@ -26,6 +26,56 @@ const LoginWrapperNew = styled.div`
 
 const CardNew = styled.div`
 
+  
+`;
+
+const FormItem = styled.div`
+
+  position: relative;
+  margin: 0 0 38px 0;
+  padding: 0;
+
+  &:nth-child(2){
+    margin: 0 0 10px 0;
+
+  }
+
+  &:nth-child(3){
+    margin: 0 0 20px 0;
+
+  }
+
+
+  &:nth-child(4){
+    margin: 0 0 0 0;
+
+  }
+
+
+
+`;
+
+const Input = styled.input`
+  padding: 1rem;
+  box-sizing: border-box;
+  margin: 0px;
+  width: 100%;
+  height: 44px;
+  padding-left: 50px;
+  box-shadow: inset 0 1px 2px rgba(203,203,210,0.4);
+
+  padding-right: 8px;
+
+  font-size: 14px;
+  line-height: 1.42857;
+  color: #3f3f44;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #cbcbd2;
+  border-radius: 4px;
+  
+  filter: none;
+  
   
 `;
 
@@ -273,15 +323,22 @@ function Login(props) {
           </FormItem>
 
           <FormItem >
-            <label>
-            remember me:
+            
             <input
               name="remember"
               value={state.rememberMe}
               type="checkbox"
-              
-              onChange={handleChange} />
+              onChange={handleChange} 
+            />
+
+            <label style={{
+              marginLeft: "10px",
+              fontSize: ".4em"
+
+            }}>
+              remember me:
             </label>
+
           </FormItem>
 
           {/* <%= check_box_tag :remember_me, 1, params[:remember_me] %>

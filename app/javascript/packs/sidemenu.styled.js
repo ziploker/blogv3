@@ -1,15 +1,17 @@
 // Menu.styled.js
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const StyledMenu = styled.nav`
-  //display: ${({ openSideMenu }) => openSideMenu ? 'flex' : 'none'};
-  display: ${props => props.openSideMenu ? 'flex' : 'none'};
+  //display: ${({ openSideMenu }) => (openSideMenu ? "flex" : "none")};
+  //display: ${(props) => (props.openSideMenu ? "flex" : "none")};
+  display: flex;
+
   flex-direction: column;
   justify-content: flex-start;
   //background: ${({ theme }) => theme.primaryLight};
-  background: white;
-  opacity: .99;
+  background: #f4f4f4;
+  opacity: 0.99;
   height: 100vh;
   text-align: left;
   padding: 2rem;
@@ -17,26 +19,26 @@ const StyledMenu = styled.nav`
   top: 85px;
   right: 0;
   left: 0;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
   z-index: 3;
-  
-  transform: ${({ openSideMenu }) => openSideMenu ? 'translateX(0px)' : 'translateX(100%)'};
-  //transform: ${({ openSideMenu }) => openSideMenu ? 'scale(0,1)' : 'scale(1,1)'};
 
-  ul{
+  transform: ${({ openSideMenu }) =>
+    openSideMenu ? "translateX(0px)" : "translateX(100%)"};
+  /* transform: ${({ openSideMenu }) =>
+    openSideMenu ? "scale(0,1)" : "scale(1,1)"}; */
 
+  ul {
     list-style-type: none;
   }
-  
+
   @media (max-width: ${({ theme }) => theme.mobile}) {
     //width: 100%;
   }
 
-  li{
+  li {
     text-align: center;
     margin-bottom: 20px;
   }
-  
 
   a {
     font-size: 2rem;
@@ -48,7 +50,7 @@ const StyledMenu = styled.nav`
     color: #465772;
     text-decoration: none;
     transition: color 0.3s linear;
-    
+
     @media (max-width: ${({ theme }) => theme.mobile}) {
       //font-size: 1.5rem;
       //text-align: center;
@@ -56,10 +58,9 @@ const StyledMenu = styled.nav`
 
     &:hover {
       //color: ${({ theme }) => theme.primaryHover};
-      color: #F7C562
+      color: #f7c562;
     }
   }
 `;
-
 
 export default StyledMenu;

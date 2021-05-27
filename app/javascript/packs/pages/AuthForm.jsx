@@ -55,6 +55,8 @@ const FormItem = styled.div`
   margin: 0 0 38px 0;
   padding: 0;
 
+  
+
 
 
 `;
@@ -75,7 +77,7 @@ const Label = styled.label`
   //height: 100%;
   //line-height: 44px;
   
-  color: #62748e;
+  //color: #62748e;
   
   //font-weight: bold;
   
@@ -85,11 +87,11 @@ const Label = styled.label`
   position:absolute;
   top: -4px;
   left: 42px;
-  border-top: 1px solid #cbcbd2;
-  border-left: 1px solid #cbcbd2;
-  border-right: 1px solid #cbcbd2;
+  //border-top: 1px solid #cbcbd2;
+  //border-left: 1px solid #cbcbd2;
+  //border-right: 1px solid #cbcbd2;
   transition: all 150ms ease-in;
-  color: #9FA5C4;
+  //color: #9FA5C4;
   pointer-events: none;
 
   
@@ -98,7 +100,7 @@ const Label = styled.label`
   //transform: ${props => props.className == "field-active" ? "translateY(-22px)" : 0};
   transform: translateY(-11px);
   padding: 2px 2px;
-  background-color: white;
+  //background-color: white;
   border-radius: 5px;
 
   font-size: .6em;

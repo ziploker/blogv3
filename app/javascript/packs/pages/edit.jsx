@@ -556,7 +556,7 @@ function Edit(props) {
 
           
           <FormItem >
-            <Label className={state.nickFieldActive ? "field-active" : ""}>Display name</Label>
+            <Label className={state.nickFieldActive ? "field-active" : ""}>Display name for comments</Label>
             <Input 
               name="nick" 
               type="text" 

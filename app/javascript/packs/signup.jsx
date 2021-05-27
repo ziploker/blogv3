@@ -62,7 +62,8 @@ const SignupWrapperInner = styled.div`
   }
   position: relative;
   height: 100%;
-  background-color: RGB(244, 244, 244);
+  //background-color: RGB(244, 244, 244);
+  background-color: #FFFFFF;
   display: grid;
   
   align-items: center;
@@ -102,7 +103,7 @@ const LoginCard = styled.div`
   width: 100%;
   //margin-left: 20px;
   //padding: 0 2rem;
-  
+  margin-left: 20px;
   //margin-top: 100px;
   padding: 40px 0px 0px 0px;
 

@@ -10,7 +10,7 @@ const StyledBurger = styled.button`
   flex-direction: column;
   justify-content: space-around;
   width: 2rem;
-  height: 2rem;
+  height: 1.5rem;
   background: transparent;
   //background: pink;
   border: none;
@@ -27,7 +27,7 @@ const StyledBurger = styled.button`
   }
 
   div {
-    width: 1.5rem;
+    width: 1.75rem;
     height: 0.13rem;
     //background: ${({ theme }) => theme.offWhite};
     background: white;

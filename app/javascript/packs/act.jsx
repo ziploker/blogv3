@@ -60,6 +60,10 @@ const BGimage = styled.img`
 `;
 
 const Mega = styled.img`
+
+@media only screen and (max-width: 1400px) {
+   width: 85%;
+  }
   @media only screen and (max-width: 720px) {
     grid-area: 1/1/-1/-1;
     display: none;
