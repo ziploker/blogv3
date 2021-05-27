@@ -114,6 +114,8 @@ const LoginCard = styled.div`
 
   justify-self: start;
   align-self: center;
+
+  overflow: hidden;
 `;
 
 
