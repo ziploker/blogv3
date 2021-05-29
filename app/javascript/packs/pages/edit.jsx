@@ -29,7 +29,7 @@ const EditAccountWrapper = styled.div`
   } */
   position: relative;
   height: 100%;
-  background-color: RGB(244, 244, 244);
+  background-color: #F4F4F4;
   display: grid;
   
   align-items: center;
@@ -42,7 +42,7 @@ const EditAccountWrapper = styled.div`
   
   grid-area: 1/1/-1/-1;
   grid-column-gap: 0.5em;
-  padding-top: 60px;
+  //padding-top: 60px;
   padding-bottom: 20px;
   text-align: center;
   //width: 100vw;
@@ -72,9 +72,9 @@ const EditAccount = styled.div`
   //padding: 0 2rem;
   
   //margin-top: 100px;
-  padding: 40px 0px 0px 0px;
+  //padding: 20px 0px 0px 0px;
 
-  background-color: #fff;
+  background-color: #F4F4F4;
   border: 1px solid transparent;
   
   box-shadow: 0 1px 1px rgba(0,0,0,0.05);

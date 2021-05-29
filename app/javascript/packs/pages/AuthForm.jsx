@@ -77,15 +77,15 @@ const Label = styled.label`
   //height: 100%;
   //line-height: 44px;
   
-  //color: #62748e;
+  color: #62748e;
   
-  //font-weight: bold;
+  font-weight: bold;
   
 
 
   display: inline-block;
   position:absolute;
-  top: -4px;
+  top: -11px;
   left: 42px;
   //border-top: 1px solid #cbcbd2;
   //border-left: 1px solid #cbcbd2;
@@ -103,7 +103,7 @@ const Label = styled.label`
   //background-color: white;
   border-radius: 5px;
 
-  font-size: .6em;
+  font-size: .7em;
   
   text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 2px 0 0 #fff, -2px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
           

@@ -52,10 +52,10 @@ const News = styled.div`
         grid-template-rows:max-content max-content max-content max-content 1fr;
         grid-template-areas:
 
-            "featured"
             "one"
             "two"
             "three"
+            "four"
             ".";
 
     }
@@ -68,11 +68,11 @@ const News = styled.div`
         grid-template-rows: 340px 170px 120px 50px minmax(100px, 1fr);
         grid-template-areas:
 
-            ".   featured   one   ."
-            ".     two     three  ."
-            ".     two     three  ."
-            ".     two     three  ."
-            ".      .        .    .";
+            ".      one      two   ."
+            ".     three     four  ."
+            ".     three     four  ."
+            ".     three     four  ."
+            ".       .        .    .";
 
     }
 
@@ -92,10 +92,10 @@ const News = styled.div`
     //grid-template-rows: 80px 120px 50px 1fr;
     grid-template-areas:
 
-        ".   featured one two   ."
-        ".   featured one two   ."
-        ".   featured one two   ."
-        ".     .       .    .  .";
+        ".   one two three   ."
+        ".   one two three   ."
+        ".   one two three   ."
+        ".    .   .    .     .";
     grid-gap: 20px;
 
     margin-top: 30px;
@@ -161,32 +161,48 @@ const StoryImage = styled.img`
 `;
 
 
-const StoryImageOverlayWrapper = styled.div`
+const Div1OverlayWrapper = styled.div`
 
-    grid-area: 1 /1 /2/2;
-    //width: 100%;
-    //height: 0px;
-    //padding-top: 60%;
-
+    grid-area: one;
+    border-radius: 10px;
+    border: 5px solid #e8e5e5;
+    overflow: hidden;
+    min-height: 290px;
+    max-width: 600px;
+    width: 100%;
+    justify-self: center;
+    min-height: 290px;
+    max-width: 600px;
     position: relative;
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+67,1+100 */
-    /*background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 67%, rgba(255,255,255,1) 100%);  /*FF3.6-15 */
-     /*background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
-     /*background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 67%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-     /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-
-
     background: rgb(0,0,0);
     background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
     background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
     background: linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(255,145,145,0) 34%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#ff9191",GradientType=1);
-    /* @media screen and (min-width: 750px) and (max-width: 1111px){
+    
+
+`;
+
+const Div2OverlayWrapper = styled(Div1OverlayWrapper)`
+
+    grid-area: two;
+`;
+
+const Div3OverlayWrapper = styled(Div1OverlayWrapper)`
+
+    grid-area: three;
+`;
+
+const Div4OverlayWrapper = styled(Div1OverlayWrapper)`
 
 
-        display: none;
-    } */
+    @media only screen and (max-width: 1111px){
 
+        grid-area: four;
+        display: inherit;
+    }
+
+    display: none
 `;
 
 const StoryImageOverlay = styled.div`
@@ -217,7 +233,7 @@ const StoryOneTitle = styled.h1`
 
 const Div1 = styled.div`
     //background: blue;
-    grid-area: featured;
+    grid-area: one;
     border-radius: 10px;
     overflow: hidden;
     display: grid;
@@ -252,7 +268,7 @@ const Div1 = styled.div`
 
 const Div2 = styled.div`
     background: orange;
-    grid-area: one;
+    grid-area: two;
     border-radius: 10px;
     overflow: hidden;
     display: grid;
@@ -282,7 +298,7 @@ const Div2 = styled.div`
 const Div3 = styled.div`
 
     background: green;
-    grid-area: two;
+    grid-area: three;
     border-radius: 10px;
     overflow: hidden;
     display: grid;
@@ -315,7 +331,7 @@ const Div4 = styled.div`
         
         display: initial;
         background: red;
-        grid-area: three;
+        grid-area: four;
         border-radius: 10px;
         overflow: hidden;
         display: grid;
@@ -389,14 +405,15 @@ function Home(props){
                                     AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
                                 </StoryOneTitle>
                                 
-                                <StoryImageOverlayWrapper>
-                                    <StoryImageOverlay/>
-                                </StoryImageOverlayWrapper>
+                                
                             
                             </LinkWrapper> 
 
                         </Div1>
                         
+                        <Div1OverlayWrapper>
+                            <StoryImageOverlay/>
+                        </Div1OverlayWrapper>
                         
                         <Div2 imageURL={props.secondToLastStory ? props.secondToLastStory.url : defaultImage} >
 
@@ -410,13 +427,14 @@ function Home(props){
                                     {props.secondToLastStory ? props.secondToLastStory.title : "Place holder for title, place holder for title"}
                                 </StoryOneTitle>
                                 
-                                <StoryImageOverlayWrapper>
-                                    <StoryImageOverlay/>
-                                </StoryImageOverlayWrapper>
+                                
                             
                             </LinkWrapper> 
 
                         </Div2>
+                        <Div2OverlayWrapper>
+                            <StoryImageOverlay/>
+                        </Div2OverlayWrapper>
                         
                         
                         <Div3 imageURL={props.thirdToLastStory ? props.thirdToLastStory.url : defaultImage} >
@@ -431,13 +449,14 @@ function Home(props){
                                     {props.thirdToLastStory ? props.thirdToLastStory.title : "Place golder for title. place golder for title."}
                                 </StoryOneTitle>
                                 
-                                <StoryImageOverlayWrapper>
-                                    <StoryImageOverlay/>
-                                </StoryImageOverlayWrapper>
+                                
                             
                             </LinkWrapper> 
 
                         </Div3>
+                        <Div3OverlayWrapper>
+                            <StoryImageOverlay/>
+                        </Div3OverlayWrapper>
 
                         <Div4 imageURL={props.fourthToLastStory ? props.fourthToLastStory.url : defaultImage} >
 
@@ -451,13 +470,16 @@ function Home(props){
                                     {props.fourthToLastStory ? props.fourthToLastStory.title : ""}
                                 </StoryOneTitle>
                                 
-                                <StoryImageOverlayWrapper>
-                                    <StoryImageOverlay/>
-                                </StoryImageOverlayWrapper>
+                                
                             
                             </LinkWrapper> 
 
                         </Div4>
+                        <Div4OverlayWrapper>
+                            <StoryImageOverlay/>
+                        </Div4OverlayWrapper>
+
+
                         <BackgroundGray></BackgroundGray>
 
 
