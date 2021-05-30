@@ -130,6 +130,7 @@ class LookupsController < ApplicationController
       #get api keys 
 
       @googleGeoApiUr = Rails.application.credentials.dig(:GOOGLE_API)
+      @googleSearchApi = Rails.application.credentials.dig(:GOOGLE_SEARCH_API)
       @openstatesApi = Rails.application.credentials.dig(:OPENSTATES_API)
       
            
@@ -512,8 +513,12 @@ class LookupsController < ApplicationController
           puts search_phrase_encoded
           
           #puts "https://www.googleapis.com/customsearch/v1?q=#{search_phrase_encoded}&cx=003645805095083477600%3A7hraibewjhe&siteSearch=lobbytools.com&key=#{@googleGeoApiUr}"
-          thc = HTTParty.get("https://www.googleapis.com/customsearch/v1?q=#{search_phrase_encoded}&cx=003645805095083477600%3A7hraibewjhe&siteSearch=lobbytools.com&key=#{@googleGeoApiUr}")
+          #thc = HTTParty.get("https://www.googleapis.com/customsearch/v1?q=#{search_phrase_encoded}&cx=003645805095083477600%3A7hraibewjhe&siteSearch=lobbytools.com&key=#{@googleGeoApiUr}")
         
+          thc = HTTParty.get("https://www.googleapis.com/customsearch/v1?q=#{search_phrase_encoded}&cx=003645805095083477600%3A7hraibewjhe&siteSearch=lobbytools.com&key=#{@googleGeoApiUr}")
+
+          
+         
           puts thc
   
           theLink = thc["items"][0]["link"]
