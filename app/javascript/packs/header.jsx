@@ -30,7 +30,9 @@ const HeaderWrapper = styled.div`
     min-height: 85px;
     //margin: 0 20px;
     min-width: 500px;
-    overflow: hidden;
+    //overflow: ${props => props.openSideMenu ? "visible" : "hidden"};
+    overflow-x: hidden;
+    position: relative;
    
     display: grid;
     //grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
@@ -98,6 +100,12 @@ const HeaderLeafImage = styled.img`
     grid-area: headerLeaf;
     justify-self: end;
     align-self: center;
+
+`;
+
+const SideMenuWrapper = styled.div`
+
+    position: relative;
 
 `;
 
@@ -311,7 +319,7 @@ function Header(props) {
       
     return (
         
-        <HeaderWrapper>
+        <HeaderWrapper openSideMenu={props.openSideMenu}>
                 <Logo src={headerLogo}></Logo>
                 <HeaderLeafImage src={headerLeaf}></HeaderLeafImage>
                 <Nav>
@@ -338,14 +346,18 @@ function Header(props) {
                     
                 </div>
             
-                <SideMenu 
+                
+                
+                    <SideMenu 
                         doSomething={doSomething} 
                         openSideMenu={props.openSideMenu} 
                         setOpenSideMenu={props.setOpenSideMenu}
                         executeScroll={props.executeScroll} 
                         appState={props.appState} 
                         executeScrollForLookupSection={props.executeScrollForLookupSection} 
-                        executeScrollForSection2={props.executeScrollForSection2}/>
+                        executeScrollForSection2={props.executeScrollForSection2}
+                    />
+                
         
         </HeaderWrapper>
     )

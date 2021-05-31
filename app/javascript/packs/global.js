@@ -22,6 +22,9 @@ const GlobalStyles = createGlobalStyle`
     -o-font-smoothing: antialiased;
     font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+
+    position: relative;
+    //overflow-x: hidden;
   }
 
   a, a:active, a:focus{
@@ -44,7 +47,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     
     font-family: 'Roboto', 'sans-serif', 'serif';
-    overflow-x: hidden;
+    //overflow-x: hidden;
     
     /*overflow-y: scroll;*/
     //padding: 0px 10px 0px;
