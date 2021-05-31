@@ -16,6 +16,7 @@ import PlacesAutocomplete, {
 } from "react-places-autocomplete";
 
 import $ from "jquery";
+
 import greenCheck from "../../assets/images/greenCheck.png";
 import searchIcon from "../../assets/images/search.png";
 import searchIconOrange from "../../assets/images/searchGreen.png";
@@ -90,13 +91,19 @@ const Mega = styled.img`
 `;
 
 const ActGrid = styled.div`
-  @media only screen and (max-width: 1000px){
+  /* @media only screen and (max-width: 1000px){
 
     grid-template-columns: 1fr;
     grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content) minmax(100px, max-content) minmax(min-content, max-content);
 
-  }
+  } */
 
+  @media only screen and (max-width: 750px){
+
+    justify-items: start;
+
+
+  }
   
   //overflow: hidden;
   display: grid;
@@ -105,7 +112,7 @@ const ActGrid = styled.div`
   grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
   //grid-template-rows: 120px 40px 50px 100px 50px 1fr;
 
-  grid-column-gap: 0.5em;
+  //grid-column-gap: 0.5em;
   justify-items: center;
 `;
 
@@ -473,22 +480,14 @@ const Span = styled.span`
 `;
 
 const ResultSection = styled.div`
-  /* @media only screen and (max-width: 720px){
+  
+
+  @media only screen and (max-width: 750px){
 
     grid-area: 1/1/-1/-1;
-    margin: 0px auto;
-    padding: 0px 15px 32px 15px;
-    grid-template-columns: minmax(100px, 171px) minmax(100px, 171px);
-
-  } */
-
-
-  @media only screen and (max-width: 1000px){
-
-    grid-area: 1/1/-1/-1;
-    margin: 0px auto;
+    //margin: 0px auto;
     //padding: 0px 15px 32px 15px;
-    grid-template-columns: minmax(100px, 125px) minmax(100px, 125px) 1fr;
+    grid-template-columns: 20px minmax(100px, 150px) minmax(8px, 16px) minmax(100px, 150px) 1fr 20px;
     width: 100vw;
     
     //max-width: 70vw;
@@ -502,28 +501,29 @@ const ResultSection = styled.div`
     props.showCards ? "translate(0)" : "transform:translate(9999px)"};
   opacity: ${(props) => (props.showCards ? "1" : "0")};
   z-index: ${(props) => (props.showCards ? "10" : "-5")};
-  grid-template-columns: minmax(150px, 150px) minmax(150px, 150px) 1fr;
+  grid-template-columns: 20px minmax(150px, 200px) minmax(8px, 16px) minmax(150px, 200px) minmax(8px, 16px) 1fr 20px;
   grid-template-rows: minmax(min-content, max-content) minmax(min-content,max-content) minmax(min-content, max-content);
   //visibility: hidden;
   //grid-template-rows: ${(props) => props.showCards ? "minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) minmax(min-content, max-content) 1fr": "0px 0px 0px 0px 0px"};
 
   //grid-row-gap: .7em;
-  grid-column-gap: 0.5em;
-  padding: 0px 20px;
+  //grid-column-gap: 0.5em;
+  padding: 0px 0px 20px 0px;
 
   //padding: ${(props) => props.showCards ? "75px 0px 50px 0px" : "0px 0px 50px 0px"};
 
-  grid-area: 1/2/6/4;
+  grid-area: 1/1/6/5;
   //margin: 20px 0px 20px 50px;
   height: ${props => props.showCards ? "inherit" : "0px"};
 `;
 
 const ResultSectionHeader = styled.h1`
 
-  @media only screen and (max-width: 1000px){
+  @media only screen and (max-width: 750px){
 
-    grid-area: 1/1/2/3;
+    grid-area: 1/2/2/7;
     font-size: 8vw;
+    
 
 
   }
@@ -535,7 +535,7 @@ const ResultSectionHeader = styled.h1`
   font-family: Poppins;
   //font-style: normal;
   //font-weight: 500;
-  font-size: 8vw;
+  //font-size: 8vw;
   //font-size: clamp(1rem, -0.875rem + 8.333333vw, 3.5rem);
 
   /* identical to box height, or 90px */
@@ -543,13 +543,14 @@ const ResultSectionHeader = styled.h1`
   letter-spacing: -0.03em;
   color: #ffffff;
 
-  grid-area: 1/1/2/3;
+  grid-area: 1/2/2/7;
   justify-self: start;
   align-self: start;
 
   white-space: nowrap;
 
   margin: 20px 0px;
+  //padding: 0px 20px;
 
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -561,7 +562,7 @@ const ResultSectionHeader = styled.h1`
 
 const ResultSectionSubHeader = styled.h2`
 
-  @media only screen and (max-width: 1000px){
+  @media only screen and (max-width: 750px){
 
     font-size: 4vw;
 
@@ -580,8 +581,8 @@ const ResultSectionSubHeader = styled.h2`
 
   color: #ffffff;
 
-  grid-area: 2/1/3/3;
-
+  grid-area: 2/2/3/7;
+  padding: 0px 20px;
   justify-self: start;
   white-space: nowrap;
   line-height: 1em;
@@ -601,18 +602,19 @@ const CardOne = styled.div`
   //grid-template-columns: 85% 15%;
   //grid-template-rows: 73% 17% 10%;
 
-  grid-area: 3/1/4/2;
+  grid-area: 3/2/4/3;
 
   width: 100%;
 
   justify-self: end;
   height: 0px;
-  padding-top: calc(310/200*100%);
   
-  @media only screen and (max-width: 1000px){
-    grid-area: 3/1/4/2;
+  padding-top: calc(310/220*100%);
+  
+  @media only screen and (max-width: 750px){
+    grid-area: 3/2/4/3;
     justify-self: start;
-    padding-top: calc(310/200*100%);
+    padding-top: calc(310/220*100%);
     height: 0px;
     width: 100%;
   }
@@ -661,17 +663,17 @@ const CardTwo = styled.div`
   position: relative;
   
 
-  grid-area: 3/2/4/3;
+  grid-area: 3/4/4/5;
 
   justify-self: end;
   height: 0px;
-  padding-top: calc(310/200*100%);
+  padding-top: calc(310/220*100%);
   width: 100%;
 
-  @media only screen and (max-width: 1000px){
-    grid-area: 3/2/4/3;
+  @media only screen and (max-width: 750px){
+    grid-area: 3/4/4/5;
     justify-self: start;
-    padding-top: calc(310/200*100%);
+    padding-top: calc(310/220*100%);
     height: 0px;
     width: 100%;
   }
@@ -731,9 +733,9 @@ const CardNameOfRep = styled.h1`
 const Letter = styled.div`
 
 
-  @media only screen and (max-width: 1000px){
+  @media only screen and (max-width: 750px){
 
-    grid-area: 4/1/7/-1;
+    grid-area: 4/2/7/6;
     //margin: 0px auto;
     //padding: 0px 15px 32px 15px;
     grid-template-columns: auto;
@@ -744,19 +746,20 @@ const Letter = styled.div`
   }
 
   //grid-area: 1/2/7/4;
-  grid-area: 3/3/7/4;
-  width: 80%;
-  min-width: 622px;
-  max-width: 460px;
+  grid-area: 3/6/7/7;
+  width: 100%;
+  min-width: 400px;
+  max-width: 500px;
   justify-self: start;
   border-radius: 10px;
   background: white;
   //margin: 60px auto 0 auto;
-  grid-template-columns: 0px 130px 130px 1fr;
+  //grid-template-columns: 0px 130px 130px 1fr;
   grid-auto-rows: minmax(min-content, max-content);
   //grid-gap: 8px;
   display: grid;
   padding: 20px;
+  //margin: 0px 8px;
   //opacity: ${(props) => (props.showLetter ? "1" : "0")};
   //height: ${(props) => (props.showLetter ? "auto" : "0px")};
   //z-index: ${(props) => (props.showLetter ? "10" : "-5")};
@@ -915,7 +918,7 @@ const Letter = styled.div`
 
 const FlashError = styled.h4`
 
-@media only screen and (max-width: 575px){
+@media only screen and (max-width: 400px){
 
   grid-area: 8/2/9/5;
   justify-self: center;
@@ -946,7 +949,7 @@ const FlashError = styled.h4`
 
 const FlashSuccess = styled.h4`
 
-@media only screen and (max-width: 575px){
+@media only screen and (max-width: 400px){
 
   grid-area: 8/2/9/5;
   justify-self: center;
@@ -966,7 +969,7 @@ const FlashSuccess = styled.h4`
 
 const SendButtonWrapper = styled.div`
 
-  @media only screen and (max-width: 575px){
+  @media only screen and (max-width: 400px){
     grid-area: 7/2/8/5;
     align-self: center;
     justify-self: center;
@@ -1003,49 +1006,49 @@ function Act(props) {
   const [showStatusSpinner, setShowStatusSpinner] = React.useState(false);
   const [lastTermSearched, setLastTermSearched] = React.useState("");
   const [coordinates, setCoordinates] = React.useState({ lat: "", lng: "" });
-  const [showCards, setShowCards] = React.useState(false);
-  const [showLetter, setShowLetter] = React.useState(false);
+  const [showCards, setShowCards] = React.useState(true);
+  const [showLetter, setShowLetter] = React.useState(true);
   const [resultFromFlorida, setResultFromFlorida] = React.useState("true");
   const [sendButtonClass, setSendButtonClass] = React.useState("button error");
   const sendButtonRef = useRef(null);
 
   const [flashMsg, setFlashMsg] = React.useState("");
-  const [successFlag, setSuccessFlag] = React.useState(false);
+  const [successFlag, setSuccessFlag] = React.useState(true);
 
-  // const [results, setResults] = React.useState({
-  //   one: {
-  //     resultFromFlorida: "true",
-  //     name: "Juan Alfonso Fernandez-Barquin",
-  //     firstName: "",
-  //     lastName: "",
-  //     image:
-  //       "https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg",
-  //     id: "ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446",
-  //     email: "JuanF.Barquin@myfloridahouse.gov",
-  //     chamber: "House",
-  //     party: "Republican",
-  //     parent: "Florida Legislature",
-  //     district: "119",
-  //     fullDistrict: "Florida State House district 119",
-  //     fullDistrictTrunk: "Florida State House",
-  //   },
-  //   two: {
-  //     name: "Annette Taddeo",
-  //     firstName: "Annette",
-  //     lastName: "Taddeo",
-  //     image:
-  //       "http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg",
-  //     id: "ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7",
-  //     email: "taddeo.annette.web@flsenate.gov",
-  //     chamber: "Senate",
-  //     party: "Democrat",
-  //     parent: "Florida Legislature",
-  //     district: "40",
-  //     fullDistrict: "Florida State Senate  ",
-  //     fullDistrictTrunk: "Florida State Senate",
-  //   },
-  // });
-  const [results, setResults] = React.useState( {"one": {}, "two": {} });
+  const [results, setResults] = React.useState({
+    one: {
+      resultFromFlorida: "true",
+      name: "Juan Alfonso Fernandez-Barquin",
+      firstName: "",
+      lastName: "",
+      image:
+        "https://www.myfloridahouse.gov//FileStores/Web/Imaging/Member/4709.jpg",
+      id: "ocd-person/a8c88fee-1915-4907-ae37-5755c4bff446",
+      email: "JuanF.Barquin@myfloridahouse.gov",
+      chamber: "House",
+      party: "Republican",
+      parent: "Florida Legislature",
+      district: "119",
+      fullDistrict: "Florida State House district 119",
+      fullDistrictTrunk: "Florida State House",
+    },
+    two: {
+      name: "Annette Taddeo",
+      firstName: "Annette",
+      lastName: "Taddeo",
+      image:
+        "http://www.flsenate.gov/PublishedContent/Senators/2018-2020/Photos/s40_5331.jpg",
+      id: "ocd-person/ea190b03-d1ca-4d75-89c7-dca745386db7",
+      email: "taddeo.annette.web@flsenate.gov",
+      chamber: "Senate",
+      party: "Democrat",
+      parent: "Florida Legislature",
+      district: "40",
+      fullDistrict: "Florida State Senate  ",
+      fullDistrictTrunk: "Florida State Senate",
+    },
+  });
+  //const [results, setResults] = React.useState( {"one": {}, "two": {} });
 
   function loginFromDeadEnd(e) {
     e.preventDefault();
