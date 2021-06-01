@@ -135,6 +135,12 @@ function App(controllerProps){
         scrollToRef2(section2ScrollToRef)
         setOpenSideMenu(false)
     }
+
+    const HeaderWrapper = styled.div`
+        overflow: hidden;
+        position: relative;
+    
+    `;
     
     useEffect(() => {
 
@@ -220,7 +226,7 @@ function App(controllerProps){
                 <GlobalStyles/>
                 
                 
-                    
+                    <HeaderWrapper>
                 <Header 
                     appState={appState} 
                     handleLogOutClick={handleLogOutClick}
@@ -230,7 +236,7 @@ function App(controllerProps){
                     executeScrollForSection2={executeScrollForSection2}
                     executeScrollForLookupSection={executeScrollForLookupSection} 
                     />
-                
+                </HeaderWrapper>
                 
                 
                 <Switch>

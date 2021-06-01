@@ -6,7 +6,7 @@ const StyledMenu = styled.nav`
   //display: ${({ openSideMenu }) => (openSideMenu ? "flex" : "none")};
   //display: ${(props) => (props.openSideMenu ? "flex" : "none")};
   display: flex;
-
+  //grid-area: 1/1/-1/-1;
   flex-direction: column;
   justify-content: flex-start;
   //background: ${({ theme }) => theme.primaryLight};
@@ -14,12 +14,15 @@ const StyledMenu = styled.nav`
   opacity: 0.99;
   height: 100vh;
   text-align: left;
-  padding: 2rem;
-  position: absolute;
-  top: 85px;
-  right: 0;
-  left: 0;
-  transition: all 0.4s ease-in-out;
+  padding: ${({ openSideMenu }) => (openSideMenu ? "2rem" : "0")};
+  //position: absolute;
+  //top: 85px;
+  //width: 100vw;
+  //right: 0;
+  //left: 0;
+
+  height: ${({ openSideMenu }) => (openSideMenu ? "auto" : "0px")};
+  transition: transform 0.4s ease-in-out;
   z-index: 3;
 
   transform: ${({ openSideMenu }) =>

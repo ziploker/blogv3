@@ -26,12 +26,12 @@ const HeaderWrapper = styled.div`
 
     }
     
-    //overflow: hidden;
+    
     min-height: 85px;
     //margin: 0 20px;
     min-width: 500px;
     //overflow: ${props => props.openSideMenu ? "visible" : "hidden"};
-    overflow-x: hidden;
+    //overflow-x: hidden;
     position: relative;
    
     display: grid;
@@ -318,6 +318,8 @@ function Header(props) {
     
       
     return (
+
+        <>
         
         <HeaderWrapper openSideMenu={props.openSideMenu}>
                 <Logo src={headerLogo}></Logo>
@@ -348,18 +350,22 @@ function Header(props) {
             
                 
                 
-                    <SideMenu 
-                        doSomething={doSomething} 
-                        openSideMenu={props.openSideMenu} 
-                        setOpenSideMenu={props.setOpenSideMenu}
-                        executeScroll={props.executeScroll} 
-                        appState={props.appState} 
-                        executeScrollForLookupSection={props.executeScrollForLookupSection} 
-                        executeScrollForSection2={props.executeScrollForSection2}
-                    />
+                
                 
         
         </HeaderWrapper>
+
+        <SideMenu 
+        doSomething={doSomething} 
+        openSideMenu={props.openSideMenu} 
+        setOpenSideMenu={props.setOpenSideMenu}
+        executeScroll={props.executeScroll} 
+        appState={props.appState} 
+        executeScrollForLookupSection={props.executeScrollForLookupSection} 
+        executeScrollForSection2={props.executeScrollForSection2}
+        />
+
+        </>
     )
 }
 
