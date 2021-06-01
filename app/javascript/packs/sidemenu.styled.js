@@ -11,24 +11,27 @@ const StyledMenu = styled.nav`
   justify-content: flex-start;
   //background: ${({ theme }) => theme.primaryLight};
   background: #f4f4f4;
-  opacity: 0.99;
+  //opacity: 1;
   height: 100vh;
   text-align: left;
-  padding: ${({ openSideMenu }) => (openSideMenu ? "2rem" : "0")};
-  //position: absolute;
+  //padding: ${({ openSideMenu }) => (openSideMenu ? "2rem" : "0")};
+  position: absolute;
   //top: 85px;
-  //width: 100vw;
+  width: 100%;
   //right: 0;
-  //left: 0;
+  left: 0;
 
-  height: ${({ openSideMenu }) => (openSideMenu ? "auto" : "0px")};
-  transition: transform 0.4s ease-in-out;
+  //height: ${({ openSideMenu }) => (openSideMenu ? "auto" : "0px")};
+  transition: .2s ease-in-out;
   z-index: 3;
+  
 
-  transform: ${({ openSideMenu }) =>
-    openSideMenu ? "translateX(0px)" : "translateX(100%)"};
-  /* transform: ${({ openSideMenu }) =>
-    openSideMenu ? "scale(0,1)" : "scale(1,1)"}; */
+  transform: ${props => props.openSideMenu ? "translateX(0%)" : "translateX(100%)"};
+  
+  
+  //transform: ${props => props.openSideMenu ? "scale(1,1)" : "scale(0,1)"};
+
+  
 
   ul {
     list-style-type: none;

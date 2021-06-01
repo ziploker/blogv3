@@ -31,8 +31,8 @@ const HeaderWrapper = styled.div`
     //margin: 0 20px;
     min-width: 500px;
     //overflow: ${props => props.openSideMenu ? "visible" : "hidden"};
-    //overflow-x: hidden;
-    position: relative;
+    
+    //position: relative;
    
     display: grid;
     //grid-template-columns: minmax(95px, 20vw) minmax(400px, 80vw);
@@ -41,7 +41,7 @@ const HeaderWrapper = styled.div`
     
     //grid-template-columns: 1fr minmax(0px, 15vw) minmax(0px, 82.100vw) 1fr;
 
-
+    overflow: hidden;
     grid-template-rows: 85px;
     grid-template-areas:
 
@@ -212,7 +212,20 @@ const Nav = styled.nav`
 
 `;
 
+const Wrap = styled.div`
+    
+        //position: relative;
+        width: 100vw;
+        //height: 100vh;
+        overflow: hidden;
+    `;
 
+const Outter = styled.div`
+//overflow: hidden;
+width: 100%;
+//height: 100%;
+position: relative;
+`;
 function Header(props) {
 
    
@@ -322,6 +335,7 @@ function Header(props) {
         <>
         
         <HeaderWrapper openSideMenu={props.openSideMenu}>
+        
                 <Logo src={headerLogo}></Logo>
                 <HeaderLeafImage src={headerLeaf}></HeaderLeafImage>
                 <Nav>
@@ -351,21 +365,25 @@ function Header(props) {
                 
                 
                 
-                
         
         </HeaderWrapper>
+        <Outter>
+        
+                    <SideMenu 
+                        //doSomething={doSomething} 
+                        openSideMenu={props.openSideMenu} 
+                        setOpenSideMenu={props.setOpenSideMenu}
+                        //executeScroll={executeScroll} 
+                        appState={props.appState} 
+                        executeScrollForLookupSection={props.executeScrollForLookupSection} 
+                        executeScrollForSection2={props.executeScrollForSection2}
+                    />
+                    
+                    
+                    </Outter>
+        
 
-        <SideMenu 
-        doSomething={doSomething} 
-        openSideMenu={props.openSideMenu} 
-        setOpenSideMenu={props.setOpenSideMenu}
-        executeScroll={props.executeScroll} 
-        appState={props.appState} 
-        executeScrollForLookupSection={props.executeScrollForLookupSection} 
-        executeScrollForSection2={props.executeScrollForSection2}
-        />
-
-        </>
+</>
     )
 }
 

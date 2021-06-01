@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
     font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 
-    position: relative;
+    //position: relative;
     //overflow-x: hidden;
   }
 
@@ -47,8 +47,8 @@ const GlobalStyles = createGlobalStyle`
   body {
     
     font-family: 'Roboto', 'sans-serif', 'serif';
-    //overflow-x: hidden;
-    
+    overflow-x: hidden;
+    //position: relative;
     /*overflow-y: scroll;*/
     //padding: 0px 10px 0px;
     //font-size: calc(14px + (24 - 14) * ((100vw - 300px) / (1600 - 300)));

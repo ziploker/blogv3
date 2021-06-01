@@ -17,7 +17,7 @@ import Footer from "./footer"
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from "./global"
 import Article from './article'
-
+import SideMenu from './sidemenu'
 
 import Login from "./pages/login"
 import Forgot from "./pages/forgot"
@@ -136,11 +136,25 @@ function App(controllerProps){
         setOpenSideMenu(false)
     }
 
-    const HeaderWrapper = styled.div`
+    const MainHeaderWrapper = styled.div`
+
         overflow: hidden;
-        position: relative;
+        
+    
     
     `;
+    
+
+    const AppWrapper = styled.div`
+    
+        //position: relative;
+        //overflow: hidden;
+    
+
+
+    `;
+
+
     
     useEffect(() => {
 
@@ -220,24 +234,37 @@ function App(controllerProps){
     return (
 
         <ThemeProvider theme={theme}>
-        
+            
+            
             <Router>
-                
+            
                 <GlobalStyles/>
                 
                 
-                    <HeaderWrapper>
-                <Header 
-                    appState={appState} 
-                    handleLogOutClick={handleLogOutClick}
-                    setLoginClicked={setLoginClicked}
-                    openSideMenu={openSideMenu}
-                    setOpenSideMenu={setOpenSideMenu}
-                    executeScrollForSection2={executeScrollForSection2}
-                    executeScrollForLookupSection={executeScrollForLookupSection} 
-                    />
-                </HeaderWrapper>
                 
+                   
+                    <Header 
+                        appState={appState} 
+                        handleLogOutClick={handleLogOutClick}
+                        setLoginClicked={setLoginClicked}
+                        openSideMenu={openSideMenu}
+                        setOpenSideMenu={setOpenSideMenu}
+                        executeScrollForSection2={executeScrollForSection2}
+                        executeScrollForLookupSection={executeScrollForLookupSection} 
+                    />
+                    
+                 {/* <Wrap>
+                    <SideMenu 
+                        //doSomething={doSomething} 
+                        openSideMenu={openSideMenu} 
+                        setOpenSideMenu={setOpenSideMenu}
+                        //executeScroll={executeScroll} 
+                        appState={appState} 
+                        executeScrollForLookupSection={executeScrollForLookupSection} 
+                        executeScrollForSection2={executeScrollForSection2}
+                    />
+                    
+                    </Wrap> */}
                 
                 <Switch>
                     <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} appState={appState} setAppState={setAppState} />}/>
@@ -258,8 +285,9 @@ function App(controllerProps){
                 {/* <LookupSection appState={appState} ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}}/>
                 <Section2 ref={{section2ScrollToRef: section2ScrollToRef}} stories={appState.stories} appState={appState} setAppState={setAppState} handleSuccessfulAuth={handleSuccessfulAuth} />
                <Footer/> */}
+                
             </Router>
-        
+           
         </ThemeProvider>
     );
 }
