@@ -163,6 +163,7 @@ const StoryImage = styled.img`
 
 const Div1OverlayWrapper = styled.div`
 
+    pointer-events: none;
     grid-area: one;
     border-radius: 10px;
     border: 5px solid #e8e5e5;

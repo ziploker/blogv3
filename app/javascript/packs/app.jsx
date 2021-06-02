@@ -136,24 +136,7 @@ function App(controllerProps){
         setOpenSideMenu(false)
     }
 
-    const MainHeaderWrapper = styled.div`
-
-        overflow: hidden;
-        
     
-    
-    `;
-    
-
-    const AppWrapper = styled.div`
-    
-        //position: relative;
-        //overflow: hidden;
-    
-
-
-    `;
-
 
     
     useEffect(() => {
@@ -253,18 +236,7 @@ function App(controllerProps){
                         executeScrollForLookupSection={executeScrollForLookupSection} 
                     />
                     
-                 {/* <Wrap>
-                    <SideMenu 
-                        //doSomething={doSomething} 
-                        openSideMenu={openSideMenu} 
-                        setOpenSideMenu={setOpenSideMenu}
-                        //executeScroll={executeScroll} 
-                        appState={appState} 
-                        executeScrollForLookupSection={executeScrollForLookupSection} 
-                        executeScrollForSection2={executeScrollForSection2}
-                    />
-                    
-                    </Wrap> */}
+                
                 
                 <Switch>
                     <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} appState={appState} setAppState={setAppState} />}/>

@@ -232,7 +232,7 @@ function CommentForm(props) {
 
     <FormWrapper>
 
-      <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url}></img>
+      <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
       <Form style={{gridArea: "main_comment_body"}} id="cform" className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
