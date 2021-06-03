@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import { createGlobalStyle } from 'styled-components'
+import React, { useEffect, useState } from "react";
+import { createGlobalStyle } from "styled-components";
 
-
-  //light blue   #56c5cc 	(86,197,204)
-	//pink         #f14f7b 	(241,79,123)
-	//orange       #f7aa1c 	(247,170,28)
-	//darkblue     #000321 	(0,3,33)
-	//black        #000000 	(0,0,0)
-
+//light blue   #56c5cc 	(86,197,204)
+//pink         #f14f7b 	(241,79,123)
+//orange       #f7aa1c 	(247,170,28)
+//darkblue     #000321 	(0,3,33)
+//black        #000000 	(0,0,0)
 
 const GlobalStyles = createGlobalStyle`
 
@@ -57,6 +55,8 @@ const GlobalStyles = createGlobalStyle`
 
     padding: 0px;
     margin: 0px;
+    font-size: 17px;
+    color: #333333;
 
     
     
@@ -86,4 +86,4 @@ const GlobalStyles = createGlobalStyle`
   
 `;
 
-export default props => <GlobalStyles {...props} />;
+export default (props) => <GlobalStyles {...props} />;

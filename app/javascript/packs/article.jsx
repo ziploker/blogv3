@@ -44,45 +44,35 @@ const ArticleSection = styled.div`
 
 
     
-    padding: 0px 10px;
-    display: grid;
-    grid-template-rows: 125px 1fr;
+    
+    /* display: grid;
+    
     grid-template-columns: minmax(200px, 700px);
-    grid-template-areas:
-
-        "banner banner"
-        "content ad  ";
-    grid-gap: 15px;
+   
     justify-content: center;
     justify-items: center;
-    margin-top: 80px;
+    margin: 50px auto 0px auto; */
 
-    @media screen and (min-width: 750px){
-        display: grid;
-        grid-template-columns: 1fr  minmax(200px, 700px) minmax(10px, 200px) 1fr;
-        grid-gap: 20px;
-
-        grid-template-areas:
-
-        "banner banner banner banner"
-        "  .   content   ad     .   ";
-    }
-`;
-
-
-const HorizontalAds = styled.div`
-
-    background-color: pink;
-    width: 100%;
-    grid-area: banner;
-
-`;
-const NewsAds = styled.div`
     
-    background-color: pink;
-    width: 100%;
-    grid-area: ad;
+    display: grid;
+    grid-template-columns: minmax(300px, 770px) 250px;
+    justify-content: center;
+    margin-top: 20px;
+
+    @media only screen and (max-width: 600px){
+
+        grid-template-columns: 1fr;
+
+
+    }
+        
+
+        
+    
 `;
+
+
+
 
 
 
@@ -92,23 +82,26 @@ const NewsWrapper = styled.div`
     grid-template-columns: 100%;
     justify-content: center;
     position: relative;
-    grid-area: content;
+    grid-area: 2/1/3/2;
+    max-width: 770px;
 
     grid-template-areas:
 
-        "title"
+        
         "info"
         
         "image"
         
-        "body";
+        "body"
+        "comments";
 
 `;
 
 const StoryTitleWrapper = styled.div`
 
-    grid-area: title;
-    margin-bottom: 15px;
+    grid-area: 1/1/2/3;
+    margin: 16px;
+    justify-self: start;
 
 
 `;
@@ -116,7 +109,27 @@ const StoryTitleWrapper = styled.div`
 const StoryTitle = styled.h1`
 
     color: #303030;
-    line-height: 1;
+   
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.2em;
+
+
+    color: #111111;
+    
+    @media only screen and (max-width: 800px){
+
+        font-size: 50px;
+
+
+    }
+    @media only screen and (max-width: 600px){
+
+        font-size: 30px;
+
+
+    }
+
 
 
 
@@ -127,15 +140,47 @@ const InfoBar = styled.div`
 
     display: grid;
     overflow: hidden;
-    grid-area: info;
+    grid-area: 4/1/5/2;
     grid-template-columns: minmax(0px, min-content) 1fr minmax(0px, min-content);
     grid-auto-rows: 1fr minmax(0px, min-content);
     grid-template-areas:
 
-        "image    name    social "
-        "image    date    social ";
+        "flexbox    flexbox    social "
+        "flexbox    flexbox    social ";
 
-    //margin-bottom: 10px;
+    margin-top: 18px;
+    align-content: center;
+    padding: 0px 20px;
+
+    @media only screen and (max-width: 420px){
+
+
+        grid-template-columns: minmax(100px, min-content) ;
+        grid-auto-rows: 1fr 1fr;
+
+        grid-template-areas:
+
+        "social social "
+        "flexbox flexbox ";
+
+
+    }
+
+    
+
+`;
+
+const FlexBar = styled.div`
+    display: flex;
+    grid-area: flexbox;
+    align-items: center;
+
+    @media only screen and (max-width: 420px){
+
+        justify-content: center;
+
+    }
+    
 
 
 `;
@@ -146,11 +191,13 @@ const StoryImageWrapper = styled.div`
     height: 0px;
     //min-height: 90px;
     //max-height: 300px;
-    grid-area: 1 /1 /3 /-1;
+    
     padding-top: 60%;
     position: relative;
+    
 
-    grid-area: image;
+    
+    grid-area: 2/1/3/2;
     
     
     
@@ -167,6 +214,19 @@ const StoryImage = styled.img`
 
 
 `;
+
+const Caption = styled.div`
+
+    font-size: 13px;
+    line-height: 1.7;
+    font-style: italic;
+    color: #999999;
+    padding: 12px 0;
+    margin: 0 16px;
+    border-bottom: 1px solid #c0c0c0;
+    grid-area: 3/1/4/2;
+
+`;
 const StoryShareButtons = styled.div`
 
     
@@ -174,6 +234,12 @@ const StoryShareButtons = styled.div`
     justify-content: end;
     grid-area: social;
     align-self: end;
+
+    @media only screen and (max-width: 420px){
+
+        justify-self: center;
+
+    }
 
     button{
 
@@ -188,9 +254,9 @@ const StoryShareButtons = styled.div`
 
 const PWrapper = styled.div`
 
-    font-size: .9em;
-    line-height: 1.6em;
-    grid-area: body;
+    //font-size: .9em;
+    line-height: 1.9em;
+    grid-area: 5/1/6/2;
     text-indent: 45px;
     margin-top: 30px;
     padding: 0px 0px 0px 20px;
@@ -218,6 +284,13 @@ const Loading = styled.div`
         vertical-align:middle;
 
     }
+
+`;
+
+const CommentFormWrapper = styled.div`
+
+    margin: 30px 30px;
+    grid-area: 6/1/7/2;
 
 `;
 
@@ -261,6 +334,11 @@ const AuthorAvartar = styled.img`
     height: 40px;
     align-self: end;
     grid-area: image; 
+    border: 1px solid gray;
+    border-radius: 50%;
+    margin-right: 8px;
+
+    
 
 `;
 
@@ -333,27 +411,33 @@ function Article(props){
 
         <AvatarTest src={artData.author_avatar}
             onLoad={() => setAvatarLoaded(true)}></AvatarTest>
+        
         <ArticleSection>
             
-           <HorizontalAds/>
+           
+            <StoryTitleWrapper>
+                <StoryTitle>{artData.title}</StoryTitle>
+            </StoryTitleWrapper>
+
+            <Caption>
+                US President Donald Trump gestures after the first presidential debate at the Case Western Reserve University and Cleveland Clinic in Cleveland, Ohio on September 29, 2020. (Photo by Jim WATSON / AFP) (Photo by JIM WATSON/AFP via Getty Images)
+
+            </Caption>
             
-            <NewsWrapper>
+            
+            
+           
         
-                <StoryTitleWrapper>
-                    <StoryTitle>{artData.title}</StoryTitle>
-                </StoryTitleWrapper>
+                
 
                 <InfoBar>
 
-                    <AuthorAvartar src={avatarLoaded ? artData.author_avatar : defaultAvatar } />
-
-                   
-
-
-                    
-                    <h4 style={{gridArea: "name", alignSelf: "end", fontSize: ".7rem", lineHeight: "normal"}}> {artData.author_nick} </h4>
-                    <h4 style={{gridArea: "date", fontFamily: "serif", color: "#777777", alignSelf: "start", fontSize: ".7rem", lineHeight: "normal"}}>{artData.date}</h4>
-
+                    <FlexBar>
+                        <AuthorAvartar src={avatarLoaded ? artData.author_avatar : defaultAvatar } />
+                        <h4 style={{fontSize: ".7rem", lineHeight: "normal"}}>by FloridaBlaze</h4>
+                        <div style={{margin: "0px 5px"}}>|</div>
+                        <h4 style={{fontFamily: "serif", color: "#777777", fontSize: ".7rem", lineHeight: "normal"}}>{artData.date}</h4>
+                    </FlexBar>
                     <StoryShareButtons>
                         <FacebookShareButton children={<FacebookIcon size={25} round={false} borderRadius={17} />} url={"www.420.com"} style={{marginRight: "3px"}} />
                         <TwitterShareButton children={<TwitterIcon size={25} round={false} borderRadius={17}/>} url={"www.420.com"} style={{marginRight: "3px"}}/>
@@ -380,11 +464,11 @@ function Article(props){
 
                    
                    
-                <div style={{margin: "30px 30px"}}>
+                <CommentFormWrapper>
 
-                <CommentForm userData={userData} articleID={artData.id} commentID="x" setArtDataComments={setArtDataComments}/>
+                    <CommentForm userData={userData} articleID={artData.id} commentID="x" setArtDataComments={setArtDataComments}/>
 
-                </div>
+                </CommentFormWrapper>
 
                 <div>
                     {artDataComments.map((item,i) => 
@@ -435,11 +519,11 @@ function Article(props){
                     
                 </div>
                 
-            </NewsWrapper>  
+              
             
             
 
-            <NewsAds/>
+           
 
             
         
