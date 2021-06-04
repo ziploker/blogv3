@@ -55,9 +55,12 @@ const ArticleSection = styled.div`
 
     
     display: grid;
-    grid-template-columns: minmax(300px, 770px) 250px;
+    grid-template-columns: minmax(651px, 1100px) 300px;
     justify-content: center;
     margin-top: 20px;
+    margin-left: 14px;
+    margin-right: 14px;
+    grid-column-gap: 28px;
 
     @media only screen and (max-width: 600px){
 
@@ -196,7 +199,7 @@ const StoryImageWrapper = styled.div`
     padding-top: 60%;
     position: relative;
     
-    margin-left: 20px;
+    
     
     grid-area: 2/1/3/2;
     
