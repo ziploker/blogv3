@@ -104,6 +104,10 @@ class User < ApplicationRecord
  
        if self.avatar.attached?
 
+        
+        
+        puts "-------------self.avatar.url----" + self.avatar.url.to_s
+        
         processedLink = URI.parse(URI.encode(self.avatar.url.strip))
           
       
