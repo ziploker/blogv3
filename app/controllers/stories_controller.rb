@@ -42,34 +42,47 @@ class StoriesController < ApplicationController
     
     def create
   
-        if session["user_id"]
-              
-          @current_user = User.find(session[:user_id])
+      # if session["user_id"]
+            
+      #   @current_user = User.find(session[:user_id])
+        
+      # end
+
+
+      if cookies[:auth_token]
           
+        #@current_user = User.find(session[:user_id])
+        if User.find_by_auth_token(cookies[:auth_token])
+          @current_user = User.find_by_auth_token!(cookies[:auth_token])
+          ###story.author_nick = @current_user.nick
+          story.author_avatar = @current_user.avatar_url
+          puts "in stories controller create function, current user set to ... " + @current_user.inspect
         end
-        story = Story.new(event_params)
-        
-        ###story.author_nick = @current_user.nick
-        story.author_avatar = @current_user.avatar_url
-  
-        begin
-        story.save!
-        rescue ActiveRecord::RecordNotSaved => e
-          puts story.errors.full_messages
-        end
-        
-        
-        #if story.save!
-  
-          #story.image.attach(event_params(:image))
-          #render json: story
-       # else
-          #render nothing: true, status: :bad_request
-  
-        #  puts story.errors.full_messages
-         # render :partial => "nothin"
-        #end
       end
+
+
+      story = Story.new(event_params)
+      
+      
+
+      begin
+      story.save!
+      rescue ActiveRecord::RecordNotSaved => e
+        puts story.errors.full_messages
+      end
+      
+      
+      #if story.save!
+
+        #story.image.attach(event_params(:image))
+        #render json: story
+      # else
+        #render nothing: true, status: :bad_request
+
+      #  puts story.errors.full_messages
+        # render :partial => "nothin"
+      #end
+    end
       
       
   
@@ -98,7 +111,7 @@ class StoriesController < ApplicationController
     private
       
       def event_params
-        params.require(:event).permit(:title, :slug, :keywords, :body, :image, :url, :topic, :author_avatar)
+        params.require(:event).permit(:title, :slug, :keywords, :body, :image, :url, :topic, :author_avatar, :caption)
       end
   end
   

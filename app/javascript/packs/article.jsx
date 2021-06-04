@@ -148,7 +148,7 @@ const InfoBar = styled.div`
         "flexbox    flexbox    social "
         "flexbox    flexbox    social ";
 
-    margin-top: 18px;
+    margin-top: 25px;
     align-content: center;
     padding: 0px 20px;
 
@@ -157,7 +157,7 @@ const InfoBar = styled.div`
 
         grid-template-columns: minmax(100px, min-content) ;
         grid-auto-rows: 1fr 1fr;
-
+        margin-top: 0px;
         grid-template-areas:
 
         "social social "
@@ -177,7 +177,8 @@ const FlexBar = styled.div`
 
     @media only screen and (max-width: 420px){
 
-        justify-content: center;
+        justify-content: start;
+        margin-top: 8px;
 
     }
     
@@ -195,7 +196,7 @@ const StoryImageWrapper = styled.div`
     padding-top: 60%;
     position: relative;
     
-
+    margin-left: 20px;
     
     grid-area: 2/1/3/2;
     
@@ -221,8 +222,8 @@ const Caption = styled.div`
     line-height: 1.7;
     font-style: italic;
     color: #999999;
-    padding: 12px 0;
-    margin: 0 16px;
+    padding: 12px;
+    margin: 0 20px;
     border-bottom: 1px solid #c0c0c0;
     grid-area: 3/1/4/2;
 
@@ -233,11 +234,11 @@ const StoryShareButtons = styled.div`
     display: flex;
     justify-content: end;
     grid-area: social;
-    align-self: end;
+    align-self: center;
 
     @media only screen and (max-width: 420px){
 
-        justify-self: center;
+        //justify-self: center;
 
     }
 
@@ -257,9 +258,9 @@ const PWrapper = styled.div`
     //font-size: .9em;
     line-height: 1.9em;
     grid-area: 5/1/6/2;
-    text-indent: 45px;
-    margin-top: 30px;
-    padding: 0px 0px 0px 20px;
+    //text-indent: 45px;
+    margin-top: 16px;
+    padding: 0px 20px;
     font-family: 'IBM Plex Serif', serif;
 
     p{
@@ -420,8 +421,7 @@ function Article(props){
             </StoryTitleWrapper>
 
             <Caption>
-                US President Donald Trump gestures after the first presidential debate at the Case Western Reserve University and Cleveland Clinic in Cleveland, Ohio on September 29, 2020. (Photo by Jim WATSON / AFP) (Photo by JIM WATSON/AFP via Getty Images)
-
+                {artData.caption}
             </Caption>
             
             
@@ -436,7 +436,7 @@ function Article(props){
                         <AuthorAvartar src={avatarLoaded ? artData.author_avatar : defaultAvatar } />
                         <h4 style={{fontSize: ".7rem", lineHeight: "normal"}}>by FloridaBlaze</h4>
                         <div style={{margin: "0px 5px"}}>|</div>
-                        <h4 style={{fontFamily: "serif", color: "#777777", fontSize: ".7rem", lineHeight: "normal"}}>{artData.date}</h4>
+                        <h4 style={{fontFamily: "serif", color: "#777777", fontSize: ".7rem", lineHeight: "normal", marginRight: "8px"}}>{artData.date}</h4>
                     </FlexBar>
                     <StoryShareButtons>
                         <FacebookShareButton children={<FacebookIcon size={25} round={false} borderRadius={17} />} url={"www.420.com"} style={{marginRight: "3px"}} />

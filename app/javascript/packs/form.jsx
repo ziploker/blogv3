@@ -106,7 +106,7 @@ function NewForm(props) {
     topic: '',
     //phoneIsFocused: false,
     body: '',
-
+    caption: '',
 
     image: []
     //emailIsFocused: false,
@@ -137,6 +137,7 @@ function NewForm(props) {
      formData.append('event[keywords]', state.keywords);
      formData.append('event[topic]', state.topic);
      formData.append('event[body]', state.body);
+     formData.append('event[caption]', state.caption);
      
      
 
@@ -171,7 +172,7 @@ function NewForm(props) {
             keywords: '',
             topic: '',
             body: '',
-
+            caption: '',
             image: null
             
           });
@@ -350,6 +351,24 @@ function NewForm(props) {
             <StoryPic src={state.image !=null && state.image.length != 0 ? state.image : "nadaa"}/>
             <LabelForFile htmlFor="image">&#128393;</LabelForFile>
         </StoryPicWrapper>
+
+        <div className="field">
+        
+          <input type="text"
+                
+                
+                className="form-control"
+                name="caption"
+                //focus="phoneIsFocused"
+                placeholder="photo caption"
+                
+                value={state.caption}
+                onChange={handleChange} 
+                
+              
+                />
+          
+        </div>
 
        <div className="field">
         
