@@ -103,7 +103,15 @@ class User < ApplicationRecord
        puts "------------after_validation callback begin for user -------------------"
  
        if self.avatar.attached?
-          url = self.avatar.url&.split("?")&.first
+
+        processedLink = URI.parse(URI.encode(self.avatar.url.strip))
+          
+      
+        
+        url = processedLink&.split("?")&.first
+
+          
+
        
           puts "url = " + url
           

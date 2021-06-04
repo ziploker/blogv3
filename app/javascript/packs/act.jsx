@@ -136,7 +136,7 @@ const ActSection = styled.section`
   grid-column-gap: 0.5em;
   grid-area: 1/1/-1/-1;
   transition: opacity 0.4s;
-  padding-bottom: 40px;
+  //padding-bottom: 40px;
 
   z-index: ${(props) => (props.showCards || props.showLetter ? "0" : "10")}; ;
 `;
