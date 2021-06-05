@@ -55,14 +55,14 @@ class StoriesController < ApplicationController
         if User.find_by_auth_token(cookies[:auth_token])
           @current_user = User.find_by_auth_token!(cookies[:auth_token])
           ###story.author_nick = @current_user.nick
-          story.author_avatar = @current_user.avatar_url
+          
           puts "in stories controller create function, current user set to ... " + @current_user.inspect
         end
       end
 
 
       story = Story.new(event_params)
-      
+      story.author_avatar = @current_user.avatar_url
       
 
       begin
