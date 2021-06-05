@@ -108,11 +108,11 @@ class User < ApplicationRecord
         
         puts "-------------self.avatar.url----" + self.avatar.url.to_s
         
-        processedLink = URI.parse(URI.encode(self.avatar.url.strip))
+       # processedLink = URI.parse(URI.encode(self.avatar.url.strip))
           
       
         
-        url = processedLink&.split("?")&.first
+        url = self.avatar.url.split("?").first
 
           
 
