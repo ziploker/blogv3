@@ -38,9 +38,16 @@ class SessionsController < ApplicationController
 
                 puts "in gen token-------------"
         
-                    user[:auth_token] = SecureRandom.urlsafe_base64
-                    user.save!
-                puts "just saved auth token to DB-------------"  
+                #user[:auth_token] = SecureRandom.urlsafe_base64
+                #user.save!
+
+                someRandomNumber = SecureRandom.urlsafe_base64
+
+                puts "about to update generated token---------"
+                user.update_columns(auth_token: someRandomNumber)
+
+
+                puts "just updated auth token to DB-------------"  
 
                     puts "gen token is =========== " + user[:auth_token].to_s
                 
