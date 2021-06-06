@@ -64,24 +64,27 @@ class StoriesController < ApplicationController
       story = Story.new(event_params)
       story.author_avatar = @current_user.avatar_url
       
-
+      puts "story create about to begin save"
       begin
-      story.save!
+        puts "story create in begin save "
+        story.save!
+        puts "story create after save! "
       rescue ActiveRecord::RecordNotSaved => e
         puts story.errors.full_messages
       end
       
-      
-      #if story.save!
-
+      puts "about to if story save?"
+      if story.save!
+        puts "story save! was true"
         #story.image.attach(event_params(:image))
         #render json: story
-      # else
+        puts "story was saved"
+       else
         #render nothing: true, status: :bad_request
 
-      #  puts story.errors.full_messages
-        # render :partial => "nothin"
-      #end
+        puts story.errors.full_messages
+        #render :partial => "nothin"
+      end
     end
       
       
