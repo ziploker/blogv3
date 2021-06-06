@@ -193,6 +193,8 @@ class Story < ApplicationRecord
             puts "yes it is, start to split url"
 
             puts "service_url to split is " + self.image.service_url
+
+            puts "url to split is " + self.image.url
             #url = self.image.url.split("?").first
             #puts "final selfurl is " + url.to_s
 
