@@ -1,6 +1,6 @@
 class Story < ApplicationRecord
 
-    require "addressable/uri"
+    #require "addressable/uri"
 
 
     # frozen_string_literal: true
@@ -32,15 +32,15 @@ class Story < ApplicationRecord
     
     before_save :beforeSave
     
-    ######around_save :aroundSave
+    around_save :aroundSave
     
-    ######after_save :afterSave
+    after_save :afterSave
 
     before_create :convertToFriendlyDateFormat
     
-    #######around_create :aroundCreate
+    around_create :aroundCreate
     
-    #######after_create :afterCreate
+    after_create :afterCreate
     
     after_commit :afterCommit
     after_rollback :afterRolback
@@ -184,7 +184,7 @@ class Story < ApplicationRecord
 
     def getKeyFromBlobAndAddItToStoryRecord
 
-        puts "------------after_validation callback begin -------------------"
+        puts "------------after_validation callback begin, in getKeyFromBlobAndAddItToStoryRecord -------------------"
         
         puts "is self image attached?"
         if self.image.attached?
@@ -192,19 +192,18 @@ class Story < ApplicationRecord
             
             puts "yes it is, start to split url"
 
-            puts "service_url to split is " + self.image.service_url
+            
 
             puts "url to split is " + self.image.url
-            #url = self.image.url.split("?").first
-            #puts "final selfurl is " + url.to_s
+            url = self.image.url.split("?").first
+            puts "final selfurl is " + url.to_s
 
             
-            #puts "self title= " + self.title
-        
+            
         
         
        
-            #self.url = url
+            self.url = url
 
         end
 
