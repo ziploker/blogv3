@@ -26,24 +26,24 @@ class Story < ApplicationRecord
     
 
 
-    before_validation :beforeValidation
+    #before_validation :beforeValidation
     
     after_validation :getKeyFromBlobAndAddItToStoryRecord
     
-    before_save :beforeSave
+    #before_save :beforeSave
     
-    around_save :aroundSave
+    #around_save :aroundSave
     
-    after_save :afterSave
+    #after_save :afterSave
 
     before_create :convertToFriendlyDateFormat
     
-    around_create :aroundCreate
+    #around_create :aroundCreate
     
-    after_create :afterCreate
+    #after_create :afterCreate
     
-    after_commit :afterCommit
-    after_rollback :afterRolback
+    #after_commit :afterCommit
+    #after_rollback :afterRolback
 
 
     
@@ -52,7 +52,7 @@ class Story < ApplicationRecord
 
         puts "-----------beforeValidation------------"
 
-        selfTest(self)
+        #selfTest(self)
 
         puts "-----------beforeValidation------------"
 
@@ -65,7 +65,7 @@ class Story < ApplicationRecord
 
         puts "-----------beforeSave------------"
 
-        selfTest(self)
+        #selfTest(self)
 
         puts "-----------beforeSave------------"
     end
@@ -102,7 +102,7 @@ class Story < ApplicationRecord
 
         puts "-----------aroundCreate------------"
 
-        selfTest(self)
+        #selfTest(self)
 
         puts "-----------aroundCreate------------"
     end
@@ -111,7 +111,7 @@ class Story < ApplicationRecord
 
         puts "-----------afterCreate------------"
 
-        selfTest(self)
+        #selfTest(self)
 
         puts "-----------afterCreate------------"
     end
@@ -138,7 +138,7 @@ class Story < ApplicationRecord
         
         
 
-        selfTest(self)
+        #selfTest(self)
 
 
         
@@ -148,7 +148,7 @@ class Story < ApplicationRecord
     def afterCommit
 
         puts "-----------afterCommit------------"
-        selfTest(self)
+        #selfTest(self)
 
         puts "-----------afterCommit------------"
     end
@@ -157,12 +157,14 @@ class Story < ApplicationRecord
 
         puts "-----------afterRolback------------"
 
-        selfTest(self)
+        #selfTest(self)
         puts "-----------afterRolback------------"
     end
 
 
+    def aroundSave
 
+    end
 
 
 

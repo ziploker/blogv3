@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
 
-    
+    skip_before_action :verify_authenticity_token, raise: false
+
      
     #sets @current_user if session[:id] exists
      #include CurrentUserConcern
@@ -42,37 +43,37 @@ class StoriesController < ApplicationController
     
     def create
   
-      # if session["user_id"]
-            
-      #   @current_user = User.find(session[:user_id])
-        
-      # end
+      
+      puts "[[[[[[[[[[[[[in stories controller create]]]]]]]]]]]]]]]]]"
 
-
+      puts "does cookies auth token exist ?"
       if cookies[:auth_token]
-          
+        puts "yes, check if theres a matching user"
         #@current_user = User.find(session[:user_id])
         if User.find_by_auth_token(cookies[:auth_token])
+          puts "matching user found"
           @current_user = User.find_by_auth_token!(cookies[:auth_token])
           ###story.author_nick = @current_user.nick
           
           puts "in stories controller create function, current user set to ... " + @current_user.inspect
         end
+        puts "exiting cookies check"
       end
 
-
+      puts "[[[[[[[[[[create new story and add params]]]]]]]]]]]]]"
       story = Story.new(event_params)
+
+      
       story.author_avatar = @current_user.avatar_url
-      story.image.attach(event_params(:image))
+      
       
       puts "story create about to begin save"
-      if story.save!
-        puts "story save! was true"
+      story.save!
         
+      puts "story save! was true"
+        #story.image.attach(event_params(:image))
         
-      else
-        puts story.errors.full_messages
-      end
+     
       
     #   puts "about to if story save?"
     #   if story.save!
