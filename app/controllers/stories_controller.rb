@@ -85,7 +85,7 @@ class StoriesController < ApplicationController
     #     puts story.errors.full_messages
     #     #render :partial => "nothin"
     #   end
-    # end
+     end
       
       
   
