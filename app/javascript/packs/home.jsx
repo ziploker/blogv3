@@ -436,7 +436,7 @@ function Home(props){
                             >
                                 
                                 <StoryOneTitle>
-                                    AG Merrick Garland Believes Cannabis Use In Legal States Is of Little Concern for Justice Department
+                                    {props.lastStory ? props.lastStory.title : "Place golder for title. place golder for title."}
                                 </StoryOneTitle>
                                 
                                 
