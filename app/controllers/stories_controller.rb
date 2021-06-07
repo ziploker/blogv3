@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
 
-    skip_before_action :verify_authenticity_token
+    
      
     #sets @current_user if session[:id] exists
      #include CurrentUserConcern
@@ -73,19 +73,19 @@ class StoriesController < ApplicationController
         puts story.errors.full_messages
       end
       
-      puts "about to if story save?"
-      if story.save!
-        puts "story save! was true"
-        #story.image.attach(event_params(:image))
-        #render json: story
-        puts "story was saved"
-       else
-        #render nothing: true, status: :bad_request
+    #   puts "about to if story save?"
+    #   if story.save!
+    #     puts "story save! was true"
+    #     #story.image.attach(event_params(:image))
+    #     #render json: story
+    #     puts "story was saved"
+    #    else
+    #     #render nothing: true, status: :bad_request
 
-        puts story.errors.full_messages
-        #render :partial => "nothin"
-      end
-    end
+    #     puts story.errors.full_messages
+    #     #render :partial => "nothin"
+    #   end
+    # end
       
       
   
