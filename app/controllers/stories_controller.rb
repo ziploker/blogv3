@@ -1,122 +1,144 @@
 class StoriesController < ApplicationController
 
-    skip_before_action :verify_authenticity_token, raise: false
+  puts "welcome to stories controller"
 
-     
-    #sets @current_user if session[:id] exists
-     #include CurrentUserConcern
+
+  skip_before_action :verify_authenticity_token, raise: false
+
   
-    def index
-        
-    end
-  
-    def new
-  
-      if @current_user
-        @loggedInStatus = "LOGGED_IN"
-        
-      else
-        @loggedInStatus = "NOT_LOGGED_IN"
-        
-      end
-  
-      puts "-----------new story------"
+  def index
       
-        
-    end
+  end
+
   
-    def update
-      puts "update go!!!!!!!!!!1"
+  def new
+
+    puts "//////////// stories controller // def new --START/////////////////"
+
     
-      @story = Story.find(params[:id])
+    puts "check if current user exists"
+    if @current_user
+      
+      puts "current user found, setting logged in"
+      @loggedInStatus = "LOGGED_IN"
+    
+    else
+      
+      puts "current user NOT found, setting Not logged in"
+      @loggedInStatus = "NOT_LOGGED_IN"
+      
+    end
+
+    puts "//////////// stories controller // def new --END/////////////////"
+    
+      
+  end
+
   
+  
+  def update
+    puts "//////////// stories controller // def update --START/////////////////"
+  
+    
+    
+    puts "find Story with params[:id] of " + params[:id].to_s
+    @story = Story.find(params[:id])
+
+    if @story.blank?
+      puts "couldn't find any stories"
+
+    else
+
+      puts "found story ===== " + @story.inspect
+      puts "start to update story========"
+
       if @story.update(event_params)
+        puts "Story updated successfully"
         redirect_to '/blog/' + params[:event][:slug]
-        puts "good2g0"
+        
       else
         #render 'edit'
-        puts "failed"
+        puts "Story did not update for some reason"
       end
-  
+
+
     end
-  
+
     
-    def create
+
+    puts "//////////// stories controller // def update --END/////////////////"
+
+  end
+
   
-      
-      puts "[[[[[[[[[[[[[in stories controller create]]]]]]]]]]]]]]]]]"
+  def create
 
-      puts "does cookies auth token exist ?"
-      if cookies[:auth_token]
-        puts "yes, check if theres a matching user"
-        #@current_user = User.find(session[:user_id])
-        if User.find_by_auth_token(cookies[:auth_token])
-          puts "matching user found"
-          @current_user = User.find_by_auth_token!(cookies[:auth_token])
-          ###story.author_nick = @current_user.nick
-          
-          puts "in stories controller create function, current user set to ... " + @current_user.inspect
-        end
-        puts "exiting cookies check"
-      end
+    
+    puts "|||||||||||||||enter stories controller create|||||||||||||||||||||"
 
-      puts "[[[[[[[[[[create new story and add params]]]]]]]]]]]]]"
-      story = Story.new(event_params)
+    puts "---------calling setUser from stories controller-----------"
+    setUser
 
+    puts "||||||||||||||||  create new story and add params ||||||||||||||"
+    
+    
+    story = Story.new(event_params)
+    story.author_avatar = @current_user.avatar_url
+    
+    
+    puts "story create about to begin save"
+    if story.save!
       
-      story.author_avatar = @current_user.avatar_url
-      
-      
-      puts "story create about to begin save"
-      story.save!
-        
       puts "story save! was true"
-        #story.image.attach(event_params(:image))
-        
-     
+      render json: story
+    
+    else
       
-    #   puts "about to if story save?"
-    #   if story.save!
-    #     puts "story save! was true"
-    #     #story.image.attach(event_params(:image))
-    #     #render json: story
-    #     puts "story was saved"
-    #    else
-    #     #render nothing: true, status: :bad_request
+      render nothing: true, status: :bad_request
+      puts story.errors.full_messages
+    
+    end
+    
+ 
+    puts "|||||||||||||||exit stories controller create|||||||||||||||||||||"
 
-    #     puts story.errors.full_messages
-    #     #render :partial => "nothin"
-    #   end
-     end
+  end
+    
+    
+
+  def edit
+    
+    puts "|||||||||||||||enter stories controller edit|||||||||||||||||||||"
+
+
+    if @current_user
+      @loggedInStatus = "LOGGED_IN"
+      @story2edit = Story.find(params[:id])
       
       
-  
-    def edit
-  
-  
-      if @current_user
-        @loggedInStatus = "LOGGED_IN"
-        @story2edit = Story.find(params[:id])
-       
-        
-      else
-        @loggedInStatus = "NOT_LOGGED_IN"
-        redirect_to "/login"
-        
-      end
-  
+    else
+      @loggedInStatus = "NOT_LOGGED_IN"
+      redirect_to "/login"
       
     end
-  
-    def show
-        
-    end
-  
-  
-    private
+
+    puts "|||||||||||||||enter stories controller edit|||||||||||||||||||||"
+
+  end
+
+  def show
       
-      def event_params
-        params.require(:event).permit(:title, :slug, :keywords, :body, :image, :url, :topic, :author_avatar, :caption)
-      end
+  end
+  
+  
+  private
+    
+    def event_params
+      params.require(:event).permit(:title, :slug, :keywords, :body, :image, :url, :topic, :author_avatar, :caption)
+    end
+
+
+  puts "farewell to stories controller"
+
   end
   

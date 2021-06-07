@@ -1,4 +1,6 @@
 class SparksController < ApplicationController
+
+    puts "welcome to sparks controller"
     #include CurrentUserConcern
 
     STORIES_PER_PAGE = 4
@@ -6,29 +8,18 @@ class SparksController < ApplicationController
     
     def index
 
+        puts "============Sparks controller def index start================"
+
         puts "---------calling setUser from sparks controller-----------"
+        
         setUser
 
-        # puts "Set Current User from sparks controller"
-        # if cookies[:auth_token]
-        #     puts "cookies found AND AUTH     token is " + cookies[:auth_token].to_s
-        #     #@current_user = User.find(session[:user_id])
-              
-        #     if User.find_by_auth_token(cookies[:auth_token])
-        #         @current_user = User.find_by_auth_token!(cookies[:auth_token])
-  
-        #         puts "USER_INSPECT " + @current_user.inspect
-        #       end
-        #  end
-
         @path = params[:path]
-        #@story = Story.order("created_at").last
-
+        
         @page = params.fetch(:page, 0).to_i
         
         #@stories = Story.order("created_at DESC").offset(@page * STORIES_PER_PAGE).limit(STORIES_PER_PAGE)
-        #@story = Story.all
-
+        
         @lastStory = Story.last
         @secondToLastStory = Story.second_to_last
         @thirdToLastStory = Story.third_to_last
@@ -36,30 +27,7 @@ class SparksController < ApplicationController
         @googleGeoApi = Rails.application.credentials.dig(:google, :geoapi)
 
         
-        
-        
-
-
-        
-        #puts "google api is = " + @googleGeoApi
-        
-
-        #@image = "http://localhost.com/" + @image
-
-        #@image = polymorphic_url(lastStory.image)
-
-        #@image = lastStory.image.service_url
-        #@image = rails_blob_url(lastStory.image, disposition: "attachment")
-
-        #@image = rails_blob_url(lastStory.image, only_path: true) if lastStory.image.attached?
-
-        ##if @story.count > 0 
-
-        ##    lastStory = Story.last
-        
-        ##    @image = lastStory.image.service_url&.split("?")&.first 
-        ##    @imagelong = lastStory.image.service_url 
-        ##end
+        puts "============Sparks controller def index end================"
     end
 
 
@@ -80,6 +48,8 @@ class SparksController < ApplicationController
 
 
     def get_article_info
+
+        puts "============Sparks controller def get_article_info start================"
 
         puts " SLUG = " + params["data"]["slug"]
 
@@ -106,5 +76,11 @@ class SparksController < ApplicationController
                 comments: @comments
             }
         end
+        puts "============Sparks controller def get_article_info end================"
+
     end
+    
+    
+    
+    puts "farewell to sparks controller"
 end

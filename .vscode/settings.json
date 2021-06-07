@@ -1,13 +1,21 @@
 {
     "cSpell.ignoreWords": [
         "address",
+        "api",
         "b",
+        "base",
+        "blaze",
         "by",
+        "downcase",
+        "florda",
+        "floridablaze",
         "geocode",
         "get",
         "gimage",
         "lat",
         "lng",
-        "minmax"
+        "mailgun",
+        "minmax",
+        "urlsafe"
     ]
 }
