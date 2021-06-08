@@ -291,6 +291,7 @@ function Edit(props) {
      formData.append('user[password]', state.password);
      
      formData.append('user[nick]', state.nick);
+     formData.append('user[opt_in]', state.opt_in);
      
      
 
@@ -379,7 +380,7 @@ function Edit(props) {
 
 
   ///////////////////////////////////  HANDLE_CHANGE /////////////////////////////
-  const handleChange = (event) => {
+  const handleChange = (e) => {
 
     const target = e.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -409,7 +410,7 @@ function Edit(props) {
    
       setState({
         ...state,
-        avatar: URL.createObjectURL(event.target.files[0])
+        avatar: URL.createObjectURL(e.target.files[0])
       })
     
     //if (e.target.files[0]) setState({ ...state, avatar: e.target.files[0] });
@@ -462,7 +463,7 @@ function Edit(props) {
             //oldPassword: "",
             password: "",
             password_confirmation: "",
-            opt_in: response.data.opt_in,
+            opt_in: response.data.user.opt_in,
             errors: {},
             avatar_url: response.data.user.avatar_url,
             nick: response.data.user.nick,

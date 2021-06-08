@@ -249,11 +249,12 @@ class RegistrationsController < ApplicationController
             
             if @user.email_confirmed == "true"
 
-                puts "email has been confirmed"
+                puts "email has been confirmeddd"
             
                 
-                #if email is being updated, send confirmation to new email
+                puts "#if email is being updated, send confirmation to new email"
                 if @user.email.downcase != params["user"][:email].downcase
+                    puts "0909"
 
                     puts 'email is different'
 
@@ -267,6 +268,17 @@ class RegistrationsController < ApplicationController
                         @user.full_name = params["user"][:full_name]
                     end
 
+                    if (@user.nick != params["user"][:nick])
+                        @user.nick = params["user"][:nick]
+                    end
+
+                    if (@user.opt_in != params["user"][:opt_in])
+                        @user.opt_in = params["user"][:opt_in]
+                    end
+
+                    if (@user.avatar != params["user"][:avatar])
+                        @user.avatar = params["user"][:avatar]
+                    end
                     
                     
                     
@@ -283,7 +295,7 @@ class RegistrationsController < ApplicationController
                    
                     puts "just sent confirm to new email and added user.confirm_token, any errors => " + @user.errors.messages.to_s
 
-                    if @user.save
+                    if @user.save!
 
                         puts "@user.save was true !!"
                         # Define your message parameters
@@ -368,8 +380,15 @@ class RegistrationsController < ApplicationController
                 
                 
 
+                    
+                else
+
+                    puts "---------------------bingo"
+
                     #if @user.update(user_params.except(:oldPassword))
                     if @user.update(user_params)
+
+                        puts "bingooo"
                     
                         render json:{
                             status: "green",
@@ -378,6 +397,7 @@ class RegistrationsController < ApplicationController
                             error: { success: ["Changes saved!"]}
                         }
                     else
+                        puts "bingaaa"
                         render json:{
                             status: "pink",
                             logged_in: true,
