@@ -175,7 +175,7 @@ function Edit(props) {
     
     password: "",
     passwordFieldActive: false,
-    
+    opt_in: false,
     nick: "",
     nickFieldActive: true,
     status: "",
@@ -379,14 +379,25 @@ function Edit(props) {
 
 
   ///////////////////////////////////  HANDLE_CHANGE /////////////////////////////
-  function handleChange(event){
+  const handleChange = (event) => {
 
-    const value = event.target.value;
+    const target = e.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
 
+
+    console.log("TARGET_CHECKED " + target.checked.toString())
+    console.log("TARGET_VALUE " + target.value.toString())
+    //const value = target.type === 'checkbox' ? !event.target.checked : event.target.value;
     setState({
       ...state,
-      [event.target.name]: value
+      [name]: value
     });
+  
+
+
+
+
 
   }
 
@@ -451,6 +462,7 @@ function Edit(props) {
             //oldPassword: "",
             password: "",
             password_confirmation: "",
+            opt_in: response.data.opt_in,
             errors: {},
             avatar_url: response.data.user.avatar_url,
             nick: response.data.user.nick,
@@ -590,6 +602,22 @@ function Edit(props) {
               
 
           <Button type="submit" disabled={state.isBtnDisabled}>Save Changes</Button>
+
+          <div  style={{display: "flex", justifyContent: "center"}}>
+                
+                
+                <input
+                name="opt_in" 
+                type="checkbox" 
+                id="opt_in"
+                checked={state.opt_in}
+                 
+                onChange={handleChange} 
+                
+                />
+                
+                <h3 style={{marginLeft: "5px", fontSize: ".6em", color: "gray"}} htmlFor="opt_in" >Opt In to receive e-mails from FloridaBlaze </h3>
+            </div>
         
         </Form>
         

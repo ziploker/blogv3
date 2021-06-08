@@ -125,20 +125,20 @@ const LoginCard = styled.div`
 
   
 ///////////////////////////////////  HANDLE_CHANGE /////////////////////////////
-function handleChange(event){
+// function handleChange(event){
 
-  //const value = event.target.value;
-  const target = e.target;
-  const value = target.type === 'checkbox' ? target.checked : target.value;
-  const name = target.name;
-  //const value = target.type === 'checkbox' ? !event.target.checked : event.target.value;
+//   //const value = event.target.value;
+//   const target = e.target;
+//   const value = target.type === 'checkbox' ? target.checked : target.value;
+//   const name = target.name;
+//   //const value = target.type === 'checkbox' ? !event.target.checked : event.target.value;
   
-  setState({
-    ...state,
-    [name]: value
-  });
+//   setState({
+//     ...state,
+//     [name]: value
+//   });
 
-}
+// }
 
 function handleImageChange(e){
 
@@ -146,7 +146,7 @@ function handleImageChange(e){
   
     setState({
       ...state,
-      avatar: URL.createObjectURL(event.target.files[0])
+      avatar: URL.createObjectURL(e.target.files[0])
     })
   
   //if (e.target.files[0]) setState({ ...state, avatar: e.target.files[0] });
@@ -417,14 +417,19 @@ function Signup(props, ref) {
   const handleChange = (e) => {
 
     
+   
+    
 
     const target = e.target;
+    
+   
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
 
     console.log("TARGET_CHECKED " + target.checked.toString())
-    console.log("TARGET_VALUE " + target.value.toString())
+    console.log("target_name " + target.name.toString())
+    console.log("value " + value.toString())
     //const value = target.type === 'checkbox' ? !event.target.checked : event.target.value;
     setState({
       ...state,
