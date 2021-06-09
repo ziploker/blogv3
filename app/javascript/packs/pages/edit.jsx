@@ -533,6 +533,7 @@ function Edit(props) {
           <FormItem>
             <Label className={state.emailFieldActive ? "field-active" : ""}>email</Label>
             <Input 
+              disabled= "disabled"
               name="email" 
               type="email" 
               value={state.email || ''} 
