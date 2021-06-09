@@ -51,6 +51,10 @@ class SparksController < ApplicationController
 
         puts "============Sparks controller def get_article_info start================"
 
+
+        puts "set user from sparks get article info start"
+        setUser
+        puts "set user from sparks get article info end"
         puts " SLUG = " + params["data"]["slug"]
 
         @article_info = Story.find_by(slug: params["data"]["slug"])
@@ -58,6 +62,8 @@ class SparksController < ApplicationController
         puts @article_info.inspect
 
         if @current_user
+
+            puts "found current user"
             
             render json: {
 
@@ -69,6 +75,7 @@ class SparksController < ApplicationController
 
         else
 
+            puts "did not find current user"
             render json: {
 
 

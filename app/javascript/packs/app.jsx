@@ -102,12 +102,26 @@ function App(controllerProps){
     
     // when click on nav link, scrolls to LookupScrollToRef
     const scrollToRef = (ref) => {
+
+        console.log("in scrollToRef ")
+        console.log(ref)
+
+
+        var scrollOptions = {
+            left: 0,
+            top: ref.current.offsetTop,
+            behavior: 'smooth'
+          }
         
-        window.scrollTo(0, ref.current.offsetTop)
+          window.scrollTo(scrollOptions);
+        //window.scrollTo(0, ref.current.offsetTop)
 
         
         setOpenSideMenu(false)
-        LookupInputRef.current.focus();
+        setTimeout(function () {
+            LookupInputRef.current.focus();
+        }, 420);
+        //LookupInputRef.current.focus();
 
     }
 
@@ -115,8 +129,18 @@ function App(controllerProps){
 
         console.log("IN SCROLLTOREF2")
         console.log(ref)
+
+
+
+        var scrollOptions = {
+            left: 0,
+            top: ref.current.offsetTop,
+            behavior: 'smooth'
+          }
         
-        window.scrollTo(0, ref.current.offsetTop)
+          window.scrollTo(scrollOptions);
+        
+        //window.scrollTo(0, ref.current.offsetTop)
 
         
        
@@ -125,6 +149,8 @@ function App(controllerProps){
     
     
     const executeScrollForLookupSection = () => {
+
+        console.log("in executeScrollForLookupSection ")
         
         scrollToRef(LookupScrollToRef)
         setOpenSideMenu(false)
@@ -236,7 +262,7 @@ function App(controllerProps){
                         executeScrollForLookupSection={executeScrollForLookupSection} 
                     />
                     
-                
+                    <Login handleSuccessfulAuth={handleSuccessfulAuth} setLoginClicked={setLoginClicked} loginClicked={loginClicked} />
                 
                 <Switch>
                     <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} appState={appState} setAppState={setAppState} />}/>
@@ -249,7 +275,7 @@ function App(controllerProps){
                     <Route exact path="/blog/:id" render = { props => <Article {...props} /> } />
                 </Switch>
 
-                <Act executeScrollForSection2={executeScrollForSection2} appState={appState} setLoginClicked={setLoginClicked} setOpenSideMenu={setOpenSideMenu}/>
+                <Act ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}} executeScrollForSection2={executeScrollForSection2} appState={appState} setLoginClicked={setLoginClicked} setOpenSideMenu={setOpenSideMenu}/>
                 <SignupSection ref={{section2ScrollToRef: section2ScrollToRef}}/>
                 {/* <Shop/> */}
                 <Footer/>

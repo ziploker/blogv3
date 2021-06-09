@@ -119,6 +119,8 @@ const ActGrid = styled.div`
 const ActSection = styled.section`
 
 
+
+
   @media only screen and (max-width: 720px){
 
     grid-template-columns: minmax(20px, 1fr) 1fr minmax(20px, 1fr);
@@ -139,6 +141,13 @@ const ActSection = styled.section`
   //padding-bottom: 40px;
 
   z-index: ${(props) => (props.showCards || props.showLetter ? "0" : "10")}; ;
+
+  @media only screen and (min-width: 975px){
+
+  
+    padding-bottom: 30px;
+
+  }
 `;
 
 const ActHeader = styled.h1`
@@ -990,7 +999,7 @@ const SendButtonWrapper = styled.div`
 
 const SendButton = styled.a``;
 
-function Act(props) {
+function Act(props, ref) {
   console.log("ACT________________PROPS", location.pathname);
   //console.log("HEADER_PROPS solo", location.pathname)
 
@@ -998,9 +1007,11 @@ function Act(props) {
     address: "",
   });
 
-  const ref = useRef();
+  //const newRef = useRef();
   const locationFromHook = useLocation();
   //const {LookupScrollToRef, LookupInputRef} = ref;
+  const {LookupScrollToRef} = ref
+  const {LookupInputRef} = ref
   const [searchButtonActive, setSearchButtonActive] = React.useState(false);
   const [status, setStatus] = React.useState("");
   const [showStatusSpinner, setShowStatusSpinner] = React.useState(false);
@@ -1354,9 +1365,9 @@ function Act(props) {
     
 
   return (
-    <ActWrapper>
+    <ActWrapper ref={LookupScrollToRef} >
       <BGimage src={actBackground}></BGimage>
-      <ActGrid>
+      <ActGrid >
          
         <ActSection showCards={showCards} showLetter={showLetter}>
           <ActHeader showCards={showCards} showLetter={showLetter}>
@@ -1374,6 +1385,7 @@ function Act(props) {
             onSubmit={handleAdd}
             showCards={showCards}
             showLetter={showLetter}
+            
           >
             <PlacesAutocomplete
               value={formInfo.address}
@@ -1419,7 +1431,7 @@ function Act(props) {
                       name: "address",
                       onFocus: activateField,
                       onBlur: disableField,
-                      ref: ref,
+                      ref: LookupInputRef,
                     })}
                     style={{
                       width: "100%",
@@ -1625,4 +1637,7 @@ function Act(props) {
   );
 }
 
-export default Act;
+
+const Wtf = React.forwardRef(Act);
+export default Wtf;
+

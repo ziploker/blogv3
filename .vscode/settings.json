@@ -16,6 +16,8 @@
         "lng",
         "mailgun",
         "minmax",
+        "smooth",
+        "sref",
         "urlsafe"
     ]
 }

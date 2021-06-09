@@ -204,7 +204,7 @@ const Div4OverlayWrapper = styled(Div1OverlayWrapper)`
         display: inherit;
     }
 
-    display: none
+    display: none;
 `;
 
 const StoryImageOverlay = styled.div`
@@ -526,7 +526,7 @@ function Home(props){
 
             </HomeWrapper>
 
-            <Login handleSuccessfulAuth={props.handleSuccessfulAuth} setLoginClicked={props.setLoginClicked} loginClicked={props.loginClicked} />
+            
 
         </>
     );
