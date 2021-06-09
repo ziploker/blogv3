@@ -243,6 +243,7 @@ const Div1 = styled.div`
     justify-self: center;
     min-height: 290px;
     max-width: 600px;
+    width: 100%;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
     background-repeat: no-repeat;
@@ -285,6 +286,7 @@ const Div2 = styled.div`
     display: grid;
     min-height: 290px;
     max-width: 600px;
+    width: 100%;
     justify-self: center;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
@@ -322,6 +324,7 @@ const Div3 = styled.div`
     display: grid;
     min-height: 290px;
     max-width: 600px;
+    width: 100%;
     justify-self: center;
     background-image: url( ${props => props.imageURL});
     background-size: cover;
@@ -363,6 +366,7 @@ const Div4 = styled.div`
         display: grid;
         min-height: 290px;
         max-width: 600px;
+        width: 100%;
         justify-self: center;
         background-image: url( ${props => props.imageURL});
         background-size: cover;

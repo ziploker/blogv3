@@ -109,7 +109,7 @@ const ActGrid = styled.div`
   display: grid;
   position: relative;
   //grid-template-columns: 43% 57%;
-  grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
+  //grid-template-columns: minmax(20px, 1fr) minmax(335px, 350px) minmax(350px,600px) minmax(20px, 1fr);
   //grid-template-rows: 120px 40px 50px 100px 50px 1fr;
 
   //grid-column-gap: 0.5em;
