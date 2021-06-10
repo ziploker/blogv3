@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
     has_one_attached :avatar
+    #has_many :comments, dependent: :destroy
     has_secure_password
     
     validates_presence_of :full_name, :on=> :create
@@ -48,6 +49,12 @@ class User < ApplicationRecord
 
 
     #########
+
+    def comment_created
+        self.number_of_comments = number_of_comments + 1
+        save
+        return number_of_comments
+    end
     
     def generate_password_token!
         self.reset_password_token = generate_token

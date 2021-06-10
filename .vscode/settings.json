@@ -6,6 +6,8 @@
         "base",
         "blaze",
         "by",
+        "commentable",
+        "datetime",
         "downcase",
         "florda",
         "floridablaze",

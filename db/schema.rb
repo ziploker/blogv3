@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_09_194011) do
+ActiveRecord::Schema.define(version: 2021_06_10_163829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,15 +44,19 @@ ActiveRecord::Schema.define(version: 2021_06_09_194011) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.text "edit_history", default: ""
+    t.integer "commentable_id"
+    t.string "commentable_type"
+    t.bigint "user_id", null: false
+    t.boolean "reply", default: false
+    t.integer "comment_number"
     t.text "body"
-    t.string "commentable_type", null: false
-    t.bigint "commentable_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "date"
     t.string "author_nick"
     t.string "author_avatar"
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "stories", force: :cascade do |t|
@@ -83,8 +87,10 @@ ActiveRecord::Schema.define(version: 2021_06_09_194011) do
     t.string "avatar_url"
     t.string "nick"
     t.string "auth_token"
+    t.integer "number_of_comments", default: 0
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "users"
 end

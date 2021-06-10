@@ -494,14 +494,14 @@ function Article(props){
                             {item.comments.map((item,i) => 
                         
                                 <li style={{marginLeft: "15px", listStyleType: "none"}} key={i}>
-                                {"id = " + item.id + ", commenting to " + item.commentable_id + " and its a " + item.commentable_type + " "}
-                        
-                                {item.body}
+                                    {"id = " + item.id + ", commenting to " + item.commentable_id + " and its a " + item.commentable_type + " "}
+                            
+                                    {item.body}
                             
                             
-                        </li>
+                                </li>
             
-                    )}
+                            )}
 
 
                             </CommentReply>
