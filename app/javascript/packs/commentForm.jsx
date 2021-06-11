@@ -108,8 +108,8 @@ function CommentForm(props) {
      
      
      formData.append('event[comment]', state.comment);
-     formData.append('event[articleID]', props.articleID);
-     formData.append('event[commentID]', props.commentID);
+     formData.append('event[article_id]', props.articleID);
+     formData.append('event[comment_id]', props.commentID);
      formData.append('event[author_nick]', props.userData.nick);
      formData.append('event[author_avatar]', props.userData.avatar_url);
      

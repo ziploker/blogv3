@@ -291,12 +291,22 @@ const Loading = styled.div`
 
 `;
 
+const Comments = styled.div`
+
+
+    grid-area: 6/1/7/2;
+
+
+`;
+
 const CommentFormWrapper = styled.div`
 
     margin: 30px 30px;
-    grid-area: 6/1/7/2;
+    grid-area: 7/1/8/2;
 
 `;
+
+
 
 const CommentDisplay = styled.div`
 
@@ -473,7 +483,7 @@ function Article(props){
 
                 </CommentFormWrapper>
 
-                <div>
+                <Comments>
                     {artDataComments.map((item,i) => 
                     
                         <ul key={i}>
@@ -520,7 +530,7 @@ function Article(props){
 
 
                     
-                </div>
+                </Comments>
                 
               
             

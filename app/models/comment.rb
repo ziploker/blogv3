@@ -5,7 +5,7 @@ class Comment < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
   before_create :convertToFriendlyDateFormat
-  #before_create :set_comment_number
+  before_create :set_comment_number
 
 
   private
