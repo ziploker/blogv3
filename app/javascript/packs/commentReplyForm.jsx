@@ -75,7 +75,7 @@ const formData = new FormData();
 
 
 
-function CommentForm(props) {
+function CommentReplyForm(props) {
 
 
   const [state, setState] = React.useState({
@@ -109,7 +109,7 @@ function CommentForm(props) {
      
      formData.append('event[body]', state.comment);
      formData.append('event[story_id]', props.storyID);
-    //  formData.append('event[comment_id]', props.commentID);
+        formData.append('event[comment_id]', props.commentID);
      formData.append('event[author_nick]', props.userData.nick);
      formData.append('event[author_avatar]', props.userData.avatar_url);
      
@@ -166,7 +166,7 @@ function CommentForm(props) {
   
   const validForm = () => {
 
-    console.log("in comment form")
+    console.log("in comment formmm state.comment = " + state.comment)
     if (state.comment ) {
       return true;
     } else {
@@ -176,7 +176,7 @@ function CommentForm(props) {
 
   
   const handleChange = event => {
-    console.log("handle change from form")
+    console.log("handle change from -----REPLY -----form")
     console.log(event)
 
     const v = event.target.value;
@@ -206,6 +206,8 @@ function CommentForm(props) {
       });
       //return onChange(id, value);
     }
+
+    console.log("cewest state is = " + state.comment)
   }
   
   
@@ -233,10 +235,11 @@ function CommentForm(props) {
   return(
 
     <FormWrapper>
+        <span>"-----------------_"</span>
 
       <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
-      <Form style={{gridArea: "main_comment_body"}} id="cform" className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
+      <Form id="rform" className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
         
         <div className="field" >
@@ -262,7 +265,7 @@ function CommentForm(props) {
         
         
       </Form>
-      <button form="cform" style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">COMMENT</button>
+      <button form="rform" style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
     </FormWrapper>
   )
 }
@@ -276,4 +279,4 @@ function CommentForm(props) {
 
 
 
-export default props => <CommentForm {...props} />;
+export default props => <CommentReplyForm {...props} />;

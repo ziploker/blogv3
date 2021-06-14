@@ -57,7 +57,7 @@ class CommentsController < ApplicationController
 
             puts "build and save comment commplete!!"
 
-            s = Story.find_by(id: params[:event][:article_id])
+            s = Story.find_by(id: params[:event][:story_id])
 
            
 
@@ -109,8 +109,8 @@ class CommentsController < ApplicationController
 
         puts "params inspect " + params.inspect
        
-        params.require(:event).permit(:event, :body, :comment_id, :author_avatar, :author_nick, :user_id)
-        #params.require(:event).permit(:event, :body, :article_id, :author_nick, :user_id)
+        params.require(:event).permit(:event, :body, :author_avatar, :author_nick, :user_id)
+        #params.require(:event).permit(:event, :body, :story_id, :author_nick, :user_id)
     end
 
     def find_commentable
@@ -120,11 +120,11 @@ class CommentsController < ApplicationController
         if params[:event][:comment_id]
             puts "params[:event][:comment_id] was true so @commentable will be a comment reply"
             @commentable = Comment.find_by_id(params[:event][:comment_id])
-        elsif params[:event][:article_id]
+        elsif params[:event][:story_id]
             
-            puts "params[:event][:article_id] was true so @commentable will be a comment reply"
+            puts "params[:event][:story_id] was true so @commentable will be a comment reply"
 
-            @commentable = Story.find(params[:event][:article_id])
+            @commentable = Story.find(params[:event][:story_id])
         end
         puts "out of comments controller, find_commentable before action ==========="
 

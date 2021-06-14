@@ -8,6 +8,7 @@ TimeAgo.addDefaultLocale(en)
 import ReactTimeAgo from 'react-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import CommentForm from './commentForm'
+import CommentReplyForm from './commentReplyForm'
 
 import defaultAvatar from '../../assets/images/man3'
 
@@ -479,7 +480,7 @@ function Article(props){
                    
                 <CommentFormWrapper>
 
-                    <CommentForm userData={userData} articleID={artData.id} setArtDataComments={setArtDataComments}/>
+                    <CommentForm userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments}/>
 
                 </CommentFormWrapper>
 
@@ -494,6 +495,7 @@ function Article(props){
                                 <h3 style={{fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
                                 <span style={{gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
                                 <CommentBody style={{gridArea: "body", fontSize: ".7em"}}>{item.body}</CommentBody>
+                                <CommentReplyForm userData={userData} storyID={artData.id} commentID={item.id} setArtDataComments={setArtDataComments}/>
                                 
 
                                 
