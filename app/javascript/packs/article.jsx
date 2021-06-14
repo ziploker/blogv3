@@ -479,7 +479,7 @@ function Article(props){
                    
                 <CommentFormWrapper>
 
-                    <CommentForm userData={userData} articleID={artData.id} commentID="x" setArtDataComments={setArtDataComments}/>
+                    <CommentForm userData={userData} articleID={artData.id} setArtDataComments={setArtDataComments}/>
 
                 </CommentFormWrapper>
 

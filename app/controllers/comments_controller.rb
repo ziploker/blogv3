@@ -1,13 +1,17 @@
 class CommentsController < ApplicationController
     puts "[][][][][][][][][ welcome to comments controller ][][][][][]"
-    before_action :find_commentable, only: [:create]
-    before_action :set_comment, except: [:create]
+    #before_action :find_commentable, only: :create
+    #before_action :set_comment, only: [:edit, :update, :destroy, :history]
     #before_action :authenticate_user!
+
+    #before_action :find_commentable
+    #before_action :set_comment
     
 
     def create
 
         puts "===========in comments controller, create function ==============="
+        find_commentable
         puts "running setuser from comment controller, create action"
         setUser
         #things needed to post comment
@@ -47,11 +51,26 @@ class CommentsController < ApplicationController
 
             @comment.user = @current_user
 
-            @comment.reply = true  if params[:comment_id]
+            @comment.reply = true  if params[:event][:comment_id]
 
             @comment.save!
 
             puts "build and save comment commplete!!"
+
+            s = Story.find_by(id: params[:event][:article_id])
+
+           
+
+        
+            @comments = s.comments.as_json(include: [:comments])
+            
+            render json: {
+
+
+                #article: @article_info,
+                comments: @comments
+            }
+
         
         
         
@@ -67,44 +86,57 @@ class CommentsController < ApplicationController
 
 
     def edit
+        set_comment
     end
 
 
     def update 
+        set_comment
     end
 
     def destroy
+        set_comment
     end
 
     def history 
+        set_comment
     end
 
 
     private
 
     def comment_params
-        params.require(:comment).permit(:body)
+
+        puts "params inspect " + params.inspect
+       
+        params.require(:event).permit(:event, :body, :comment_id, :author_avatar, :author_nick, :user_id)
+        #params.require(:event).permit(:event, :body, :article_id, :author_nick, :user_id)
     end
 
     def find_commentable
 
-        puts "in comments controller, find_commentable before action ==========="
+        puts "in comments controller, find_commentable 'before action' ==========="
         #comment
-        if params[:comment_id]
-            puts "params[:comment_id] was true so @commentable will be a comment reply"
-            @commentable = Comment.find_by_id(params[:comment_id])
-        elsif params[:story_id]
+        if params[:event][:comment_id]
+            puts "params[:event][:comment_id] was true so @commentable will be a comment reply"
+            @commentable = Comment.find_by_id(params[:event][:comment_id])
+        elsif params[:event][:article_id]
             
-            puts "params[:story_id] was true so @commentable will be a comment reply"
+            puts "params[:event][:article_id] was true so @commentable will be a comment reply"
 
-            @commentable = Story.find(params[:story_id])
+            @commentable = Story.find(params[:event][:article_id])
         end
+        puts "out of comments controller, find_commentable before action ==========="
 
         #post
     end
 
     def set_comment 
+        puts "in comments controller, set_comment before action ==========="
+
         @comment = Comment.find(params[:id])
+        puts "out of comments controller, set_comment before action ==========="
+
     end
 
     puts "[][][][][][][][][ farewell to comments controller ][][][][][]"
