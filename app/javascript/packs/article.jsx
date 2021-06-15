@@ -328,6 +328,7 @@ const CommentDisplay = styled.div`
         grid-area: avatar;
         margin: 5px 10px 0px 5px;
         border-radius: 50%;
+        border: 1px solid gray;
         
     }
 
@@ -369,6 +370,16 @@ const AvatarTest = styled.img`
 
     display: none;
 
+`;
+
+
+const Vote = styled.div`
+    grid-area: vote;
+`;
+
+
+const Reply = styled.div`
+    grid-area: reply;
 `;
 
 
@@ -504,13 +515,16 @@ function Article(props){
                                 <img src={item.author_avatar}/>
                                 <h3 style={{fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
                                 <span style={{gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
-                                <CommentBody style={{gridArea: "body", fontSize: ".7em"}}>{item.body}</CommentBody>
+                                <CommentBody style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
+
+                                <Vote>vote</Vote>
+                                <Reply>reply</Reply>
                                 
                                 
 
                                 
                             </CommentDisplay>
-                            {/* <CommentReplyForm userData={userData} storyID={artData.id} commentID={item.id} setArtDataComments={setArtDataComments} /> */}
+                                <CommentReplyForm userData={userData} storyID={artData.id} commentID={item.id} setArtDataComments={setArtDataComments} />
                             <CommentReply>
 
                             {item.comments.map((item,i) => 

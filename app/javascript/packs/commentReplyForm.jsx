@@ -28,6 +28,8 @@ const Form = styled.form`
   //grid-template-columns: 90%;
   grid-gap: 1.5rem;
 
+  
+
 `;
 
 
@@ -40,6 +42,9 @@ const FormWrapper = styled.div`
 
           "main_comment_img      main_comment_body      main_comment_body"
           "main_comment_img             .             main_comment_buttons";
+
+
+          margin-left: 40px;
 `;
 
 const OptionWrapper = styled.div`
@@ -56,7 +61,7 @@ const CommentInput = styled.input`
   font-size: 1.3rem;
   
   //padding: 7px 0;
-  background: transparent;
+  background: white;
   transition: border-color 0.2s;
   margin-left: 10px;
 
@@ -66,6 +71,29 @@ const CommentInput = styled.input`
   -ms-word-break: break-all;
 
   word-break: break-word;
+
+
+  
+
+
+  
+  min-height: 73px;
+
+
+    color: #2a2e2e;
+    cursor: text;
+    resize: none;
+    border: 0;
+    padding: 6px 10px 8px;
+    
+    width: 100%;
+    min-height: 44px;
+    height: auto;
+    line-height: 1.4;
+    font-size: 14px;
+    overflow-y: scroll;
+    word-break: break-word;
+    transition: all .15s ease-in-out;
 
 
 `;
