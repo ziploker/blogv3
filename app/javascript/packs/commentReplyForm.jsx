@@ -235,11 +235,11 @@ function CommentReplyForm(props) {
   return(
 
     <FormWrapper>
-        <span>"-----------------_"</span>
+        
 
       <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
-      <Form id="rform" className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
+      <Form id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
         
         <div className="field" >
@@ -265,7 +265,7 @@ function CommentReplyForm(props) {
         
         
       </Form>
-      <button form="rform" style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
+      <button form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
     </FormWrapper>
   )
 }

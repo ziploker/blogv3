@@ -322,6 +322,14 @@ const CommentDisplay = styled.div`
     "  .    vote reply ";
     margin-bottom: 20px;
 
+    img {
+        width: 25px;
+        height: 25px;
+        grid-area: avatar;
+        margin: 5px 10px 0px 5px;
+        border-radius: 50%;
+        
+    }
 
 `;
 
@@ -486,39 +494,41 @@ function Article(props){
 
                 <Comments>
                     {artDataComments.map((item,i) => 
-                    
-                        <ul key={i}>
+                        
+                        <div key={i}>
+
+                           
 
                             <CommentDisplay>
 
-                                <img style={{width: "25px", height: "25px", gridArea: "avatar", margin: "5px 10px 0px 5px"}} src={item.author_avatar}/>
+                                <img src={item.author_avatar}/>
                                 <h3 style={{fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
                                 <span style={{gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
                                 <CommentBody style={{gridArea: "body", fontSize: ".7em"}}>{item.body}</CommentBody>
-                                <CommentReplyForm userData={userData} storyID={artData.id} commentID={item.id} setArtDataComments={setArtDataComments}/>
+                                
                                 
 
                                 
                             </CommentDisplay>
-
+                            {/* <CommentReplyForm userData={userData} storyID={artData.id} commentID={item.id} setArtDataComments={setArtDataComments} /> */}
                             <CommentReply>
 
                             {item.comments.map((item,i) => 
                         
-                                <li style={{marginLeft: "15px", listStyleType: "none"}} key={i}>
+                                <div style={{marginLeft: "15px", listStyleType: "none"}} key={i}>
                                     {"id = " + item.id + ", commenting to " + item.commentable_id + " and its a " + item.commentable_type + " "}
                             
                                     {item.body}
                             
                             
-                                </li>
+                                </div>
             
                             )}
 
 
                             </CommentReply>
                             
-                        </ul>
+                        </div>
 
                     
                         
@@ -526,7 +536,7 @@ function Article(props){
 
 
 
-                    <br/>
+                   
                     {editLink}
 
 
