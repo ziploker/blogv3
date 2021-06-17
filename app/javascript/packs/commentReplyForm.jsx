@@ -38,7 +38,7 @@ const Form = styled.form`
 
 const FormWrapper = styled.div`
 
-  display: ${props => props.rows[props.commentID] == "true" ? "none" : "grid"};
+  display: ${props => props.rows[props.commentID] == "true" ? "grid" : "grid"};
   //display: grid;
   grid-template-columns: minmax(min-content, max-content) 1fr;
   grid-template-rows: minmax(50px, 1fr) minmax(min-content, max-content);
@@ -48,8 +48,21 @@ const FormWrapper = styled.div`
     "main_comment_img     main_comment_buttons";
 
 
-    margin: 0px 50px 0px 90px;
-    min-height: 100px;
+  margin: 0px 50px 0px 90px;
+  //min-height: 100px;
+  
+  z-index: ${props => props.rows[props.commentID] == "true" ? "1" : "-1"};
+
+  opacity: ${props => props.rows[props.commentID] == "true" ? "1" : "0"};
+
+  height: ${props => props.rows[props.commentID] == "true" ? "initial" : "0px"};
+
+  position: relative;
+  top: ${props => props.rows[props.commentID] == "true" ? "-20px" : "-100px"};
+  left: 0;
+  background-color: white;
+  padding: 20px;
+  transition: all .2s ease 0s;
 
   img {
       width: 25px;
