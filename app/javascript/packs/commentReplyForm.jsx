@@ -6,6 +6,7 @@ import $ from 'jquery';
 //import '../components/fix.js'
 import slugify from 'react-slugify'
 import defaultManIcon from '../../assets/images/man3'
+import TextareaAutosize from 'react-autosize-textarea';
 
 
 
@@ -27,6 +28,8 @@ const Form = styled.form`
   display: grid;
   //grid-template-columns: 90%;
   grid-gap: 1.5rem;
+  
+  grid-area: main_comment_body;
 
   
 
@@ -35,16 +38,31 @@ const Form = styled.form`
 
 const FormWrapper = styled.div`
 
-  display: grid;
+  display: ${props => props.rows[props.commentID] == "true" ? "none" : "grid"};
+  //display: grid;
   grid-template-columns: minmax(min-content, max-content) 1fr;
-  grid-template-rows: minmax(min-content, max-content) minmax(min-content, max-content);
+  grid-template-rows: minmax(50px, 1fr) minmax(min-content, max-content);
   grid-template-areas:
 
-          "main_comment_img      main_comment_body      main_comment_body"
-          "main_comment_img             .             main_comment_buttons";
+    "main_comment_img      main_comment_body  "
+    "main_comment_img     main_comment_buttons";
 
 
-          margin-left: 40px;
+    margin: 0px 50px 0px 90px;
+    min-height: 100px;
+
+  img {
+      width: 25px;
+      height: 25px;
+      grid-area: avatar;
+      margin: 1px 10px 0px 0px;
+      border-radius: 50%;
+      border: 1px solid gray;
+
+
+     grid-Area: main_comment_img;
+      
+  }
 `;
 
 const OptionWrapper = styled.div`
@@ -55,15 +73,15 @@ const OptionWrapper = styled.div`
 const CommentInput = styled.input`
 
   width: 100%;
+  height: 100%;
   border: 0;
-  border-bottom: 2px solid gray;
+  
   outline: 0;
   font-size: 1.3rem;
   
-  //padding: 7px 0;
   background: white;
   transition: border-color 0.2s;
-  margin-left: 10px;
+ 
 
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -71,32 +89,51 @@ const CommentInput = styled.input`
   -ms-word-break: break-all;
 
   word-break: break-word;
+  vertical-align: top;
+
+
+  text-align: start;
 
 
   
+  
 
+
+  color: #2a2e2e;
+  cursor: text;
+  resize: none;
+ 
+  
+  
+  
+  
+  
+  font-size: 14px;
+  overflow-y: scroll;
+
+  overflow-x: hidden;
+  
+  transition: all .15s ease-in-out;
 
   
-  min-height: 73px;
-
-
-    color: #2a2e2e;
-    cursor: text;
-    resize: none;
-    border: 0;
-    padding: 6px 10px 8px;
-    
-    width: 100%;
-    min-height: 44px;
-    height: auto;
-    line-height: 1.4;
-    font-size: 14px;
-    overflow-y: scroll;
-    word-break: break-word;
-    transition: all .15s ease-in-out;
+  white-space: pre-line;
 
 
 `;
+
+
+
+const TextareaAutosizei = styled(TextareaAutosize)`
+
+
+  width: 100%;
+  height: 100%;
+
+
+`;
+
+
+  
 
 
 const formData = new FormData();
@@ -129,7 +166,7 @@ function CommentReplyForm(props) {
   const handleAdd = e => {
     
     e.preventDefault();
-    
+
     if (validForm()) {
 
       
@@ -262,27 +299,49 @@ function CommentReplyForm(props) {
   
   return(
 
-    <FormWrapper>
+    <FormWrapper rows={props.rows} commentID={props.commentID}>
         
 
-      <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
+      <img src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
       <Form id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
         
-        <div className="field" >
+        <div style={{width: "100%", height: "100%"}} className="field" >
         
-          <CommentInput type="text"
+          {/* <CommentInput type="textarea"
             index={1}
             
             className="form-control"
             name="comment"
-            
+            maxLength="11"        
             placeholder="add a public comment.."
             
             value={state.comment}
             onChange={handleChange} 
-          />
+
+            onKeyPress={e => {
+              if(e.key === 'Enter')
+                 e.preventDefault()
+              }}
+          /> */}
+
+          {/* <CommentInputDiv contenteditable="true" onClick={self.focus()}>sdfsdf</CommentInputDiv> */}
+
+          <TextareaAutosizei 
+           onResize={(e) => {}}
+           value={state.comment}
+            onChange={handleChange} 
+            index={1}
+            
+            
+            name="comment"
+
+           
+           onKeyPress={e => {
+            if(e.key === 'Enter')
+               e.preventDefault()
+            }}/>
         </div>
 
        
