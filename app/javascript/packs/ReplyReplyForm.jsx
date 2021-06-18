@@ -48,7 +48,7 @@ const FormWrapper = styled.div`
     "main_comment_img     main_comment_buttons";
 
 
-  margin: 0px 50px 0px 90px;
+  margin: 0px 50px 0px 170px;
   //min-height: 100px;
   
   z-index: ${props => props.rows[props.commentID] == "true" ? "1" : "-1"};
@@ -157,7 +157,7 @@ const formData = new FormData();
 
 
 
-function CommentReplyForm(props) {
+function ReplyReplyForm(props) {
 
 
   const [state, setState] = React.useState({
@@ -403,4 +403,4 @@ function CommentReplyForm(props) {
 
 
 
-export default props => <CommentReplyForm {...props} />;
+export default props => <ReplyReplyForm {...props} />;

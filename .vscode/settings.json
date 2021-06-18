@@ -2,6 +2,7 @@
     "cSpell.ignoreWords": [
         "address",
         "api",
+        "author",
         "b",
         "base",
         "blaze",
@@ -18,6 +19,7 @@
         "lng",
         "mailgun",
         "minmax",
+        "originalcomment",
         "smooth",
         "sref",
         "urlsafe"

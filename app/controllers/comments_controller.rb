@@ -109,7 +109,7 @@ class CommentsController < ApplicationController
 
         puts "params inspect " + params.inspect
        
-        params.require(:event).permit(:event, :body, :author_avatar, :author_nick, :user_id)
+        params.require(:event).permit(:event, :body, :author_avatar, :author_nick, :user_id, :original_comment_author)
         #params.require(:event).permit(:event, :body, :story_id, :author_nick, :user_id)
     end
 
