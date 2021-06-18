@@ -56,13 +56,15 @@ const FormWrapper = styled.div`
   opacity: ${props => props.rows[props.commentID] == "true" ? "1" : "0"};
 
   height: ${props => props.rows[props.commentID] == "true" ? "initial" : "0px"};
+  min-height: ${props => props.rows[props.commentID] == "true" ? "100px" : "0px"};
+  
 
   position: relative;
-  top: ${props => props.rows[props.commentID] == "true" ? "-20px" : "-100px"};
+  top: ${props => props.rows[props.commentID] == "true" ? "7px" : "-100px"};
   left: 0;
-  background-color: white;
-  padding: 20px;
-  transition: all .2s ease 0s;
+  background-color: F4F4F4;
+  //padding: 20px;
+  //transition: all .2s ease 0s;
 
   img {
       width: 25px;
@@ -140,7 +142,8 @@ const TextareaAutosizei = styled(TextareaAutosize)`
 
 
   width: 100%;
-  height: 100%;
+  height: 100% !important;
+  padding: 10px;
 
 
 `;
@@ -187,7 +190,7 @@ function CommentReplyForm(props) {
      
      formData.append('event[body]', state.comment);
      formData.append('event[story_id]', props.storyID);
-        formData.append('event[comment_id]', props.commentID);
+    formData.append('event[comment_id]', props.commentID);
      formData.append('event[author_nick]', props.userData.nick);
      formData.append('event[author_avatar]', props.userData.avatar_url);
      
@@ -230,6 +233,10 @@ function CommentReplyForm(props) {
           props.setArtDataComments(data.comments)
           
           setState({...state,comment: ''})
+
+         console.log("saved comment not remove reply box + " + props.commentID)
+
+          props.setRows({...props.rows,[props.commentID]: "false"})
     
         },
         error: function(xhr, status, error) {
@@ -343,12 +350,17 @@ function CommentReplyForm(props) {
 
           <TextareaAutosizei 
            onResize={(e) => {}}
+           
            value={state.comment}
-            onChange={handleChange} 
-            index={1}
+            
+           onChange={handleChange} 
+            
+           index={1}
+            
+           placeholder={"...reply to " + props.commentAuthor}
             
             
-            name="comment"
+           name="comment"
 
            
            onKeyPress={e => {

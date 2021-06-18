@@ -320,7 +320,7 @@ const CommentDisplay = styled.div`
     "avatar body body  "
     "  .    body body  "
     "  .    reply vote  ";
-    margin: 20px 50px;
+    margin: 20px 50px 0px 50px;
 
     img {
         width: 25px;
@@ -509,7 +509,7 @@ function Article(props){
             
             }).reverse()
 
-            setRows({5: false})
+            setRows(obj)
           
         }).catch(error => {
           
@@ -628,8 +628,9 @@ function Article(props){
                             </CommentDisplay>
                             
                             <CommentReplyForm
-                                 
+                                commentAuthor={item.author_nick}
                                 rows={rows}
+                                setRows={setRows}
                                 userData={userData} 
                                 storyID={artData.id} 
                                 commentID={item.id} 
