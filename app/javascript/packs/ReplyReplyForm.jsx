@@ -48,7 +48,7 @@ const FormWrapper = styled.div`
     "main_comment_img     main_comment_buttons";
 
 
-  margin: 0px 50px 0px 170px;
+  margin: ${props => props.customMargin ? props.customMargin : "0px 50px 0px 120px"};
   //min-height: 100px;
   
   z-index: ${props => props.rows[props.commentID] == "true" ? "1" : "-1"};
@@ -324,7 +324,7 @@ function ReplyReplyForm(props) {
   
   return(
 
-    <FormWrapper rows={props.rows} commentID={props.commentID}>
+    <FormWrapper rows={props.rows} commentID={props.commentID} customMargin={props.customMargin}>
         
 
       <img src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>

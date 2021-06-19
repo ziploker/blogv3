@@ -48,7 +48,7 @@ const FormWrapper = styled.div`
     "main_comment_img     main_comment_buttons";
 
 
-  margin: 0px 50px 0px 90px;
+  margin: 0px 50px 0px 85px;
   //min-height: 100px;
   
   z-index: ${props => props.rows[props.commentID] == "true" ? "1" : "-1"};
@@ -242,6 +242,8 @@ function CommentReplyForm(props) {
          console.log("saved comment not remove reply box + " + props.commentID)
 
           props.setRows({...props.rows,[props.commentID]: "false"})
+
+          
     
         },
         error: function(xhr, status, error) {
