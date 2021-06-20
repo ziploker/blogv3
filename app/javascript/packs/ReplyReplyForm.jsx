@@ -324,15 +324,15 @@ function ReplyReplyForm(props) {
   
   return(
 
-    <FormWrapper rows={props.rows} commentID={props.commentID} customMargin={props.customMargin}>
+    <FormWrapper  key={props.key + props.level} data-id={props.dataID + props.level} rows={props.rows} commentID={props.commentID} customMargin={props.customMargin}>
         
 
-      <img src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
+      <img key={props.key + "img" + props.level} data-id={props.dataID + "img" + props.level} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
-      <Form id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
+      <Form key={props.key + "form" + props.level} data-id={props.dataID + "form" + props.level} id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
         
-        <div style={{width: "100%", height: "100%"}} className="field" >
+        <div key={props.key + "div" + props.level} data-id={props.dataID + "div" + props.level}style={{width: "100%", height: "100%"}} className="field" >
         
           {/* <CommentInput type="textarea"
             index={1}
@@ -357,7 +357,7 @@ function ReplyReplyForm(props) {
            onResize={(e) => {}}
            
            
-            
+           key={props.key + "tar" + props.level} data-id={props.dataID + "tar" + props.level}
            onChange={handleChange} 
             
            index={1}
@@ -389,7 +389,7 @@ function ReplyReplyForm(props) {
         
         
       </Form>
-      <button form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
+      <button key={props.key + "button" + props.level} data-id={props.dataID + "button" + props.level} form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
     </FormWrapper>
   )
 }

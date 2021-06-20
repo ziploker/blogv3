@@ -326,15 +326,15 @@ function CommentReplyForm(props) {
   
   return(
 
-    <FormWrapper rows={props.rows} commentID={props.commentID}>
+    <FormWrapper key={props.key} data-id={props.dataID} rows={props.rows} commentID={props.commentID}>
         
 
-      <img src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
+      <img key={props.key + "img"} data-id={props.dataID + "img"} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
-      <Form id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
+      <Form key={props.key + "form"} data-id={props.dataID + "form"} id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
         
-        <div style={{width: "100%", height: "100%"}} className="field" >
+        <div key={props.key + "div"} data-id={props.dataID + "div"} style={{width: "100%", height: "100%"}} className="field" >
         
           {/* <CommentInput type="textarea"
             index={1}
@@ -359,7 +359,7 @@ function CommentReplyForm(props) {
            onResize={(e) => {}}
            
            
-            
+           key={props.key + "tar"} data-id={props.dataID + "tar"}
            onChange={handleChange} 
             
            index={1}
@@ -391,7 +391,7 @@ function CommentReplyForm(props) {
         
         
       </Form>
-      <button form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
+      <button key={props.key + "button"} data-id={props.dataID + "button"} form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
     </FormWrapper>
   )
 }

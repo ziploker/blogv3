@@ -449,7 +449,7 @@ function Article(props){
         editLink = <a href={`/ziploker/edit/${artData.id}`}>edit</a>;
     }
 
-    console.log("Article_PROPS", props)
+    //console.log("Article_PROPS", props)
     
     const slug = props.match.params.id
 
@@ -457,7 +457,7 @@ function Article(props){
     const handleReplyButton = (x) => {
 
         
-        console.log("xxxxx is = " + x);
+        //console.log("xxxxx is = " + x);
         
 
        if (rows[x] == "true"){
@@ -490,7 +490,7 @@ function Article(props){
         .then(response => {
           
 
-            console.log("article info Response", response)
+            //console.log("article info Response", response)
 
             setUserData(response.data.user)
             setArtData(response.data.article)
@@ -500,16 +500,16 @@ function Article(props){
             let obj = {}
             response.data.comments.map((item,i) => {
 
-                console.log ("main Comment " + item.id) 
+               // console.log ("main Comment " + item.id) 
                 obj[item.id] = "false"
 
-                console.log(JSON.stringify(obj))
+                //console.log(JSON.stringify(obj))
                 
 
 
                 item.comments.map((item,i) => {
                     
-                    console.log ("Reply to comment " + item.id) 
+                    //console.log ("Reply to comment " + item.id) 
                     obj[item.id] = "false"
 
                 }).reverse()
@@ -520,7 +520,7 @@ function Article(props){
           
         }).catch(error => {
           
-          console.log("articleErrors", error)
+          //console.log("articleErrors", error)
         })
     },[])
     
@@ -598,30 +598,31 @@ function Article(props){
                         
                     {artDataComments.map((item,i) => 
                         <>
-                        {console.log(JSON.stringify(item, null, 4))}
-                        <div style={{position: "relative"}} key={item.id}>
+                        {/* {console.log(JSON.stringify(item, null, 4))} */}
+                        <div style={{position: "relative"}} key={item.id} data-id={ item.id }>
 
                             
                             {/* Loop thru and display each first level comment */}
-                            <CommentDisplay>
+                            <CommentDisplay key={item.id + "CD"} data-id={ item.id + "CD"}>
 
-                                <img src={item.author_avatar}/>
-                                <h3 style={{alignSelf: "center", fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
-                                <span style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
-                                <CommentBody style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
+                                <img key={item.id + "img"} data-id={ item.id + "img"} src={item.author_avatar}/>
+                                <h3 key={item.id + "h3"} data-id={ item.id + "h3"}style={{alignSelf: "center", fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
+                                <span key={item.id + "span"} data-id={ item.id + "span"} style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
+                                <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
                                     
                                     
-                                <BottomBarWrapper >
+                                <BottomBarWrapper key={item.id + "bbw"} data-id={ item.id + "bbw"}>
 
-                                    <Reply onClick={() => handleReplyButton(item.id)}>reply</Reply>
-                                    <VoteUp>
-                                    <svg viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
-                                    <span>10</span>
+                                    <Reply key={item.id + "r"} data-id={ item.id + "r"} onClick={() => handleReplyButton(item.id)}>reply</Reply>
+                                    <VoteUp key={item.id + "vu"} data-id={ item.id + "vu"}>
+                                    <svg key={item.id + "svg1"} data-id={ item.id + "svg1"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path1"} data-id={ item.id + "path1"} d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
+                                    <span key={item.id + "s1"} data-id={ item.id + "s1"}>10</span>
                                     
                                     </VoteUp>
 
-                                    <VoteDown>
-                                    <svg viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                <span>1</span>
+                                    <VoteDown key={item.id + "vd"} data-id={ item.id + "vd"}>
+                                    <svg key={item.id + "svg2"} data-id={ item.id + "svg2"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path2"} data-id={ item.id + "path2"} d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                
+                                    <span key={item.id + "s2"} data-id={ item.id + "s2"}>1</span>
                                     
                                     </VoteDown>
                                 
@@ -633,7 +634,9 @@ function Article(props){
                                 
                             {/* each comment has its own reply form hidden until user hits reply button*/}
                             <CommentReplyForm
-                                
+                                dataID={ item.id + "CRF" }
+                                key={ item.id + "CRF" }
+                                level={1}
                                 originalcommentAuthor={item.author_nick}
                                 rows={rows}
                                 setRows={setRows}
@@ -646,7 +649,7 @@ function Article(props){
                                 
                                 
                                 
-                            <CommentReply>
+                            <CommentReply key={item.id + "comrep"} data-id={item.id + "comrep"}>
 
                                 {item.comments.map((item,i) => 
                             
@@ -658,35 +661,39 @@ function Article(props){
                                 
                                     // </div>
                                     <>
-                                        <CommentDisplay style={{margin: "20px 50px 0px 85px"}}>
+                                        <CommentDisplay key={item.id + "CD"} data-id={ item.id + "CD"} style={{margin: "20px 50px 0px 85px"}}>
 
-                                            <img src={item.author_avatar}/>
-                                            <h3 style={{fontSize: ".7em", gridArea: "nick", marginRight: "10px"}}>{item.author_nick} &nbsp; &#8631; <span style={{fontSize: ".7em", color: "gray", lineHeight: "17px"}} >{item.original_comment_author}</span></h3>
-                                            <span style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
-                                            <CommentBody style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
-                                            
-                                        
-                                            <BottomBarWrapper >
+                                            <img key={item.id + "img"} data-id={ item.id + "img"} src={item.author_avatar}/>
+                                            <h3 key={item.id + "h3"} data-id={ item.id + "h3"}style={{alignSelf: "center", fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
+                                            <span key={item.id + "span"} data-id={ item.id + "span"} style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
+                                            <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
+                                                
+                                                
+                                            <BottomBarWrapper key={item.id + "bbw"} data-id={ item.id + "bbw"}>
 
-                                                <Reply onClick={() => handleReplyButton(item.id)}>reply</Reply>
-                                                <VoteUp>
-                                                <svg viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
-                                                <span>10</span>
+                                                <Reply key={item.id + "r"} data-id={ item.id + "r"} onClick={() => handleReplyButton(item.id)}>reply</Reply>
+                                                <VoteUp key={item.id + "vu"} data-id={ item.id + "vu"}>
+                                                <svg key={item.id + "svg1"} data-id={ item.id + "svg1"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path1"} data-id={ item.id + "path1"} d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
+                                                <span key={item.id + "s1"} data-id={ item.id + "s1"}>10</span>
                                                 
                                                 </VoteUp>
 
-                                                <VoteDown>
-                                                <svg viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                <span>1</span>
+                                                <VoteDown key={item.id + "vd"} data-id={ item.id + "vd"}>
+                                                <svg key={item.id + "svg2"} data-id={ item.id + "svg2"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path2"} data-id={ item.id + "path2"} d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                
+                                                <span key={item.id + "s2"} data-id={ item.id + "s2"}>1</span>
                                                 
                                                 </VoteDown>
-                                        
+
                                             </BottomBarWrapper>
-                                    
-                                    
-                                        </CommentDisplay>
+                                                
+                                                
+                                            </CommentDisplay>
 
                                     
                                         <ReplyReplyForm
+                                            dataID={ item.id + "RRF" }
+                                            key={ item.id + "RRF" }
+                                            level={1}
                                             originalcommentAuthor={item.author_nick}
                                             rows={rows}
                                             setRows={setRows}
@@ -704,35 +711,39 @@ function Article(props){
                                         {item.comments.map((item,i) => 
                                             
                                             <>
-                                                <CommentDisplay style={{margin: "20px 50px 0px 120px"}}>
+                                                <CommentDisplay key={item.id + "CD"} data-id={ item.id + "CD"} style={{margin: "20px 50px 0px 120px"}}>
 
-                                                    <img src={item.author_avatar}/>
-                                                    <h3 style={{fontSize: ".7em", gridArea: "nick", marginRight: "10px"}}>{item.author_nick} &nbsp; &#8631; <span style={{fontSize: ".7em", color: "gray", lineHeight: "17px"}} >{item.original_comment_author}</span></h3>
-                                                    <span style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
-                                                    <CommentBody style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
-                                                
-                                            
-                                                    <BottomBarWrapper >
+                                                    <img key={item.id + "img"} data-id={ item.id + "img"} src={item.author_avatar}/>
+                                                    <h3 key={item.id + "h3"} data-id={ item.id + "h3"}style={{alignSelf: "center", fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
+                                                    <span key={item.id + "span"} data-id={ item.id + "span"} style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
+                                                    <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
+                                                        
+                                                        
+                                                    <BottomBarWrapper key={item.id + "bbw"} data-id={ item.id + "bbw"}>
 
-                                                        <Reply onClick={() => handleReplyButton(item.id)}>reply</Reply>
-                                                        <VoteUp>
-                                                        <svg viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
-                                                        <span>10</span>
+                                                        <Reply key={item.id + "r"} data-id={ item.id + "r"} onClick={() => handleReplyButton(item.id)}>reply</Reply>
+                                                        <VoteUp key={item.id + "vu"} data-id={ item.id + "vu"}>
+                                                        <svg key={item.id + "svg1"} data-id={ item.id + "svg1"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path1"} data-id={ item.id + "path1"} d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
+                                                        <span key={item.id + "s1"} data-id={ item.id + "s1"}>10</span>
                                                         
                                                         </VoteUp>
 
-                                                        <VoteDown>
-                                                        <svg viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                <span>1</span>
+                                                        <VoteDown key={item.id + "vd"} data-id={ item.id + "vd"}>
+                                                        <svg key={item.id + "svg2"} data-id={ item.id + "svg2"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path2"} data-id={ item.id + "path2"} d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                
+                                                        <span key={item.id + "s2"} data-id={ item.id + "s2"}>1</span>
                                                         
                                                         </VoteDown>
-                                            
+
                                                     </BottomBarWrapper>
-                                        
-                                        
-                                                </CommentDisplay>
+                                                        
+                                                        
+                                                    </CommentDisplay>
 
                                         
                                                 <ReplyReplyForm
+                                                    dataID={ item.id + "RRFF" }
+                                                    key={ item.id + "RRFF" }
+                                                    level={1}
                                                     customMargin= "20px 50px 0px 155px"
                                                     originalcommentAuthor={item.author_nick}
                                                     rows={rows}
