@@ -613,7 +613,7 @@ function Article(props){
 
                
                     
-               {areCommentsDoneLoading &&  <Comments>
+               <Comments>
                         
                         
                         
@@ -673,7 +673,7 @@ function Article(props){
                                     
                                 <CommentReply key={item.id + "comrep"} data-id={item.id + "comrep"}>
 
-                                    {item.comments.map((item,i) => 
+                                    {item.comments?.map((item,i) => 
                                 
                                         
                                         <div key={item.id} data-id={ item.id }>
@@ -725,7 +725,7 @@ function Article(props){
                                             
                                             
                                             
-                                            {item.comments.map((item,i) => 
+                                            {item.comments?.map((item,i) => 
                                                 
                                                 <div key={item.id} data-id={ item.id }>
                                                     <CommentDisplay key={item.id + "CD"} data-id={ item.id + "CD"} style={{margin: "20px 50px 0px 120px"}}>
@@ -774,7 +774,7 @@ function Article(props){
 
 
 
-                                                    {item.comments.map((item,i) => 
+                                                    {item.comments?.map((item,i) => 
                                                 
                                                         <div key={item.id} data-id={ item.id }>
                                                             <CommentDisplay key={item.id + "CD"} data-id={ item.id + "CD"} style={{margin: "20px 50px 0px 155px"}}>
@@ -851,7 +851,7 @@ function Article(props){
 
 
                         
-                </Comments>}
+                </Comments>
                 
             </ArticleSection>
         </>

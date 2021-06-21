@@ -62,7 +62,13 @@ class CommentsController < ApplicationController
            
 
         
-            @comments = s.comments.as_json(include: [:comments])
+            @comments = s.comments.as_json(include: {comments: 
+            { include: {comments:
+                { include: {comments:
+                    { include: [:comments]}
+                }}
+            }}
+        })
             
             render json: {
 

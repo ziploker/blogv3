@@ -113,7 +113,11 @@ class SparksController < ApplicationController
         #@comments = @article_info.comments.as_json(include: [:comments])
         @comments = @article_info.comments.as_json(include: {comments: 
                                                     { include: {comments:
-                                                     { include: [:comments]}}}})
+                                                        { include: {comments:
+                                                            { include: [:comments]}
+                                                        }}
+                                                    }}
+                                                })
 
 
         #@comments = @article_info.comments.as_json(include: {comments: { include: [:comments]}})
