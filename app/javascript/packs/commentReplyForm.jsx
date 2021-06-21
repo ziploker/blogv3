@@ -202,7 +202,7 @@ function CommentReplyForm(props) {
      
      
 
-     console.log("formdata from handle add");
+     console.log("formdata from handle add in comment reply form");
      console.log(formData);
 
       
@@ -242,6 +242,8 @@ function CommentReplyForm(props) {
          console.log("saved comment not remove reply box + " + props.commentID)
 
           props.setRows({...props.rows,[props.commentID]: "false"})
+
+          props.setAreCommentsDoneLoading(true)
 
           
     

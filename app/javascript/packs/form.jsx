@@ -141,7 +141,7 @@ function NewForm(props) {
      
      
 
-     console.log("formdata from handle add");
+     console.log("formdata from handle add in form");
      console.log(formData);
 
       

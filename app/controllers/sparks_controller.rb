@@ -111,7 +111,12 @@ class SparksController < ApplicationController
 
         @article_info = Story.find_by(slug: params["data"]["slug"])
         #@comments = @article_info.comments.as_json(include: [:comments])
-        @comments = @article_info.comments.as_json(include: {comments: { include: [:comments]}})
+        @comments = @article_info.comments.as_json(include: {comments: 
+                                                    { include: {comments:
+                                                     { include: [:comments]}}}})
+
+
+        #@comments = @article_info.comments.as_json(include: {comments: { include: [:comments]}})
         puts @article_info.inspect
 
         if @current_user

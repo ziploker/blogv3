@@ -476,7 +476,7 @@ const handleAdd = e => {
     
     
 
-    console.log("formdata from handle add");
+    console.log("formdata from handle add in signup");
     console.log(formData);
 
     

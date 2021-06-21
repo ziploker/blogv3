@@ -116,7 +116,7 @@ function CommentForm(props) {
      
      
 
-     console.log("formdata from handle add");
+     console.log("formdata from handle add in comment form");
      console.log(formData);
 
       
@@ -152,6 +152,8 @@ function CommentForm(props) {
           props.setArtDataComments(data.comments)
           
           setState({...state,comment: ''})
+
+          props.setAreCommentsDoneLoading(true)
     
         },
         error: function(xhr, status, error) {
