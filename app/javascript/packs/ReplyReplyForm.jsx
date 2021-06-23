@@ -48,7 +48,7 @@ const FormWrapper = styled.div`
     "main_comment_img     main_comment_buttons";
 
 
-  margin: ${props => props.customMargin ? props.customMargin : "0px 50px 0px 120px"};
+  margin: ${props => props.customMargin ? props.customMargin : "0px 50px 0px 25px"};
   //min-height: 100px;
   
   z-index: ${props => props.rows[props.commentID] == "true" ? "1" : "-1"};
@@ -225,6 +225,8 @@ function ReplyReplyForm(props) {
           
         ,
         success: function(data) {
+
+          let da = data.comments
           //props.handleAdd(data);
           //setState({
 
@@ -235,15 +237,17 @@ function ReplyReplyForm(props) {
 
           //props.setState("done")
           
-          props.setArtDataComments(data.comments)
+          props.setArtDataComments(da)
           
-          setState({...state,comment: ''})
+          //setState({...state,comment: ''})
 
-         console.log("saved comment not remove reply box + " + props.commentID)
+         
 
-          props.setRows({...props.rows,[props.commentID]: "false"})
+          
 
-          props.setAreCommentsDoneLoading(true)
+          //props.setAreCommentsDoneLoading(true)
+
+          props.addAllCommentsToStateForReplyButtonToWork(da)
     
         },
         error: function(xhr, status, error) {

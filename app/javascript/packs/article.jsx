@@ -350,6 +350,7 @@ const CommentBody = styled.p`
     -ms-word-break: break-all;
 
     word-break: break-word;
+    padding-left: 35px;
 
 
 
@@ -389,7 +390,7 @@ const Reply = styled.div`
 
 `;
 
-const ToptomBarWrapper = styled.div`
+const TopBarWrapper = styled.div`
 
     display: flex;
 
@@ -400,6 +401,7 @@ const BottomBarWrapper = styled.div`
     grid-area: bottomBar;
     display: flex;
     flex-direction: row;
+    padding-left: 35px;
 `;
 
 const VoteUp = styled.div`
@@ -456,7 +458,7 @@ function Article(props){
     console.log("========================== AAARRRTTIICCCLLLEEE ============================")
 
     const [userData, setUserData] = useState({});
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [artData, setArtData] = useState({})
     const [artDataComments, setArtDataComments] = useState([])
     //const [state, setState] = useState("pending")
@@ -519,37 +521,17 @@ function Article(props){
         {withCredentials: true})
         .then(response => {
           
-
-            //console.log("article info Response", response)
+            addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+            
 
             setUserData(response.data.user)
             setArtData(response.data.article)
             setArtDataComments(response.data.comments)
-            setLoading(false);
-            setIsCommentsLoading(false);
-    
-
-
-            // let obj = {}
-            // response.data.comments.map((item,i) => {
-
-            //    // console.log ("main Comment " + item.id) 
-            //     obj[item.id] = "false"
-
-            //     //console.log(JSON.stringify(obj))
-                
-
-
-            //     item.comments.map((item,i) => {
-                    
-            //         //console.log ("Reply to comment " + item.id) 
-            //         obj[item.id] = "false"
-
-            //     }).reverse()
+            setIsLoading(false)
+            setIsCommentsLoading(false)
             
-            // }).reverse()
 
-            // setRows(obj)
+            
           
         }).catch(error => {
           
@@ -559,20 +541,63 @@ function Article(props){
 
 
 
-    function Comment({ item, setAreCommentsDoneLoading }) {
+    
+
+    function addAllCommentsToStateForReplyButtonToWork(c) {
+
+
+        {console.log("the addAllCommentsToStateForReplyButtonToWork is " + JSON.stringify(c, null, 4))}
+        
+
+        let obj = {};
+
+
+
+        (c.comments || []).map(com => {
+    
+            // {console.log("the item.comments info being mapped in nested comments    " + JSON.stringify(item.comments, null, 4))}
+            {console.log("the com part of each item is " + JSON.stringify(com, null, 4))}
+            
+            obj[com.id] = "false"
+    
+            
+        })
+
+
+
+        c.map((item,i) => {
+
+            console.log ("main Comment " + item.id) 
+            obj[item.id] = "false"
+
+            //console.log(JSON.stringify(obj))
+        })
+         
+
+
+        setRows(obj);
+   
+        
+        
+    }  
+
+    
+
+
+    function Comment({ item, setAreCommentsDoneLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
    
         // {console.log("main Comment  " + JSON.stringify(v, null, 4))}
     
     
-        {console.log("START CommentFunction, the item is = " + JSON.stringify(item, null, 4))}
+        //{console.log("START CommentFunction, the item is = " + JSON.stringify(item, null, 4))}
         
         
         const nestedComments = (item.comments || []).map(com => {
     
             // {console.log("the item.comments info being mapped in nested comments    " + JSON.stringify(item.comments, null, 4))}
-            {console.log("the com part of each item is " + JSON.stringify(com, null, 4))}
+            //{console.log("the com part of each item is " + JSON.stringify(com, null, 4))}
             
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" />
+            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork}/>
             
     
             
@@ -583,11 +608,12 @@ function Article(props){
             
           <CommentDisplay style={{margin: "10px 0px 0px 25px"}} >
             
-            <ToptomBarWrapper>
+            <TopBarWrapper>
             <img key={item.id + "img"} data-id={ item.id + "img"} src={item.author_avatar}/>
             <h3 key={item.id + "h3"} data-id={ item.id + "h3"}style={{alignSelf: "center", fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
             <span key={item.id + "span"} data-id={ item.id + "span"} style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
-            </ToptomBarWrapper>
+            </TopBarWrapper>
+            
             <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
                 
            
@@ -612,20 +638,21 @@ function Article(props){
             
     
     
-            {/* <ReplyReplyForm
-            setAreCommentsDoneLoading={setAreCommentsDoneLoading}
-            dataID={ item.id + "RRF" }
-            key={ item.id + "RRF" }
-            level={1}
-            originalcommentAuthor={item.author_nick}
-            rows={rows}
-            //setRows={setRows}
-            userData={userData} 
-            storyID={artData.id} 
-            commentID={item.id} 
-            setArtDataComments={setArtDataComments} 
+            <ReplyReplyForm
+            
+                dataID={ item.id + "RRF" }
+                key={ item.id + "RRF" }
+                level={1}
+                originalcommentAuthor={item.author_nick}
+                rows={rows}
+                //setRows={setRows}
+                userData={userData} 
+                storyID={artData.id} 
+                commentID={item.id} 
+                setArtDataComments={setArtDataComments} 
+                addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork}
             />
-     */}
+    
              
              {nestedComments}
           </CommentDisplay>
@@ -707,7 +734,7 @@ function Article(props){
                     
                 <CommentFormWrapper>
 
-                    <CommentForm userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments}/>
+                    <CommentForm addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} setIsCommentsLoading={setIsCommentsLoading}/>
 
                 </CommentFormWrapper>
 
@@ -726,19 +753,19 @@ function Article(props){
                         
                <div>
                <div style={{position: "relative"}}>
-                    
-                    {console.log("artDataComments in html part " + JSON.stringify(artDataComments, null, 4))}
-                    {console.log("about to START map artDataComments")}
+{/*                     
+                    //{console.log("artDataComments in html part " + JSON.stringify(artDataComments, null, 4))}
+                    //{console.log("about to START map artDataComments")} */}
                     {
                         
                         
                         artDataComments.map( (c, setAreCommentsDoneLoading) => {
 
-                            console.log("c  " + JSON.stringify(c, null, 4))
+                            //console.log("c  " + JSON.stringify(c, null, 4))
                             return (
-                                <Comment key={c.id} item={c} setAreCommentsDoneLoading={setAreCommentsDoneLoading} />
+                                <Comment key={c.id} item={c} setAreCommentsDoneLoading={setAreCommentsDoneLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
                             )
-                        }).reverse()
+                        })
                     }
                     {console.log("about to END map artDataComments")}
                 </div>    

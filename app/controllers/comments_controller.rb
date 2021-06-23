@@ -74,7 +74,8 @@ class CommentsController < ApplicationController
 
 
                 #article: @article_info,
-                comments: @comments
+                comments: @comments,
+                newCommentId: @comment.id
             }
 
         

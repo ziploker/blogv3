@@ -148,12 +148,17 @@ function CommentForm(props) {
           //});
 
           //props.setState("done")
+
+
+          console.log("data reply in comment form ajax success= " + JSON.stringify(data, null, 4))
           
           props.setArtDataComments(data.comments)
           
           setState({...state,comment: ''})
 
-          props.setAreCommentsDoneLoading(true)
+          //props.setIsCommentsLoading(false)
+
+          props.addAllCommentsToStateForReplyButtonToWork(data.comments)
     
         },
         error: function(xhr, status, error) {
