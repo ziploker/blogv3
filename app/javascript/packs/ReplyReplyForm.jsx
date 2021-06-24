@@ -247,7 +247,7 @@ function ReplyReplyForm(props) {
 
           //props.setAreCommentsDoneLoading(true)
 
-          props.addAllCommentsToStateForReplyButtonToWork(da)
+          ////props.addAllCommentsToStateForReplyButtonToWork(da)
     
         },
         error: function(xhr, status, error) {

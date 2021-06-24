@@ -158,7 +158,7 @@ function CommentForm(props) {
 
           //props.setIsCommentsLoading(false)
 
-          props.addAllCommentsToStateForReplyButtonToWork(data.comments)
+          ////props.addAllCommentsToStateForReplyButtonToWork(data.comments)
     
         },
         error: function(xhr, status, error) {
