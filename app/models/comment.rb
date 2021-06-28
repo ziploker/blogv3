@@ -6,7 +6,11 @@ class Comment < ApplicationRecord
 
   before_create :convertToFriendlyDateFormat
   before_create :set_comment_number
-
+  
+  amoeba do
+    enable
+    
+  end
 
   private
   

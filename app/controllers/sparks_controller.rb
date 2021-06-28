@@ -2,11 +2,20 @@ class SparksController < ApplicationController
 
     puts "welcome to sparks controller"
     #include CurrentUserConcern
-
+    
     STORIES_PER_PAGE = 4
+
+    #before_action :default_format_json
+
+    #def default_format_json
+    #    request.format = "json"
+    #end
+
     
     
     def index
+
+        
 
         puts "============Sparks controller def index start================"
 
@@ -15,7 +24,7 @@ class SparksController < ApplicationController
         setUser
 
         
-        
+        #@ls = Story.last
         
         puts "=============  check to see if params[:path] exists AND corresponds to a story "
         
@@ -68,11 +77,8 @@ class SparksController < ApplicationController
         
         
         
-            
-            
-            
-            
-            
+        
+        #respond_to :html, :json, :xml
             
 
 
@@ -111,28 +117,165 @@ class SparksController < ApplicationController
 
         @article_info = Story.find_by(slug: params["data"]["slug"])
         #@comments = @article_info.comments.as_json(include: [:comments])
+        
+        # @comments = @article_info.comments.as_json(include: {comments: 
+        #                                             { include: {comments:
+        #                                                 { include: {comments:
+        #                                                     { include: [:comments]}
+        #                                                 }}
+        #                                             }}
+        #                                         })
+
+        
+        puts "===========================as_json++++++++++++++++++++++++++++"
         @comments = @article_info.comments.as_json(include: {comments: 
-                                                    { include: {comments:
-                                                        { include: {comments:
-                                                            { include: [:comments]}
-                                                        }}
-                                                    }}
-                                                })
+            { include: {comments:
+                { include: {comments:
+                    { include: {comments:
+                        { include: {comments:
+                            { include: :comments}
+                        }}
+                    }}
+                }}
+            }}
+                        })
+        puts "===========================as_json++++++++++++++++++++++++++++"
+
+        #@comments = @article_info.comments.serializable_hash(include: [:comments]) 
+
+
+        #@comments = @article_info.comments.as_json(include: {comments: {include: :comments}})
+
+
+        #@comments = @article_info.comments.as_json(include: [:comments.**])
+
+
+        #@comments = ActiveModelSerializers::SerializableResource.new(@article_info.comments, include: ['comments.**']).as_json
 
 
         #@comments = @article_info.comments.as_json(include: {comments: { include: [:comments]}})
-        puts @article_info.inspect
+        
+        #comments = Rabl::Renderer.json(@post, 'posts/show')
+
+        
+
+        #puts @article_info.inspect
+
+
+
+
+
+        puts "============= new logic test start ==================="
+        puts "============= new logic test start ==================="
+        puts "============= new logic test start ==================="
+
+
+        @totalTopLevelComments = @article_info.comments.length
+        @arrayOfLevels = []
+        @levels = 0
+        @dupArray = []
+
+        
+        #comment array goes in, check to see how deep it goes heeyyohh
+        def findC(array)
+
+            puts "about to array.each==>  " + array.inspect
+            puts "============================================="
+            puts "============================================="
+            puts "============================================="
+            puts "============================================="
+            puts "the total length of this array is " + array.length.to_s
+
+            
+        
+            array.each { |x| 
+                
+                puts "the total length of this array is " + x.comments.length.to_s
+
+                @levels = @levels + 1
+                
+                
+                #if the comment has its own comments (replies), restart loop.
+                if x.comments.length > 0
+
+                    
+                    findC(x.comments)
+        
+                
+                elsif x.comments.length == 0
+                    
+                    puts "no more comments found ============"
+                    @arrayOfLevels.push(@levels)
+                    @levels = 0
+
+                end
+                
+                
+                
+                
+                
+                
+                
+                
+            
+            
+            }
+          
+            
+          
+            puts "total top level comments = " + @totalTopLevelComments.to_s
+
+            puts ' @arrayOfLevels is ' + @arrayOfLevels.inspect
+
+        
+        
+            #puts " count is = " + @article_info.comments.length.to_s
+        
+            
+        
+        
+        
+        
+            puts ' @@@@@@@@@@@ exit @@@@@@@@@@@@@@ '
+        
+        
+        
+        
+        
+        
+        end
+        
+        @dupArray = @article_info.comments.amoeba_dup
+       
+        
+        findC(@article_info.comments)
+
+        puts "dupArray ===========MMMMMMMMMMMMMMMMMMM== " + @dupArray.inspect
+        
+        puts "=============new logic test end==================="
+        puts "=============new logic test end==================="
+        puts "=============new logic test end==================="
 
         if @current_user
 
             puts "found current user"
             
-            render json: {
+            # render json: {
+
+
+            #     article: @article_info,
+            #     comments: @comments,
+            #     user: @current_user
+            # }
+
+
+             render json: {
 
 
                 article: @article_info,
-                comments: @comments,
-                user: @current_user
+               # comments: ActiveModelSerializers::SerializableResource.new(@article_info.comments, include: {comments: { include: ['**']}}).as_json,
+               #comments: @dupArray,
+               user: @current_user
             }
 
         else

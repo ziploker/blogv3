@@ -65,9 +65,20 @@ class CommentsController < ApplicationController
             @comments = s.comments.as_json(include: {comments: 
             { include: {comments:
                 { include: {comments:
-                    { include: [:comments]}
+                    { include: {comments:
+                        { include: {comments:
+                            { include: [:comments]}
+                        }}
+                    }}
                 }}
             }}
+
+            #@comments = s.comments.serializable_hash(include: [:comments]) 
+           
+
+
+
+            
         })
             
             render json: {

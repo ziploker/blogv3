@@ -3,7 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Rails 5.2 and Rails 6
 gem 'active_storage_validations'
-
+#gem 'active_model_serializers', '~> 0.10.2', require: true
+gem 'rabl'
+gem 'amoeba'
+# Also add either `oj` or `yajl-ruby` as the JSON parser
+#gem 'oj'
 # Optional, to use :dimension validator or :aspect_ratio validator
 gem 'mini_magick', '>= 4.9.5'
 

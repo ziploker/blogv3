@@ -519,18 +519,18 @@ function Article(props){
     const slug = props.match.params.id
 
 
-    const handleReplyButton = (x) => {
+    const handleReplyButton = (id) => {
 
         
         //console.log("xxxxx is = " + x);
         
 
-       if (rows[x] == "true"){
-            setRows({...rows,[x]: "false"})
+       if (rows[id] == "true"){
+            setRows({...rows, [id]: "false"})
 
        }else{
 
-        setRows({...rows,[x]: "true"})
+        setRows({...rows,[id]: "true"})
 
        }
 
@@ -579,18 +579,34 @@ function Article(props){
     function addAllCommentsToStateForReplyButtonToWork(c) {
 
 
-        {console.log("the addAllCommentsToStateForReplyButtonToWork Object about to be mapped is " + JSON.stringify(c, null, 4))}
+        //{console.log("the addAllCommentsToStateForReplyButtonToWork Object about to be mapped is " + JSON.stringify(c, null, 4))}
         
 
         
        
         let newArray = [];
+        let newState = {}
 
         function getAllId(arr, key) {
             
+            console.log("================ in getAllId =======================")
+            console.log("array = " + JSON.stringify(arr, null, 4))
+            console.log("key = " + JSON.stringify(key, null, 4))
+            
             arr.forEach(function(item) {
                 
+                console.log("================ in arr.forEach =======================")
+                console.log("item = " + JSON.stringify(item, null, 4))
+                console.log("key = " + JSON.stringify(key, null, 4))
+                
                 for (let keys in item) {
+                    
+                    console.log("================ in for loop =======================")
+                    console.log("keys = " + JSON.stringify(keys, null, 4))
+                    console.log("key = " + JSON.stringify(key, null, 4))
+                    console.log("item = " + JSON.stringify(item, null, 4))
+
+
                     if (keys === key) {
                         newArray.push(item[key])
                     } else if (Array.isArray(item[keys])) {
@@ -599,10 +615,31 @@ function Article(props){
                 }
 
             })
+
+            console.log("================ OUT getAllId =======================")
         }
         getAllId(c, 'id')
         console.log(newArray)
 
+        
+        newArray.forEach(function(item) {
+
+            console.log("xxxitemx = " + item)
+            
+            
+            newState[item] = "false"
+
+            
+
+
+        })
+
+
+
+
+        console.log("newState = " + JSON.stringify(newState, null, 4))
+
+        setRows(newState);
 
        
         
