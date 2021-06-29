@@ -5,8 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'active_storage_validations'
 #gem 'active_model_serializers', '~> 0.10.2', require: true
 gem 'rabl'
-gem 'amoeba'
-gem 'acts_as_tree'
+#gem 'amoeba'
+#gem 'acts_as_tree'
+gem 'ancestry'
 # Also add either `oj` or `yajl-ruby` as the JSON parser
 #gem 'oj'
 # Optional, to use :dimension validator or :aspect_ratio validator

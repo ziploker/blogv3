@@ -1,17 +1,20 @@
 class Comment < ApplicationRecord
   include ActionView::Helpers::DateHelper
-  extend ActsAsTree::TreeView
+  #extend ActsAsTree::TreeView
 
   belongs_to :user
   belongs_to :commentable, polymorphic: true
+  #has_many :comments, as: :commentable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_ancestry
+
 
   before_create :convertToFriendlyDateFormat
   before_create :set_comment_number
   
   
 
-  acts_as_tree order: "body"
+  #acts_as_tree order: "body"
 
 
   private
