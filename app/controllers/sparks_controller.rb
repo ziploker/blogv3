@@ -245,7 +245,7 @@ class SparksController < ApplicationController
         
         end
         
-        @dupArray = @article_info.comments.amoeba_dup
+        #@dupArray = @article_info.comments.amoeba_dup
        
         
         findC(@article_info.comments)
@@ -274,7 +274,7 @@ class SparksController < ApplicationController
 
                 article: @article_info,
                # comments: ActiveModelSerializers::SerializableResource.new(@article_info.comments, include: {comments: { include: ['**']}}).as_json,
-               #comments: @dupArray,
+               comments: @comments,
                user: @current_user
             }
 

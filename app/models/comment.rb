@@ -1,5 +1,7 @@
 class Comment < ApplicationRecord
   include ActionView::Helpers::DateHelper
+  extend ActsAsTree::TreeView
+
   belongs_to :user
   belongs_to :commentable, polymorphic: true
   has_many :comments, as: :commentable, dependent: :destroy
@@ -7,10 +9,10 @@ class Comment < ApplicationRecord
   before_create :convertToFriendlyDateFormat
   before_create :set_comment_number
   
-  amoeba do
-    enable
-    
-  end
+  
+
+  acts_as_tree order: "body"
+
 
   private
   
