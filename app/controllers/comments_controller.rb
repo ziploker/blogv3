@@ -52,7 +52,13 @@ class CommentsController < ApplicationController
             @comment.user = @current_user
 
             @comment.reply = true  if params[:event][:comment_id]
-            @comment.parent_id = @commentable.id
+
+            if @comment.commentable_type == "Comment"
+                
+                puts "@com is a " + @comment.inspect
+                @comment.parent_id = @commentable.id
+            end
+
             @comment.save!
 
             puts "build and save comment commplete!!"

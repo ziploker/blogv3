@@ -11,6 +11,8 @@ class SparksController < ApplicationController
     #    request.format = "json"
     #end
 
+    require 'json'
+
     
     
     def index
@@ -116,6 +118,10 @@ class SparksController < ApplicationController
         puts " SLUG = " + params["data"]["slug"]
 
         @article_info = Story.find_by(slug: params["data"]["slug"])
+
+        @comments = @article_info.comments.first.subtree.arrange[1]
+
+        puts "comment type is------------" + @comment.class.to_s
         #@comments = @article_info.comments.as_json(include: [:comments])
         
         # @comments = @article_info.comments.as_json(include: {comments: 
@@ -128,17 +134,17 @@ class SparksController < ApplicationController
 
         
         puts "===========================as_json++++++++++++++++++++++++++++"
-        @comments = @article_info.comments.as_json(include: {comments: 
-            { include: {comments:
-                { include: {comments:
-                    { include: {comments:
-                        { include: {comments:
-                            { include: :comments}
-                        }}
-                    }}
-                }}
-            }}
-                        })
+        # # # @comments = @article_info.comments.as_json(include: {comments: 
+        # # #     { include: {comments:
+        # # #         { include: {comments:
+        # # #             { include: {comments:
+        # # #                 { include: {comments:
+        # # #                     { include: :comments}
+        # # #                 }}
+        # # #             }}
+        # # #         }}
+        # # #     }}
+        # # #                 })
         puts "===========================as_json++++++++++++++++++++++++++++"
 
         #@comments = @article_info.comments.serializable_hash(include: [:comments]) 
