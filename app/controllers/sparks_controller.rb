@@ -118,10 +118,41 @@ class SparksController < ApplicationController
         puts " SLUG = " + params["data"]["slug"]
 
         @article_info = Story.find_by(slug: params["data"]["slug"])
+        @newComments = []
+        puts "{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{ bout to map }}}}}}}}}}}}}}}}}}}}}}}}}}"
+        
+        
+        puts "about to in map, msg = " + @article_info.comments.first.subtree.arrange.inspect
+        @comments = @article_info.comments.first.subtree.arrange.map do |msg, subMsg|
 
-        @comments = @article_info.comments.first.subtree.arrange[1]
+            puts "in map, msg = " + msg.inspect
+            puts "in map, subMsg = " + subMsg.inspect
 
-        puts "comment type is------------" + @comment.class.to_s
+            @newComments.push(subMsg)
+            
+            
+            # if subMsg
+            #     subMsg.map do |wtf, wtff |
+
+            #         puts "in smap, wtf = " + wtf.inspect
+            #         puts "in smap, subMsg = " + wtff.inspect
+
+                    
+                    
+            #         @newComments.push(wtf)
+            #     end
+            # end
+            
+            
+
+        end.join.html_safe
+        
+        
+        
+        
+        ###@comments = @article_info.comments.first.subtree.arrange.to_json
+        puts "comment type is------------" + @comments.class.to_s
+        puts "comment insopect------------" + @comments.inspect
         #@comments = @article_info.comments.as_json(include: [:comments])
         
         # @comments = @article_info.comments.as_json(include: {comments: 
