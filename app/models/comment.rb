@@ -29,13 +29,19 @@ class Comment < ApplicationRecord
 
 
   def self.json_tree(nodes)
-    puts "sdfvsgwrgtyhekjnwelkrbfwleirbv[  in self json tree  ]leruhv;wetiohv;weoithv;woeithv;woeitjv"
+    # puts "sdfvsgwrgtyhekjnwelkrbfwleirbv[  in self json tree  ]leruhv;wetiohv;weoithv;woeithv;woeitjv"
 
-    puts "before {}{}}{}{ " + nodes.inspect
-    puts "beforee {}{}}{}{ " + nodes.class.to_s
+    # puts "before {}{}}{}{ " + nodes.inspect
+    # puts "beforee {}{}}{}{ " + nodes.class.to_s
     
     
       nodes.map do |node, sub_nodes|
+        
+        puts "node ===================== " + node.inspect
+
+        puts "SUBnode ===================== " + sub_nodes.inspect
+        
+        
         {:id => node.id, 
           :body => node.body, 
           :created_at => node.created_at,
@@ -52,11 +58,11 @@ class Comment < ApplicationRecord
           :edit_history => node.edit_history,
           :author_avatar => node.author_avatar,
           :author_nick => node.author_nick,
-          :comments => json_tree(sub_nodes).compact}
+          :comments => json_tree(sub_nodes).compact }
       end
     
 
-    puts "after {}{}}{}{ " + nodes.inspect
+    #puts "after {}{}}{}{ " + nodes.inspect
   end
   
   

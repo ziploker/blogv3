@@ -134,34 +134,7 @@ class SparksController < ApplicationController
 
         @article_info = Story.find_by(slug: params["data"]["slug"])
         
-        #@newComments = []
-        ##puts "{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{ bout to map }}}}}}}}}}}}}}}}}}}}}}}}}}"
         
-        
-        ##puts "about to in map, msg = " + @article_info.comments.first.subtree.arrange.inspect
-        # # # @comments = @article_info.comments.first.subtree.arrange.map do |msg, subMsg|
-
-        # # #     puts "in map, msg = " + msg.inspect
-        # # #     puts "in map, subMsg = " + subMsg.inspect
-
-        # # #     @newComments.push(subMsg)
-            
-            
-        # # #     # if subMsg
-        # # #     #     subMsg.map do |wtf, wtff |
-
-        # # #     #         puts "in smap, wtf = " + wtf.inspect
-        # # #     #         puts "in smap, subMsg = " + wtff.inspect
-
-                    
-                    
-        # # #     #         @newComments.push(wtf)
-        # # #     #     end
-        # # #     # end
-            
-            
-
-        # # # end.join.html_safe
         
         
         @testComments = []
@@ -370,7 +343,7 @@ class SparksController < ApplicationController
                 # comments: ActiveModelSerializers::SerializableResource.new(@article_info.comments, include: {comments: { include: ['**']}}).as_json,
                 
                 
-                #comments: Comment.json_tree(@comments),
+                comments: Comment.json_tree(@comments),
                 
                 user: @current_user
                 }
@@ -384,7 +357,7 @@ class SparksController < ApplicationController
 
 
                 article: @article_info,
-                comments: @comments
+                comments: Comment.json_tree(@comments)
             }
         end
         puts "============Sparks controller def get_article_info end================"
