@@ -165,7 +165,16 @@ class SparksController < ApplicationController
         
         
         @testComments = []
-        @comments = @article_info.comments.first.subtree.arrange
+        if @article_info.comments.first
+
+
+            puts "111111111111111111111111111111111111111111111111111111"
+            @comments = @article_info.comments.first.subtree.arrange
+
+        else
+            puts "222222222222222222222222222222222222222222222222222222222"
+            @comments = @article_info.comments
+        end
         
         # puts "comment b4 map type is------------" + @comments.class.to_s
         # puts "comment b4 map nsopect------------" + @comments.inspect
@@ -343,7 +352,7 @@ class SparksController < ApplicationController
 
         if @current_user
 
-            puts "found current user"
+            puts "found current user" + @comments.inspect
             
             # render json: {
 
@@ -354,14 +363,19 @@ class SparksController < ApplicationController
             # }
 
 
-             render json: {
+                render json: {
 
 
-                article: @article_info,
-               # comments: ActiveModelSerializers::SerializableResource.new(@article_info.comments, include: {comments: { include: ['**']}}).as_json,
-               comments: Comment.json_tree(@comments),
-               user: @current_user
-            }
+                    article: @article_info,
+                # comments: ActiveModelSerializers::SerializableResource.new(@article_info.comments, include: {comments: { include: ['**']}}).as_json,
+                
+                
+                #comments: Comment.json_tree(@comments),
+                
+                user: @current_user
+                }
+
+           
 
         else
 

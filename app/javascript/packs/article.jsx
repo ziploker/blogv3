@@ -553,6 +553,9 @@ function Article(props){
         },
         {withCredentials: true})
         .then(response => {
+
+
+            console.log("resoooooooooooooooonse = " + response.inspect)
           
             addAllCommentsToStateForReplyButtonToWork(response.data.comments)
             

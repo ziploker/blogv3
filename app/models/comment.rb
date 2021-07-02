@@ -29,29 +29,34 @@ class Comment < ApplicationRecord
 
 
   def self.json_tree(nodes)
-    puts "sdfvsgwrgtyhekjnwelkrbfwleirbvwileruhv;wetiohv;weoithv;woeithv;woeitjv"
+    puts "sdfvsgwrgtyhekjnwelkrbfwleirbv[  in self json tree  ]leruhv;wetiohv;weoithv;woeithv;woeitjv"
 
-    puts "sssss" + nodes.inspect
+    puts "before {}{}}{}{ " + nodes.inspect
+    puts "beforee {}{}}{}{ " + nodes.class.to_s
     
-    nodes.map do |node, sub_nodes|
-      {:id => node.id, 
-        :body => node.body, 
-        :created_at => node.created_at,
-        :updated_at => node.updated_at,
-        :original_comment_author => node.original_comment_author,
-        :parent_id => node.parent_id,
-        :ancestry => node.ancestry,
-        :date => node.date,
-        :comment_number => node.comment_number,
-        :reply => node.reply,
-        :user_id => node.user_id,
-        :commentable_type => node.commentable_type,
-        :commentable_id => node.commentable_id,
-        :edit_history => node.edit_history,
-        :author_avatar => node.author_avatar,
-        :author_nick => node.author_nick,
-        :comments => json_tree(sub_nodes).compact}
-    end
+    
+      nodes.map do |node, sub_nodes|
+        {:id => node.id, 
+          :body => node.body, 
+          :created_at => node.created_at,
+          :updated_at => node.updated_at,
+          :original_comment_author => node.original_comment_author,
+          :parent_id => node.parent_id,
+          :ancestry => node.ancestry,
+          :date => node.date,
+          :comment_number => node.comment_number,
+          :reply => node.reply,
+          :user_id => node.user_id,
+          :commentable_type => node.commentable_type,
+          :commentable_id => node.commentable_id,
+          :edit_history => node.edit_history,
+          :author_avatar => node.author_avatar,
+          :author_nick => node.author_nick,
+          :comments => json_tree(sub_nodes).compact}
+      end
+    
+
+    puts "after {}{}}{}{ " + nodes.inspect
   end
   
   
