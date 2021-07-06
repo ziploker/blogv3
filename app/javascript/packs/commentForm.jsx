@@ -109,7 +109,7 @@ function CommentForm(props) {
      
      formData.append('event[body]', state.comment);
      formData.append('event[story_id]', props.storyID);
-    //  formData.append('event[comment_id]', props.commentID);
+    //formData.append('event[comment_id]', props.commentID);
      formData.append('event[author_nick]', props.userData.nick);
      formData.append('event[author_avatar]', props.userData.avatar_url);
      
@@ -151,7 +151,7 @@ function CommentForm(props) {
 
 
           console.log("data reply in comment form ajax success= " + JSON.stringify(data, null, 4))
-          
+          console.log("commentform...........................")
           props.setArtDataComments(data.comments)
           
           setState({...state,comment: ''})

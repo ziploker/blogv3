@@ -11,6 +11,9 @@ class CommentsController < ApplicationController
     def create
 
         puts "===========in comments controller, create function ==============="
+
+
+
         find_commentable
         puts "running setuser from comment controller, create action"
         setUser
@@ -63,35 +66,47 @@ class CommentsController < ApplicationController
 
             puts "build and save comment commplete!!"
 
-            s = Story.find_by(id: params[:event][:story_id])
+            @article_info = Story.find_by(id: params[:event][:story_id])
 
            
 
         
-            @comments = s.comments.as_json(include: {comments: 
-            { include: {comments:
-                { include: {comments:
-                    { include: {comments:
-                        { include: {comments:
-                            { include: [:comments]}
-                        }}
-                    }}
-                }}
-            }}
+            # # # @comments = s.comments.as_json(include: {comments: 
+            # # # { include: {comments:
+            # # #     { include: {comments:
+            # # #         { include: {comments:
+            # # #             { include: {comments:
+            # # #                 { include: [:comments]}
+            # # #             }}
+            # # #         }}
+            # # #     }}
+            # # # }}
 
             #@comments = s.comments.serializable_hash(include: [:comments]) 
+
+            @fullCommentsHash = {}
+            @article_info.comments.each do |c|
+
+
+                #@comments = @article_info.comments.second.subtree.arrange
+
+                # @testComments.push(c.subtree.arrange)
+                @fullCommentsHash = @fullCommentsHash.merge(c.subtree.arrange)
+            
+            
+            end
            
 
 
 
             
-        })
+        
             
             render json: {
 
 
                 #article: @article_info,
-                comments: @comments,
+                comments: Comment.json_tree(@fullCommentsHash),
                 newCommentId: @comment.id
             }
 
@@ -105,7 +120,7 @@ class CommentsController < ApplicationController
 
         end
 
-
+    puts "===========out comments controller, create function ==============="
     end
 
 

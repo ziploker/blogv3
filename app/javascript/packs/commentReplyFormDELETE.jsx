@@ -48,7 +48,7 @@ const FormWrapper = styled.div`
     "main_comment_img     main_comment_buttons";
 
 
-  margin: ${props => props.customMargin ? props.customMargin : "0px 50px 0px 25px"};
+  margin: 0px 50px 0px 85px;
   //min-height: 100px;
   
   z-index: ${props => props.rows[props.commentID] == "true" ? "1" : "-1"};
@@ -157,7 +157,7 @@ const formData = new FormData();
 
 
 
-function ReplyReplyForm(props) {
+function CommentReplyForm(props) {
 
 
   const [state, setState] = React.useState({
@@ -202,7 +202,7 @@ function ReplyReplyForm(props) {
      
      
 
-     console.log("formdata from handle add in replyreplyform");
+     console.log("formdata from handle add in comment reply form");
      console.log(formData);
 
       
@@ -225,8 +225,6 @@ function ReplyReplyForm(props) {
           
         ,
         success: function(data) {
-
-          let da = data.comments
           //props.handleAdd(data);
           //setState({
 
@@ -237,17 +235,17 @@ function ReplyReplyForm(props) {
 
           //props.setState("done")
           
-          props.setArtDataComments(da)
+          props.setArtDataComments(data.comments)
           
-          //setState({...state,comment: ''})
+          setState({...state,comment: ''})
 
-         
+         console.log("saved comment not remove reply box + " + props.commentID)
+         console.log("commentreplyform...........................")
+          props.setRows({...props.rows,[props.commentID]: "false"})
+
+          props.setAreCommentsDoneLoading(true)
 
           
-
-          //props.setAreCommentsDoneLoading(true)
-
-          ////props.addAllCommentsToStateForReplyButtonToWork(da)
     
         },
         error: function(xhr, status, error) {
@@ -330,15 +328,15 @@ function ReplyReplyForm(props) {
   
   return(
 
-    <FormWrapper  key={props.key + props.level} data-id={props.dataID + props.level} rows={props.rows} commentID={props.commentID} customMargin={props.customMargin}>
+    <FormWrapper key={props.key} data-id={props.dataID} rows={props.rows} commentID={props.commentID}>
         
 
-      <img key={props.key + "img" + props.level} data-id={props.dataID + "img" + props.level} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
+      <img key={props.key + "img"} data-id={props.dataID + "img"} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
 
-      <Form key={props.key + "form" + props.level} data-id={props.dataID + "form" + props.level} id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
+      <Form key={props.key + "form"} data-id={props.dataID + "form"} id={props.commentID} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         
         
-        <div key={props.key + "div" + props.level} data-id={props.dataID + "div" + props.level}style={{width: "100%", height: "100%"}} className="field" >
+        <div key={props.key + "div"} data-id={props.dataID + "div"} style={{width: "100%", height: "100%"}} className="field" >
         
           {/* <CommentInput type="textarea"
             index={1}
@@ -363,7 +361,7 @@ function ReplyReplyForm(props) {
            onResize={(e) => {}}
            
            
-           key={props.key + "tar" + props.level} data-id={props.dataID + "tar" + props.level}
+           key={props.key + "tar"} data-id={props.dataID + "tar"}
            onChange={handleChange} 
             
            index={1}
@@ -395,7 +393,7 @@ function ReplyReplyForm(props) {
         
         
       </Form>
-      <button key={props.key + "button" + props.level} data-id={props.dataID + "button" + props.level} form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
+      <button key={props.key + "button"} data-id={props.dataID + "button"} form={props.commentID} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" className="btn btn-primary">reply</button>
     </FormWrapper>
   )
 }
@@ -409,4 +407,4 @@ function ReplyReplyForm(props) {
 
 
 
-export default props => <ReplyReplyForm {...props} />;
+export default props => <CommentReplyForm {...props} />;
