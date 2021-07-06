@@ -625,6 +625,7 @@ function Article(props){
 
             console.log("================ OUT getAllId =======================")
         }
+        
         getAllId(c, 'id')
         console.log(newArray)
 
@@ -681,12 +682,15 @@ function Article(props){
     
 
 
-    function Comment({ item, setAreCommentsDoneLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
+    function Comment({ item, itemsFirstChild, setAreCommentsDoneLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
    
         
         const nestedComments = (item.comments || []).map(com => {
+
+
+            
     
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork}/>
+            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} itemsFirstChild={com.comments} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork}/>
         
         })
       
@@ -706,7 +710,7 @@ function Article(props){
                         <span key={item.id + "span"} data-id={ item.id + "span"} style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
                     </TopBarWrapper>
                     
-                    <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body}</CommentBody>
+                    <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body} and child is {item.comments ? item.comments.inspect : "no replies" }</CommentBody>
                         
                 
                     <BottomBarWrapper key={item.id + "bbw"} data-id={ item.id + "bbw"}>
@@ -721,8 +725,11 @@ function Article(props){
                         <VoteDown key={item.id + "vd"} data-id={ item.id + "vd"}>
                         <svg key={item.id + "svg2"} data-id={ item.id + "svg2"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path2"} data-id={ item.id + "path2"} d="M11.26 19.96a2.013 2.013 0 001.58-1.881c.11-2.794.484-4.45 2.282-6.945.224.345.618.58 1.066.58h4.548c.692 0 1.264-.553 1.264-1.22V1.722c0-.668-.572-1.22-1.264-1.22h-4.548c-.436 0-.823.22-1.05.55a6.898 6.898 0 00-.759-.534c-.416-.24-.887-.384-1.531-.45C11.558-.06 9.445.037 4.564.017a.521.521 0 00-.316.114C3.023.796-.007 5.904 0 10.663c.025 1.138.541 1.78 1.532 1.78H8.04c-.39 2.47-.131 4.738.735 6.208.467.794 1.148 1.238 1.823 1.331a2.034 2.034 0 00.663-.022m-2.155-7.913c.056-.28-.202-.579-.497-.579H1.674c-.356-.035-.67-.091-.67-.913 0-1.047.166-2.886 1.031-5.057C2.9 3.326 4.19.967 4.638 1.044c1.214-.081 7.014-.109 8.108 0 .556.055.818.134 1.113.305.265.152.59.423 1.066.791v7.6c-2.349 2.88-2.979 5.302-3.096 8.3-.338 1.495-1.702 1.083-2.179.13-.697-2.402-.88-4.442-.545-6.123m11.631-1.309h-4.548c-.149 0-.252-.1-.252-.244V1.722c0-.144.103-.244.252-.244h4.548c.15 0 .253.1.253.244v8.772c0 .144-.103.244-.253.244"></path></svg>                                
                         <span key={item.id + "s2"} data-id={ item.id + "s2"}>1</span>
+
+                        
                         
                         </VoteDown>
+                        <span style={{marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}}>show more replies {item.id} and itemsFirstChild is {itemsFirstChild.id.toString()}</span>
             
                     </BottomBarWrapper>
                         
@@ -856,7 +863,7 @@ function Article(props){
 
                                        
                                         return (
-                                            <Comment key={c.id} item={c} setAreCommentsDoneLoading={setAreCommentsDoneLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
+                                            <Comment key={c.id} item={c} itemsFirstChild={c.comments} setAreCommentsDoneLoading={setAreCommentsDoneLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
                                         )
                                     })
                                 }
