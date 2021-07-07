@@ -502,6 +502,8 @@ function Article(props){
     const [avatarLoaded, setAvatarLoaded] = useState(false)
     const [rows, setRows] = useState({})
 
+    const [showMore, setShowMore] = useState({})
+
     const [isCommentsLoading, setIsCommentsLoading] = useState(true);
 
     let obj = {};
@@ -543,11 +545,39 @@ function Article(props){
         
         
     }
+
+
+    const handleShowMoreButton = (id) => {
+
+        
+        console.log("xxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxx is = " + id[0].toString());
+        
+
+       if (showMore[id] == "true"){
+            setShowMore({...showMore, [id]: "false"})
+
+       }else{
+
+        setShowMore({...showMore,[id]: "true"})
+
+       }
+
+       
+
+        
+        
+    }
             
     useEffect ((props) => {
 
+
+        
+
         console.log("========================== AAARRRTTIICCCLLLEEE U?SE?EFFE?C?TT============================")
         //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
+        
+        
+        
         axios.post("/blog/get_article_info", {
           
           data: { 
@@ -561,18 +591,20 @@ function Article(props){
 
             console.log("resoooooooooooooooonse = " + response.inspect)
           
-            addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+            //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+            
+            
+                setUserData(response.data.user)
+                setArtData(response.data.article)
+                setArtDataComments(response.data.comments)
+                setIsLoading(false)
+            
+                setIsCommentsLoading(false)
+            
             
 
-            setUserData(response.data.user)
-            setArtData(response.data.article)
-            setArtDataComments(response.data.comments)
-            setIsLoading(false)
-            setIsCommentsLoading(false)
             
-
             
-          
         }).catch(error => {
           
           //console.log("articleErrors", error)
@@ -597,21 +629,21 @@ function Article(props){
         function getAllId(arr, key) {
             
             console.log("================ in getAllId =======================")
-            console.log("array = " + JSON.stringify(arr, null, 4))
-            console.log("key = " + JSON.stringify(key, null, 4))
+            // console.log("array = " + JSON.stringify(arr, null, 4))
+            // console.log("key = " + JSON.stringify(key, null, 4))
             
             arr.forEach(function(item) {
                 
                 console.log("================ in arr.forEach =======================")
-                console.log("item = " + JSON.stringify(item, null, 4))
-                console.log("key = " + JSON.stringify(key, null, 4))
+                // console.log("item = " + JSON.stringify(item, null, 4))
+                // console.log("key = " + JSON.stringify(key, null, 4))
                 
                 for (let keys in item) {
                     
                     console.log("================ in for loop =======================")
-                    console.log("keys = " + JSON.stringify(keys, null, 4))
-                    console.log("key = " + JSON.stringify(key, null, 4))
-                    console.log("item = " + JSON.stringify(item, null, 4))
+                    // console.log("keys = " + JSON.stringify(keys, null, 4))
+                    // console.log("key = " + JSON.stringify(key, null, 4))
+                    // console.log("item = " + JSON.stringify(item, null, 4))
 
 
                     if (keys === key) {
@@ -649,57 +681,34 @@ function Article(props){
 
         setRows(newState);
 
-       
-        
-        // c.map((item,i) => {
-            
-        //     console.log("in main map function=======================")
-
-            
-        //     obj[item.id] = "false";
-
-            
-        //     if (item.comments && item.comments != []){
-                
-        //         console.log("in inner map function=======================")
-
-        //         addAllCommentsToStateForReplyButtonToWork(item.comments);
-
-        //     }
-
-        // })
-        
-        // console.log("out of map function=======================")
-        
-
-        // setRows(obj);
-   
-
-        
-        
     }  
 
     
 
 
-    function Comment({ item, itemsFirstChild, setAreCommentsDoneLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
+    
+    
+    
+    ////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////// COMMENT FUNCTION //////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////
+    
+    function Comment({ item, setIsCommentsLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
    
         
         const nestedComments = (item.comments || []).map(com => {
 
-
-            
-    
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} itemsFirstChild={com.comments} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork}/>
+            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} setIsCommentsLoading={setIsCommentsLoading}/>
         
         })
       
         
         
         return (
+            
             <>
             
-                <CommentDisplay id={item.id} style={{margin: "10px 0px 0px 25px"}} >
+                <CommentDisplay showMore={showMore} id={item.id} style={{margin: "10px 0px 0px 25px"}} >
 
                     <BorderDiv>
                     </BorderDiv>
@@ -729,7 +738,27 @@ function Article(props){
                         
                         
                         </VoteDown>
-                        <span style={{marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}}>show more replies {item.id} and itemsFirstChild is {itemsFirstChild.id.toString()}</span>
+                        <span style={{marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}} onClick={() => handleShowMoreButton((
+                        
+                            
+                        
+                        item.comments.map( (x, i) => 
+                            
+                        
+                              x.id
+
+                        
+                            
+                            
+                        
+                        
+                        
+                        )
+                    
+                    
+                    
+                    
+                    ))} >show more replies {item.id} and itemsFirstChild is </span>
             
                     </BottomBarWrapper>
                         
@@ -739,9 +768,8 @@ function Article(props){
             
                     <CommentReplyForm
                     
-                        dataID={ item.id + "RRF" }
-                        key={ item.id + "RRF" }
-                        level={1}
+                        
+                        
                         originalcommentAuthor={item.author_nick}
                         rows={rows}
                         setRows={setRows}
@@ -749,6 +777,7 @@ function Article(props){
                         storyID={artData.id} 
                         commentID={item.id} 
                         setArtDataComments={setArtDataComments} 
+                        setIsCommentsLoading={setIsCommentsLoading}
                         addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork}
                     />
             
@@ -770,11 +799,12 @@ function Article(props){
 
     
     
+    
+    
+    /////////////////////////  do not load page until info lodes from server /////////////
     if (isLoading) {
-        return <Loading><h1>Loading......</h1>
-
-
-        </Loading>;
+        
+        return <Loading> <h1>Loading......</h1> </Loading>;
     }
 
 
@@ -859,25 +889,20 @@ function Article(props){
                                 {
                                     
                                     
-                                    artDataComments.map( (c, setAreCommentsDoneLoading) => {
+                                    artDataComments.map( (c) => {
 
-                                       
                                         return (
-                                            <Comment key={c.id} item={c} itemsFirstChild={c.comments} setAreCommentsDoneLoading={setAreCommentsDoneLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
+                                            
+                                            <Comment key={c.id} item={c} setIsCommentsLoading={setIsCommentsLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
                                         )
                                     })
                                 }
+                                
                                 {console.log("about to END map artDataComments")}
                             </div>    
                         </div>
-
-
-
-                        
                     </Comments>
-
                 }
-               
             </ArticleSection>
         </>
     );
