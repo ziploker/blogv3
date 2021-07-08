@@ -85,7 +85,7 @@ class CommentsController < ApplicationController
             #@comments = s.comments.serializable_hash(include: [:comments]) 
 
             @fullCommentsHash = {}
-            @article_info.comments.each do |c|
+            @article_info.comments.reverse.each do |c|
 
 
                 #@comments = @article_info.comments.second.subtree.arrange

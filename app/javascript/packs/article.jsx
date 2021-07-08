@@ -313,7 +313,12 @@ const CommentFormWrapper = styled.div`
 
 const CommentDisplay = styled.div`
 
-    color: ${props => props.showMore[props.childID] == "true" ? "true" : "false"};
+    display: ${props => props.showMore[props.id] == "true" ? "none" : "inherit"};
+
+
+    //${props => console.log("im in commentDisplay" + props.id.toString() + " and showmore for " + props.id.toString() + " is = " + props.showMore[props.id]) }
+    //${props => console.log("props.showMore = " + JSON.stringify(props.showMore, null, 4))}
+    //${props => console.log("showmmmmmmmmmmmmore" + props.showMore[263])}
     //border-left: 1px solid grey;
     //grid-template-columns: minmax(min-cnoeontent, max-content) minmax(min-content, max-content) 1fr;
     //grid-template-rows: minmax(min-content, max-content) 1fr 1fr minmax(min-content, max-content);
@@ -547,20 +552,68 @@ function Article(props){
     }
 
 
-    const handleShowMoreButton = (id) => {
+    const handleShowMoreButton = (childrenCommentArray) => {
+
 
         
-        //console.log("xxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxx is = " + id[0].toString());
+                        
+            
+            let tempArray = []
+            let tempShowMore = {}
+            childrenCommentArray.map( (x, i) => {
+                
+            
+
+                
+                tempArray.push(x.id)
+                
+            
+            
+            
+            })
+        
+            
+            tempArray.forEach (x => {
+
+                console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx idididid" + x)
+                if (showMore[x] == "true"){
+                    
+                    console.log("in if and x is = " + x + " and was true, changing it!")
+                    //setShowMore({...showMore, [x]: "false"})
+                    tempShowMore[x] = "false"
+        
+                }else{
+                    console.log("in else and x is = " + x + " and was false, changing it!")
+                    //setShowMore({...showMore, [x]: "true"})
+                    tempShowMore[x] = "true"
+        
+                }
+
+
+
+
+
+            } )
+
+            setShowMore({...showMore, ...tempShowMore})
+
+
+            
+        
         
 
-       if (showMore[id[0]] == "true"){
-            setShowMore({...showMore, [id[0]]: "false"})
+        
+        console.log("childrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArray is = " + JSON.stringify(tempArray, null, 4));
+        
 
-       }else{
+    //    if (showMore[id[0]] == "true"){
+    //         setShowMore({...showMore, [id[0]]: "false"})
 
-        setShowMore({...showMore,[id[0]]: "true"})
+    //    }else{
 
-       }
+    //     setShowMore({...showMore,[id[0]]: "true"})
+
+    //    }
 
        
 
@@ -590,6 +643,37 @@ function Article(props){
         
         
     }
+
+
+
+    const getReplyArray = (childrenCommentArray) => {
+
+        let tempArray = []
+
+        childrenCommentArray.map( (x, i) => {
+                            
+                        
+            x.id
+
+            tempArray.push(x.id + ", ")
+            
+
+      
+        })
+
+        return tempArray
+
+        //console.log("getReplyArraydfdfdfdfdfdfdfgetReplyArray = " + JSON.stringify(childrenCommentArray, null, 4))
+
+
+          
+      
+      
+      
+    
+
+
+    }
     useEffect ((props) => {
 
 
@@ -614,6 +698,8 @@ function Article(props){
             console.log("resoooooooooooooooonse = " + response.inspect)
           
             //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+                addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
+
             
             
                 setUserData(response.data.user)
@@ -705,6 +791,76 @@ function Article(props){
 
     }  
 
+
+
+    function addAllCommentsToStateForShowMoreButtonToWork(c) {
+
+
+        //{console.log("the addAllCommentsToStateForReplyButtonToWork Object about to be mapped is " + JSON.stringify(c, null, 4))}
+        
+
+        
+       
+        let newArray = [];
+        let newState = {}
+
+        function getAllId(arr, key) {
+            
+            console.log("================ in getAllId =======================")
+            // console.log("array = " + JSON.stringify(arr, null, 4))
+            // console.log("key = " + JSON.stringify(key, null, 4))
+            
+            arr.forEach(function(item) {
+                
+                console.log("================ in arr.forEach =======================")
+                // console.log("item = " + JSON.stringify(item, null, 4))
+                // console.log("key = " + JSON.stringify(key, null, 4))
+                
+                for (let keys in item) {
+                    
+                    console.log("================ in for loop =======================")
+                    // console.log("keys = " + JSON.stringify(keys, null, 4))
+                    // console.log("key = " + JSON.stringify(key, null, 4))
+                    // console.log("item = " + JSON.stringify(item, null, 4))
+
+
+                    if (keys === key) {
+                        newArray.push(item[key])
+                    } else if (Array.isArray(item[keys])) {
+                        getAllId(item[keys], key)
+                    }
+                }
+
+            })
+
+            console.log("================ OUT getAllId =======================")
+        }
+        
+        getAllId(c, 'id')
+        console.log(newArray)
+
+        
+        newArray.forEach(function(item) {
+
+            console.log("xxxitemx = " + item)
+            
+            
+            newState[item] = "false"
+
+            
+
+
+        })
+
+
+
+
+        console.log("newState = " + JSON.stringify(newState, null, 4))
+
+        setShowMore(newState);
+
+    }
+
     
 
 
@@ -720,7 +876,7 @@ function Article(props){
         
         const nestedComments = (item.comments || []).map(com => {
 
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} setIsCommentsLoading={setIsCommentsLoading}/>
+            return <Comment showMore={showMore} style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} setIsCommentsLoading={setIsCommentsLoading}/>
         
         })
       
@@ -730,7 +886,7 @@ function Article(props){
             
             <>
             
-                <CommentDisplay isCommentsLoading={isCommentsLoading} showMore={showMore} id={item.id} childID={returnFirstItemOfArray((
+                <CommentDisplay item={item} isCommentsLoading={isCommentsLoading} showMore={showMore} id={item.id} childID={returnFirstItemOfArray((
                         
                             
                         
@@ -756,7 +912,7 @@ function Article(props){
                         <span key={item.id + "span"} data-id={ item.id + "span"} style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
                     </TopBarWrapper>
                     
-                    <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body} and child is {item.comments ? item.comments.inspect : "no replies" }</CommentBody>
+                    <CommentBody key={item.id + "CB"} data-id={ item.id + "CB"} style={{gridArea: "body", fontSize: "15px"}}>{item.body} this comment ID is {item.id} and its children array is {getReplyArray(item.comments)}</CommentBody>
                         
                 
                     <BottomBarWrapper key={item.id + "bbw"} data-id={ item.id + "bbw"}>
@@ -775,27 +931,7 @@ function Article(props){
                         
                         
                         </VoteDown>
-                        <span style={{marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}} onClick={() => handleShowMoreButton((
-                        
-                            
-                        
-                        item.comments.map( (x, i) => 
-                            
-                        
-                              x.id
-
-                        
-                            
-                            
-                        
-                        
-                        
-                        )
-                    
-                    
-                    
-                    
-                    ))} >show more replies {item.id} and itemsFirstChild is </span>
+                        <span style={{marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}} onClick={() => handleShowMoreButton(item.comments)}> show replies </span>
             
                     </BottomBarWrapper>
                         

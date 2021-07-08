@@ -113,7 +113,7 @@ class SparksController < ApplicationController
         if @article_info.comments
             
             
-            @article_info.comments.each do |c|
+            @article_info.comments.reverse.each do |c|
 
 
                 #@comments = @article_info.comments.second.subtree.arrange
