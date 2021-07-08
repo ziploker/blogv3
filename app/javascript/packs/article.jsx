@@ -313,9 +313,9 @@ const CommentFormWrapper = styled.div`
 
 const CommentDisplay = styled.div`
 
-    //display: grid;
+    color: ${props => props.showMore[props.childID] == "true" ? "true" : "false"};
     //border-left: 1px solid grey;
-    //grid-template-columns: minmax(min-content, max-content) minmax(min-content, max-content) 1fr;
+    //grid-template-columns: minmax(min-cnoeontent, max-content) minmax(min-content, max-content) 1fr;
     //grid-template-rows: minmax(min-content, max-content) 1fr 1fr minmax(min-content, max-content);
     /* grid-template-areas:
 
@@ -326,7 +326,7 @@ const CommentDisplay = styled.div`
     //margin: 20px 50px 0px 50px;
 
     
-
+    //display: inherit;
     position: relative;
 
     img {
@@ -550,15 +550,15 @@ function Article(props){
     const handleShowMoreButton = (id) => {
 
         
-        console.log("xxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxx is = " + id[0].toString());
+        //console.log("xxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxxxxSHOWMORRExxx is = " + id[0].toString());
         
 
-       if (showMore[id] == "true"){
-            setShowMore({...showMore, [id]: "false"})
+       if (showMore[id[0]] == "true"){
+            setShowMore({...showMore, [id[0]]: "false"})
 
        }else{
 
-        setShowMore({...showMore,[id]: "true"})
+        setShowMore({...showMore,[id[0]]: "true"})
 
        }
 
@@ -568,6 +568,28 @@ function Article(props){
         
     }
             
+
+
+    
+    const returnFirstItemOfArray = (id) => {
+
+        
+        console.log("returnFirstItemOfArrayxxxxreturnFirstItemOfArray is = " + id);
+        console.log("LengthnnnLengthnnnLengthnnnLength is = " + id.length.toString());
+        
+        if (id.length > 0){
+            console.log("LengthnnnLengthnnnLengthnnnLength is = " + id[0].toString());
+            return id[0]
+        }
+
+       
+       
+
+       
+
+        
+        
+    }
     useEffect ((props) => {
 
 
@@ -693,7 +715,7 @@ function Article(props){
     //////////////////////// COMMENT FUNCTION //////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
     
-    function Comment({ item, setIsCommentsLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
+    function Comment({ showMore={showMore}, item, setIsCommentsLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
    
         
         const nestedComments = (item.comments || []).map(com => {
@@ -708,7 +730,22 @@ function Article(props){
             
             <>
             
-                <CommentDisplay showMore={showMore} id={item.id} style={{margin: "10px 0px 0px 25px"}} >
+                <CommentDisplay isCommentsLoading={isCommentsLoading} showMore={showMore} id={item.id} childID={returnFirstItemOfArray((
+                        
+                            
+                        
+                        item.comments.map( (x, i) => (
+                            
+                        
+                              x.id
+
+                        
+                        ) 
+                            
+                        
+                        
+                        
+                )))} style={{margin: "10px 0px 0px 25px"}} >
 
                     <BorderDiv>
                     </BorderDiv>
@@ -893,7 +930,7 @@ function Article(props){
 
                                         return (
                                             
-                                            <Comment key={c.id} item={c} setIsCommentsLoading={setIsCommentsLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
+                                            <Comment key={c.id} item={c} showMore={showMore} setIsCommentsLoading={setIsCommentsLoading} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} />
                                         )
                                     })
                                 }
