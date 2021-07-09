@@ -1,4 +1,4 @@
-import React, {useEffect, useState, usePrevious} from 'react';
+import React, {useEffect, useState, usePrevious, useRef} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -12,7 +12,8 @@ import CommentForm from './commentForm'
 import CommentReplyForm from './commentReplyForm'
 import defaultAvatar from '../../assets/images/man3'
 
- 
+import {gsap} from 'gsap'
+
 
 
 
@@ -315,9 +316,10 @@ const CommentDisplay = styled.div`
     //transform: scale(1);
 
     max-height: ${props => props.showMore[props.id] == "true" ? "0" : "100%"};
-    //transform: ${props => props.showMore[props.id] == "true" ? "scale(0)" : "scale(1)"};
+    transform: ${props => props.showMore[props.id] == "true" ? "scale(0)" : "scale(1)"};
+    //transform: ${props => props.openSideMenu ? "translateX(0%)" : "translateX(100%)"};
     //transform-origin: left;
-    transition: all 1s ease-out;
+    transition: 1s ease-out;
 
     //${props => console.log("im in commentDisplay" + props.id.toString() + " and showmore for " + props.id.toString() + " is = " + props.showMore[props.id]) }
     //${props => console.log("props.showMore = " + JSON.stringify(props.showMore, null, 4))}
@@ -516,12 +518,106 @@ function Article(props){
 
     let obj = {};
 
-    
+    const titleRef = useRef(null);
+
+    let tl = gsap.timeline({
+         
+        duration: "8",
+        
+        
+      });
 
     //const prevRows = usePrevious(rows)
 
 
     let editLink = null;
+
+
+
+    useEffect ((props) => {
+
+
+        
+
+        console.log("========================== AAARRRTTIICCCLLLEEE U?SE?EFFE?C?TT============================")
+        //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
+        
+        
+        
+        axios.post("/blog/get_article_info", {
+          
+          data: { 
+            slug: slug
+            
+          }
+        },
+        {withCredentials: true})
+        .then(response => {
+
+
+            console.log("resoooooooooooooooonse = " + response.inspect)
+          
+            //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+                addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
+
+            
+            
+                setUserData(response.data.user)
+                setArtData(response.data.article)
+                setArtDataComments(response.data.comments)
+                setIsLoading(false)
+            
+                setIsCommentsLoading(false)
+            
+            
+
+            
+            
+        }).catch(error => {
+          
+          //console.log("articleErrors", error)
+        })
+
+
+        let commentStart = document.querySelectorAll(".commentStart");
+        let storyTitle = document.querySelectorAll(".storyTitle");
+
+
+        
+      
+        //   tl.from(class274, 
+              
+        //     {
+              
+        //       opacity: 0,
+              
+              
+              
+              
+        //     });  
+      
+          tl.from(titleRef.current, 
+              
+            {
+              x: 100,
+              opacity: 0,
+              
+              
+              
+            });
+
+
+            
+    },[])
+
+
+    const startGsap = () => {
+
+
+        console.log("in start gsap ;;;;;;;;;;;;;;;;;;;;;;;;;;;;")
+        tl.play();
+    }
+
     
     if(userData && userData.isAdmin)
     {
@@ -559,7 +655,7 @@ function Article(props){
 
 
         
-                        
+            //tl.play()
             
             let tempArray = []
             let tempShowMore = {}
@@ -677,50 +773,7 @@ function Article(props){
 
 
     }
-    useEffect ((props) => {
-
-
-        
-
-        console.log("========================== AAARRRTTIICCCLLLEEE U?SE?EFFE?C?TT============================")
-        //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
-        
-        
-        
-        axios.post("/blog/get_article_info", {
-          
-          data: { 
-            slug: slug
-            
-          }
-        },
-        {withCredentials: true})
-        .then(response => {
-
-
-            console.log("resoooooooooooooooonse = " + response.inspect)
-          
-            //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
-                addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
-
-            
-            
-                setUserData(response.data.user)
-                setArtData(response.data.article)
-                setArtDataComments(response.data.comments)
-                setIsLoading(false)
-            
-                setIsCommentsLoading(false)
-            
-            
-
-            
-            
-        }).catch(error => {
-          
-          //console.log("articleErrors", error)
-        })
-    },[])
+    
 
 
 
@@ -889,7 +942,7 @@ function Article(props){
             
             <>
             
-                <CommentDisplay item={item} isCommentsLoading={isCommentsLoading} showMore={showMore} id={item.id} childID={returnFirstItemOfArray((
+                <CommentDisplay className={"class"+item.id } item={item} isCommentsLoading={isCommentsLoading} showMore={showMore} id={"id_"+item.id} childID={returnFirstItemOfArray((
                         
                             
                         
@@ -997,8 +1050,8 @@ function Article(props){
             <ArticleSection>
                 
             
-                <StoryTitleWrapper>
-                    <StoryTitle>{artData.title}</StoryTitle>
+                <StoryTitleWrapper ref={titleRef}>
+                    <StoryTitle className={"storyTitle"}>{artData.title}</StoryTitle>
                 </StoryTitleWrapper>
 
                 <Caption>
@@ -1055,8 +1108,9 @@ function Article(props){
                 
                 
                 :
-
-                    <Comments>
+                    <>
+                    <button onClick={startGsap}> START!</button>
+                    <Comments className={"commentStart"}>
                         
                                 
                         <div>
@@ -1078,6 +1132,8 @@ function Article(props){
                             </div>    
                         </div>
                     </Comments>
+
+                    </>
                 }
             </ArticleSection>
         </>

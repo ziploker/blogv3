@@ -20,6 +20,7 @@ import axios from 'axios'
 import $ from 'jquery';
 
 import {gsap} from 'gsap'
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 gsap.core.globals('ScrollTrigger', ScrollTrigger);
