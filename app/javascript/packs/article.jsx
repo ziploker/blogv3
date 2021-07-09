@@ -312,9 +312,12 @@ const CommentFormWrapper = styled.div`
 
 
 const CommentDisplay = styled.div`
+    //transform: scale(1);
 
-    display: ${props => props.showMore[props.id] == "true" ? "none" : "inherit"};
-
+    max-height: ${props => props.showMore[props.id] == "true" ? "0" : "100%"};
+    //transform: ${props => props.showMore[props.id] == "true" ? "scale(0)" : "scale(1)"};
+    //transform-origin: left;
+    transition: all 1s ease-out;
 
     //${props => console.log("im in commentDisplay" + props.id.toString() + " and showmore for " + props.id.toString() + " is = " + props.showMore[props.id]) }
     //${props => console.log("props.showMore = " + JSON.stringify(props.showMore, null, 4))}
