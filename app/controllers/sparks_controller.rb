@@ -157,7 +157,7 @@ class SparksController < ApplicationController
 
         if @current_user
 
-            puts "found current user" + @comments.inspect
+            #puts "found current user" + @comments.inspect
             
             
 

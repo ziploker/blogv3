@@ -29,6 +29,8 @@ class Comment < ApplicationRecord
 
 
   def self.json_tree(arrayOfHashes)
+
+    puts "in selg jsjgfkjhgfkjhgkhgjkgkjhgkjgh"
    
     
     arrayOfHashes.map do |node, sub_nodes|

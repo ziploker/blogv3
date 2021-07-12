@@ -49,8 +49,9 @@ function App(controllerProps){
     const [openSideMenu, setOpenSideMenu] = useState(false);
     const [loginClicked, setLoginClicked] = useState(false)
 
-    const [showMore, setShowMore] = useState({})
+    
 
+    
     
    
     const theme = {
