@@ -504,8 +504,8 @@ function Article(props){
     const [userData, setUserData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [artData, setArtData] = useState({})
+
     const [artDataComments, setArtDataComments] = useState([])
-    //const [state, setState] = useState("pending")
     const [avatarLoaded, setAvatarLoaded] = useState(false)
     const [rows, setRows] = useState({})
     const [showMore, setShowMore] = useState({})
@@ -515,22 +515,71 @@ function Article(props){
 
     let obj = {};
 
-    
 
+    //const usersFromController = props.users;
+    //const articleFromController = props.article;
+    //const commentsFromController = props.comments;
+    const slug = props.match.params.id
+
+    
+    useEffect ((props) => {
+
+
+        
+
+        console.log("========================== AAARRRTTIICCCLLLEEE U?SE?EFFE?C?TT============================")
+        const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
+        
+        
+        
+        axios.post("/blog/get_article_info", {
+          
+          data: { 
+            slug: slug
+            
+          }
+        },
+        {withCredentials: true})
+        .then(response => {
+
+
+            console.log("resoooooooooooooooonse = " + response.inspect)
+          
+                //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+                addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
+
+               
+            
+                setUserData(response.data.user)
+                setArtData(response.data.article)
+                setArtDataComments(response.data.comments)
+                
+                setIsLoading(false)
+            
+                setIsCommentsLoading(false)
+            
+            
+
+            
+            
+        }).catch(error => {
+          
+          //console.log("articleErrors", error)
+        })
+    },[])
     //const prevRows = usePrevious(rows)
 
 
-    let editLink = null;
+    // let editLink = null;
     
-    if(userData && userData.isAdmin)
-    {
-        editLink = <a href={`/ziploker/edit/${artData.id}`}>edit</a>;
-    }
+    // if(userData && userData.isAdmin)
+    // {
+    //     editLink = <a href={`/ziploker/edit/${artData.id}`}>edit</a>;
+    // }
 
     //console.log("Article_PROPS", props)
     
-    const slug = props.match.params.id
-
+    
 
     const handleReplyButton = (id) => {
 
@@ -664,50 +713,7 @@ function Article(props){
 
 
     }
-    useEffect ((props) => {
-
-
-        
-
-        console.log("========================== AAARRRTTIICCCLLLEEE U?SE?EFFE?C?TT============================")
-        //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
-        
-        
-        
-        axios.post("/blog/get_article_info", {
-          
-          data: { 
-            slug: slug
-            
-          }
-        },
-        {withCredentials: true})
-        .then(response => {
-
-
-            console.log("resoooooooooooooooonse = " + response.inspect)
-          
-            //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
-                addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
-
-            
-            
-                setUserData(response.data.user)
-                setArtData(response.data.article)
-                setArtDataComments(response.data.comments)
-                setIsLoading(false)
-            
-                setIsCommentsLoading(false)
-            
-            
-
-            
-            
-        }).catch(error => {
-          
-          //console.log("articleErrors", error)
-        })
-    },[])
+    
 
 
 
@@ -953,6 +959,7 @@ function Article(props){
                     rows={rows}
                     setRows={setRows}
                     handleShowMoreButton={handleShowMoreButton}
+                    handleReplyButton={handleReplyButton}
                     
                     
                     />

@@ -277,7 +277,7 @@ function App(controllerProps){
                     <Route path="/edit" render={ props => <Edit {...props} user={appState.user}/>} />
                     <Route exact path="/blog/:id" render = { props => <Article {...props} /> } />
                 </Switch>
-
+                
                 <Act ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}} executeScrollForSection2={executeScrollForSection2} appState={appState} setLoginClicked={setLoginClicked} setOpenSideMenu={setOpenSideMenu}/>
                 <SignupSection ref={{section2ScrollToRef: section2ScrollToRef}}/>
                 {/* <Shop/> */}

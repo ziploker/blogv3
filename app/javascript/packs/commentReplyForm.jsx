@@ -241,7 +241,7 @@ function CommentReplyForm(props) {
 
           props.setRows({...props.rows,[props.commentID]: "false"})
 
-          props.setIsCommentsLoading(false)
+          //props.setIsCommentsLoading(false)
 
          console.log("saved comment not remove reply box + " + props.commentID)
          console.log("commentreplyform...........................")

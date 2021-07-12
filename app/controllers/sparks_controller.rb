@@ -186,6 +186,112 @@ class SparksController < ApplicationController
         puts "============Sparks controller def get_article_info end================"
 
     end
+
+
+
+    def story
+    
+    
+    
+    puts "in new story controller--------------------------------------->>>>>> + " + params[:id].to_s
+    puts "============Sparks controller def story start================"
+
+
+        puts "set user from sparks get article info start"
+        setUser
+        puts "set user from sparks get article info end"
+        
+        
+        #puts " SLUG = " + params["data"]["slug"]
+
+        @article_info = Story.find_by(slug: params["id"])
+        
+        
+        
+        
+       
+        @fullCommentsHash = {}
+        
+        if @article_info.comments
+            
+            
+            @article_info.comments.reverse.each do |c|
+
+
+                #@comments = @article_info.comments.second.subtree.arrange
+
+                # @testComments.push(c.subtree.arrange)
+                @fullCommentsHash = @fullCommentsHash.merge(c.subtree.arrange)
+            
+            
+            end
+            
+
+
+            
+
+            #@testComments.push(@comments)
+
+
+            
+
+        else
+            puts "@article_info.comments was false so @comments = {}"
+            @comments = {}
+        end
+        
+        
+        
+        
+        
+        # @comments = @article_info.comments.as_json(include: {comments: 
+        #                                             { include: {comments:
+        #                                                 { include: {comments:
+        #                                                     { include: [:comments]}
+        #                                                 }}
+        #                                             }}
+        #                                         })
+
+        
+
+        
+
+
+        #if @current_user
+
+            #puts "found current user" + @comments.inspect
+            
+            
+
+            #render json: {
+                
+
+            puts "artdata issssssssssssssssss " + @article_info.inspect
+                @article = @article_info,
+                @comments = Comment.json_tree(@fullCommentsHash),
+                @user = @current_user
+            
+            #}
+
+           
+
+        # else
+
+        #     puts "did not find current user"
+        #     render json: {
+
+
+        #         article: @article_info,
+        #         comments: Comment.json_tree(@testComments)
+
+        #     }
+        # end
+        
+        puts "============Sparks controller def get_article_info end================"
+
+    
+
+    end
     
     
     

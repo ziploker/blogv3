@@ -2,7 +2,8 @@ import React, {useEffect, useState, usePrevious} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import {CSSTransition} from 'react-transition-group';
+//import {CSSTransition} from 'react-transition-group';
+//import { useSpring, useTransition, animated } from 'react-spring'
 
 
 import TimeAgo from 'javascript-time-ago'
@@ -16,7 +17,7 @@ import defaultAvatar from '../../assets/images/man3'
 
 //import './article.styled.scss' 
 
-//import '../../assets/stylesheets/comments.scss'
+import '../../assets/stylesheets/comments.scss'
 
 
 //import LookupSection from './lookupSection.jsx'
@@ -317,12 +318,12 @@ const CommentFormWrapper = styled.div`
 const CommentDisplay = styled.div`
     //transform: scale(1);
 
-    max-height: ${ props => props.showMore == "true" ? "0" : "100%"};
-    transform: ${ props => props.showMore == "true" ? "scale(0)" : "scale(1)"};
+    ////max-height: ${ props => props.showMore[props.commentID] == "true" ? "0" : "100%" } ;
+    ////transform: ${ props => props.showMore[props.commentID] == "true" ? "scale(0)" : "scale(1)"};
     //transform-origin: left;
     //max-height: 100%;
     //transform: scale(1);
-    transition: all 1s ease-out;
+    ////transition: all 1s ease-out;
     //border-left: 1px solid grey;
     //grid-template-columns: minmax(min-cnoeontent, max-content) minmax(min-content, max-content) 1fr;
     //grid-template-rows: minmax(min-content, max-content) 1fr 1fr minmax(min-content, max-content);
@@ -333,9 +334,10 @@ const CommentDisplay = styled.div`
     "  .    body body  "
     "  .    bottomBar bottomBar  "; */
     //margin: 20px 50px 0px 50px;
-
+    
     
     //display: inherit;
+    margin: 10px 0px 0px 25px;
     position: relative;
 
     img {
@@ -515,8 +517,33 @@ function CommentSection(props){
     //const [avatarLoaded, setAvatarLoaded] = useState(false)
     // const [rows, setRows] = useState({})
 
+    const [showc, setShowc] = useState(true)
+
+
+    const map = props.showMore;
+
+    const result = Object.keys(map);
+
+    console.log("99999999999999999999999999999999999" + result)
+
+    
+    
+    // const wtf = useSpring({ 
+    //     to: { opacity: showc ? "1" : "0" }, 
+    //     from: { maxHeight: showc ? "100%" : "0" }, 
+    //     delay: 400 })
     
 
+    // const wtf = useTransition(result, {
+        
+    //     from: { opacity: .5},
+    //     enter: { opacity: .9},
+    //     leave: { opacity: .2},
+    //     delay: 1000,
+    //     keys: result.map((item, index) => index)
+    //     });
+
+    
     //const [isCommentsLoading, setIsCommentsLoading] = useState(true);
 
     let obj = {};
@@ -778,7 +805,7 @@ function CommentSection(props){
     // function Comment({ item, setIsCommentsLoading, userData, storyID, setArtDataComments, addAllCommentsToStateForReplyButtonToWork}) {
     
     
-        function Comment({ item, rows, showMore, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) {
+        function Comment({ key, item, rows, showMore, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) {
 
         
             const nestedComments = (item.comments || []).map(com => {
@@ -793,15 +820,34 @@ function CommentSection(props){
             return (
                 
                 <>
-                {/* <CSSTransition
-                    in={showMore[storyID]}
-                    timeout={350}
-                    classNames="display"
-                    unmountOnExit
-                    > */}
+                
                 
                     {/* <div item={item} id={item.id} childID={returnFirstItemOfArray(( */}
-                    <CommentDisplay showMore={showMore} item={item} id={item.id} childID={returnFirstItemOfArray((
+                        {/* {!greetingStatus ? (
+                            <div className="Intro">Click button below</div>
+                        ) : (
+                            <a.div className="box" style={contentProps}>
+                            <h1>Hey there ! React Spring is awesome.</h1>
+                            </a.div>
+                        )} */}
+                   
+{/*                     
+                   {!showc ? (
+
+                       null
+                   ) : ( */}
+
+
+                    
+
+                    <CommentDisplay style={{
+
+                        maxHeight: props.showMore[item.id] == "true" ? "0" : "100%",
+                        transform: props.showMore[item.id] == "true" ? "scale(0)" : "scale(1)",
+                        color: "#00000"+item.id
+
+
+                    }} commentID={item.id} showMore={showMore} item={item} id={item.id} childID={returnFirstItemOfArray((
 
                                 
                             
@@ -816,7 +862,7 @@ function CommentSection(props){
                             
                             
                             
-                    )))} style={{margin: "10px 0px 0px 25px"}} >
+                    )))}  >
     
                         <BorderDiv>
                         </BorderDiv>
@@ -833,6 +879,9 @@ function CommentSection(props){
                         <BottomBarWrapper key={item.id + "bbw"} data-id={ item.id + "bbw"}>
                 
                             <Reply key={item.id + "r"} data-id={ item.id + "r"} onClick={() => props.handleReplyButton(item.id)}>reply</Reply>
+                           
+
+                            
                             <VoteUp key={item.id + "vu"} data-id={ item.id + "vu"}>
                             <svg key={item.id + "svg1"} data-id={ item.id + "svg1"} viewBox="0 0 22 20" xmlns="http://www.w3.org/2000/svg"><path key={item.id + "path1"} data-id={ item.id + "path1"} d="M10.74.04a2.013 2.013 0 00-1.58 1.88c-.11 2.795-.485 4.45-2.283 6.946a1.272 1.272 0 00-1.065-.58h-4.55C.573 8.287 0 8.84 0 9.507v8.773c0 .667.572 1.218 1.263 1.218h4.55c.435 0 .821-.22 1.049-.548.263.204.506.387.758.533.417.24.887.384 1.532.45 1.29.128 3.403.032 8.283.052a.53.53 0 00.317-.113c1.224-.667 4.255-5.775 4.248-10.534-.026-1.138-.542-1.78-1.532-1.78H13.96c.388-2.47.131-4.738-.735-6.208C12.76.555 12.078.111 11.403.018a2.035 2.035 0 00-.663.022m2.154 7.912c-.055.28.201.58.498.58h6.934c.356.035.67.091.67.913 0 1.047-.168 2.886-1.031 5.057-.865 2.172-2.155 4.531-2.603 4.455-1.215.08-7.014.109-8.108 0-.556-.056-.818-.135-1.113-.306-.266-.152-.59-.423-1.066-.791v-7.6c2.349-2.88 2.979-5.302 3.096-8.3.338-1.495 1.702-1.082 2.179-.13.697 2.402.879 4.442.544 6.122M1.263 9.262h4.55c.148 0 .251.1.251.244v8.773c0 .144-.103.243-.252.243h-4.55c-.148 0-.251-.099-.251-.243V9.506c0-.144.103-.244.252-.244"></path></svg>
                             <span key={item.id + "s1"} data-id={ item.id + "s1"}>10</span>
@@ -876,7 +925,9 @@ function CommentSection(props){
     
                     
                     </CommentDisplay>
-                {/* </CSSTransition> */}
+
+                   {/* )} */}
+                
                 </>
                
             )
@@ -891,7 +942,12 @@ function CommentSection(props){
     
     return (
     
-        
+        // <CSSTransition
+        //             in={true}
+        //             timeout={800}
+        //             classNames="ziplokers"
+        //             unmountOnExit
+        //             >
         <Comments>
                         
                                 
@@ -916,6 +972,7 @@ function CommentSection(props){
                 </div>    
             </div>
         </Comments>
+        // </CSSTransition>
     );
 }
 
