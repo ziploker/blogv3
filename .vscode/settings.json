@@ -8,6 +8,7 @@
         "blaze",
         "by",
         "commentable",
+        "commentid",
         "datetime",
         "downcase",
         "florda",
@@ -20,6 +21,7 @@
         "mailgun",
         "minmax",
         "originalcomment",
+        "showmore",
         "smooth",
         "sref",
         "urlsafe"

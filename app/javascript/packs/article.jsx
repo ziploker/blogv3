@@ -543,7 +543,7 @@ function Article(props){
         .then(response => {
 
 
-            console.log("resoooooooooooooooonse = " + response.inspect)
+            //console.log("resoooooooooooooooonse = " + response.inspect)
           
                 //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
                 addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
@@ -581,84 +581,12 @@ function Article(props){
     
     
 
-    const handleReplyButton = (id) => {
-
-        
-        //console.log("xxxxx is = " + x);
-        
-
-       if (rows[id] == "true"){
-            setRows({...rows, [id]: "false"})
-
-       }else{
-
-        setRows({...rows,[id]: "true"})
-
-       }
-
-       
-
-        
-        
-    }
+    
 
 
     
 
-    const handleShowMoreButton = (childrenCommentArray) => {
-
-
-            console.log("handleShowMoreButtonfrom article.jsx------------------------")
-                        
-            
-            let tempArray = []
-            let tempShowMore = {}
-            childrenCommentArray.map( (x, i) => {
-                
-            
-
-                
-                tempArray.push(x.id)
-                
-            
-            
-            
-            })
-        
-            
-            tempArray.forEach (x => {
-
-                console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx idididid" + x)
-                if (showMore[x] == "true"){
-                    
-                    console.log("in if and x is = " + x + " and was true, changing it!")
-                    
-                    tempShowMore[x] = "false"
-        
-                }else{
-                    console.log("in else and x is = " + x + " and was false, changing it!")
-                   
-                    tempShowMore[x] = "true"
-        
-                }
-
-
-
-
-
-            } )
-
-            setShowMore({...showMore, ...tempShowMore})
-
-
-            
-        
-        
-
-        
-        console.log("childrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArray is = " + JSON.stringify(tempArray, null, 4));
-   
-    }
+    
             
 
 
@@ -666,11 +594,11 @@ function Article(props){
     const returnFirstItemOfArray = (id) => {
 
         
-        console.log("returnFirstItemOfArrayxxxxreturnFirstItemOfArray is = " + id);
-        console.log("LengthnnnLengthnnnLengthnnnLength is = " + id.length.toString());
+        //console.log("returnFirstItemOfArrayxxxxreturnFirstItemOfArray is = " + id);
+        //console.log("LengthnnnLengthnnnLengthnnnLength is = " + id.length.toString());
         
         if (id.length > 0){
-            console.log("LengthnnnLengthnnnLengthnnnLength is = " + id[0].toString());
+            //console.log("LengthnnnLengthnnnLengthnnnLength is = " + id[0].toString());
             return id[0]
         }
 
@@ -732,19 +660,19 @@ function Article(props){
 
         function getAllId(arr, key) {
             
-            console.log("================ in getAllId =======================")
+            //console.log("================ in getAllId =======================")
             // console.log("array = " + JSON.stringify(arr, null, 4))
             // console.log("key = " + JSON.stringify(key, null, 4))
             
             arr.forEach(function(item) {
                 
-                console.log("================ in arr.forEach =======================")
+                //console.log("================ in arr.forEach =======================")
                 // console.log("item = " + JSON.stringify(item, null, 4))
                 // console.log("key = " + JSON.stringify(key, null, 4))
                 
                 for (let keys in item) {
                     
-                    console.log("================ in for loop =======================")
+                    //console.log("================ in for loop =======================")
                     // console.log("keys = " + JSON.stringify(keys, null, 4))
                     // console.log("key = " + JSON.stringify(key, null, 4))
                     // console.log("item = " + JSON.stringify(item, null, 4))
@@ -759,16 +687,16 @@ function Article(props){
 
             })
 
-            console.log("================ OUT getAllId =======================")
+            //console.log("================ OUT getAllId =======================")
         }
         
         getAllId(c, 'id')
-        console.log(newArray)
+        //console.log(newArray)
 
         
         newArray.forEach(function(item) {
 
-            console.log("xxxitemx = " + item)
+            //console.log("xxxitemx = " + item)
             
             
             newState[item] = "false"
@@ -781,7 +709,7 @@ function Article(props){
 
 
 
-        console.log("newState = " + JSON.stringify(newState, null, 4))
+        //console.log("newState = " + JSON.stringify(newState, null, 4))
 
         setRows(newState);
 
@@ -802,19 +730,19 @@ function Article(props){
 
         function getAllId(arr, key) {
             
-            console.log("================ in getAllId =======================")
+            //console.log("================ in getAllId =======================")
             // console.log("array = " + JSON.stringify(arr, null, 4))
             // console.log("key = " + JSON.stringify(key, null, 4))
             
             arr.forEach(function(item) {
                 
-                console.log("================ in arr.forEach =======================")
+                //console.log("================ in arr.forEach =======================")
                 // console.log("item = " + JSON.stringify(item, null, 4))
                 // console.log("key = " + JSON.stringify(key, null, 4))
                 
                 for (let keys in item) {
                     
-                    console.log("================ in for loop =======================")
+                    //console.log("================ in for loop =======================")
                     // console.log("keys = " + JSON.stringify(keys, null, 4))
                     // console.log("key = " + JSON.stringify(key, null, 4))
                     // console.log("item = " + JSON.stringify(item, null, 4))
@@ -829,16 +757,16 @@ function Article(props){
 
             })
 
-            console.log("================ OUT getAllId =======================")
+            //console.log("================ OUT getAllId =======================")
         }
         
         getAllId(c, 'id')
-        console.log(newArray)
+        //console.log(newArray)
 
         
         newArray.forEach(function(item) {
 
-            console.log("xxxitemx = " + item)
+            //console.log("xxxitemx = " + item)
             
             
             newState[item] = "false"
@@ -851,7 +779,7 @@ function Article(props){
 
 
 
-        console.log("newState = " + JSON.stringify(newState, null, 4))
+        //console.log("newState = " + JSON.stringify(newState, null, 4))
 
         setShowMore(newState);
 
@@ -953,13 +881,14 @@ function Article(props){
                    <Comments 
                     artDataComments={artDataComments} 
                     showMore={showMore}
+                    setShowMore={setShowMore}
                     userData={userData}
                     artData={artData}
                     setArtDataComments={setArtDataComments}
                     rows={rows}
                     setRows={setRows}
-                    handleShowMoreButton={handleShowMoreButton}
-                    handleReplyButton={handleReplyButton}
+                    
+                    
                     
                     
                     />
