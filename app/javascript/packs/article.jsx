@@ -545,7 +545,7 @@ function Article(props){
 
             //console.log("resoooooooooooooooonse = " + response.inspect)
           
-                //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+                addAllCommentsToStateForReplyButtonToWork(response.data.comments)
                 addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
 
                
