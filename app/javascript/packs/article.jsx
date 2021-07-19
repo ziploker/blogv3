@@ -549,8 +549,7 @@ function Article(props){
                 addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
 
                
-            
-                setUserData(response.data.user)
+                
                 setArtData(response.data.article)
                 setArtDataComments(response.data.comments)
                 
@@ -880,7 +879,7 @@ function Article(props){
 
                    <Comments 
                     artDataComments={artDataComments} 
-                    showMore={showMore}
+                    showmore={showMore}
                     setShowMore={setShowMore}
                     userData={userData}
                     artData={artData}

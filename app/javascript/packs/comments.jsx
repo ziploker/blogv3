@@ -213,8 +213,8 @@ function CommentSection(props){
 
     console.log("========================== CommentSection Start ============================")
 
-    console.log("innnnnnnnnnn commentsection" + props.showMore[288])
-    const transition = useTransition(props.showMore[288], {
+    console.log("innnnnnnnnnn commentsection" + props.showmore[288])
+    const transition = useTransition(props.showmore[288], {
            
         ///
         ///
@@ -285,7 +285,7 @@ function CommentSection(props){
         tempArray.forEach (x => {
 
             //console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx idididid" + x)
-            if (props.showMore[x] == "true"){
+            if (props.showmore[x] == "true"){
                 
                 //console.log("in if and x is = " + x + " and was true, changing it!")
                 
@@ -304,7 +304,7 @@ function CommentSection(props){
 
         } )
 
-        props.setShowMore({...props.showMore, ...tempShowMore})
+        props.setShowmore({...props.showmore, ...tempShowmore})
 
     }
         
@@ -336,7 +336,7 @@ function CommentSection(props){
         tempArray.forEach (x => {
 
             //console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx idididid" + x)
-            if (props.showMore[x] == "true"){
+            if (props.showmore[x] == "true"){
                 
                 //console.log("in if and x is = " + x + " and was true, changing it!")
                 
@@ -374,12 +374,12 @@ function CommentSection(props){
 
     
     ////////////// Comment Function Called recursively ///////////////
-    function Comment({ item, rows, showMore, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) {
+    function Comment({ item, rows, showmore, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) {
         
         
         console.log("+++++++++++++++++++++++++++++++++++runit+++++++++++++++++++++++++++++++++++++++++++++++++++")
         
-        const transition = useTransition(showMore[item.id], {
+        const transition = useTransition(showmore[item.id], {
            
             from: {opacity: 0},
             enter: {y: 0, opacity: 1},
@@ -392,7 +392,7 @@ function CommentSection(props){
             
             
             
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={storyID} setArtDataComments={setArtDataComments} handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={rows} setRows={setRows} showMore={showMore} />
+            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={storyID} setArtDataComments={setArtDataComments} handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={rows} setRows={setRows} showmore={showmore} />
 
         });
 
@@ -408,7 +408,7 @@ function CommentSection(props){
                 
                 {transition((style,val) => val == "true" ? '' : 
                 
-                    <CommentDisplay style={style} key={item.id + "commentDisplay"} showMore={showMore} item={item} id={item.id} >
+                    <CommentDisplay style={style} key={item.id + "commentDisplay"} showmore={showmore} item={item} id={item.id} >
 
                         
                         <BorderDiv/>
@@ -501,7 +501,7 @@ function CommentSection(props){
 
                                 
                                 
-                                <Comment key={c.id} item={c} userData={props.userData} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={props.rows} setRows={props.setRows} showMore={props.showMore} />
+                                <Comment key={c.id} item={c} userData={props.userData} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={props.rows} setRows={props.setRows} showmore={props.showmore} />
 
                             )
                         })
