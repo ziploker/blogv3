@@ -1,4 +1,4 @@
-import React, {useEffect, useState, usePrevious} from 'react';
+import React, {useEffect, useState, useRef, usePrevious} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -510,6 +510,11 @@ function Article(props){
     const [rows, setRows] = useState({})
     const [showMore, setShowMore] = useState({})
     
+    const showMoreButtonRefs = useRef([])
+    showMoreButtonRefs.current = []
+
+    
+    
 
     const [isCommentsLoading, setIsCommentsLoading] = useState(true);
 
@@ -780,7 +785,13 @@ function Article(props){
 
         //console.log("newState = " + JSON.stringify(newState, null, 4))
 
-        setShowMore(newState);
+        //setShowMore(newState);
+
+        console.log("right before saving ref", newState)
+        console.log(typeof newState)
+        showMoreButtonRefs.current.push(newState) 
+        console.log("right after saving ref", showMoreButtonRefs)
+
 
     }
 
@@ -878,6 +889,7 @@ function Article(props){
                : */}
 
                    <Comments 
+                   showMoreButtonRefs={showMoreButtonRefs}
                     artDataComments={artDataComments} 
                     showmore={showMore}
                     setShowMore={setShowMore}

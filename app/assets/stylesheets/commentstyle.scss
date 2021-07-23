@@ -2,12 +2,12 @@
 
 .replies{
 
-    transform: scale(1);
+    //transform: scale(1);
     max-height: 300px;
-    transition: all 2s ease-out;
-    //opacity: 1;
+    transition: all 100ms ease-out;
+    opacity: 1;
     //transform: translateX(0%);
-    transition-delay: 2s;
+    //transition-delay: 50ms;
 
     //position: relative;
     margin: 10px 0px 0px 25px;
@@ -29,8 +29,8 @@
 .replies.shrink{
 
     max-height: 0;
-    transform: scale(0);
-    //opacity: .5;
+    //transform: scale(0);
+    opacity: 0;
     //transform: translateX(100%);
     
 }
