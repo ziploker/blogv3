@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   
   post '/blog/get_article_info', to: 'sparks#get_article_info'
   
-  #get 'blog/:id', to: 'sparks#story'
+  #get 'blog/:id', to: 'sparks#index'
   
   
   get '/ziploker/edit/:id', to: 'stories#edit'
