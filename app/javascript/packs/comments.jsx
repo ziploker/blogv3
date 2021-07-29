@@ -220,6 +220,11 @@ function CommentSection(props){
 
 
     
+    function handleOnLoad(e){
+
+        console.log("OOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNLOAD", e)
+    
+    }
     
     const hideCommentsOrShowComments = (childrenCommentArray, id) => {
 
@@ -304,6 +309,47 @@ function CommentSection(props){
        
      return "mmm"
     
+    }
+
+
+    const showRepliesOrHideReplies = (childrenCommentArray) => {
+
+        console.log("showRepliesOrHideRepli-----------", childrenCommentArray)
+        console.log("showRepliesOrHideRepli-----------", allShowMoreRefs.current)
+
+
+        allShowMoreRefs.current.map ( (current, i) => {
+
+
+            console.log(current)
+
+
+        })
+        
+        
+        // childrenCommentArray.map(item => {
+
+        //     allShowMoreRefs.current.map ( (current, i) => {
+
+        //         console.log(item.id + " [[*][*]]] " + current.id)
+
+        //         if (item.id == current.id){
+
+        //             if (current.classList.contains("shrink")){
+
+        //                 console.log("sssssssssssssssssssssssssssssssss")
+        //             }else{
+        //                 console.log("nsnsnsnsnsnsnsnsnsnsnsnsnsnsnsnsns")
+        //             }
+
+                    
+        //         }
+            
+        //     })
+
+        // })
+
+
     }
 
     
@@ -408,7 +454,7 @@ function CommentSection(props){
                         </VoteDown>
     
                         {/* <span style={{cursor: "pointer", marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}}  onClick={(e) => handleShowMoreLabel(e)} onClick={(e) => handleShowMoreButton(item.comments, e, item.id)}> {item.comments === undefined || item.comments.length == 0 ? "" : hideCommentsOrShowComments(item.comments, item.id)} </span> */}
-                        <span style={{cursor: "pointer", marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}}  onClick={(e) => handleShowMoreLabel(e)} onClick={(e) => handleShowMoreButton(item.comments, e, item.id)}> {props.showMore[item.id] == "SHRINK" ? "show replies" : "hide replies"}</span>
+                        <span style={{cursor: "pointer", marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}} onClick={(e) => handleShowMoreButton(item.comments, e, item.id)}> {item.comments === undefined || item.comments.length == 0 ? "" : "hide replies"}</span>
 
                     </BottomBarWrapper>
     
@@ -488,7 +534,24 @@ function CommentSection(props){
 
         // }
 
+        console.log("eeeeeeeeeeeeeeeeeeeeee", e)
+
+        console.log("innerHTML = ", e.target.innerHTML)
+        console.log("innerText = ", e.target.innerText)
+
+        console.log("innerHTML is = to hide replies ", e.target.innerHTML == "hide replies" ? "yes" : "no")
+        console.log("inneText is = to hide replies ", e.target.innerText == "hide replies" ? "yes" : "no")
         
+        if (e.target.innerText == "hide replies"){
+
+            e.target.innerText = "show replies"
+            console.log("afterchange case1", e.target.innerText)
+        }else{
+
+            e.target.innerText = "hide replies"
+            console.log("afterchange case2", e.target.innerText)
+
+        }
 
         childrenCommentArray.map(item => {
 
