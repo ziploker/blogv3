@@ -510,8 +510,8 @@ function Article(props){
     const [rows, setRows] = useState({})
     const [showMore, setShowMore] = useState({})
     
-    const showMoreButtonRefs = useRef([])
-    showMoreButtonRefs.current = []
+    //const showMoreButtonRefs = useRef([])
+    //showMoreButtonRefs.current = []
 
     
     
@@ -773,7 +773,7 @@ function Article(props){
             //console.log("xxxitemx = " + item)
             
             
-            newState[item] = "false"
+            newState[item] = "NO_SHRINK"
 
             
 
@@ -785,12 +785,12 @@ function Article(props){
 
         //console.log("newState = " + JSON.stringify(newState, null, 4))
 
-        //setShowMore(newState);
+        setShowMore(newState);
 
-        console.log("right before saving ref", newState)
-        console.log(typeof newState)
-        showMoreButtonRefs.current.push(newState) 
-        console.log("right after saving ref", showMoreButtonRefs)
+        //console.log("right before saving ref", newState)
+        //console.log(typeof newState)
+        //showMoreButtonRefs.current.push(newState) 
+        //console.log("right after saving ref", showMoreButtonRefs)
 
 
     }
@@ -889,9 +889,9 @@ function Article(props){
                : */}
 
                    <Comments 
-                   showMoreButtonRefs={showMoreButtonRefs}
+                   //showMoreButtonRefs={showMoreButtonRefs}
                     artDataComments={artDataComments} 
-                    showmore={showMore}
+                    showMore={showMore}
                     setShowMore={setShowMore}
                     userData={userData}
                     artData={artData}
