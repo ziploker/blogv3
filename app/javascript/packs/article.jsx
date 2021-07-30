@@ -891,8 +891,8 @@ function Article(props){
                    <Comments 
                    //showMoreButtonRefs={showMoreButtonRefs}
                     artDataComments={artDataComments} 
-                    showMore={showMore}
-                    setShowMore={setShowMore}
+                    //showMore={showMore}
+                    //setShowMore={setShowMore}
                     userData={userData}
                     artData={artData}
                     setArtDataComments={setArtDataComments}

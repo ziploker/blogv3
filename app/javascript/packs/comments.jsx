@@ -80,9 +80,6 @@ const CommentDisplay = styled.div`
 
 
 
-
-
-
 const BorderDiv = styled.div`
 
 
@@ -117,7 +114,6 @@ const CommentBody = styled.p`
 
 
 
-
 const Reply = styled.div`
 
     color: rgba(7, 7, 7, 0.65);
@@ -144,7 +140,6 @@ const TopBarWrapper = styled.div`
 
 
 
-
 const BottomBarWrapper = styled.div`
 
     grid-area: bottomBar;
@@ -152,7 +147,6 @@ const BottomBarWrapper = styled.div`
     flex-direction: row;
     padding-left: 35px;
 `;
-
 
 
 
@@ -177,6 +171,7 @@ const VoteUp = styled.div`
         font-size: 13px;
     }
 `;
+
 
 
 const VoteDown = styled.div`
@@ -205,156 +200,19 @@ const VoteDown = styled.div`
 
 
 
-
+////////////// CommentSection //////////////////////////////////
 
 function CommentSection(props){
 
 
     console.log("========================== CommentSection Start ============================")
     
-    const [artDataComments, setArtDataComments] = useState([])
+    //const [artDataComments, setArtDataComments] = useState([])
     const allShowMoreRefs = useRef([]);
     allShowMoreRefs.current = []
 
-    console.log("size right after creating allShowmoreRefs is ", allShowMoreRefs.current.length )
 
 
-    
-    function handleOnLoad(e){
-
-        console.log("OOOOOOOOOOOOOOOOOOONNNNNNNNNNNNNNNNNLOAD", e)
-    
-    }
-    
-    const hideCommentsOrShowComments = (childrenCommentArray, id) => {
-
-
-        console.log("in hideCommentsOrShowComments and iD is " + id)
-        //console.log("showMore------", props.showMore)
-
-
-        // childrenCommentArray.map(item => {
-
-        //     console.log("childrenCommentArraychildrenCommentArraychildrenCommentArray")
-        //     return "kkkkk"
-
-        //     allShowMoreRefs.current.map ( (current, i) => {
-
-        //         console.log("allShowMoreRefsallShowMoreRefsallShowMoreRefsallShowMoreRefs")m
-
-
-        //         console.log(item.id + " )-( " + current.id)
-
-        //         if (item.id == current.id){
-
-        //             if (current.classList.contains("shrink")){
-
-        //                 return "show replies"
-        //             }else{
-        //                 return "hide replies"
-        //             }
-
-                    
-        //         }
-            
-        //     })
-
-       // })
-        // let tempArray = []
-        // let numOfTrue = 0
-        // let numOfFalse = 0
-        // let tempShowMore = {}
-        // childrenCommentArray.map( (x, i) => {
-    
-    
-    
-    
-        //     tempArray.push(x.id)
-    
-    
-    
-    
-        // })
-    
-    
-        // tempArray.forEach (x => {
-    
-        //     //console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx idididid" + x)
-        //     if (props.showmore[x] == "true"){
-    
-        //         //console.log("in if and x is = " + x + " and was true, changing it!")
-    
-        //         numOfTrue = numOfTrue + 1
-    
-        //     }else{
-        //         //console.log("in else and x is = " + x + " and was false, changing it!")
-    
-        //         numOfFalse = numOfFalse + 1
-    
-        //     }
-    
-    
-    
-    
-        // } )
-    
-        // //props.setShowMore({...props.showMore, ...tempShowMore})
-        // if (numOfTrue > 0){
-    
-        //     return "show replies"
-        // }else{
-        //     return "hide replies"
-        // }
-
-       
-     return "mmm"
-    
-    }
-
-
-    const showRepliesOrHideReplies = (childrenCommentArray) => {
-
-        console.log("showRepliesOrHideRepli-----------", childrenCommentArray)
-        console.log("showRepliesOrHideRepli-----------", allShowMoreRefs.current)
-
-
-        allShowMoreRefs.current.map ( (current, i) => {
-
-
-            console.log(current)
-
-
-        })
-        
-        
-        // childrenCommentArray.map(item => {
-
-        //     allShowMoreRefs.current.map ( (current, i) => {
-
-        //         console.log(item.id + " [[*][*]]] " + current.id)
-
-        //         if (item.id == current.id){
-
-        //             if (current.classList.contains("shrink")){
-
-        //                 console.log("sssssssssssssssssssssssssssssssss")
-        //             }else{
-        //                 console.log("nsnsnsnsnsnsnsnsnsnsnsnsnsnsnsnsns")
-        //             }
-
-                    
-        //         }
-            
-        //     })
-
-        // })
-
-
-    }
-
-    
-    
-    
     
     const getReplyArray = (childrenCommentArray) => {
     
@@ -368,12 +226,66 @@ function CommentSection(props){
         })
     
         return tempArray.length > 0 ? tempArray : "blank"
-    
-    
     }
     
     
-    const Comment = ({ item, rows, showmore, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) => {
+    const handleReplyButton = (id) => {
+
+        if (props.rows[id] == "true"){
+            props.setRows({...props.rows, [id]: "false"})
+
+       }else{
+
+        props.setRows({...props.rows,[id]: "true"})
+
+       }
+
+    }
+
+
+    const handleShowMoreButton = (childrenCommentArray, e, itemID) => {
+
+
+        if (e.target.innerText == "hide replies"){
+
+            e.target.innerText = "show replies"
+            console.log("afterchange case1", e.target.innerText)
+        }else{
+
+            e.target.innerText = "hide replies"
+            console.log("afterchange case2", e.target.innerText)
+        }
+
+        
+        
+        childrenCommentArray.map(item => {
+
+            allShowMoreRefs.current.map ( (current, i) => {
+
+                console.log(item.id + " )( " + current.id)
+
+                if (item.id == current.id){
+
+                    if (current.classList.contains("shrink")){
+
+                        current.classList.remove("shrink")
+                    }else{
+                        current.classList.add("shrink")
+                    }
+
+                    
+                }
+            
+            })
+
+        })
+
+
+        
+    }
+
+    
+    const Comment = ({ item, rows, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) => {
     
         console.log("+++++++++++++++++++++++++++++++++++runit+++++++++++++++++++++++++++++++++++++++++++++++++++")
     
@@ -389,18 +301,13 @@ function CommentSection(props){
                 console.log("size after adding one is ", allShowMoreRefs.current.length )
             }
     
-    
-    
         }
     
     
     
         const nestedComments = (item.comments || []).map(com => {
     
-    
-    
-    
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={storyID} setArtDataComments={setArtDataComments} handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={rows} setRows={setRows} showmore={showmore} />
+            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userData={userData} storyID={storyID} setArtDataComments={setArtDataComments} handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={rows} setRows={setRows} />
     
         });
     
@@ -410,22 +317,15 @@ function CommentSection(props){
     
             <>
     
-    
-    
-    
-    
-    
-                {console.log("insode return of Comment function")}
-                {/* <CommentDisplay className={showmore[item.id] == "false" ? "replies" : "replies shrink"} key={item.id + "commentDisplay"} showmore={showmore} item={item} id={item.id} > */}
-                <CommentDisplay ref={addToShowMoreRefs} className={"replies"} key={item.id + "commentDisplay"} showmore={showmore} item={item} id={item.id} >
+                <CommentDisplay ref={addToShowMoreRefs} className={"replies"} key={item.id + "commentDisplay"} item={item} id={item.id} >
     
                     <BorderDiv/>
     
     
     
                     <TopBarWrapper>
-                        <img src={item.author_avatar}/>
-                        {/* <img src={defaultAvatar}/> */}
+                        {/* <img src={item.author_avatar}/> */}
+                        <img src={defaultAvatar}/>
                         <h3 style={{alignSelf: "center", fontSize: ".6em", gridArea: "nick", marginRight: "8px"}}>{item.author_nick}</h3>
                         <span style={{alignSelf: "center", gridArea: "date", fontSize: ".6em", color: "gray"}}><ReactTimeAgo key={item.id + "rta"} data-id={ item.id + "rta"} date={item.created_at ? new Date(item.created_at) : null} locale="en-US" timeStyle="round-minute"/></span>
     
@@ -453,7 +353,6 @@ function CommentSection(props){
     
                         </VoteDown>
     
-                        {/* <span style={{cursor: "pointer", marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}}  onClick={(e) => handleShowMoreLabel(e)} onClick={(e) => handleShowMoreButton(item.comments, e, item.id)}> {item.comments === undefined || item.comments.length == 0 ? "" : hideCommentsOrShowComments(item.comments, item.id)} </span> */}
                         <span style={{cursor: "pointer", marginLeft: "10px", fontSize: "10px", lineHeight: "40px"}} onClick={(e) => handleShowMoreButton(item.comments, e, item.id)}> {item.comments === undefined || item.comments.length == 0 ? "" : "hide replies"}</span>
 
                     </BottomBarWrapper>
@@ -497,199 +396,13 @@ function CommentSection(props){
     
 
 
+    
 
 
 
-    const handleReplyButton = (id) => {
-
-
-
-       if (props.rows[id] == "true"){
-            props.setRows({...props.rows, [id]: "false"})
-
-       }else{
-
-        props.setRows({...props.rows,[id]: "true"})
-
-       }
-
-
-
-
-
-    }
-
-    const handleShowMoreButton = (childrenCommentArray, e, itemID) => {
-
-
-        // console.log("hhhhhhh", itemID + "--" + props.showMore[itemID])
-
-        // if (props.showMore[itemID] == "NO_SHRINK"){
-
-        //     props.setShowMore({...props.showMore, [itemID] : "SHRINK"})
-
-
-        // }else{
-        //     props.setShowMore({...props.showMore, [itemID] : "NO_SHRINK"})
-
-        // }
-
-        console.log("eeeeeeeeeeeeeeeeeeeeee", e)
-
-        console.log("innerHTML = ", e.target.innerHTML)
-        console.log("innerText = ", e.target.innerText)
-
-        console.log("innerHTML is = to hide replies ", e.target.innerHTML == "hide replies" ? "yes" : "no")
-        console.log("inneText is = to hide replies ", e.target.innerText == "hide replies" ? "yes" : "no")
-        
-        if (e.target.innerText == "hide replies"){
-
-            e.target.innerText = "show replies"
-            console.log("afterchange case1", e.target.innerText)
-        }else{
-
-            e.target.innerText = "hide replies"
-            console.log("afterchange case2", e.target.innerText)
-
-        }
-
-        childrenCommentArray.map(item => {
-
-            allShowMoreRefs.current.map ( (current, i) => {
-
-                console.log(item.id + " )( " + current.id)
-
-                if (item.id == current.id){
-
-                    if (current.classList.contains("shrink")){
-
-                        current.classList.remove("shrink")
-                    }else{
-                        current.classList.add("shrink")
-                    }
-
-                    
-                }
-            
-            })
-
-        })
-
-
-        //console.log("handleShowMoreButtonfrom article.jsx------------------------")
-
-
-        // let tempArray = []
-        // let tempShowMore = {}
-        // childrenCommentArray.map( (x, i) => {
-
-
-
-
-        //     tempArray.push(x.id)
-
-
-
-
-        // })
-
-
-        // console.log("e from handleshowmore button", childrenCommentArray)
-
-        // tempArray.forEach (x => {
-
-        //     //console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx idididid" + x)
-        //     if (props.showmore[x] == "true"){
-
-        //         //console.log("in if and x is = " + x + " and was true, changing it!")
-
-        //         tempShowMore[x] = "false"
-
-        //     }else{
-        //         //console.log("in else and x is = " + x + " and was false, changing it!")
-
-        //         tempShowMore[x] = "true"
-
-        //     }
-
-
-
-
-
-        // } )
-
-        // //props.setShowMore({...props.showmore, ...tempShowMore})
-
-
-        // allShowMoreRefs.current.map ( (item, i) => {
-
-        //     //console.log(item)
-
-        //     //setTimeout(function() {
-
-        //         // if (i == 1){
-
-
-        //         //     //item.classList.add("shrink")
-        //         //     console.log(item.childNodes[5])
-
-        //         //     if (item.childNodes[5].classList.contains("shirnk")){
-        //         //         item.childNodes[5].classList.remove("shrink")
-        //         //     }else{
-        //         //         item.childNodes[5].classList.add("shrink")
-        //         //     }
-
-
-
-        //         // }
-        //     //}, 1000);
-
-        //     })
-        // //allReplyRefs.current[1].classList.add("grtreeeeeeeeeeeeeeeeeennn");
-
-
-        // // allReplyRefs.current.map( item => {
-
-        // //     item.classList.add("dfgsdfgdfgdfgdfgdfgdfgdfg")
-        // //     //console.log("info", item)
-
-
-        // // })
-
-
-        // setTimeout(function() {
-        //
-        //.current.classList.add("shrink");
-        // }, 20);
-
-
-
-
-    }
-
-
-
-
-    const handleShowMoreLabel = (e) => {
-
-
-
-        console.log("ALLLLLT", e)
-    }
-
-
-
-
-    //console.log("childrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArraychildrenCommentArray is = " + JSON.stringify(tempArray, null, 4));
-
-
-
-
-
-    ////////////// Comment Function Called recursively ///////////////
-
-
-
+    
+    
+    
     if (props.artDataComments.length == 0) {
 
         return null
@@ -699,43 +412,30 @@ function CommentSection(props){
 
     return (
 
-
         <Comments>
-
 
             <div>
 
                 <div style={{position: "relative"}}>
 
-
-
                     {
-
 
                         props.artDataComments.map( (c) => {
 
-
-
                             return (
 
-
-
-                                // <Comment key={c.id} item={c} userData={props.userData} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={props.rows} setRows={props.setRows} showmore={props.showmore} />
-                                <Comment key={c.id} item={c} userData={props.userData} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={props.rows} setRows={props.setRows} showmore={props.showmore} />
+                                <Comment key={c.id} item={c} userData={props.userData} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={props.rows} setRows={props.setRows} />
 
                             )
                         })
                     }
-
-
-                    {/* {transition((style,item) => item == "true" ? <animated.h1>TRUE</animated.h1> : <animated.h1>FALSE</animated.h1>)} */}
+                
                 </div>
-
+            
             </div>
-
-
+        
         </Comments>
-
+    
     );
 
 
