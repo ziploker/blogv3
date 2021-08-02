@@ -211,6 +211,9 @@ function CommentSection(props){
     const allShowMoreRefs = useRef([]);
     allShowMoreRefs.current = []
 
+    const allReplyRefs = useRef([]);
+    allReplyRefs.current = []
+
 
 
     
@@ -246,6 +249,7 @@ function CommentSection(props){
     const handleShowMoreButton = (childrenCommentArray, e, itemID) => {
 
 
+        //set the label
         if (e.target.innerText == "hide replies"){
 
             e.target.innerText = "show replies"
@@ -258,6 +262,7 @@ function CommentSection(props){
 
         
         
+        //get the ref(s) and change the css
         childrenCommentArray.map(item => {
 
             allShowMoreRefs.current.map ( (current, i) => {
@@ -285,6 +290,8 @@ function CommentSection(props){
     }
 
     
+    
+    //function called recursivley
     const Comment = ({ item, rows, setRows, userData, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) => {
     
         console.log("+++++++++++++++++++++++++++++++++++runit+++++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -302,6 +309,24 @@ function CommentSection(props){
             }
     
         }
+
+
+        const addToReplyeRefs = (el) => {
+    
+            console.log("size b4 going in addToReplyeRefs is ", allReplyRefs.current.length )
+            console.log("in================= addToRefs")
+    
+            if (el && !allShowMoreRefs.current.includes(el)){
+                console.log("inside================= addToReplyeRefs")
+                console.log(el)
+                allShowMoreRefs.current.push(el)
+                console.log("size after adding one is ", allReplyRefs.current.length )
+            }
+    
+        }
+        
+
+        
     
     
     
@@ -362,7 +387,7 @@ function CommentSection(props){
     
     
     
-    
+                        ref={addToReplyeRefs}
                         originalcommentAuthor={item.author_nick}
                         rows={rows}
                         setRows={setRows}
