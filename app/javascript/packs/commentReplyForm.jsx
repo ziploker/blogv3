@@ -38,10 +38,10 @@ const Form = styled.form`
 
 const FormWrapper = styled.div`
 
-  display: ${props => props.rows[props.commentid] == "true" ? "grid" : "grid"};
+  display: grid;
   //display: grid;
 
-  
+  position: relative;
   grid-template-columns: minmax(min-content, max-content) 1fr;
   grid-template-rows: minmax(50px, 1fr) minmax(min-content, max-content);
   grid-template-areas:
@@ -53,20 +53,11 @@ const FormWrapper = styled.div`
   margin: 0px 50px 0px 85px;
   //min-height: 100px;
   
-  z-index: ${props => props.rows[props.commentid] == "true" ? "1" : "-1"};
-
-  opacity: ${props => props.rows[props.commentid] == "true" ? "1" : "0"};
-
-  height: ${props => props.rows[props.commentid] == "true" ? "initial" : "0px"};
-  min-height: ${props => props.rows[props.commentid] == "true" ? "100px" : "0px"};
-  
-
-  position: relative;
-  top: ${props => props.rows[props.commentid] == "true" ? "7px" : "-100px"};
-  left: 0;
+  //top: -100px;
+  //left: 0;
   background-color: F4F4F4;
   //padding: 20px;
-  transition: all .05s ease 0s;
+  
 
   img {
       width: 25px;
@@ -159,7 +150,7 @@ const formData = new FormData();
 
 
 
-function CommentReplyForm(props) {
+function CommentReplyForm(props, ref) {
 
 
   const [state, setState] = React.useState({
@@ -179,6 +170,11 @@ function CommentReplyForm(props) {
     //activeIndex: null
 
   })
+
+
+  const {allReplyRefs} = ref
+
+  
     
    
   
@@ -332,7 +328,9 @@ function CommentReplyForm(props) {
   
   return(
 
-    <FormWrapper rows={props.rows} commentid={props.commentid}>
+    
+
+    <div id={props.commentid + "-replyform"} className={"replyFormHidden"} ref={props.addToReplyRefs} rows={props.rows} commentid={props.commentid}>
         
 
       <img src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
@@ -398,8 +396,11 @@ function CommentReplyForm(props) {
         
       </Form>
       <button form={props.commentid.toString() + "form"} style={{marginTop: "3px", gridArea: "main_comment_buttons"}} type="submit" >reply now</button>
-    </FormWrapper>
+    </div>
+
+   
   )
+ 
 }
 
 
@@ -411,4 +412,8 @@ function CommentReplyForm(props) {
 
 
 
-export default props => <CommentReplyForm {...props} />;
+//export default props => <CommentReplyForm {...props} />;
+
+
+const Wtf = React.forwardRef(CommentReplyForm);
+export default Wtf;

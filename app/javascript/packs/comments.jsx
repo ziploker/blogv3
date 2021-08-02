@@ -215,7 +215,26 @@ function CommentSection(props){
     allReplyRefs.current = []
 
 
+    useEffect (() => {
 
+        console.log("inUseEffectinCommentSection - allShowMoreRefs size is = " + allShowMoreRefs.current.length)
+        console.log("inUseEffectinCommentSection - allReplyRefs size is = " + allReplyRefs.current.length)
+
+
+    allReplyRefs.current.map(item=>{
+
+
+        console.log(item.id.substr(0, item.id.indexOf('-')))
+        
+    })
+
+    allShowMoreRefs.current.map(item=>{
+
+
+        console.log(item)
+    })
+
+    })
     
     const getReplyArray = (childrenCommentArray) => {
     
@@ -232,16 +251,45 @@ function CommentSection(props){
     }
     
     
-    const handleReplyButton = (id) => {
+    const handleReplyButton = (childrenCommentArray, e, itemID) => {
 
-        if (props.rows[id] == "true"){
-            props.setRows({...props.rows, [id]: "false"})
+    //     if (props.rows[id] == "true"){
+    //         props.setRows({...props.rows, [id]: "false"})
 
-       }else{
+    //    }else{
 
-        props.setRows({...props.rows,[id]: "true"})
+    //     props.setRows({...props.rows,[id]: "true"})
 
-       }
+    //    }
+
+    console.log(" in handle reply button ------------------------")
+    console.log(allReplyRefs.current.length)
+
+    
+
+    allReplyRefs.current.map ( (current, i) => {
+
+        console.log(itemID + "<><><>" + current.id.substr(0, current.id.indexOf('-')))
+
+        if (itemID == current.id.substr(0, current.id.indexOf('-'))){
+
+            console.log("find ref loop start")
+
+            if (current.classList.contains("replyFormHidden")){
+
+                current.classList.remove("replyFormHidden")
+                console.log("removed class")
+            }else{
+                current.classList.add("replyFormHidden")
+                console.log("added class")
+            }
+
+            console.log("find ref loop end")
+        }
+    
+    })
+
+    
 
     }
 
@@ -299,10 +347,10 @@ function CommentSection(props){
         const addToShowMoreRefs = (el) => {
     
             console.log("size b4 going in addToShowMoreRefs is ", allShowMoreRefs.current.length )
-            console.log("in================= addToRefs")
+            console.log("in================= addToShowMoreRefs")
     
             if (el && !allShowMoreRefs.current.includes(el)){
-                console.log("inside================= addToShowMoreRefs")
+                //console.log("inside================= addToShowMoreRefs and el is = " + JSON.stringify(el, null, 4))
                 console.log(el)
                 allShowMoreRefs.current.push(el)
                 console.log("size after adding one is ", allShowMoreRefs.current.length )
@@ -311,15 +359,15 @@ function CommentSection(props){
         }
 
 
-        const addToReplyeRefs = (el) => {
+        const addToReplyRefs = (el) => {
     
             console.log("size b4 going in addToReplyeRefs is ", allReplyRefs.current.length )
-            console.log("in================= addToRefs")
+            console.log("in================= addToReplyeRefs and el is = " + el)
     
-            if (el && !allShowMoreRefs.current.includes(el)){
+            if (el && !allReplyRefs.current.includes(el)){
                 console.log("inside================= addToReplyeRefs")
                 console.log(el)
-                allShowMoreRefs.current.push(el)
+                allReplyRefs.current.push(el)
                 console.log("size after adding one is ", allReplyRefs.current.length )
             }
     
@@ -362,7 +410,7 @@ function CommentSection(props){
     
                     <BottomBarWrapper>
     
-                        <Reply onClick={() => handleReplyButton(item.id)}>reply</Reply>
+                        <Reply onClick={(e) => handleReplyButton(item.comments, e, item.id)}>reply</Reply>
     
     
     
@@ -382,12 +430,14 @@ function CommentSection(props){
 
                     </BottomBarWrapper>
     
-    
+                    
                     <CommentReplyForm
     
     
     
-                        ref={addToReplyeRefs}
+                        addToReplyRefs={addToReplyRefs}
+
+                        ref={allReplyRefs}
                         originalcommentAuthor={item.author_nick}
                         rows={rows}
                         setRows={setRows}
@@ -399,6 +449,7 @@ function CommentSection(props){
     
     
                     />
+                    
     
     
                     {nestedComments}
