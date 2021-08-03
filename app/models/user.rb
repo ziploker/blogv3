@@ -2,6 +2,7 @@ class User < ApplicationRecord
 
     has_one_attached :avatar
     has_many :comments, dependent: :destroy
+    has_many :likes, dependent: :destroy
     has_secure_password
     
     validates_presence_of :full_name, :on=> :create

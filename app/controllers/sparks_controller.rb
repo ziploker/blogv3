@@ -178,7 +178,7 @@ class SparksController < ApplicationController
 
 
                 article: @article_info,
-                comments: Comment.json_tree(@testComments)
+                comments: Comment.json_tree(@fullCommentsHash)
 
             }
         end
