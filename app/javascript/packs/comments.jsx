@@ -53,7 +53,7 @@ const CommentDisplay = styled.div`
 
     /* max-height: ${ props => props.showmore[props.id] == "true" ? "0" : "100%" } ;
     transform: ${ props => props.showmore[props.id] == "true" ? "scale(0)" : "scale(1)"};
-
+d
     transition: all 2s ease-out; */
 
     max-height: 100%;
@@ -61,7 +61,7 @@ const CommentDisplay = styled.div`
 
     //transition: all 2s ease-out;
 
-    margin: 10px 0px 0px 25px;
+    margin: 0px 0px 0px 25px;
     position: relative;
 
 
@@ -91,7 +91,7 @@ const BorderDiv = styled.div`
 
     margin-left: 12px;
 
-    bottom: 0px;
+    bottom: 8px;
     pointer-events: none;
 
 
@@ -275,12 +275,12 @@ function CommentSection(props){
 
             console.log("find ref loop start")
 
-            if (current.classList.contains("replyFormHidden")){
+            if (current.classList.contains("replyForm")){
 
-                current.classList.remove("replyFormHidden")
+                current.classList.remove("replyForm")
                 console.log("removed class")
             }else{
-                current.classList.add("replyFormHidden")
+                current.classList.add("replyForm")
                 console.log("added class")
             }
 
