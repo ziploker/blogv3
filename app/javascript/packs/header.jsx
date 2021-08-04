@@ -348,7 +348,7 @@ function Header(props) {
                         </li>
                         <li key={2}>shop</li>
 
-                        <li key={3}>{props.appState.loggedInStatus == "LOGGED_IN" ? [<a key={"a"} onClick= {props.handleLogOutClick}> Logout | </a>, <Link key={"b"} to="/edit">edit </Link>] :   [<a key={"c"} onClick={doSomething}> Login |</a>, <a key={"d"} onClick={props.executeScrollForSection2}> Signup</a>]  } </li>
+                        <li key={3}>{props.userState.loggedInStatus == "LOGGED_IN" ? [<a key={"a"} onClick= {props.handleLogOutClick}> Logout | </a>, <Link key={"b"} to="/edit">edit </Link>] :   [<a key={"c"} onClick={doSomething}> Login |</a>, <a key={"d"} onClick={props.executeScrollForSection2}> Signup</a>]  } </li>
                     
 
                     </ul>
@@ -378,7 +378,7 @@ function Header(props) {
                         openSideMenu={props.openSideMenu} 
                         setOpenSideMenu={props.setOpenSideMenu}
                         //executeScroll={executeScroll} 
-                        appState={props.appState} 
+                        userState={props.userState} 
                         executeScrollForLookupSection={props.executeScrollForLookupSection} 
                         executeScrollForSection2={props.executeScrollForSection2}
                     />

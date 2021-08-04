@@ -501,7 +501,7 @@ function Article(props){
 
     console.log("========================== AAARRRTTIICCCLLLEEE ============================")
 
-    const [userData, setUserData] = useState({});
+    //const [userData, setUserData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [artData, setArtData] = useState({})
 
@@ -561,6 +561,8 @@ function Article(props){
                 setIsLoading(false)
             
                 setIsCommentsLoading(false)
+
+                //setCurrentUser(@current_user)
             
             
 
@@ -870,7 +872,7 @@ function Article(props){
                     
                 <CommentFormWrapper>
 
-                    <CommentForm addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} userData={userData} storyID={artData.id} setArtDataComments={setArtDataComments} setIsCommentsLoading={setIsCommentsLoading}/>
+                    <CommentForm addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} userState={props.userState} storyID={artData.id} setArtDataComments={setArtDataComments} setIsCommentsLoading={setIsCommentsLoading}/>
 
                 </CommentFormWrapper>
 
@@ -893,7 +895,7 @@ function Article(props){
                     artDataComments={artDataComments} 
                     //showMore={showMore}
                     //setShowMore={setShowMore}
-                    userData={userData}
+                    userState={props.userState}
                     artData={artData}
                     setArtDataComments={setArtDataComments}
                     rows={rows}

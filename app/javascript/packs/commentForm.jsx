@@ -110,8 +110,8 @@ function CommentForm(props) {
      formData.append('event[body]', state.comment);
      formData.append('event[story_id]', props.storyID);
     //formData.append('event[comment_id]', props.commentID);
-     formData.append('event[author_nick]', props.userData.nick);
-     formData.append('event[author_avatar]', props.userData.avatar_url);
+     formData.append('event[author_nick]', props.userState.nick);
+     formData.append('event[author_avatar]', props.userState.avatar_url);
      
      
      
@@ -241,7 +241,7 @@ function CommentForm(props) {
 
     <FormWrapper>
 
-      <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
+      <img style={{border: "1px solid gray", borderRadius: "50%", width: "50px", height: "50px", gridArea: "main_comment_img"}} src={props.userState ? props.userState.avatar_url == null ? defaultManIcon : props.userState.avatar_url : defaultManIcon}></img>
 
       <Form style={{gridArea: "main_comment_body"}} id="cform" className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         

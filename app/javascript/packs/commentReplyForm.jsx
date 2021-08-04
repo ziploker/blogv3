@@ -190,8 +190,8 @@ function CommentReplyForm(props, ref) {
      formData.append('event[body]', state.comment);
      formData.append('event[story_id]', props.storyID);
     formData.append('event[comment_id]', props.commentid);
-     formData.append('event[author_nick]', props.userData.nick);
-     formData.append('event[author_avatar]', props.userData.avatar_url);
+     formData.append('event[author_nick]', props.userState.nick);
+     formData.append('event[author_avatar]', props.userState.avatar_url);
 
      formData.append('event[original_comment_author]', props.originalcommentAuthor);
 
@@ -333,7 +333,7 @@ function CommentReplyForm(props, ref) {
     <div id={props.commentid + "-replyform"} className={"replyFormHidden"} ref={props.addToReplyRefs} rows={props.rows} commentid={props.commentid}>
         
 
-      <img src={props.userData ? props.userData.avatar_url == null ? defaultManIcon : props.userData.avatar_url : defaultManIcon}></img>
+      <img src={props.userState ? props.userState.avatar_url == null ? defaultManIcon : props.userState.avatar_url : defaultManIcon}></img>
 
       <Form id={props.commentid.toString() + "form"} className="form-inline" onSubmit={handleAdd} enctype="multipart/form-data" >
         

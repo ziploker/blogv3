@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   post '/registrations/:token/reset', to: 'registrations#reset', as: 'registrations_reset'
   
   post '/blog/get_article_info', to: 'sparks#get_article_info'
+
+  post '/blog/vote_up', to: 'sparks#vote_up'
   
   #get 'blog/:id', to: 'sparks#index'
   

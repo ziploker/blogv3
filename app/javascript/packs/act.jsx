@@ -945,7 +945,7 @@ const FlashError = styled.h4`
   justify-self: end;
   margin-right: 15px;
   display: ${(props) =>
-    props.appState.loggedInStatus == "NOT_LOGGED_IN" ? "initial" : "none"};
+    props.userState.loggedInStatus == "NOT_LOGGED_IN" ? "initial" : "none"};
 
   a {
     color: blue;
@@ -1337,7 +1337,7 @@ function Act(props, ref) {
     //e.target.classList.remove('animate');
 
     //e.target.classList.add('animate');
-    if (props.appState.loggedInStatus == "NOT_LOGGED_IN") {
+    if (props.userState.loggedInStatus == "NOT_LOGGED_IN") {
       setSendButtonClass("button error animate");
 
       setTimeout(function () {
@@ -1605,7 +1605,7 @@ function Act(props, ref) {
 
             
 
-            <FlashError appState={props.appState}>
+            <FlashError userState={props.userState}>
               ** Please{" "}
               <a href="#" onClick={loginFromDeadEnd}>
                 Login
@@ -1616,7 +1616,7 @@ function Act(props, ref) {
               </a>{" "}
               to continue.
             </FlashError>
-            <FlashSuccess appState={props.appState} successFlag={successFlag}>
+            <FlashSuccess userState={props.userState} successFlag={successFlag}>
               Email sent!!
             </FlashSuccess>
           </Letter>

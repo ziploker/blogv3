@@ -36,16 +36,22 @@ function App(controllerProps){
     //global APP state 
     const [appState, setAppState] = useState({
             
-        loggedInStatus: "NOT_LOGGED_IN",
-        emailStatus: "EMAIL_NOT_VERIFIED",
-        test: "a",
-        user: {},
+        
         lastStory: controllerProps.lastStory,
         secondToLastStory: controllerProps.secondToLastStory,
         thirdToLastStory: controllerProps.thirdToLastStory,
         fourthToLastStory: controllerProps.fourthToLastStory
         
     })
+
+    const [userState, setUserState] = useState({
+
+        loggedInStatus: "NOT_LOGGED_IN",
+        emailStatus: "EMAIL_NOT_VERIFIED",
+        user: {},
+
+    })
+    
     const [openSideMenu, setOpenSideMenu] = useState(false);
     const [loginClicked, setLoginClicked] = useState(false)
 
@@ -70,11 +76,18 @@ function App(controllerProps){
     
     const handleSuccessfulAuth = data => {
         
-        setAppState({
-            ...appState,
+        // setAppState({
+        //     ...appState,
+        //     loggedInStatus: "LOGGED_IN",
+        //     user: data.user
+        // })
+
+        setUserState({
+            ...userState,
             loggedInStatus: "LOGGED_IN",
             user: data.user
         })
+
     }
 
     
@@ -84,8 +97,14 @@ function App(controllerProps){
         
         axios.delete("/logout", {withCredentials : true})
             .then(response => {
-                setAppState({
-                    ...appState,
+                // setAppState({
+                //     ...appState,
+                //     loggedInStatus: "NOT_LOGGED_IN",
+                //     user: {}
+                // })
+
+                setUserState({
+                    ...userState,
                     loggedInStatus: "NOT_LOGGED_IN",
                     user: {}
                 })
@@ -177,8 +196,15 @@ function App(controllerProps){
 
 
             console.log("controllerProps.currentUser exists, so bypass session logged_in call")
-            setAppState({
-                ...appState,
+            // setAppState({
+            //     ...appState,
+            //     loggedInStatus: "LOGGED_IN",
+            //     user: controllerProps.current_user,
+            //     emailStatus: controllerProps.current_user.email_confirmed == "true" ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
+            // })
+
+            setUserState({
+                ...userState,
                 loggedInStatus: "LOGGED_IN",
                 user: controllerProps.current_user,
                 emailStatus: controllerProps.current_user.email_confirmed == "true" ? "EMAIL_VERIFIED" : "EMAIL_NOT_VERIFIED"
@@ -256,7 +282,7 @@ function App(controllerProps){
                 
                    
                     <Header 
-                        appState={appState} 
+                        userState={userState} 
                         handleLogOutClick={handleLogOutClick}
                         setLoginClicked={setLoginClicked}
                         openSideMenu={openSideMenu}
@@ -268,17 +294,17 @@ function App(controllerProps){
                     <Login handleSuccessfulAuth={handleSuccessfulAuth} setLoginClicked={setLoginClicked} loginClicked={loginClicked} />
                 
                 <Switch>
-                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} appState={appState} setAppState={setAppState} />}/>
+                    <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} />}/>
                     <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
                     {/* <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} /> */}
                     <Route path="/forgot" render={ props => <Forgot {...props}  />} /> 
                     <Route path="/resend" render={ props => <Resend {...props}  />} />                   
                     <Route exact path="/change_pw/:token" render={ props => <Change {...props}  />} />
-                    <Route path="/edit" render={ props => <Edit {...props} user={appState.user}/>} />
-                    <Route exact path="/blog/:id" render = { props => <Article {...props} /> } />
+                    <Route path="/edit" render={ props => <Edit {...props} user={userState.user}/>} />
+                    <Route exact path="/blog/:id" render = { props => <Article {...props} userState={userState} /> } />
                 </Switch>
                 
-                <Act ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}} executeScrollForSection2={executeScrollForSection2} appState={appState} setLoginClicked={setLoginClicked} setOpenSideMenu={setOpenSideMenu}/>
+                <Act ref={{LookupScrollToRef: LookupScrollToRef, LookupInputRef: LookupInputRef}} executeScrollForSection2={executeScrollForSection2} userState={userState} setLoginClicked={setLoginClicked} setOpenSideMenu={setOpenSideMenu}/>
                 <SignupSection ref={{section2ScrollToRef: section2ScrollToRef}}/>
                 {/* <Shop/> */}
                 <Footer/>

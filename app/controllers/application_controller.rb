@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
         else
 
             puts "auth_token not found"
+            
         end
        
        

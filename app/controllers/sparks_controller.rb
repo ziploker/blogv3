@@ -188,6 +188,19 @@ class SparksController < ApplicationController
     end
 
 
+    def vote_up
+
+        puts "in vote_up in sparks"
+        puts "...and ID is = " + params[:data][:itemID].to_s
+
+
+        commentToVoteUp = Comment.find_by(id: params["data"]["itemID"])
+
+        puts commentToVoteUp.likes.count
+
+    end
+
+
 
     def story
     
