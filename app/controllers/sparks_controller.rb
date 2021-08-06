@@ -193,8 +193,47 @@ class SparksController < ApplicationController
         puts "in vote_up in sparks"
         puts "...and ID is = " + params[:data][:itemID].to_s
 
+        setUser
 
-        commentToVoteUp = Comment.find_by(id: params["data"]["itemID"])
+       
+        if @current_user && @current_user != {}
+            commentToVoteUp = Comment.find_by(id: params["data"]["itemID"])
+            #@current_user is the user thats voting up
+
+            newLike = Like.new(comment_id: commentToVoteUp.id, user_id: @current_user.id)
+
+            if newLike.save!
+                commentToVoteUp.total_upvotes =  commentToVoteUp.total_upvotes + 1
+                
+                if commentToVoteUp.save!
+                    
+                    render json: {
+                        status: "green",
+                        comment_id: commentToVoteUp.id
+        
+                    }
+                end
+
+            else
+                render json: {
+                    status: "red"
+    
+                }
+            end
+
+
+
+
+
+        else
+            render json: {
+                status: "red"
+
+            }
+        end
+
+
+        
 
         puts commentToVoteUp.likes.count
 

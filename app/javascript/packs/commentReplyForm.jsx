@@ -172,7 +172,7 @@ function CommentReplyForm(props, ref) {
   })
 
 
-  const {allReplyRefs} = ref
+  const {allReplyRefs2} = ref
 
   
     

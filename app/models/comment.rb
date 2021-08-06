@@ -53,6 +53,7 @@ class Comment < ApplicationRecord
         :edit_history => node.edit_history,
         :author_avatar => node.author_avatar,
         :author_nick => node.author_nick,
+        :total_upvotes => node.total_upvotes,
         :comments => json_tree(sub_nodes).compact }
     end
     
