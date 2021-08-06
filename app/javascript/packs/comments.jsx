@@ -221,18 +221,18 @@ function CommentSection(props){
         console.log("inUseEffectinCommentSection - allReplyRefs size is = " + allReplyRefs.current.length)
 
 
-        allReplyRefs.current.map(item=>{
+    allReplyRefs.current.map(item=>{
 
 
-            console.log(item.id.substr(0, item.id.indexOf('-')))
-            
-        })
+        console.log(item.id.substr(0, item.id.indexOf('-')))
+        
+    })
 
-        allShowMoreRefs.current.map(item=>{
+    allShowMoreRefs.current.map(item=>{
 
 
-            console.log(item)
-        })
+        console.log(item)
+    })
 
     })
     
