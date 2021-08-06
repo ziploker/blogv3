@@ -229,12 +229,13 @@ position: relative;
 function Header(props) {
 
    
-    console.log("HEADER_________________PROPS", location.pathname)
+    console.log("==============Header===============")
+    console.log("==============Header Props===============", props)
     //console.log("HEADER_PROPS solo", location.pathname)
 
     useEffect(() => {
 
-        console.log("Header UseEffect Start, openSideMenu state is currently " + props.openSideMenu);
+        console.log("==============Header useEffects===============")
         
         //mousedown listener
 
@@ -292,7 +293,7 @@ function Header(props) {
       [ref, mouseDownHandler],
     );
 
-    console.log("HEADER_________________PROPS", location.pathname)
+    //console.log("HEADER_________________PROPS", location.pathname)
     //console.log("HEADER_PROPS solo", location.pathname)
 
     const locationFromHook = useLocation();
@@ -326,7 +327,7 @@ function Header(props) {
     
     
 
-    console.log("locationFromHook.pathname", locationFromHook.pathname);
+    //console.log("locationFromHook.pathname", locationFromHook.pathname);
 
     
       

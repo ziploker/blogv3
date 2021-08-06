@@ -161,7 +161,8 @@ const formData = new FormData();
 ///////////////////////////////////  EDIT ACCOUNT //////////////////////////////
 function Edit(props) {
 
-  console.log("Edit_props", props)
+  console.log("==============Edit===============")
+  console.log("==============Edit Props===============", props)
   const [state, setState] = React.useState({
     loggedInStatus: "NOT_LOGGED_IN",
     full_name: '',

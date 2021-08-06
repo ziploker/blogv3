@@ -327,6 +327,9 @@ const formData = new FormData();
 
 
 function Signup(props, ref) {
+
+  console.log("==============Signup Section===============")
+  console.log("============= Signup Section Props===============", props)
   
   const locationFromHook = useLocation();
 
@@ -359,7 +362,8 @@ function Signup(props, ref) {
 
   useEffect(() => {
 
-
+    console.log("==============Signup section useEffect===============")
+    
 
     let homeWrapper = document.querySelectorAll(".homeWrapper");
     let formItem = document.querySelectorAll(".formItem");

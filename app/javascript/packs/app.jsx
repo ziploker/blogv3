@@ -30,8 +30,8 @@ import Resend from './pages/resend'
 ///////////////////////////////// MAIN APP STARTING POINT ///////////////
 function App(controllerProps){
     
-    
-    console.log("APP_controllerProps", controllerProps)
+    console.log("==============APP===============")
+    console.log("==============APP props===============", controllerProps)
     
     //global APP state 
     const [appState, setAppState] = useState({
@@ -191,7 +191,7 @@ function App(controllerProps){
 
         //const mode = process.env.NODE_ENV == "development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
-        console.log("SParks UseEffect Start-------------------------")
+        console.log("==============APP useEffects===============")
         if (controllerProps.current_user != null){
 
 
@@ -295,7 +295,7 @@ function App(controllerProps){
                 
                 <Switch>
                     <Route exact path="/" render={ () => <Home handleSuccessfulAuth={handleSuccessfulAuth} loginClicked={loginClicked} setLoginClicked={setLoginClicked} lastStory={appState.lastStory} secondToLastStory={appState.secondToLastStory} thirdToLastStory={appState.thirdToLastStory} fourthToLastStory={appState.fourthToLastStory} />}/>
-                    <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} />
+                    {/* <Route path="/login" render={ props => <Login {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} /> */}
                     {/* <Route path="/signup" render={ props => <Signup {...props} handleSuccessfulAuth={handleSuccessfulAuth} />} /> */}
                     <Route path="/forgot" render={ props => <Forgot {...props}  />} /> 
                     <Route path="/resend" render={ props => <Resend {...props}  />} />                   

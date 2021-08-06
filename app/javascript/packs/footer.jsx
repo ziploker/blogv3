@@ -287,13 +287,15 @@ function Footer(props) {
 
    
    
-    console.log("Footer_________________PROPS", location.pathname)
+    console.log("==============Footer===============")
+    console.log("==============Footer Props===============", props)
     //console.log("HEADER_PROPS solo", location.pathname)
 
     useEffect(() => {
 
         
-        
+        console.log("==============Footer useEffect===============")
+    
         window.addEventListener('keydown', handleFirstTab);
         
         

@@ -499,8 +499,8 @@ const VoteDown = styled.div`
 function Article(props){
 
 
-    console.log("========================== AAARRRTTIICCCLLLEEE ============================")
-
+    console.log("==============Article===============")
+    console.log("==============Article Props===============", props)
     //const [userData, setUserData] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [artData, setArtData] = useState({})
@@ -530,9 +530,8 @@ function Article(props){
     useEffect ((props) => {
 
 
-        
+        console.log("==============Article useEffect===============")
 
-        console.log("========================== AAARRRTTIICCCLLLEEE U?SE?EFFE?C?TT============================")
         const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
         
@@ -550,8 +549,8 @@ function Article(props){
 
             //console.log("resoooooooooooooooonse = " + response.inspect)
           
-                addAllCommentsToStateForReplyButtonToWork(response.data.comments)
-                addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
+                //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+                //addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
 
                
                 
@@ -560,7 +559,7 @@ function Article(props){
                 
                 setIsLoading(false)
             
-                setIsCommentsLoading(false)
+                //setIsCommentsLoading(false)
 
                 //setCurrentUser(@current_user)
             

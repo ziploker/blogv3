@@ -420,6 +420,9 @@ const BackgroundGray = styled.div`
 
 function Home(props){
 
+    console.log("==============Home===============")
+    console.log("==============Home Props===============", props)
+
     // const [screenIsAtTop, setScreenIsAtTop] = React.useState(true);
 
 

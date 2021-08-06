@@ -12,6 +12,9 @@ import { Card, Logo, Form, Input, Button, ErrorMsg, RedX, LoginWrapper,
 
 ///////////////////////////////////  LOG_IN_PAGE //////////////////////////////
 function Resend(props) {
+
+  console.log("==============Resend===============")
+  console.log("==============Resend Props===============", props)
   
   const [state, setState] = React.useState({
     

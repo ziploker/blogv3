@@ -12,6 +12,9 @@ import { Card, Logo, Form, Input, Button, ErrorMsg, RedX, LoginWrapper,
 
 ///////////////////////////////////  LOG_IN_PAGE //////////////////////////////
 function Login(props) {
+
+  console.log("==============Forget===============")
+  console.log("==============Forget Props===============", props)
   
   const [state, setState] = React.useState({
     

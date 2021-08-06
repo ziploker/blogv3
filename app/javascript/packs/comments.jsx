@@ -205,8 +205,8 @@ const VoteDown = styled.div`
 function CommentSection(props){
 
 
-    console.log("========================== CommentSection Start ============================")
-    
+    console.log("==============Comment Section===============")
+    console.log("==============Comment Section Props===============", props)    
     //const [artDataComments, setArtDataComments] = useState([])
     const allShowMoreRefs = useRef([]);
     allShowMoreRefs.current = []
@@ -215,26 +215,29 @@ function CommentSection(props){
     allReplyRefs.current = []
 
 
-    useEffect (() => {
-
-        console.log("inUseEffectinCommentSection - allShowMoreRefs size is = " + allShowMoreRefs.current.length)
-        console.log("inUseEffectinCommentSection - allReplyRefs size is = " + allReplyRefs.current.length)
+    // useEffect (() => {
 
 
-    allReplyRefs.current.map(item=>{
-
-
-        console.log(item.id.substr(0, item.id.indexOf('-')))
+    //     console.log("==============Comment section useEffect===============")
         
-    })
+    //     console.log("inUseEffectinCommentSection - allShowMoreRefs size is = " + allShowMoreRefs.current.length)
+    //     console.log("inUseEffectinCommentSection - allReplyRefs size is = " + allReplyRefs.current.length)
 
-    allShowMoreRefs.current.map(item=>{
+
+    //     allReplyRefs.current.map(item=>{
 
 
-        console.log(item)
-    })
+    //         console.log(item.id.substr(0, item.id.indexOf('-')))
+            
+    //     })
 
-    })
+    //     allShowMoreRefs.current.map(item=>{
+
+
+    //         console.log(item)
+    //     })
+
+    // })
     
     const getReplyArray = (childrenCommentArray) => {
     
@@ -375,14 +378,14 @@ function CommentSection(props){
     
         const addToShowMoreRefs = (el) => {
     
-            console.log("size b4 going in addToShowMoreRefs is ", allShowMoreRefs.current.length )
-            console.log("in================= addToShowMoreRefs")
+            //console.log("size b4 going in addToShowMoreRefs is ", allShowMoreRefs.current.length )
+            console.log("in================= addTo_ShowMore_Refs")
     
             if (el && !allShowMoreRefs.current.includes(el)){
                 //console.log("inside================= addToShowMoreRefs and el is = " + JSON.stringify(el, null, 4))
-                console.log(el)
+                //console.log(el)
                 allShowMoreRefs.current.push(el)
-                console.log("size after adding one is ", allShowMoreRefs.current.length )
+                console.log("size after adding one is ", allShowMoreRefs.current.length + " sm" )
             }
     
         }
@@ -390,12 +393,12 @@ function CommentSection(props){
 
         const addToReplyRefs = (el) => {
     
-            console.log("size b4 going in addToReplyeRefs is ", allReplyRefs.current.length )
-            console.log("in================= addToReplyeRefs and el is = " + el)
+            //console.log("size b4 going in addToReplyeRefs is ", allReplyRefs.current.length )
+            console.log("in================= addTo_Reply_Refs")
     
             if (el && !allReplyRefs.current.includes(el)){
-                console.log("inside================= addToReplyeRefs")
-                console.log(el)
+                //console.log("inside================= addToReplyeRefs")
+                //console.log(el)
                 allReplyRefs.current.push(el)
                 console.log("size after adding one is ", allReplyRefs.current.length )
             }
@@ -527,7 +530,7 @@ function CommentSection(props){
 
                         props.artDataComments.map( (c, i) => {
 
-                            console.log("cccccccccccccccccccccccccccccc", c)
+                            //console.log("cccccccccccccccccccccccccccccc", c)
 
                             return (
 

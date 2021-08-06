@@ -107,6 +107,9 @@ const LogoWrapperNew = styled.div`
 `;
 ///////////////////////////////////  LOG_IN_PAGE //////////////////////////////
 function Login(props) {
+
+  console.log("==============Login===============")
+  console.log("==============Login Props===============", props)
   
   const [state, setState] = React.useState({
     

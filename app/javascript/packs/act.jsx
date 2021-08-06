@@ -1000,7 +1000,8 @@ const SendButtonWrapper = styled.div`
 const SendButton = styled.a``;
 
 function Act(props, ref) {
-  console.log("ACT________________PROPS", location.pathname);
+  console.log("==============Act===============")
+  console.log("==============Act Props===============", props)
   //console.log("HEADER_PROPS solo", location.pathname)
 
   const [formInfo, setFormInfo] = React.useState({
