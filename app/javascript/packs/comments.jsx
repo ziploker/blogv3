@@ -372,7 +372,7 @@ function CommentSection(props){
     
     
     //function called recursivley
-    const Comment = ({ item, rows, setRows, userState, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) => {
+    const Comment = ({ item, userState, storyID, setArtDataComments, handleShowMoreButton, handleReplyButton}) => {
     
         console.log("+++++++++++++++++++++++++++++++++++runit+++++++++++++++++++++++++++++++++++++++++++++++++++")
     
@@ -412,7 +412,7 @@ function CommentSection(props){
     
         const nestedComments = (item.comments || []).map(com => {
     
-            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userState={userState} storyID={storyID} setArtDataComments={setArtDataComments} handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={rows} setRows={setRows} />
+            return <Comment style={{border: "2px solid blue"}} key={com.id} item={com} type="child" userState={userState} storyID={storyID} setArtDataComments={setArtDataComments} handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} />
     
         });
     
@@ -471,8 +471,8 @@ function CommentSection(props){
 
                         ref={allReplyRefs}
                         originalcommentAuthor={item.author_nick}
-                        rows={rows}
-                        setRows={setRows}
+                        //rows={rows}
+                        //setRows={setRows}
                         userState={userState}
                         storyID={storyID}
                         commentid={item.id}
@@ -534,7 +534,7 @@ function CommentSection(props){
 
                             return (
 
-                                <Comment key={c.id} item={c} userState={props.userState} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton} rows={props.rows} setRows={props.setRows} />
+                                <Comment key={c.id} item={c} userState={props.userState} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton}  />
 
                             )
                         })

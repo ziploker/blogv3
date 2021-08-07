@@ -507,8 +507,8 @@ function Article(props){
 
     const [artDataComments, setArtDataComments] = useState([])
     const [avatarLoaded, setAvatarLoaded] = useState(false)
-    const [rows, setRows] = useState({})
-    const [showMore, setShowMore] = useState({})
+    //const [rows, setRows] = useState({})
+    //const [showMore, setShowMore] = useState({})
     
     //const showMoreButtonRefs = useRef([])
     //showMoreButtonRefs.current = []
@@ -786,7 +786,7 @@ function Article(props){
 
         //console.log("newState = " + JSON.stringify(newState, null, 4))
 
-        setShowMore(newState);
+        //setShowMore(newState);
 
         //console.log("right before saving ref", newState)
         //console.log(typeof newState)
@@ -897,8 +897,8 @@ function Article(props){
                     userState={props.userState}
                     artData={artData}
                     setArtDataComments={setArtDataComments}
-                    rows={rows}
-                    setRows={setRows}
+                    //rows={rows}
+                    //setRows={setRows}
                     
                     
                     
