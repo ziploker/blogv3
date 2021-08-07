@@ -237,7 +237,7 @@ function CommentReplyForm(props, ref) {
           
           //setState({...state,comment: ''})
 
-          props.setRows({...props.rows,[props.commentid]: "false"})
+          //props.setRows({...props.rows,[props.commentid]: "false"})
 
           //props.setIsCommentsLoading(false)
 
@@ -330,7 +330,7 @@ function CommentReplyForm(props, ref) {
 
     
 
-    <div id={props.commentid + "-replyform"} className={"replyFormHidden"} ref={props.addToReplyRefs} rows={props.rows} commentid={props.commentid}>
+    <div id={props.commentid + "-replyform"} className={"replyFormHidden"} ref={props.addToReplyRefs} commentid={props.commentid}>
         
 
       <img src={props.userState ? props.userState.avatar_url == null ? defaultManIcon : props.userState.avatar_url : defaultManIcon}></img>
