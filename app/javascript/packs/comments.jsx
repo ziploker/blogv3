@@ -10,6 +10,8 @@ import CommentReplyForm from './commentReplyForm'
 import defaultAvatar from '../../assets/images/man3'
 import axios from 'axios';
 
+import CommentForm from './commentForm'
+
 import {
 
     FacebookShareButton,
@@ -198,7 +200,12 @@ const VoteDown = styled.div`
 
 
 
+const CommentFormWrapper = styled.div`
 
+    margin: 30px 30px;
+    grid-area: 7/1/8/2;
+
+`;
 
 ////////////// CommentSection //////////////////////////////////
 
@@ -207,37 +214,62 @@ function CommentSection(props){
 
     console.log("==============Comment Section===============")
     console.log("==============Comment Section Props===============", props)    
-    //const [artDataComments, setArtDataComments] = useState([])
+    const [artDataComments, setArtDataComments] = useState([])
+    const [isCommentsLoading, setIsCommentsLoading] = useState(true);
     const allShowMoreRefs = useRef([]);
     allShowMoreRefs.current = []
 
     const allReplyRefs = useRef([]);
     allReplyRefs.current = []
 
+    const {slug} = props
 
-    // useEffect (() => {
+
+    useEffect ((props) => {
 
 
-    //     console.log("==============Comment section useEffect===============")
+        console.log("==============Article useEffect===============")
+
+        const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
         
-    //     console.log("inUseEffectinCommentSection - allShowMoreRefs size is = " + allShowMoreRefs.current.length)
-    //     console.log("inUseEffectinCommentSection - allReplyRefs size is = " + allReplyRefs.current.length)
-
-
-    //     allReplyRefs.current.map(item=>{
-
-
-    //         console.log(item.id.substr(0, item.id.indexOf('-')))
+        
+        
+        axios.post("/blog/get_comment_info", {
+          
+          data: { 
+            slug: slug
             
-    //     })
+          }
+        },
+        {withCredentials: true})
+        .then(response => {
 
-    //     allShowMoreRefs.current.map(item=>{
 
+            //console.log("resoooooooooooooooonse = " + response.inspect)
+          
+                //addAllCommentsToStateForReplyButtonToWork(response.data.comments)
+                //addAllCommentsToStateForShowMoreButtonToWork(response.data.comments)
 
-    //         console.log(item)
-    //     })
+               
+                
+                //setArtData(response.data.article)
+                setArtDataComments(response.data.comments)
+                
+                setIsCommentsLoading(false)
+            
+                //setIsCommentsLoading(false)
 
-    // })
+                //setCurrentUser(@current_user)
+            
+            
+
+            
+            
+        }).catch(error => {
+          
+          //console.log("articleErrors", error)
+        })
+    },[])
     
     const getReplyArray = (childrenCommentArray) => {
     
@@ -511,16 +543,28 @@ function CommentSection(props){
     
     
     
-    if (props.artDataComments.length == 0) {
+    // if (artDataComments && artDataComments.length == 0) {
 
-        return null
-    }
+    //     return null
+    // }
 
+    if (isCommentsLoading) {
+
+            return null
+        }
+    
 
 
     return (
 
         <Comments>
+
+<CommentFormWrapper>
+
+<CommentForm userState={props.userState} storyID={props.artData.id} setArtDataComments={setArtDataComments}/>
+
+</CommentFormWrapper>
+
             
             <div>
 
@@ -528,14 +572,18 @@ function CommentSection(props){
 
                     {
 
-                        props.artDataComments.map( (c, i) => {
+                        artDataComments.map( (c, i) => {
 
                             //console.log("cccccccccccccccccccccccccccccc", c)
 
                             return (
 
-                                <Comment key={c.id} item={c} userState={props.userState} storyID={props.artData.id} setArtDataComments={props.setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton}  />
+                                <>
 
+                                    
+                                    <Comment key={c.id} item={c} userState={props.userState} storyID={props.artData.id} setArtDataComments={setArtDataComments}  handleShowMoreButton={handleShowMoreButton} handleReplyButton={handleReplyButton}  />
+
+                                </>
                             )
                         })
                     }

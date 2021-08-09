@@ -304,12 +304,7 @@ const Loading = styled.div`
 
 // `;
 
-const CommentFormWrapper = styled.div`
 
-    margin: 30px 30px;
-    grid-area: 7/1/8/2;
-
-`;
 
 
 
@@ -502,10 +497,10 @@ function Article(props){
     console.log("==============Article===============")
     console.log("==============Article Props===============", props)
     //const [userData, setUserData] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    const [isArtLoading, setIsArtLoading] = useState(true);
     const [artData, setArtData] = useState({})
 
-    const [artDataComments, setArtDataComments] = useState([])
+    //const [artDataComments, setArtDataComments] = useState([])
     const [avatarLoaded, setAvatarLoaded] = useState(false)
     //const [rows, setRows] = useState({})
     //const [showMore, setShowMore] = useState({})
@@ -555,9 +550,9 @@ function Article(props){
                
                 
                 setArtData(response.data.article)
-                setArtDataComments(response.data.comments)
+                //setArtDataComments(response.data.comments)
                 
-                setIsLoading(false)
+                setIsArtLoading(false)
             
                 //setIsCommentsLoading(false)
 
@@ -807,7 +802,7 @@ function Article(props){
     
     
     /////////////////////////  do not load page until info lodes from server /////////////
-    if (isLoading) {
+    if (isArtLoading) {
         
         return <Loading> <h1>Loading......</h1> </Loading>;
     }
@@ -869,11 +864,11 @@ function Article(props){
 
                     
                     
-                <CommentFormWrapper>
+                {/* <CommentFormWrapper>
 
-                    <CommentForm addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} userState={props.userState} storyID={artData.id} setArtDataComments={setArtDataComments} setIsCommentsLoading={setIsCommentsLoading}/>
+                    <CommentForm addAllCommentsToStateForReplyButtonToWork={addAllCommentsToStateForReplyButtonToWork} userState={props.userState} storyID={artData.id} setIsCommentsLoading={setIsCommentsLoading}/>
 
-                </CommentFormWrapper>
+                </CommentFormWrapper> */}
 
     
 
@@ -891,14 +886,17 @@ function Article(props){
 
                    <Comments 
                    //showMoreButtonRefs={showMoreButtonRefs}
-                    artDataComments={artDataComments} 
+                    //artDataComments={artDataComments} 
                     //showMore={showMore}
                     //setShowMore={setShowMore}
                     userState={props.userState}
                     artData={artData}
-                    setArtDataComments={setArtDataComments}
+                    //setArtDataComments={setArtDataComments}
                     //rows={rows}
                     //setRows={setRows}
+                    slug={slug}
+
+
                     
                     
                     
