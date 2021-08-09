@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from 'react'
+import React, {useEffect, useState, useRef, useCallback} from 'react'
 
 import {
     BrowserRouter as Router,
@@ -91,28 +91,7 @@ function App(controllerProps){
     }
 
     
-    const handleLogOutClick = () => {
-        
-        //const mode = process.env.NODE_ENV =="development" ? "http://127.0.0.1:3000" : "https://www.floiridablaze.io"
-        
-        axios.delete("/logout", {withCredentials : true})
-            .then(response => {
-                // setAppState({
-                //     ...appState,
-                //     loggedInStatus: "NOT_LOGGED_IN",
-                //     user: {}
-                // })
-
-                setUserState({
-                    ...userState,
-                    loggedInStatus: "NOT_LOGGED_IN",
-                    user: {}
-                })
-
-            }).catch(error => {
-                console.log("logout errors", error)
-            })
-    }
+    
     
     
     
@@ -170,19 +149,19 @@ function App(controllerProps){
         
     
     
-    const executeScrollForLookupSection = () => {
+    const executeScrollForLookupSection = useCallback(() => {
 
         console.log("in executeScrollForLookupSection ")
         
         scrollToRef(LookupScrollToRef)
         setOpenSideMenu(false)
-    }
+    })
     
-    const executeScrollForSection2 = () => {
+    const executeScrollForSection2 = useCallback(() => {
         
         scrollToRef2(section2ScrollToRef)
         setOpenSideMenu(false)
-    }
+    })
 
     
 
@@ -283,7 +262,7 @@ function App(controllerProps){
                    
                     <Header 
                         userState={userState} 
-                        handleLogOutClick={handleLogOutClick}
+                        //handleLogOutClick={handleLogOutClick}
                         setLoginClicked={setLoginClicked}
                         openSideMenu={openSideMenu}
                         setOpenSideMenu={setOpenSideMenu}

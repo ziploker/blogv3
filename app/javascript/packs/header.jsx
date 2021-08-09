@@ -51,7 +51,6 @@ const HeaderWrapper = styled.div`
 `;
 
 
-
 const Logo = styled.img`
 
     font-family: 'Poppins', sans-serif;
@@ -71,7 +70,6 @@ const Logo = styled.img`
     min-width: 70px;
     margin-left: 40px;
 `;
-
 
 
 const HeaderLeafImage = styled.img`
@@ -103,11 +101,13 @@ const HeaderLeafImage = styled.img`
 
 `;
 
+
 const SideMenuWrapper = styled.div`
 
     position: relative;
 
 `;
+
 
 const Nav = styled.nav`
 
@@ -212,6 +212,7 @@ const Nav = styled.nav`
 
 `;
 
+
 const Wrap = styled.div`
     
         //position: relative;
@@ -220,24 +221,28 @@ const Wrap = styled.div`
         overflow: hidden;
     `;
 
+
 const Outter = styled.div`
 //overflow: hidden;
 width: 100%;
 //height: 100%;
 position: relative;
 `;
+
+
+
+
+////////////////////////////////////////////////////////////Header Function
 function Header(props) {
 
    
     console.log("==============Header===============")
     console.log("==============Header Props===============", props)
-    //console.log("HEADER_PROPS solo", location.pathname)
 
     useEffect(() => {
 
         console.log("==============Header useEffects===============")
         
-        //mousedown listener
 
         if (
     
@@ -248,21 +253,23 @@ function Header(props) {
             locationFromHook.pathname === "/change") {
         
                 return;
-            }else{
-                listener = event => {
-
-                    //if you click in the menu,  dont close it
-                    if (ref.current.contains(event.target)) {
             
-                        return;
-                    }
-                  
-                    //if you click anywhere outside the side menu, close it.    
-                    mouseDownHandler();
-                };
+        }else{
+            
+            listener = event => {
+
+                //if you click in the menu,  dont close it
+                if (ref.current.contains(event.target)) {
+        
+                    return;
+                }
+                
+                //if you click anywhere outside the side menu, close it.    
+                mouseDownHandler();
+            };
 
 
-            }
+        }
        
   
         
@@ -293,13 +300,10 @@ function Header(props) {
       [ref, mouseDownHandler],
     );
 
-    //console.log("HEADER_________________PROPS", location.pathname)
-    //console.log("HEADER_PROPS solo", location.pathname)
-
+    
     const locationFromHook = useLocation();
     
     const ref = React.useRef();
-    //const navbar = React.createRef();
     
     function scrollToTop() {
         window.scrollTo({
@@ -321,22 +325,19 @@ function Header(props) {
         props.setOpenSideMenu(false)
     }
 
+    
 
 
     let listener;
     
     
 
-    //console.log("locationFromHook.pathname", locationFromHook.pathname);
-
-    
-      
     return (
 
         <>
         
-        <HeaderWrapper openSideMenu={props.openSideMenu}>
-        
+            <HeaderWrapper openSideMenu={props.openSideMenu}>
+            
                 <Logo src={headerLogo}></Logo>
                 <HeaderLeafImage src={headerLeaf}></HeaderLeafImage>
                 <Nav>
@@ -367,28 +368,28 @@ function Header(props) {
                     
                 </div>
             
-                
-                
-                
-        
-        </HeaderWrapper>
-        <Outter>
-        
-                    <SideMenu 
-                        //doSomething={doSomething} 
-                        openSideMenu={props.openSideMenu} 
-                        setOpenSideMenu={props.setOpenSideMenu}
-                        //executeScroll={executeScroll} 
-                        userState={props.userState} 
-                        executeScrollForLookupSection={props.executeScrollForLookupSection} 
-                        executeScrollForSection2={props.executeScrollForSection2}
-                    />
                     
                     
-                    </Outter>
+            </HeaderWrapper>
+        
+        
+            <Outter>
+
+                <SideMenu 
+                    //doSomething={doSomething} 
+                    openSideMenu={props.openSideMenu} 
+                    setOpenSideMenu={props.setOpenSideMenu}
+                    //executeScroll={executeScroll} 
+                    userState={props.userState} 
+                    executeScrollForLookupSection={props.executeScrollForLookupSection} 
+                    executeScrollForSection2={props.executeScrollForSection2}
+                />
+                
+                
+            </Outter>
         
 
-</>
+        </>
     )
 }
 
