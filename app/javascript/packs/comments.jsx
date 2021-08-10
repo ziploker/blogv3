@@ -1,4 +1,4 @@
-import React, {useEffect, useState, usePrevious, useRef} from 'react';
+import React, {useEffect, useState, usePrevious, useRef, suspense} from 'react';
 import styled from 'styled-components';
 //import {CSSTransition} from 'react-transition-group';
 //import { useSpring, useTransition, animated } from 'react-spring'
