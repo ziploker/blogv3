@@ -241,22 +241,22 @@ class SparksController < ApplicationController
 
 
 
-    def story
+    def get_comment_info
     
     
     
-    puts "in new story controller--------------------------------------->>>>>> + " + params[:id].to_s
-    puts "============Sparks controller def story start================"
+    puts "in get_comment_info // sparks controller--------------------------------------->>>>>> + " + params[:id].to_s
+    puts "============Sparks controller def get_comment_info start================"
 
 
-        puts "set user from sparks get article info start"
-        setUser
-        puts "set user from sparks get article info end"
+        #puts "set user from sparks get article info start"
+        #setUser
+        #puts "set user from sparks get article info end"
         
         
-        #puts " SLUG = " + params["data"]["slug"]
+        puts " SLUG = " + params["data"]["slug"]
 
-        @article_info = Story.find_by(slug: params["id"])
+        @article_info = Story.find_by(slug: params["data"]["slug"])
         
         
         
@@ -309,38 +309,33 @@ class SparksController < ApplicationController
         
 
 
-        #if @current_user
+        # if @current_user
 
-            #puts "found current user" + @comments.inspect
+        #     #puts "found current user" + @comments.inspect
             
             
 
-            #render json: {
+        #     render json: {
                 
-
-            puts "artdata issssssssssssssssss " + @article_info.inspect
-                @article = @article_info,
-                @comments = Comment.json_tree(@fullCommentsHash),
-                @user = @current_user
+        #         article: @article_info,
+        #         comments: Comment.json_tree(@fullCommentsHash),
+        #         user: @current_user
             
-            #}
+        #     }
 
            
 
         # else
 
-        #     puts "did not find current user"
-        #     render json: {
+            #puts "did not find current user"
+            render json: {
 
 
-        #         article: @article_info,
-        #         comments: Comment.json_tree(@testComments)
+                #article: @article_info,
+                comments: Comment.json_tree(@fullCommentsHash)
 
-        #     }
-        # end
-        
-        puts "============Sparks controller def get_article_info end================"
-
+            }
+        #end
     
 
     end
