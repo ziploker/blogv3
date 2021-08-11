@@ -1,4 +1,4 @@
-import React, {useEffect, useState, usePrevious, useRef} from 'react';
+import React, {useEffect, useState, usePrevious, useRef, Suspense} from 'react';
 import styled from 'styled-components';
 //import {CSSTransition} from 'react-transition-group';
 //import { useSpring, useTransition, animated } from 'react-spring'
@@ -491,7 +491,8 @@ function CommentSection(props){
     
     
                 </CommentDisplay>
-    
+
+                
     
     
     
@@ -543,6 +544,12 @@ function CommentSection(props){
                 </div>
             
             </div>
+
+            <Suspense fallback={<h1>Loading profile...</h1>}>
+
+
+                </Suspense>
+    
         
         </Comments>
     
